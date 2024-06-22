@@ -1,0 +1,51 @@
+---
+settings:
+  name: System Manager Classic
+  noindex: true
+  internal:
+    pdf_enabled: false
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  search: ontap-system-manager-classic
+  langs: de-de,us-en,ja-jp,ko-kr,zh-cn,zh-tw,es-es,fr-fr,it-it
+sidebar:
+  entries:
+  - title: System Manager Classic - Dokumentation
+    url: "/index.html"
+  - title: NAS-Storage bereitstellen
+    entries:
+    - section: nfs-config
+    - section: nfs-config-esxi
+    - section: nas-multiprotocol-config
+    - section: smb-config
+  - title: Provisionierung von SAN-Storage
+    entries:
+    - section: fc-config-esxi
+    - section: fc-config-rhel
+    - section: fc-config-windows
+    - section: iscsi-config-esxi
+    - section: iscsi-config-rhel
+    - section: iscsi-config-windows
+  - title: Datensicherung und Disaster Recovery
+    entries:
+    - section: peering
+    - section: volume-disaster-recovery
+    - section: volume-disaster-prep
+    - section: volume-backup-snapvault
+    - section: volume-restore-snapvault
+  - title: Cluster-Administration
+    entries:
+    - section: expansion
+    - section: volume-move
+    - section: snmp-config
+  - title: Cluster Management über System Manager 9.6 und 9.7
+    entries:
+    - section: online-help-96-97
+  - title: ONTAP Dokumentation
+    url: https://docs.netapp.com/us-en/ontap/
+  - title: Rechtliche Hinweise
+    url: "/reference_legal_notices.html"
+product-family:
+  name: ONTAP
+  repo: ontap-family

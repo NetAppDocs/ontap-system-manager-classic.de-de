@@ -1,0 +1,79 @@
+---
+permalink: online-help-96-97/index.html 
+sidebar: sidebar 
+keywords: system, manager, online, help, management, interface, understand, cluster 
+summary: 'System Manager ist eine grafische Managementoberfläche, über die Sie Storage-Systeme und Storage-Objekte (beispielsweise Festplatten, Volumes und Aggregate) managen und allgemeine Managementaufgaben in Bezug auf Storage-Systeme über einen Webbrowser durchführen können. Als Cluster-Administrator können Sie mit System Manager das gesamte Cluster und seine Ressourcen verwalten.' 
+---
+= Cluster-Management mit OnCommand® System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+System Manager ist eine HTML5-basierte grafische Managementoberfläche, über die Sie Storage-Systeme und Storage-Objekte (wie Festplatten, Volumes und Aggregate) managen und gängige Management-Aufgaben in Verbindung mit Storage-Systemen über einen Webbrowser durchführen können. System Manager ist als Webservice in die ONTAP Software integriert, ist standardmäßig aktiviert und kann über einen Browser aufgerufen werden. Als Cluster-Administrator können Sie mit System Manager das gesamte Cluster und seine Ressourcen verwalten.
+
+[NOTE]
+====
+Der Name des System Manager hat sich von früheren Versionen geändert. Versionen 9.5 und frühere Versionen erhielten den Namen OnCommand System Manager. Versionen 9.6 und höher werden jetzt ONTAP System Manager genannt.
+
+====
+Mit System Manager können Sie viele Routineaufgaben ausführen, z. B. die folgenden:
+
+* Erstellen Sie ein Cluster, konfigurieren Sie ein Netzwerk und richten Sie Support-Details für das Cluster ein.
+* Konfiguration und Management von Storage-Objekten wie Festplatten, Aggregaten, Volumes, qtrees und Quotas
+* Konfiguration von Protokollen wie CIFS und NFS und Bereitstellung von File Sharing
+* Konfigurieren Sie Protokolle wie FC, FCoE, NVMe und iSCSI für den Blockzugriff.
+* Netzwerkkomponenten wie Subnetzen, Broadcast-Domänen, Daten- und Managementschnittstellen und Schnittstellengruppen erstellen und konfigurieren.
+* Richten Sie Spiegelungs- und Vaulting-Beziehungen ein und managen Sie sie.
+* Durchführung von Clustermanagement, Storage-Node-Management und SVM-Managementvorgängen (Storage Virtual Machine)
+* Erstellen und Konfigurieren von SVMs, Managen von mit SVMs verbundenen Storage-Objekten und Managen von SVM-Services
+* Überwachen und verwalten Sie HA-Konfigurationen in einem Cluster.
+* Konfigurieren Sie Service-Prozessoren, um sich unabhängig vom Status des Node Remote anzumelden, den Node zu managen, zu überwachen und zu verwalten.
+
+
+
+
+== Symbole im Dashboard-Fenster
+
+Beim Anzeigen des Dashboards für das Storage-System werden möglicherweise die folgenden Symbole angezeigt:
+
+|===
+| Symbol | Name | Beschreibung 
+
+
+ a| 
+image:../media/statuswarning.gif["Image für Warnung im System Manager Dashboard"]
+ a| 
+Warnung
+ a| 
+Es gibt kleinere Probleme, aber keine, die sofortige Aufmerksamkeit erfordern.
+
+
+
+ a| 
+image:../media/statuserror.gif["Fehler beim Image im System Manager Dashboard"]
+ a| 
+Fehler
+ a| 
+Probleme, die schließlich zu Ausfallzeiten führen könnten und daher Aufmerksamkeit erfordern.
+
+
+
+ a| 
+image:../media/statuscritical.gif["Image für „kritisch“ im System Manager Dashboard"]
+ a| 
+Kritisch
+ a| 
+Das Storage-System stellt keine Daten bereit oder kann nicht kontaktiert werden. Es ist sofortige Aufmerksamkeit erforderlich.
+
+
+
+ a| 
+image:../media/arrowright.gif["Image für die Navigation im System Manager Dashboard"]
+ a| 
+Linkspfeil
+ a| 
+Wenn dies neben einem Linienelement in einem Dashboard-Bereich angezeigt wird, klicken Sie darauf auf eine andere Seite, von der Sie weitere Informationen über das Zeilenelement erhalten oder Änderungen an der Position vornehmen können.
+
+|===

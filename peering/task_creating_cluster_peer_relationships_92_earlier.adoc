@@ -1,0 +1,82 @@
+---
+permalink: peering/task_creating_cluster_peer_relationships_92_earlier.html 
+sidebar: sidebar 
+keywords: create, cluster, peer, relationship, enter, predetermined, passphrase, ip, address, intercluster, lif, remote, successful, create a cluster peer relationship, ontap 9.2 or earlier 
+summary: Sie können eine Cluster-Peer-Beziehung zwischen zwei Clustern erstellen, indem Sie eine vorab festgelegte Passphrase und die IP-Adressen der Intercluster LIFs des Remote-Clusters eingeben und dann die erfolgreiche Erstellung der Beziehung überprüfen. 
+---
+= Cluster-Peer-Beziehung erstellen (ONTAP 9.2 oder älter)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mithilfe der ONTAP System Manager _classic_-Schnittstelle mit ONTAP 9.2 oder einer früheren Version von ONTAP 9 können Sie eine Cluster-Peer-Beziehung zwischen zwei Clustern erstellen, indem Sie eine vorab festgelegte Passphrase und die IP-Adressen der Intercluster-LIFs des Remote-Clusters eingeben, Und dann überprüfen, ob die Beziehung erfolgreich erstellt wurde.
+
+.Bevor Sie beginnen
+* Sie müssen die IP-Adressen aller Cluster-Intercluster LIFs der Cluster kennen, die Sie Peer-to-Peer möchten.
+* Sie müssen die Passphrase kennen, die Sie für jede Peer-Beziehung verwenden.
+
+
+.Über diese Aufgabe
+Sie müssen dieses Verfahren für jedes Cluster durchführen.
+
+.Schritte
+. Erstellen Sie aus dem Quell-Cluster eine Cluster-Peer-Beziehung mit dem Ziel-Cluster.
++
+.. Klicken Sie auf die Registerkarte *Konfigurationen*.
+.. Klicken Sie im Fensterbereich *Cluster-Einstellungen* auf *Cluster-Peers*.
+.. Klicken Sie Auf *Erstellen*.
++
+Das Dialogfeld * Cluster-Peer erstellen* wird angezeigt.
+
+.. [[step1d-Passphrase-used]]Geben Sie im Bereich *Details des zu Peering* des Remote-Clusters die Passphrase an, die beide Peers verwenden werden, um eine authentifizierte Cluster-Peer-Beziehung sicherzustellen.
+.. Geben Sie die IP-Adressen aller Cluster-Intercluster LIFs des Ziel-Clusters ein (eine pro Node), getrennt durch Kommas.
++
+image::../media/cluster_peer_create.gif[Dialogfeld Cluster-Peer erstellen]
+
+.. Klicken Sie Auf *Erstellen*.
++
+Der Authentifizierungsstatus lautet „`ausstehend`“, da nur ein Cluster konfiguriert wurde.
+
+
+
+. Wechseln Sie zum Ziel-Cluster, und erstellen Sie anschließend eine Cluster-Peer-Beziehung zum Quell-Cluster:
++
+.. Klicken Sie auf die Registerkarte *Konfigurationen*.
+.. Klicken Sie im Fensterbereich *Cluster-Einstellungen* auf *Cluster-Peers*.
+.. Klicken Sie Auf *Erstellen*.
++
+Das Dialogfeld Cluster-Peer erstellen wird angezeigt.
+
+.. Geben Sie im Bereich *Details des Remote-Clusters für Peered* die gleiche Passphrase ein, die Sie in angegeben haben <<step1d-passphrase-used,Schritt 1d>> Und die IP-Adressen der Intercluster-LIFs des Quellclusters, und klicken Sie dann auf *Erstellen*.
+
+
++
+image::../media/cluster_peer_create_2.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
+. Vergewissern Sie sich im Fenster * Cluster Peers* des Ziel-Clusters, dass das Quellcluster „`Available`“ ist und dass der Authentifizierungsstatus „`OK`“ lautet.
++
+image::../media/cluster_peers_status.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
++
+Sie müssen möglicherweise auf *Aktualisieren* klicken, um die aktualisierten Informationen anzuzeigen.
+
++
+Die beiden Cluster sind in einer Peer-Beziehung.
+
+. Wechseln Sie zum Quell-Cluster, und bestätigen Sie, dass das Ziel-Cluster „`Available`“ ist und dass der Authentifizierungsstatus „`OK`“ lautet.
++
+Sie müssen möglicherweise auf *Aktualisieren* klicken, um die aktualisierten Informationen anzuzeigen.
+
+
+
+
+
+== Nächste Schritte
+
+SVM-Peer-Beziehung zwischen Quell- und Ziel-SVMs erstellen und gleichzeitig eine Datensicherungsbeziehung zwischen dem Quell-Volume und dem Ziel-Volume erstellen.
+
+link:../volume-backup-snapvault/index.html["Volume Backup mit SnapVault"]
+
+link:../volume-disaster-recovery/index.html["Vorbereitung der Volume Disaster Recovery"]

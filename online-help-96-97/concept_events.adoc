@@ -1,0 +1,100 @@
+---
+permalink: online-help-96-97/concept_events.html 
+sidebar: sidebar 
+keywords: event, log, notification, system, manager, online, help, view 
+summary: Mit System Manager können Sie das Ereignisprotokoll und die Ereignisbenachrichtigungen anzeigen. 
+---
+= Verwalten von Ereignissen mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und älter) können Sie das Ereignisprotokoll und die Ereignisbenachrichtigungen einsehen.
+
+
+
+== Fenster „Ereignisse“
+
+Sie können das Fenster Ereignisse verwenden, um das Ereignisprotokoll und die Ereignisbenachrichtigungen anzuzeigen.
+
+
+
+=== Befehlsschaltflächen
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Ereignisliste
+
+* *Zeit*
++
+Zeigt die Uhrzeit an, zu der das Ereignis aufgetreten ist.
+
+* *Knoten*
++
+Zeigt den Node und das Cluster an, auf dem das Ereignis aufgetreten ist.
+
+* *Severity*
++
+Zeigt den Schweregrad des Ereignisses an. Folgende Schweregrade sind möglich:
+
++
+** Notfall
++
+Gibt an, dass die Ereignisquelle unerwartet angehalten wurde und dass der nicht wiederherstellbare Datenverlust des Systems auftritt. Korrekturmaßnahmen müssen sofort ergriffen werden, um längere Ausfallzeiten zu vermeiden.
+
+** Alarm
++
+Gibt an, dass die Ereignisquelle eine Warnmeldung enthält und dass Maßnahmen zur Vermeidung von Ausfallzeiten ergriffen werden müssen.
+
+** Kritisch
++
+Gibt an, dass die Ereignisquelle kritisch ist und möglicherweise zu Serviceunterbrechungen führen kann, wenn keine sofort Korrekturmaßnahmen ergriffen werden.
+
+** Fehler
++
+Gibt an, dass die Ereignisquelle weiter performant ist und dass zur Vermeidung von Serviceunterbrechungen eine Korrekturmaßnahme erforderlich ist.
+
+** Warnung
++
+Gibt an, dass die Ereignisquelle ein Ereignis erlebt hat, das Sie beachten müssen. Ereignisse dieses Schweregrades können nicht zu einer Serviceunterbrechung führen. Jedoch sind möglicherweise Korrekturmaßnahmen erforderlich.
+
+** Hinweis
++
+Gibt an, dass die Event-Quelle normal ist, der Schweregrad jedoch eine wesentliche Bedingung ist, die Sie kennen müssen.
+
+** Informativ
++
+Gibt an, dass die Ereignisquelle ein Ereignis enthält, das Sie beachten müssen. Möglicherweise ist keine Korrekturmaßnahme erforderlich.
+
+** Debuggen
++
+Gibt an, dass die Ereignisquelle eine Debugging-Nachricht enthält.
+
+
+
++
+Standardmäßig werden der Schweregrad „Warnung“, der Schweregrad „Notfall“ und der Schweregrad „Fehler“ angezeigt.
+
+* *Quelle*
++
+Zeigt die Quelle des Ereignisses an.
+
+* *Veranstaltung*
++
+Zeigt die Beschreibung des Ereignisses an.
+
+
+
+
+
+=== Detailbereich
+
+Zeigt die Ereignisdetails an, einschließlich Ereignisbeschreibung, Nachrichtenname, Sequenznummer, Meldungsbeschreibung und Korrekturmaßnahmen für das ausgewählte Ereignis.

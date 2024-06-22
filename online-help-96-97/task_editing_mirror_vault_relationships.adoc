@@ -1,0 +1,344 @@
+---
+permalink: online-help-96-97/task_editing_mirror_vault_relationships.html 
+sidebar: sidebar 
+keywords: edit, mirror, vault, relationship, system, manager, online, help 
+summary: Mit System Manager können Sie eine Mirror- und Vault-Beziehung bearbeiten, indem Sie die ausgewählte Richtlinie oder den ausgewählten Zeitplan ändern. Sie können jedoch die Parameter einer vorhandenen Richtlinie oder eines vorhandenen Zeitplans nicht bearbeiten. 
+---
+= Verwalten Sie Mirror- und Vault-Beziehungen mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) zum Management von Mirror- und Vault-Beziehungen verwenden. Sie können bearbeiten, löschen, initialisieren, aktualisieren, stilllegen, Wiederaufnehmen und Unterbrechen von Mirror- und Vault-Beziehungen Neben der Erstellung von Spiegelungs- und Vault-Beziehungen von einer Ziel-SVM können auch Neusynchronisierungen durchgeführt oder Neusynchronisierungen rückgängig gemacht werden.
+
+
+
+== Beziehungen bearbeiten
+
+Mit System Manager können Sie eine Mirror- und Vault-Beziehung bearbeiten, indem Sie die ausgewählte Richtlinie oder den ausgewählten Zeitplan ändern. Sie können jedoch die Parameter einer vorhandenen Richtlinie oder eines vorhandenen Zeitplans nicht bearbeiten.
+
+.Bevor Sie beginnen
+Die Quell- und Ziel-Cluster müssen eine gesunde Peer-Beziehung aufweisen.
+
+.Über diese Aufgabe
+Sie können den Beziehungstyp einer versionsflexiblen Spiegelbeziehung, Vault-Beziehung oder Mirror und Vault-Beziehung ändern, indem Sie den Richtlinientyp ändern.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Mirror- und Vault-Beziehung aus, die Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Wählen Sie im Dialogfeld *Beziehung bearbeiten* die entsprechende Aktion aus:
++
+|===
+| Ihr Ziel ist | Gehen Sie wie folgt vor... 
+
+
+ a| 
+Wählen Sie eine vorhandene Richtlinie aus
+ a| 
+Klicken Sie auf *Durchsuchen* und wählen Sie dann eine vorhandene Richtlinie aus.    Sie können eine Richtlinie auswählen, die die maximale Anzahl übereinstimmender Etiketten mit der Snapshot-Richtlinie enthält, die mit dem Quell-Volume verbunden ist.
+
+
+
+ a| 
+Erstellen Sie eine neue Richtlinie
+ a| 
+.. Klicken Sie Auf *Create Policy*.
+.. Geben Sie einen Namen für die Richtlinie an.
+.. Legen Sie die Priorität für geplante Transfers fest.
++
+Niedrig gibt an, dass die Übertragung die geringste Priorität hat und normalerweise nach normalen Prioritätstransfers geplant ist. Standardmäßig ist die Priorität auf „Normal“ festgelegt.
+
+.. Aktivieren Sie das Kontrollkästchen *Netzwerkkomprimierung* aktivieren, um die zu übertragenden Daten zu komprimieren.
+.. Geben Sie ein SnapMirror-Etikett und die Anzahl der Ziel-Aufbewahrung für die Vault-Richtlinie an.
++
+Sie müssen sicherstellen, dass auf dem Quell-Volume eine Snapshot-Kopie mit demselben Label erstellt wird, damit das neue SnapMirror Label wirksam wird.
+
+.. Klicken Sie Auf *Erstellen*.
+
+
+|===
+. Geben Sie einen Zeitplan für die Beziehung an:
++
+|===
+| Wenn... | Gehen Sie wie folgt vor... 
+
+
+ a| 
+Sie möchten einen vorhandenen Zeitplan zuweisen
+ a| 
+Klicken Sie auf *Durchsuchen* und wählen Sie dann einen vorhandenen Zeitplan aus.
+
+
+
+ a| 
+Sie möchten einen neuen Zeitplan erstellen
+ a| 
+.. Klicken Sie Auf *Zeitplan Erstellen*.
+.. Geben Sie einen Namen für den Zeitplan an.
+.. Wählen Sie eine der folgenden Optionen:
++
+*** *Einfach*
++
+Sie können diese Option auswählen, um nur den Wochentag, die Uhrzeit und das Übertragungsintervall anzugeben.
+
+*** *Erweitert*
++
+Sie können diese Option auswählen, um einen Cron-Stil-Zeitplan festzulegen.
+
+
+
+.. Klicken Sie Auf *Erstellen*.
+
+
+
+
+ a| 
+Sie möchten keinen Zeitplan zuweisen
+ a| 
+Wählen Sie *Keine*.
+
+|===
+. Klicken Sie auf *OK*.
+
+
+
+
+== Beziehungen manuell aktualisieren
+
+Mit System Manager können Sie manuell eine außerplanmäßige inkrementelle Aktualisierung initiieren. Möglicherweise benötigen Sie ein manuelles Update, um Datenverlust aufgrund eines bevorstehenden Stromausfalls, geplanter Wartungsarbeiten oder Datenmigrationen zu vermeiden.
+
+.Bevor Sie beginnen
+Die Mirror- und Vault-Beziehung muss initialisiert werden und in einem Snapmirrored-Status.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Spiegelbeziehung aus, für die Sie die Daten aktualisieren möchten, und klicken Sie dann auf *Operationen* > *Update*.
+. Wählen Sie eine der folgenden Optionen:
++
+** Wählen Sie *gemäß Richtlinie* aus, um eine inkrementelle Übertragung aus der kürzlich erstellten Snapshot Kopie zwischen den Quell- und Ziel-Volumes durchzuführen.
+** Wählen Sie *Snapshot Kopie* aus und geben Sie die Snapshot Kopie an, die Sie übertragen möchten.
+
+
+. Wählen Sie *Transferbandbreite begrenzen auf* aus, um die für Transfers verwendete Netzwerkbandbreite zu begrenzen und dann die maximale Übertragungsgeschwindigkeit festzulegen.
+. Klicken Sie Auf *Aktualisieren*.
+. Überprüfen Sie den Übertragungsstatus auf der Registerkarte *Details*.
+
+
+
+
+== Beziehungen initialisieren
+
+Sie können mit System Manager eine Mirror- und Vault-Beziehung initialisieren, wenn Sie die Beziehung beim Erstellen nicht bereits initialisiert haben. Wenn Sie eine Beziehung initialisieren, wird ein vollständiger Basistransfer der Daten vom Quell-Volume zum Zielsystem durchgeführt.
+
+.Bevor Sie beginnen
+Die Quell- und Ziel-Cluster müssen eine gesunde Peer-Beziehung aufweisen.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Mirror- und Vault-Beziehung aus, die Sie initialisieren möchten, und klicken Sie dann auf *Operationen* > *Initialisieren*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Initialisieren*.
+. Überprüfen Sie den Status der Beziehung im Fenster *Schutz*.
+
+
+.Ergebnisse
+Eine Snapshot Kopie wird erstellt und an das Ziel übertragen.
+
+Diese Snapshot Kopie dient als Basis für nachfolgende inkrementelle Snapshot Kopien.
+
+
+
+== Beziehung von einer Ziel-SVM erstellen
+
+Mit System Manager kann eine Mirror- und Vault-Beziehung von der Ziel-Storage Virtual Machine (SVM) erstellt werden. Durch die Erstellung dieser Beziehung schützen Sie Ihre Daten besser, indem Sie in regelmäßigen Abständen Daten vom Quell-Volume auf das Ziel-Volume übertragen. Sie ermöglicht außerdem, Daten über lange Zeiträume aufzubewahren, indem Sie Backups des Quell-Volume erstellen.
+
+.Bevor Sie beginnen
+* Der Ziel-Cluster muss ONTAP 8.3.2 oder höher ausführen.
+* Die SnapMirror Lizenz muss auf dem Quell-Cluster und dem Ziel-Cluster aktiviert sein.
++
+[NOTE]
+====
+Bei einigen Plattformen ist es nicht erforderlich, dass die SnapMirror Lizenz für das Quell-Cluster aktiviert ist, wenn auf dem Ziel-Cluster die SnapMirror Lizenz und die DPO-Lizenz (Data Protection Optimization) aktiviert sind.
+
+====
+* Das Quell-Cluster und das Ziel-Cluster müssen sich in einer gesunden Peer-Beziehung befinden.
+* Der Ziel-SVM muss über Speicherplatz verfügen.
+* Das Quellaggregat und das Zielaggregat müssen 64-Bit-Aggregate sein.
+* Ein Quell-Volume vom Typ Read/Write (rw) muss bereits vorhanden sein.
+* Der SnapLock-Aggregattyp muss identisch sein.
+* Wenn Sie eine Verbindung von einem Cluster mit ONTAP 9.2 oder einer älteren Version zu einem Remote-Cluster herstellen, auf dem die SAML-Authentifizierung aktiviert ist, muss die passwortbasierte Authentifizierung auf dem Remote-Cluster aktiviert sein.
+
+
+.Über diese Aufgabe
+* System Manager unterstützt keine Kaskadenbeziehung.
++
+Beispielsweise kann ein Ziel-Volume in einer Beziehung nicht das Quell-Volume in einer anderen Beziehung sein.
+
+* Es kann keine Mirror- und Vault-Beziehung zwischen einer SVM mit synchroner Quelle und einer SVM in einer MetroCluster Konfiguration erstellt werden.
+* Sie können eine Beziehung zwischen synchronen und gespiegelten SVMs in einer MetroCluster Konfiguration erstellen.
+* Es ist möglich, eine Mirror- und Vault-Beziehung von einem Volume auf einer synchronen Quell-SVM zu einem Volume einer Datenservice-SVM zu erstellen.
+* Es lässt sich eine Mirror- und Vault-Beziehung zwischen einem Volume auf einer Datenservice-SVM und einem DP-Volume in einer Sync-Source-SVM erstellen.
+* In einer Auswahl können maximal 25 Volumes geschützt werden.
+
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Klicken Sie im Fenster *Relationships* auf *Erstellen*.
+. Wählen Sie im Dialogfeld *SVM durchsuchen* eine SVM für das Ziel-Volume aus.
+. Wählen Sie im Dialogfeld *Schutzbeziehung erstellen* aus der Dropdown-Liste *Beziehungstyp* die Option *Mirror und Vault* aus.
+. Geben Sie den Cluster, die SVM und das Quell-Volume an.
++
+Wenn auf dem angegebenen Cluster eine Version der ONTAP Software vor ONTAP 9.3 ausgeführt wird, werden nur Peering SVMs aufgelistet. Wenn im angegebenen Cluster ONTAP 9.3 oder höher ausgeführt wird, werden die Peering-SVMs und erlaubte SVMs aufgelistet.
+
+. Geben Sie ein Suffix für Volume-Namen ein.
++
+Das Suffix des Volume-Namens wird an die Namen des Quell-Volumes angehängt, um die Namen des Ziel-Volumes zu generieren.
+
+. *Optional:* Klicken Sie auf *Durchsuchen* und ändern Sie dann die Spiegel- und Tresorrichtlinie.
++
+Sie können die Richtlinie auswählen, die die maximale Anzahl übereinstimmender Etiketten mit der Snapshot-Richtlinie enthält, die mit dem Quell-Volume verbunden ist.
+
+. Wählen Sie einen Zeitplan für die Beziehung aus der Liste der vorhandenen Zeitpläne aus.
+. *Optional:* Wählen Sie *Initialisieren Sie die Beziehung*, um die Beziehung zu initialisieren.
+. Aktivieren Sie FabricPool-fähige Aggregate und wählen Sie anschließend eine entsprechende Tiering-Richtlinie aus.
+. Klicken Sie auf *Validieren*, um zu überprüfen, ob die ausgewählten Volumes entsprechende Etiketten haben.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Beziehungen neu synchronisieren
+
+Sie können System Manager verwenden, um eine zuvor kaputte Mirror und Vault-Beziehung wiederherzustellen. Sie können einen Neusynchronisierung durchführen, um nach einem Ausfall, bei dem das Quell-Volume deaktiviert wurde, eine Wiederherstellung durchzuführen.
+
+.Bevor Sie beginnen
+Die Quell- und Ziel-Cluster sowie die Quell- und Ziel-Storage Virtual Machines (SVMs) müssen sich in Peer-Beziehungen befinden.
+
+.Über diese Aufgabe
+Vor der Durchführung einer Neusynchronisierung sollten Sie Folgendes beachten:
+
+* Wenn Sie eine Neusynchronisierung durchführen, wird der Inhalt auf dem Ziel-Volume durch den Inhalt der Quelle überschrieben.
++
+[NOTE]
+====
+Der Neusynchronisierung kann zum Verlust neuer Daten führen, die nach dem Erstellen der Snapshot Kopie auf das Ziel-Volume geschrieben wurden.
+
+====
+* Wenn im Feld Fehler Letzter Transfer im Fenster Schutz eine Neusynchronisierung empfohlen wird, müssen Sie zuerst die Beziehung unterbrechen und dann den Neusynchronisierung durchführen.
+
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Mirror- und Vault-Beziehung aus, die Sie neu synchronisieren möchten, und klicken Sie dann auf *Operationen* > *Resync*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Resync*.
+
+
+
+
+== Beziehungen umkehren neu synchronisieren
+
+Sie können mit System Manager eine zuvor beschädigte Mirror und Vault-Beziehung wiederherstellen. Bei einer umgekehrten Neusynchronisierung werden die Funktionen der Quell- und Ziel-Volumes umgekehrt. Sie können das Ziel-Volume verwenden, um Daten bereitzustellen, während Sie die Quelle reparieren oder ersetzen, die Quelle aktualisieren und die ursprüngliche Konfiguration der Systeme wiederherstellen.
+
+.Bevor Sie beginnen
+Das Quell-Volume muss online sein.
+
+.Über diese Aufgabe
+* Bei einer erneuten Synchronisierung werden die Inhalte auf dem Quell-Volume durch den Inhalt auf dem Ziel-Volume überschrieben.
++
+[NOTE]
+====
+Die umgekehrte Resynchronisierung kann zu Datenverlust auf dem Quell-Volume führen.
+
+====
+* Wenn Sie eine umgekehrte Neusynchronisierung durchführen, wird die Richtlinie der Beziehung auf MirrorAndVault gesetzt, und der Zeitplan ist auf Keine festgelegt.
+
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Mirror- und Vault-Beziehung aus, die Sie umkehren möchten, und klicken Sie dann auf *Operationen* > *Resync umkehren*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Resync rückwärts*.
+
+
+
+
+== Beziehungen zu brechen
+
+Mit System Manager kann eine gespiegelte und Vault-Beziehung unterbrochen werden, wenn ein Quell-Volume nicht mehr verfügbar ist und Client-Applikationen auf die Daten vom Ziel-Volume zugreifen sollen. Sie können das Ziel-Volume verwenden, um Daten bereitzustellen, während Sie das Quell-Volume reparieren oder ersetzen, das Quell-Volume aktualisieren und die ursprüngliche Konfiguration der Systeme wiederherstellen.
+
+.Bevor Sie beginnen
+* Die Beziehung zwischen Spiegelung und Vault muss im stillgelegten Status oder im Ruhezustand sein.
+* Das Ziel-Volume muss auf dem Namespace des Ziel-Storage Virtual Machine (SVM) gemountet werden.
+
+
+.Über diese Aufgabe
+Sie können Beziehungen zwischen ONTAP Systemen und SolidFire Storage-Systemen spiegeln.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Mirror- und Vault-Beziehung aus, die Sie brechen möchten, und klicken Sie dann auf *Operationen* > *break*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *break*.
+
+
+.Ergebnisse
+Die Beziehung zwischen Spiegel und Tresor ist kaputt. Der Ziel-Volume-Typ ändert sich von Datenschutz (DP) schreibgeschützt in Lesen/Schreiben. Das System speichert die Basis-Snapshot Kopie für die Mirror- und Vault-Beziehung zur späteren Verwendung.
+
+
+
+== Beziehungen wieder aufnehmen
+
+Wenn Sie eine stillgelegte Mirror- und Vault-Beziehung haben, können Sie mit System Manager die Beziehung fortsetzen. Wenn Sie die Beziehung fortsetzen, wird die normale Datenübertragung zum Ziel-Volume fortgesetzt und alle Schutzaktivitäten werden neu gestartet.
+
+.Über diese Aufgabe
+Wenn Sie eine beschädigte Mirror- und Vault-Beziehung von der Befehlszeilenschnittstelle (CLI) stillgelegt haben, können Sie die Beziehung nicht mehr aus System Manager fortsetzen. Sie müssen die Verbindung mit der CLI fortsetzen.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Mirror- und Vault-Beziehung aus, die Sie fortsetzen möchten, und klicken Sie dann auf *Operationen* > *Fortsetzen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Wiederaufnehmen*.
+
+
+.Ergebnisse
+Normale Datenübertragungen werden fortgesetzt. Wenn ein geplanter Transfer für die Beziehung vorhanden ist, wird der Transfer vom nächsten Zeitplan gestartet.
+
+
+
+== Beziehungen löschen
+
+Mithilfe von System Manager kann eine gespiegelte und Vault-Beziehung zwischen einem Quell- und Ziel-Volume beendet und die Snapshot Kopien vom Quell-Volume freigegeben werden.
+
+.Über diese Aufgabe
+* Es ist eine Best Practice, die Mirror- und Vault-Beziehung zu unterbrechen, bevor sie die Beziehung löschen.
+* Um die Beziehung neu zu erstellen, müssen Sie die Neusynchronisierung vom Quell-Volume über die Befehlszeilenschnittstelle (CLI) ausführen.
+
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Mirror- und Vault-Beziehung aus, die Sie löschen möchten, und klicken Sie auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
++
+Sie können auch das Kontrollkästchen Basiskopien von Snapshots aktivieren, um die von der Spiegelung und der Vault-Beziehung auf dem Quell-Volume genutzten Basis-Snapshot Kopien zu löschen.
+
++
+Wenn die Beziehung nicht freigegeben wird, müssen Sie die CLI verwenden, um den Release-Vorgang auf dem Quell-Cluster auszuführen, um die Snapshot Kopien der Basis zu löschen, die für die gespiegelte und Vault-Beziehung vom Quell-Volume erstellt wurden.
+
+
+
+.Ergebnisse
+Die Beziehung wird gelöscht und die Snapshot Kopien der Basis auf dem Quell-Volume werden dauerhaft gelöscht.
+
+
+
+== Beziehungen stilllegen
+
+Mit System Manager kann ein Ziel-Volume stillgelegt werden, um das Ziel zu stabilisieren, bevor eine Snapshot Kopie erstellt wird. Der Quiesce-Vorgang ermöglicht den Abschluss aktiver Datentransfers und deaktiviert zukünftige Transfers für die Spiegelungs- und Vault-Beziehung.
+
+.Bevor Sie beginnen
+Die Mirror- und Vault-Beziehung muss sich in einem Snapmirrored-Zustand befinden.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Mirror- und Vault-Beziehung aus, die Sie stilllegen möchten, und klicken Sie dann auf *Operationen* > *Quiesce*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Quiesce*.
+
+
+.Ergebnisse
+Wenn keine Übertragung ausgeführt wird, wird der Übertragungsstatus als angezeigt `Quiesced`. Wenn eine Übertragung durchgeführt wird, ist die Übertragung nicht betroffen, und der Übertragungsstatus wird als angezeigt `Quiescing` Bis die Übertragung abgeschlossen ist.

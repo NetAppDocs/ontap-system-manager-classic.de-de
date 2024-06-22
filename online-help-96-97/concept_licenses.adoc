@@ -1,0 +1,268 @@
+---
+permalink: online-help-96-97/concept_licenses.html 
+sidebar: sidebar 
+keywords: system, manager, view, manage, delete, software, licenses, cluster, node, types, entitlement, risk, 
+summary: Mit System Manager können alle Softwarelizenzen, die auf einem Cluster oder Node installiert sind, angezeigt, gemanagt oder gelöscht werden. 
+---
+= Lizenzen mit System Manager - ONTAP 9.7 und früher managen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (verfügbar ab ONTAP 9.7) können Sie alle auf einem Cluster oder Node installierten Softwarelizenzen anzeigen, managen oder löschen.
+
+
+
+== Löschen Sie Lizenzen
+
+Sie können im Fenster Lizenzen in System Manager jede Softwarelizenz löschen, die auf einem Cluster oder Node installiert ist.
+
+Weitere Informationen zum Verwalten von Lizenzen mit ONTAP 9.8 und höher finden Sie in den folgenden Informationen:
+
+* link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Übersicht über die Lizenzverwaltung (nur Cluster-Administratoren)"^]
+* https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Aktivieren Sie neue Funktionen durch Hinzufügen von Lizenzschlüssel"^]
+
+
+.Bevor Sie beginnen
+Die Softwarelizenz, die Sie löschen möchten, darf nicht von einem Dienst oder einer Funktion verwendet werden.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Lizenzen*.
+. Führen Sie im Fenster *Lizenzen* die entsprechende Aktion aus:
++
+|===
+| Ihr Ziel ist | Tun Sie das... 
+
+
+ a| 
+Löschen eines bestimmten Lizenzpakets auf einem Knoten oder einer Master-Lizenz
+ a| 
+Klicken Sie auf die Registerkarte *Details*.
+
+
+
+ a| 
+Löschen Sie ein bestimmtes Lizenzpaket über alle Nodes im Cluster hinweg
+ a| 
+Klicken Sie auf die Registerkarte *Pakete*.
+
+|===
+. Wählen Sie das Software-Lizenzpaket aus, das Sie löschen möchten, und klicken Sie dann auf *Löschen*.
++
+Sie können jeweils nur ein Lizenzpaket löschen.
+
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+.Ergebnisse
+Die Softwarelizenz wird aus Ihrem Speichersystem gelöscht. Die gelöschte Lizenz wird auch aus der Liste der Lizenzen im Fenster Lizenzen entfernt.
+
+
+
+== Lizenztypen und Berechtigungsrisiko
+
+Wenn Sie die verschiedenen Lizenztypen und das damit verbundene Berechtigungsrisiko kennen, können Sie das Risiko, das mit den Lizenzen in einem Cluster verbunden ist, verwalten.
+
+
+
+=== Lizenztypen
+
+Ein Paket kann über einen oder mehrere der folgenden Lizenztypen im Cluster verfügen:
+
+* Node-gesperrte Lizenz oder Standardlizenz
++
+Für einen Node mit einer bestimmten Systemseriennummer wird eine Node-gesperrte Lizenz ausgegeben (auch bekannt als „_Controller-Seriennummer_“). Diese Lizenz ist nur für den Knoten gültig, der über die passende Seriennummer verfügt.
+
++
+Durch die Installation einer Node-gesperrten Lizenz wird ein Node auf die lizenzierte Funktionalität berechtigt. Damit der Cluster die lizenzierte Funktion nutzen kann, muss mindestens ein Node für die Funktionalität lizenziert sein. Es ist möglicherweise nicht mehr konform, die lizenzierte Funktion auf einem Knoten zu verwenden, der keinen Anspruch auf die Funktionalität hat.
+
++
+ONTAP 8.2 und neuere Versionen behandeln eine Standardlizenz, die vor Data ONTAP 8.2 installiert wurde. Somit verfügen alle Nodes im Cluster in den Versionen ONTAP 8.2 und höher automatisch über die Standardlizenz für das Paket, in dem die zuvor lizenzierte Funktion integriert ist.
+
+* Master- oder Standortlizenz
++
+Eine Master- oder Site-Lizenz ist nicht an eine bestimmte System-Seriennummer gebunden. Bei der Installation einer Standortlizenz haben alle Knoten im Cluster Anspruch auf die lizenzierte Funktion.
+
++
+Wenn Ihr Cluster über eine Master-Lizenz verfügt und Sie einen Node aus dem Cluster entfernen, übernimmt der Node nicht die Standortlizenz, und der Node ist nicht mehr auf die lizenzierte Funktionalität berechtigt. Wenn Sie einem Cluster einen Knoten hinzufügen, der über eine Master-Lizenz verfügt, hat der Knoten automatisch Anspruch auf die von der Standortlizenz gewährte Funktionalität.
+
+* Demo oder temporäre Lizenz
++
+Eine Demo- oder temporäre Lizenz läuft nach einer bestimmten Zeit ab. Mit dieser Lizenz können Sie bestimmte Software-Funktionen ohne Erwerb einer Berechtigung testen. Eine temporäre Lizenz ist eine Cluster-weite Lizenz und nicht an eine bestimmte Seriennummer eines Node gebunden.
+
++
+Wenn Ihr Cluster über eine temporäre Lizenz für ein Paket verfügt und Sie einen Node aus dem Cluster entfernen, enthält der Node nicht die Evaluierungslizenz.
+
+* Kapazitätslizenz (nur ONTAP Select und FabricPool)
++
+Eine ONTAP Select Instanz wird entsprechend der Datenmenge lizenziert, die der Benutzer managen möchte. Beispielsweise könnte der Benutzer eine 10-TB-Kapazitätslizenz erwerben, um ONTAP Select das Management von bis zu 10 TB Daten zu ermöglichen. Wenn mehr Storage-Kapazität an das System angeschlossen ist, als ONTAP Select für das Management lizenziert ist, funktioniert ONTAP Select nicht. Standardmäßig beträgt die maximale Storage-Kapazität, die an eine ONTAP Select Instanz angehängt werden kann, 2 TB, bis eine Kapazitätslizenz (z. B. eine Kapazitätslizenz mit 5 TB, eine Kapazitätslizenz mit 10 TB usw.) erworben und installiert wird.
+
++
+Ab ONTAP 9.2 benötigen FabricPool-fähige Aggregate eine Kapazitätslizenz, die zusammen mit einem Storage Tier von Drittanbietern (z. B. AWS) verwendet werden kann. Die FabricPool Kapazitätslizenz definiert die Datenmenge, die im Cloud-Tier-Storage gespeichert werden kann.
+
+
+
+
+
+=== Berechtigungsrisiko
+
+Ein Berechtigungsrisiko ergibt sich aus der nicht einheitlichen Installation einer Node-gesperrten Lizenz. Wenn die Lizenz für einen Node mit Locked auf allen Nodes installiert wird, besteht kein Berechtigungsrisiko.
+
+Das Berechtigungsrisiko kann in Abhängigkeit von bestimmten Bedingungen ein hohes Risiko, ein mittleres Risiko, kein Risiko oder ein unbekanntes Risiko sein:
+
+* Hohes Risiko
++
+** Wenn auf einem bestimmten Node verwendet wird, die Lizenz für den Node-gesperrt jedoch nicht auf diesem Node installiert ist
+** Wenn die Demo-Lizenz, die auf dem Cluster installiert wurde, abläuft, und es wird auf jedem Node verwendet
+
+
++
+[NOTE]
+====
+Wenn eine Standortlizenz auf einem Cluster installiert wird, ist das Berechtigungsrisiko nie hoch.
+
+====
+* Mittleres Risiko
++
+Wenn keine Site-Lizenz installiert ist und die Lizenz für Node-Locked nicht einheitlich auf den Nodes in einem Cluster installiert ist
+
+* Keine Risiko
++
+Wenn auf allen Nodes eine Node-gesperrte Lizenz installiert ist oder eine Standortlizenz unabhängig von der Verwendung auf dem Cluster installiert ist, besteht kein Berechtigungsrisiko.
+
+* Unbekannt
++
+Das Risiko ist unbekannt, wenn die API manchmal nicht in der Lage ist, die Daten zum Berechtigungsrisiko abzurufen, das mit einem Cluster oder den Nodes im Cluster verknüpft ist.
+
+
+
+
+
+== Das Fenster „Lizenzen“
+
+Das Speichersystem wird ab Werk mit vorinstallierter Software geliefert. Wenn Sie nach Erhalt des Speichersystems eine Softwarelizenz hinzufügen oder entfernen möchten, können Sie das Fenster Lizenzen verwenden.
+
+[NOTE]
+====
+System Manager überwacht keine Evaluierungslizenzen und gibt keine Warnung aus, wenn sich eine Evaluierungslizenz dem Ablauf nähert. Eine Evaluierungslizenz ist eine temporäre Lizenz, die nach einem bestimmten Zeitraum abläuft.
+
+====
+
+
+=== Befehlsschaltflächen
+
+* *Hinzufügen*
++
+Öffnet das Fenster Lizenz hinzufügen, in dem Sie neue Softwarelizenzen hinzufügen können.
+
+* *Löschen*
++
+Löscht die Softwarelizenz, die Sie in der Software-Lizenzliste auswählen.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Registerkarte Pakete
+
+Zeigt Informationen zu den auf Ihrem Speichersystem installierten Lizenzpaketen an.
+
+* *Paket*
++
+Zeigt den Namen des Lizenzpakets an.
+
+* *Berechtigungsrisiko*
++
+Zeigt das Risiko als Ergebnis von Lizenzberechtigungen für einen Cluster an. Das Berechtigungsrisiko kann hoch sein (image:../media/high_risk_entitlementrisk.gif[""]Mittelgroßes Risiko (image:../media/medium_risk_entitlementrisk.gif[""]), kein Risiko (image:../media/no_risk_entitlementrisk.gif[""]), unbekannt (image:../media/unknown_risk_entitlementrisk.gif[""]), oder nicht lizenziert (-).
+
+* *Beschreibung*
++
+Zeigt die Risikostufe als Ergebnis von Lizenzberechtigungsproblemen für einen Cluster an.
+
+
+
+
+
+=== Detailbereich Lizenzpaket
+
+Im Bereich unterhalb der Liste der Lizenzpakete werden zusätzliche Informationen zum ausgewählten Lizenzpaket angezeigt. Dieser Bereich enthält Informationen über das Cluster oder den Node, auf dem die Lizenz installiert ist, die Seriennummer der Lizenz, die Verwendung in der vorherigen Woche, die Installation der Lizenz, das Ablaufdatum der Lizenz und die Frage, ob es sich bei der Lizenz um eine ältere handelt.
+
+
+
+=== Registerkarte „Details“
+
+Zeigt zusätzliche Informationen zu den auf Ihrem Speichersystem installierten Lizenzpaketen an.
+
+* *Paket*
++
+Zeigt den Namen des Lizenzpakets an.
+
+* * Cluster/Node*
++
+Zeigt das Cluster oder den Node an, auf dem das Lizenzpaket installiert ist.
+
+* *Seriennummer*
++
+Zeigt die Seriennummer des Lizenzpakets an, das auf dem Cluster oder Node installiert ist.
+
+* *Typ*
++
+Zeigt den Typ des Lizenzpakets an. Dies kann die folgenden sein:
+
++
+** Temporär: Gibt an, dass es sich bei der Lizenz um eine temporäre Lizenz handelt, die nur während des Demonstrationszeitraums gültig ist.
+** Master: Gibt an, dass es sich bei der Lizenz um eine Master-Lizenz handelt, die auf allen Nodes im Cluster installiert ist.
+** Node gesperrt: Gibt an, dass es sich bei der Lizenz um eine Node-gesperrte Lizenz handelt, die auf einem einzelnen Node im Cluster installiert ist.
+** Kapazität:
++
+*** Bei ONTAP Select gibt an, dass es sich bei der Lizenz um eine Kapazitätslizenz handelt, die die Gesamtkapazität definiert, die die zu verwaltende Instanz lizenziert ist.
+*** Bei FabricPool gibt an, dass es sich bei der Lizenz um eine Kapazitätslizenz handelt, die die Datenmenge definiert, die im verbundenen Drittanbieter-Storage (z. B. AWS) gemanagt werden kann.
+
+
+
+
+* *Bundesland*
++
+Zeigt den Status des Lizenzpakets an. Dies kann die folgenden sein:
+
++
+** Bewertung: Gibt an, dass die installierte Lizenz eine Evaluierungslizenz ist.
+** Installiert: Gibt an, dass die installierte Lizenz eine gültige erworbene Lizenz ist.
+** WARNUNG: Gibt an, dass die installierte Lizenz eine gültige erworbene Lizenz ist und sich der maximalen Kapazität nähert.
+** Durchsetzung: Gibt an, dass die installierte Lizenz eine gültige erworbene Lizenz ist und das Ablaufdatum überschritten hat.
+** Warten auf Lizenz: Gibt an, dass die Lizenz noch nicht installiert wurde.
+
+
+* * Vermächtnis*
++
+Zeigt an, ob es sich bei der Lizenz um eine ältere Lizenz handelt.
+
+* *Maximale Kapazität*
++
+** Bei ONTAP Select wird die maximale Speichermenge angezeigt, die an die ONTAP Select Instanz angehängt werden kann.
+** Bei FabricPool wird die maximale Menge an Objektspeicher-Storage von Drittanbietern angezeigt, der als Cloud-Tier-Storage verwendet werden kann.
+
+
+* *Aktuelle Kapazität*
++
+** Bei ONTAP Select wird die Gesamtzahl des Speichers angezeigt, die derzeit mit der ONTAP Select Instanz verbunden ist.
+** Bei FabricPool wird die Gesamtgröße des Objekt-Storage von Drittanbietern angezeigt, die aktuell als Cloud-Tier-Storage verwendet wird.
+
+
+* *Ablaufdatum*
++
+Zeigt das Ablaufdatum des Softwarelizenzpakets an.
+
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Systemadministration"]
+
+xref:task_creating_cluster.adoc[Erstellen eines Clusters]

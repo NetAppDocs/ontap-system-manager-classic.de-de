@@ -1,0 +1,53 @@
+---
+permalink: online-help-96-97/task_accessing_cluster_by_using_system_manager_brower_based_gui.html 
+sidebar: sidebar 
+keywords: access, cluster, ontap, system, maanger, graphic, interface, online, help 
+summary: Wenn Sie für den Zugriff auf ein Cluster eine grafische Schnittstelle anstelle der Befehlszeilenschnittstelle verwenden möchten, können Sie dies mit ONTAP System Manager ausführen. Dieser ist standardmäßig in ONTAP als Webservice enthalten und kann über einen Browser aufgerufen werden. 
+---
+= Zugriff auf ein Cluster mithilfe der Browser-basierten grafischen Oberfläche von ONTAP System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie für den Zugriff auf ein Cluster eine grafische Schnittstelle anstelle der Befehlszeilenschnittstelle verwenden möchten, können Sie dies mit ONTAP System Manager ausführen. Dieser ist standardmäßig in ONTAP als Webservice enthalten und kann über einen Browser aufgerufen werden.
+
+.Bevor Sie beginnen
+* Sie müssen ein Cluster-Benutzerkonto besitzen, das mit dem konfiguriert ist `admin` Rolle und der `http`, `ontapi`, und `console` Applikationstypen
+* Sie müssen Cookies und Website-Daten im Browser aktiviert haben.
+
+
+.Über diese Aufgabe
+Sie können eine Cluster-Management-LIF oder Node-Management-LIF verwenden, um auf ONTAP System Manager zuzugreifen. Für einen unterbrechungsfreien Zugriff auf ONTAP System Manager sollten Sie eine Cluster-Management-LIF verwenden.
+
+.Schritte
+. Rufen Sie im Webbrowser die IP-Adresse der Cluster-Management-LIF auf:
++
+** Wenn Sie IPv4 verwenden: `+https://cluster-mgmt-LIF+`
+** Wenn Sie IPv6 verwenden: `https://[cluster-mgmt-LIF]`
++
+Nur HTTPS wird für den Browser-Zugriff von ONTAP System Manager unterstützt.
+
+
+
++
+Wenn das Cluster ein selbstsigniertes digitales Zertifikat verwendet, wird im Browser möglicherweise eine Warnung angezeigt, dass das Zertifikat nicht vertrauenswürdig ist. Sie können entweder das Risiko bestätigen, den Zugriff fortzusetzen, oder ein von der Zertifizierungsstelle signiertes digitales Zertifikat auf dem Cluster zur Server-Authentifizierung installieren.
+
+. *Optional:* Wenn Sie über die CLI ein Zugriffbanner konfiguriert haben, lesen Sie die im Dialogfeld *Warnung* angezeigte Meldung und wählen Sie die erforderliche Option zum Fortfahren.
++
+Diese Option wird nicht auf Systemen unterstützt, auf denen die SAML-Authentifizierung (Security Assertion Markup Language) aktiviert ist.
+
++
+** Wenn Sie nicht fortfahren möchten, klicken Sie auf *Abbrechen* und schließen Sie den Browser.
+** Wenn Sie fortfahren möchten, klicken Sie auf *OK*, um zur Anmeldeseite des ONTAP-System-Managers zu navigieren.
+
+
+. Melden Sie sich mit den Anmeldedaten des Cluster-Administrators bei ONTAP System Manager an.
+
+
+*Verwandte Informationen*
+
+xref:task_enabling_saml_authentication.adoc[Aktivieren der SAML-Authentifizierung]
+
+xref:task_disabling_saml_authentication.adoc[Deaktivieren der SAML-Authentifizierung]

@@ -1,0 +1,37 @@
+---
+permalink: online-help-96-97/task_setting_time_zone_for_cluster.html 
+sidebar: sidebar 
+keywords: system, manager, set, up, time, zone, cluster, modify, server, ntp 
+summary: Sie können die Zeitzone für ein Cluster manuell einstellen oder ändern. Verwenden Sie dazu das Dialogfeld Datum und Uhrzeit bearbeiten in System Manager. Sie können dem Cluster auch Zeitserver hinzufügen. 
+---
+= Stellen Sie die Zeitzone für ein Cluster mit System Manager - ONTAP 9.7 und früher ein
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Zeitzone für ein Cluster manuell einstellen oder ändern. Verwenden Sie dazu das Dialogfeld Datum und Uhrzeit bearbeiten in ONTAP System Manager Classic (verfügbar unter ONTAP 9.7 und früher). Sie können dem Cluster auch Zeitserver hinzufügen.
+
+.Über diese Aufgabe
+Network Time Protocol (NTP) ist immer auf einem Cluster aktiviert. Sie können NTP deaktivieren, aber es wird nicht empfohlen.
+
+Sie können die IP-Adressen des NTP-Servers an Ihrem Standort hinzufügen. Dieser Server wird verwendet, um die Zeit über das Cluster hinweg zu synchronisieren.
+
+Sie können eine IPv4-Adresse oder eine IPv6-Adresse für den Zeitserver angeben.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fenster *Setup* auf *Datum und Uhrzeit*.
+. Klicken Sie Auf *Bearbeiten*.
+. Wählen Sie im Dialogfeld *Datum und Uhrzeit bearbeiten die Zeitzone aus.
+. Geben Sie die IP-Adresse der Zeitserver an, und klicken Sie dann auf *Hinzufügen*.
+. Klicken Sie auf *OK*.
+. Überprüfen Sie die Änderungen, die Sie an den Zeiteinstellungen im Fenster *Datum und Uhrzeit* vorgenommen haben.
+
+
+*Verwandte Informationen*
+
+xref:reference_date_time_window.adoc[Datum und Uhrzeit]
+
+xref:task_creating_kerberos_realm_configurations.adoc[Erstellen einer Kerberos-Bereichskonfiguration]

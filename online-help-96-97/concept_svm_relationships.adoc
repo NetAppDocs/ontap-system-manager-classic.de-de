@@ -1,0 +1,281 @@
+---
+permalink: online-help-96-97/concept_svm_relationships.html 
+sidebar: sidebar 
+keywords: svm, relationship, dr, disaster, recovery, online, storage, virtual, machine, help, create, data, transfer 
+summary: 'Storage Virtual Machine (SVM) Disaster Recovery (DR) bietet Disaster-Recovery-Funktionen auf SVM-Ebene, indem die Recovery der Daten in den zusammengehörigen Volumes der SVM und der Recovery der SVM-Konfiguration ermöglicht wird.' 
+---
+= SVM-Beziehungen zu System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Verwenden Sie ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher), um Spiegelbeziehungen und Spiegelbeziehungen zwischen SVMs zu erstellen und zu managen. Storage Virtual Machine (SVM) Disaster Recovery (DR) bietet Disaster-Recovery-Funktionen auf SVM-Ebene, indem die Recovery der Daten in den zusammengehörigen Volumes der SVM und der Recovery der SVM-Konfiguration ermöglicht wird.
+
+
+
+== Erstellung von SVM-Beziehungen
+
+Mit System Manager können SVM-Beziehungen erstellt werden, um Daten von der Quell-SVM auf die Ziel-SVM zu übertragen. Die Erstellung einer SVM-Beziehung trägt zur Recovery nach einem Disaster bei, da Daten auf der Quell-SVM und der Ziel-SVM verfügbar sind.
+
+.Bevor Sie beginnen
+* Das Ziel-Cluster und das Quell-Cluster müssen ONTAP 9.5 oder höher ausführen.
+* Das Ziel-Cluster darf sich nicht in einer MetroCluster-Konfiguration befinden.
+* Ab System Manager 9.6 wird Fabric Pool unterstützt.
+
+
+.Schritte
+. Klicken Sie auf *Schutz* > *SVM-Beziehung* > *Erstellen*.
+. Wählen Sie den SVM-Beziehungstyp aus der Liste *SVM Beziehungstyp* aus.
+. Wählen Sie im Fensterbereich *Source Storage Virtual Machine* den Cluster und die SVM aus.
+. *Optional:* um SVMs anzuzeigen, die nicht über die erforderlichen Berechtigungen verfügen, klicken Sie auf *Navigieren Sie zum Quellcluster* und geben Sie dann die erforderlichen Berechtigungen ein.
+. Geben Sie im Fensterbereich *Zielspeicher Virtual Machine* den Namen der SVM an, die auf dem Ziel-Cluster erstellt wird.
+. Wählen Sie die Option zum Kopieren der Quell-SVM-Konfiguration aus.
+. *Optional:* Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*, aktualisieren Sie die Schutzpolitik und den Schutzzeitplan, wählen Sie das Aggregat aus und initialisieren Sie dann die Schutzbeziehung.
+. Klicken Sie auf *Speichern*, um die SVM-Beziehung zu erstellen.
++
+Das Fenster „SVM Relationships: Summary“ wird angezeigt.
+
+. Klicken Sie auf *Fertig*, um den Vorgang abzuschließen.
+
+
+
+
+== Bearbeiten Sie SVM-Beziehungen
+
+Sie können mit System Manager die Eigenschaften einer SVM-Beziehung ändern.
+
+.Schritte
+. Klicken Sie auf *Schutz* > *SVM-Beziehung*.
+. Wählen Sie die SVM-Beziehung aus, die Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Wählen Sie den SVM-Beziehungstyp aus.
++
+Wenn die SVM-Beziehungen vor ONTAP 9.3 erstellt wurden, ist es nicht zulässig, den SVM-Beziehungstyp von Mirror zu Mirror und Vault zu ändern.
+
+. Ändern Sie die Sicherungsrichtlinie, den Schutzzeitplan und die Option zum Kopieren der Quell-SVM-Konfiguration nach Bedarf.
+. Klicken Sie auf *Speichern*, um die Änderungen zu speichern.
+
+
+
+
+== Managen Sie SVM Beziehungen
+
+Mit System Manager können Sie verschiedene Vorgänge auf SVM-Beziehungen ausführen, z. B. SVM-Beziehungen werden initialisiert, SVM-Beziehungen aktualisiert, Ziel-SVM aktiviert, Daten von der Quell-SVM neu synchronisiert, Daten von der Ziel-SVM neu synchronisiert und die Quell-SVM neu aktiviert.
+
+.Bevor Sie beginnen
+* Zum Initialisieren der SVM-Beziehung müssen die Quell- und Ziel-Cluster eine gesunde Peer-Beziehung aufweisen.
+* Um die SVM-Beziehung zu aktualisieren, muss die SVM-Beziehung initialisiert und in einem Snapmirrored-Status vorliegen.
+* Zum erneuten Aktivieren der Quell-SVM müssen die Daten aus dem Ziel-SVM-Vorgang (Reverse Resynchronisieren) neu synchronisiert werden.
+* Wenn Sie die Option zum Kopieren der Quell-SVM-Konfiguration und beim Erstellen der SVM-Beziehung ausgewählt hatten, muss die SVM-Beziehung angehalten werden, um die SVM-Quell-SVM zu aktivieren.
+* Die SnapMirror Lizenz muss auf dem Quell-Cluster und dem Ziel-Cluster aktiviert sein.
+* Das Quell-Cluster und das Ziel-Cluster müssen sich in einer gesunden Peer-Beziehung befinden.
+* Der Ziel-Cluster muss über Speicherplatz verfügen.
+* Die Quell-SVM muss über eine Berechtigung für SVM-Peering verfügen.
+* Sie müssen die SVM-Beziehung unterbrechen, um Ziel-SVM zu aktivieren, von Quell-SVM neu zu synchronisieren, von Ziel-SVM (Reverse Resync) zu synchronisieren und Quell-SVM erneut zu aktivieren.
+* Für eine erneute Aktivierung der Quell-SVM muss eine SVM-Umkehrbeziehung vorhanden sein und sich in einem SnapMirror Mirrored Status befinden.
+
+
+.Schritte
+. Klicken Sie auf *Schutz* > *SVM-Beziehung*.
+. Wählen Sie die SVM-Beziehung aus, und führen Sie anschließend die entsprechenden Maßnahmen durch:
++
+|===
+| Ihr Ziel ist | Gehen Sie wie folgt vor... 
+
+
+ a| 
+Initialisieren Sie die SVM-Beziehung
+ a| 
+.. Klicken Sie Auf *Operationen* > *Initialisieren*.
++
+Das Dialogfeld Initialisieren wird angezeigt.
+
+.. Klicken Sie Auf *Initialisieren*.
+
+
+
+
+ a| 
+Aktualisieren der SVM-Beziehung
+ a| 
+.. Klicken Sie Auf *Operationen* > *Update*.
++
+Das Dialogfeld Aktualisieren wird angezeigt.
+
+.. Klicken Sie Auf *Aktualisieren*.
+
+
+
+
+ a| 
+Ziel-SVM aktivieren bei der Aktivierung der Ziel-SVM werden geplante SnapMirror Transfers stillgelegt, alle laufenden SnapMirror Transfers abgebrochen, die SVM-Beziehung unterbrochen und die Ziel-SVM gestartet.
+ a| 
+.. Klicken Sie auf *Operations* > *Ziel-SVM aktivieren*.
++
+Das Dialogfeld Ziel-SVM aktivieren wird angezeigt.
+
+.. Aktivieren Sie das Kontrollkästchen *OK, um Ziel-SVM zu aktivieren und die Beziehung zu unterbrechen*.
+.. Klicken Sie Auf *Aktivieren*.
+
+
+
+
+ a| 
+Daten von der Quell-SVM neu synchronisieren. Der Neusynchronisierungsvorgang führt einen neuen Baseline der SVM-Konfiguration durch. Sie können die SVM von der Quell-SVM neu synchronisieren, um eine unterbrochene Beziehung zwischen den beiden SVMs wiederherzustellen. Wenn die Resynchronisierung abgeschlossen ist, enthält die Ziel-SVM die gleichen Informationen wie die Quell-SVM und ist für weitere Updates geplant.
+ a| 
+.. Klicken Sie auf *Operations* > *Resync from Source SVM*.
++
+Das Dialogfeld „Resync from Source SVM“ wird angezeigt.
+
+.. Aktivieren Sie das Kontrollkästchen *OK, um neuere Daten im Ziel-SVM* zu löschen.
+.. Klicken Sie Auf *Resync*.
+
+
+
+
+ a| 
+Daten von der Ziel-SVM neu synchronisieren (Reverse Resync) Sie können von der Ziel-SVM neu synchronisieren, um eine neue Beziehung zwischen den beiden SVMs zu erstellen. Während dieses Vorgangs stellt die Ziel-SVM weiterhin Daten zur Quell-SVM zur Verfügung, die die Konfiguration und die Daten der Ziel-SVM sichert.
+ a| 
+.. Klicken Sie auf *Operations* > *Resynchronisierung von Ziel-SVM (Resync)*.
++
+Das Dialogfeld „Resync from Destination SVM (Reverse Resync)“ wird angezeigt.
+
+.. Wenn die SVM über mehrere Beziehungen verfügt, aktivieren Sie das Kontrollkästchen *Diese SVM hat mehrere Beziehungen; OK, um andere Beziehungen zu freigeben*.
+.. Aktivieren Sie das Kontrollkästchen *OK, um die neuen Daten im Quell-SVM* zu löschen.
+.. Klicken Sie Auf *Resync Rückwärts*.
+
+
+
+
+ a| 
+Reaktivierung der Quell-SVM die Reaktivierung der Quell-SVM umfasst den Schutz und die Neuerstellung der SVM-Beziehungen zwischen Quell- und Ziel-SVM. Wenn Sie Option zum Kopieren der Quell-SVM-Konfiguration und beim Erstellen der SVM-Beziehung ausgewählt hatten, wird die Ziel-SVM die Verarbeitung der Daten beenden.
+ a| 
+.. Klicken Sie auf *Operations* > *Quell-SVM reaktivieren*.
++
+Das Dialogfeld Quell-SVM reaktivieren wird angezeigt.
+
+.. Klicken Sie auf *Reaktivierung initiieren*, um die Reaktivierung an die Ziel-SVM zu initiieren.
+.. Klicken Sie Auf *Fertig*.
+
+
+|===
+
+
+
+
+== SVM Beziehungen-Fenster
+
+Mithilfe des SVM Relationships können Spiegelbeziehungen erstellt und gemanagt sowie Beziehungen zwischen SVMs gespiegelt und Tresor gespiegelt werden.
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet die SVM Disaster Recovery Seite, die zur Erstellung einer Spiegelbeziehung oder Spiegel- und Vault-Beziehung von einem Ziel-Volume verwendet werden kann.
+
+* *Bearbeiten*
++
+Ermöglicht Ihnen das Bearbeiten des Zeitplans und der Richtlinie einer Beziehung.
+
++
+Für Mirror- und Vault-Beziehungen oder versionsflexible Spiegelbeziehung können Sie den Beziehungstyp durch Ändern des Richtlinientyps ändern.
+
+* *Löschen*
++
+Ermöglicht das Löschen einer Beziehung.
+
+* *Betrieb*
++
+Bietet die folgenden Optionen:
+
++
+** *Initialisieren*
++
+Hiermit können Sie die SVM-Beziehung initialisieren, um einen Basistransfer von der Quell-SVM zu der Ziel-SVM durchzuführen.
+
+** *Aktualisierung*
++
+Ermöglicht Ihnen das Aktualisieren der Daten von der Quell-SVM auf die Ziel-SVM.
+
+** *Ziel-SVM aktivieren*
++
+Ermöglicht Ihnen die Aktivierung der Ziel-SVM.
+
+** *Resync von Quell-SVM*
++
+Ermöglicht Ihnen die Initiierung einer Neusynchronisierung einer fehlgeschlagenen Beziehung.
+
+** *Resync von Ziel-SVM (Reverse Resync)*
++
+Ermöglicht Ihnen die Neusynchronisierung der Beziehung von der Ziel-SVM zur Quell-SVM.
+
+** *Quell-SVM reaktivieren*
++
+Ermöglicht Ihnen das Reaktivieren der Quell-SVM.
+
+
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der SVM-Beziehungen
+
+* * Source Storage Virtual Machine*
++
+Zeigt die SVM an, die das Volume enthält, aus dem Daten gespiegelt und in einer Beziehung archiviert werden.
+
+* *Zielspeicher Virtual Machine*
++
+Zeigt die SVM an, die das Volume enthält, auf das Daten gespiegelt und in einer Beziehung archiviert werden.
+
+* *Ist Gesund*
++
+Zeigt an, ob die Beziehung gesund ist oder nicht.
+
+* * Beziehungsstatus*
++
+Zeigt den Status der Beziehung an, z. B. Snapmirrored, Uninitialized oder Broken Off.
+
+* *Transferstatus*
++
+Zeigt den Status der Beziehung an.
+
+* *Beziehungstyp*
++
+Zeigt die Art der Beziehung an, z. B. Mirror oder Mirror und Vault.
+
+* *Lange Zeit*
++
+Die lag-Zeit ist der Unterschied zwischen der aktuellen Zeit und dem Zeitstempel der letzten Snapshot Kopie, die erfolgreich an das Zielsystem übertragen wurde. Die Verzögerungszeit ist immer mindestens genauso lange wie die Dauer des letzten erfolgreichen Transfers, es sei denn, die Uhren auf den Quell- und Zielsystemen sind nicht synchronisiert. Die Zeitzonendifferenz wird automatisch in die Verzögerungszeit berechnet.
+
+* *Policy Name*
++
+Zeigt den Namen der Richtlinie an, die der Beziehung zugewiesen ist.
+
+* *Richtlinientyp*
++
+Zeigt den Richtlinientyp an, der der Beziehung zugewiesen ist. Der Richtlinientyp kann StrictSync, Sync, Asynchronous Mirror, Asynchronous Vault oder Asynchronous Mirror Vault lauten.
+
+
+
+
+
+=== Detailbereich
+
+* *Registerkarte Details*
++
+Zeigt allgemeine Informationen zur ausgewählten Beziehung an, z. B. Quell-Cluster und Ziel-Cluster, die Sicherungsbeziehung, die der SVM zugeordnet ist, Datentransferrate, Status der Beziehung, Details zum Netzwerkkomprimierungsverhältnis, Datentransferstatus, Typ des aktuellen Datentransfers, Typ des letzten Datentransfers, Neueste Snapshot Kopie, Zeitstempel der neuesten Snapshot Kopie, der Status der Identitätserstellung und die Anzahl der geschützten Volumes.
+
+* *Registerkarte Policy Details*
++
+Zeigt Details zur Richtlinie an, die der ausgewählten Schutzbeziehung zugeordnet ist.
+
+

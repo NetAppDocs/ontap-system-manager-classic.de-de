@@ -1,0 +1,32 @@
+---
+permalink: nfs-config-esxi/task_configuring_your_network_for_best_performance.html 
+sidebar: sidebar 
+keywords: ethernet, network, performance, configuration, value, configure, configure your network for best performance 
+summary: Ethernet-Netzwerke unterscheiden sich in ihrer Leistung stark. Sie können die Leistung des Netzwerks maximieren, indem Sie bestimmte Konfigurationswerte auswählen. 
+---
+= Konfigurieren Sie Ihr Netzwerk für optimale Leistung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ethernet-Netzwerke unterscheiden sich in ihrer Leistung stark. Sie können die Leistung des Netzwerks maximieren, indem Sie bestimmte Konfigurationswerte auswählen.
+
+.Schritte
+. Verbinden Sie den Host und die Speicher-Ports mit dem gleichen Netzwerk.
++
+Am besten mit den gleichen Switches verbinden.
+
+. Wählen Sie die Ports mit der höchsten Geschwindigkeit aus.
++
+Am besten sind 10 GbE oder schnellere Ports. 1-GbE-Ports sind das Minimum.
+
+. Aktivieren Sie Jumbo Frames, falls gewünscht und von Ihrem Netzwerk unterstützt.
++
+Jumbo Frames sollten eine MTU von 9000 für ESXi Hosts und Storage-Systeme sowie 9216 für die meisten Switches aufweisen. Alle Netzwerkgeräte im Datenpfad – einschließlich ESXi NICs, Storage NICs und Switches – müssen Jumbo Frames unterstützen und sollten für ihre maximalen MTU-Werte konfiguriert sein.
+
++
+Weitere Informationen finden Sie unter link:https://docs.netapp.com/us-en/ontap/performance-admin/check-network-settings-data-switches-task.html["Überprüfen Sie die Netzwerkeinstellungen auf den Datenschaltern"^] Und der Dokumentation des Switch-Anbieters.
+
+

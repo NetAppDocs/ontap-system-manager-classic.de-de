@@ -1,0 +1,35 @@
+---
+permalink: online-help-96-97/task_installing_ca_certificate_if_you_use_storagegrid_webscale.html 
+sidebar: sidebar 
+keywords: install, ca, certificate, storagegrid, fabricpool, aggregate, online, help 
+summary: Wenn ONTAP sich mit StorageGRID als Objektspeicher für ein FabricPool-fähiges Aggregat authentifizieren soll, können Sie ein StorageGRID CA-Zertifikat auf dem Cluster installieren. 
+---
+= Installieren Sie ein CA-Zertifikat, wenn Sie StorageGRID mit System Manager - ONTAP 9.7 und früher verwenden
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Damit ONTAP sich mit StorageGRID als Objektspeicher für ein FabricPool-fähiges Aggregat authentifizieren kann, kann ein StorageGRID-CA-Zertifikat auf dem Cluster mit System Manager classic (verfügbar ab ONTAP 9.7) installiert werden.
+
+.Schritte
+. Befolgen Sie die StorageGRID Systemdokumentation, um das CA-Zertifikat des StorageGRID Systems mithilfe der Grid-Managementoberfläche zu kopieren.
++
+https://docs.netapp.com/sgws-113/topic/com.netapp.doc.sg-admin/home.html["StorageGRID 11.3 – Administratorhandbuch"]
+
++
+Beim Hinzufügen von StorageGRID als Cloud-Tier wird eine Meldung angezeigt, wenn das CA-Zertifikat nicht installiert ist.
+
+. Fügen Sie das StorageGRID-CA-Zertifikat hinzu.
++
+[NOTE]
+====
+Der vollständig qualifizierte Domänenname (FQDN), den Sie angeben, muss mit dem benutzerdefinierten gemeinsamen Namen des StorageGRID-CA-Zertifikats übereinstimmen.
+
+====
+
+
+*Verwandte Informationen*
+
+xref:task_adding_cloud_tier.adoc[Hinzufügen eines Cloud-Tiers]

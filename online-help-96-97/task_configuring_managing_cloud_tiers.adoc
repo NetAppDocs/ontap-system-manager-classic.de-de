@@ -1,0 +1,293 @@
+---
+permalink: online-help-96-97/task_configuring_managing_cloud_tiers.html 
+sidebar: sidebar 
+keywords: configure, manage, cloud, tier, online, help, fabricpool, aggregate, storage, system, add, ssd, provision, storage, fabricpool, aggregate, manually, tiering, policy 
+summary: Das Speichern von Daten in Tiers verbessert die Effizienz Ihres Storage-Systems. Über FabricPool-fähige Aggregate managen Sie Storage-Tiers. In Cloud-Tiers werden Daten in einer Tier gespeichert, basierend darauf, ob häufig auf die Daten zugegriffen wird. 
+---
+= Konfiguration und Management von Cloud-Tiers mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+
+
+Mit ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) können Cloud-Tiers konfiguriert und gemanagt werden. Das Speichern von Daten in Tiers verbessert die Effizienz Ihres Storage-Systems. Über FabricPool-fähige Aggregate managen Sie Storage-Tiers. In Cloud-Tiers werden Daten in einer Tier gespeichert, basierend darauf, ob häufig auf die Daten zugegriffen wird.
+
+.Bevor Sie beginnen
+* Sie müssen ONTAP 9.2 oder höher ausführen.
+* Sie müssen rein Flash-basierte Aggregate (nur SSDs) haben
+
+
+image::../media/fabricpool_workflow.gif[FabricPool-Workflow]
+
+
+
+= Cloud-Tier hinzufügen
+
+[role="lead"]
+Mit System Manager können Sie einem SSD-Aggregat oder einem VMDK-Aggregat (Virtual Machine Disk) ein Cloud-Tier hinzufügen. Cloud-Tiers bieten Storage für selten genutzte Daten.
+
+.Bevor Sie beginnen
+* Sie müssen über die Zugriffsschlüssel-ID und den geheimen Schlüssel verfügen, um eine Verbindung zum Objektspeicher herzustellen.
+* Sie müssen einen Bucket im Objektspeicher erstellt haben.
+* Zwischen dem Cluster und dem Cloud Tier muss eine Netzwerkverbindung bestehen.
+* Wenn die Kommunikation zwischen dem Cloud-Tier und dem Cluster über SSL oder TLS verschlüsselt ist, müssen die erforderlichen Zertifikate installiert sein.
+
+
+.Über diese Aufgabe
+Die folgenden Objektspeicher können als Cloud-Tiers verwendet werden:
+
+* StorageGRID
+* Alibaba Cloud (ab System Manager 9.6)
+* Amazon Web Services (AWS) Simple Storage Service (S3)
+* Amazon Web Services (AWS) Commercial Cloud Service (C2S)
+* Microsoft Azure Blob Storage
+* IBM Cloud
+* Google Cloud
+
+
+[NOTE]
+====
+* Azure Stack, ein lokaler Azure-Service, wird nicht unterstützt.
+* Wenn Sie einen beliebigen Objektspeicher außer StorageGRID als Cloud-Tier verwenden möchten, müssen Sie über die FabricPool Kapazitätslizenz verfügen. Sie können die Lizenz hinzufügen, indem Sie auf *Lizenz hinzufügen* klicken.
+* Wenn Sie eine IBM Cloud Object Storage-Umgebung (wie Cleversafe) verwenden möchten, sollten Sie mit FabricPool ein Zertifikat für die Zertifizierungsstelle angeben. Sie können das CA-Zertifikat angeben, indem Sie die Schaltfläche *Object Store Certificate* bewegen und die Zertifikatanmeldeinformationen angeben.
+
+
+====
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Cloud Tier*.
+. Klicken Sie Auf *Hinzufügen*.
++
+Es wird ein Dialogfeld angezeigt, in dem alle unterstützten Objektspeicheranbieter aufgeführt sind.
+
+. Wählen Sie in der Liste den Objektspeicher-Provider aus, den Sie als Cloud-Tier zuweisen möchten.
++
+Das Fenster Cloud Tier hinzufügen wird angezeigt.
+
+. Wählen Sie eine Region aus der Dropdown-Liste im Feld *Region* aus.
++
+Basierend auf Ihrer Auswahl wird das Feld *Dienstname (FQDN)* automatisch mit dem Server-Endpunkt gefüllt.
+
+. Geben Sie die Zugriffsschlüssel-ID des Cloud-Tiers, den geheimen Schlüssel des Cloud-Tiers und den Containernamen an.
++
+Wenn Sie den Typ AWS Commercial Cloud Service (C2S) ausgewählt haben, müssen Sie die CAP-URL, die Server-CA-Zertifikate und die Client-Zertifikate angeben.
+
+. Wenn Sie eine der folgenden Einstellungen ändern möchten, klicken Sie auf das Symbol Erweiterte Optionen image:../media/advanced_options.gif[""] So zeigen Sie das Dialogfeld *Erweiterte Optionen* an, in dem Sie die Änderungen vornehmen können:
++
+** Die Port-Nummer für den Zugriff auf die Cloud-Tier
+** Aktivieren oder deaktivieren Sie die Option *SSL*, mit der Sie Daten sicher auf den Cloud Tier übertragen können
+
+
+. *Optional:* Wenn Sie einen Cloud-Tier für StorageGRID hinzufügen möchten oder IBM Cloud Object Storage-Umgebung (wie Cleversafe) mit FabricPool verwenden möchten, sollten Sie ein CA-Zertifikat angeben. Geben Sie das CA-Zertifikat an, indem Sie die Schaltfläche *Object Store Certificate* verschieben und den Inhalt des Zertifikats kopieren. Fügen Sie dann den Zertifikatinhalt in die signierte Zertifizierung ein.
+. Wählen Sie aus der Liste *IPspace* den IPspace aus, der zur Verbindung mit der Cloud-Tier verwendet wird.
+. Klicken Sie auf *Speichern*, um den Cloud-Tier zu speichern.
+. Klicken Sie auf *Save and Attach Aggregates*, um den Cloud-Tier zu speichern und Aggregate an den Cloud-Tier anzuhängen.
+
+
+
+
+== Verbinden Sie ein Aggregat mit einem Cloud-Tier
+
+Mithilfe von System Manager können Sie ein All-Flash-Aggregat an eine Cloud-Tier anschließen. Sie können selten genutzte Daten in Cloud-Tiers speichern.
+
+.Bevor Sie beginnen
+Dem Cluster muss eine Cloud-Tier hinzugefügt werden.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Cloud Tier*.
+. Klicken Sie in der Spalte *used in aggregates* auf *Attach Aggregates*.
++
+Das Fenster Aggregate anhängen wird angezeigt.
+
+. Wählen Sie das Aggregat aus, das Sie der Cloud-Tier hinzufügen möchten.
+. Klicken Sie Auf *Speichern*.
+
+
+
+
+== Provisionierung von Storage durch manuelles Erstellen eines FabricPool-fähigen Aggregats
+
+Mit System Manager kann ein FabricPool-fähiges Aggregat erstellt werden, um ein Cloud Tier mit dem SSD-Aggregat anzuhängen.
+
+.Bevor Sie beginnen
+* Sie müssen eine Cloud-Tier erstellt und an den Cluster angeschlossen haben, in dem sich das SSD-Aggregat befindet.
+* Ein Cloud-Tier vor Ort muss erstellt worden sein.
+* Zwischen dem Cloud Tier und dem Aggregat muss eine dedizierte Netzwerkverbindung bestehen.
+
+
+.Über diese Aufgabe
+Die folgenden Objektspeicher können als Cloud-Tiers verwendet werden:
+
+* StorageGRID
+* Alibaba Cloud (ab System Manager 9.6)
+* Amazon Web Services (AWS) Simple Storage Service (S3)
+* Amazon Web Services (AWS) Commercial Cloud Service (C2S)
+* Microsoft Azure Blob Storage
+* IBM Cloud
+* Google Cloud
+
+
+[NOTE]
+====
+* Azure Stack, bei dem es sich um lokale Azure Services handelt, wird nicht unterstützt.
+* Wenn Sie einen beliebigen Objektspeicher außer StorageGRID als Cloud-Tier verwenden möchten, müssen Sie über die FabricPool Kapazitätslizenz verfügen.
+
+
+====
+.Schritte
+. Mit einer der folgenden Methoden erstellen Sie ein FabricPool-fähiges Aggregat:
++
+** Klicken Sie Auf *Applikationen & Tiers* > *Storage Tiers* > *Aggregat Hinzufügen*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate* > *Erstellen*.
+
+
+. Aktivieren Sie die Option *Manually Create Aggregate*, um ein Aggregat zu erstellen.
+. Erstellung eines FabricPool-fähigen Aggregats:
++
+.. Geben Sie den Namen des Aggregats, den Festplattentyp und die Anzahl der Festplatten oder Partitionen an, die in das Aggregat einbezogen werden sollen.
++
+[NOTE]
+====
+Nur rein Flash-basierte Aggregate unterstützen FabricPool-fähige Aggregate.
+
+====
++
+Die minimale Hot-Spare-Regel wird auf die Laufwerksgruppe angewendet, die die größte Festplattengröße hat.
+
+.. *Optional:* RAID-Konfiguration des Aggregats ändern:
++
+... Klicken Sie Auf *Ändern*.
+... Geben Sie im Dialogfeld RAID-Konfiguration ändern den RAID-Typ und die RAID-Gruppengröße an.
++
+Gemeinsam genutzte Festplatten unterstützen zwei RAID-Typen: RAID-DP und RAID-TEC.
+
+... Klicken Sie Auf *Speichern*.
+
+
+
+
+. Aktivieren Sie das Kontrollkästchen *FabricPool*, und wählen Sie dann eine Cloud-Ebene aus der Liste aus.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Ändern Sie die Tiering-Richtlinie eines Volumes
+
+Mit System Manager können Sie die Standard-Tiering-Richtlinie eines Volumes ändern und festlegen, ob die Daten des Volume zu Cloud-Tier verschoben werden, wenn die Daten inaktiv sind.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das Volume aus, für das Sie die Tiering Policy ändern möchten, und klicken Sie dann auf *Mehr Aktionen* > *Tiering Policy ändern*.
+. Wählen Sie die gewünschte Tiering Policy aus der Liste *Tiering Policy* aus und klicken Sie dann auf *Speichern*.
+
+
+
+
+== Bearbeiten einer Cloud-Tier
+
+Mit System Manager können Sie die Konfigurationsinformationen des Cloud-Tiers ändern. Zu den Konfigurationsdetails, die Sie bearbeiten können, gehören Name, vollqualifizierter Domänenname (FQDN), Port, Zugriffsschlüssel-ID, geheimer Schlüssel und Objektspeicherzertifikat.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Cloud Tier*.
+. Wählen Sie den Cloud-Tier aus, den Sie bearbeiten möchten, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie im Fenster *Cloud-Ebene bearbeiten* den Namen der Cloud-Ebene, den FQDN, den Port, die Zugriffsschlüssel-ID, den geheimen Schlüssel, Und Objektspeicher-Zertifikat, falls erforderlich.
++
+Wenn Sie den Cloud-Tier für AWS Commercial Cloud Service (C2S) ausgewählt haben, können Sie die CA-Zertifikate und Client-Zertifikate des Servers ändern.
+
+. Klicken Sie Auf *Speichern*.
+
+
+
+
+== Cloud-Tier löschen
+
+Mit System Manager können Sie eine Cloud-Tier löschen, die Sie nicht mehr benötigen.
+
+.Bevor Sie beginnen
+Sie müssen das mit dem Cloud-Tier verknüpfte FabricPool-fähige Aggregat gelöscht haben.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Cloud Tier*.
+. Wählen Sie den Cloud-Tier aus, den Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+
+
+
+
+== Was sind Cloud-Tiers und Tiering-Richtlinien
+
+Cloud-Tiers bieten Storage für Daten, auf die selten zugegriffen wird. Sie können ein All-Flash-Aggregat (rein SSD-basiert) zu einem Cloud-Tier hinzufügen, um selten genutzte Daten zu speichern. Sie können anhand von Tiering-Richtlinien entscheiden, ob Daten in eine Cloud-Tier verschoben werden sollen.
+
+Sie können eine der folgenden Tiering-Richtlinien für ein Volume festlegen:
+
+* *Nur Snapshot*
++
+Verschiebt die Snapshot-Kopien nur von Volumes, auf die derzeit nicht vom aktiven Dateisystem verwiesen wird. Eine Richtlinie, die nur Snapshots enthält, ist die standardmäßige Tiering-Richtlinie.
+
+* *Auto*
++
+Verschiebt die inaktiven (kalten) Daten und Snapshot Kopien vom aktiven Filesystem auf die Cloud-Tier.
+
+* *Backup (für System Manager 9.5)*
++
+Die neu zu übertragenden Daten eines Datensicherungs-Volumes werden in die Cloud-Tier verschoben.
+
+* *Alle (beginnend mit System Manager 9.6)*
++
+Alle Daten werden auf die Cloud-Tier verschoben.
+
+* *Keine*
++
+Verhindert, dass Daten auf dem Volume in eine Cloud-Tier verschoben werden
+
+
+
+
+
+== Inaktive (kalte) Daten
+
+Selten genutzte Daten in einer Performance-Tier werden als inaktive (kalte) Daten bezeichnet. Standardmäßig werden Daten, auf die über einen Zeitraum von 31 Tagen nicht zugegriffen wird, inaktiv.
+
+Inaktive Daten werden auf Aggregatebene, Cluster-Ebene und Volume-Ebene angezeigt. Die inaktiven Daten für ein Aggregat oder ein Cluster werden nur angezeigt, wenn das inaktive Scannen auf diesem Aggregat oder Cluster abgeschlossen ist. Standardmäßig werden inaktive Daten für FabricPool-fähige Aggregate und SSD-Aggregate angezeigt. Inaktive Daten werden für FlexGroups nicht angezeigt.
+
+
+
+== Cloud-Tier-Fenster geöffnet
+
+Mit System Manager können Cloud-Tiers hinzugefügt, bearbeitet und gelöscht sowie Details zum Cloud-Tier angezeigt werden.
+
+Im Fenster Cloud-Tier werden die Gesamtzahl der lizenzierten Cloud-Tiers im Cluster, der im Cluster verwendete lizenzierte Speicherplatz und der im Cluster verfügbare lizenzierte Speicherplatz angezeigt. Im Fenster Cloud-Tier wird außerdem die nicht lizenzierte Cloud-Kapazität angezeigt, die verwendet wird.
+
+
+
+=== Befehlsschaltflächen
+
+* *Hinzufügen*
++
+Ermöglicht Ihnen das Hinzufügen eines Cloud-Tiers.
+
+* *Aggregate Anhängen*
++
+Hiermit können Sie Aggregate einem Cloud-Tier hinzufügen.
+
+* *Löschen*
++
+Hiermit können Sie eine ausgewählte Cloud-Tier löschen.
+
+* *Bearbeiten*
++
+Ermöglicht Ihnen das Ändern der Eigenschaften einer ausgewählten Cloud-Tier.
+
+
+
+
+
+=== Detailbereich
+
+Es stehen detaillierte Informationen zu Cloud-Tiers zur Verfügung, z. B. die Liste der Cloud-Tiers, Details zu den Objektspeichern, die verwendeten Aggregate und die genutzte Kapazität.
+
+Wenn Sie eine andere Cloud-Tier als Alibaba Cloud, Amazon AWS S3, AWS Commercial Cloud Service (C2S), Google Cloud, IBM Cloud, Microsoft Azure Blob Storage oder StorageGRID über die Befehlszeilenschnittstelle (CLI) erstellen, wird diese Cloud-Tier in System Manager als andere angezeigt. Anschließend können Sie Aggregate an dieses Cloud-Tier anhängen.
+
+*Verwandte Informationen*
+
+xref:task_installing_ca_certificate_if_you_use_storagegrid_webscale.adoc[Installieren eines CA-Zertifikats, wenn Sie StorageGRID verwenden]
+
+xref:reference_storage_tiers_window.adoc[Fenster „Storage Tiers“]

@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_editing_protection_policies.html 
+sidebar: sidebar 
+keywords: edit, protection, policies, online, help, system, manager 
+summary: Mit System Manager können Sie eine Sicherungsrichtlinie ändern und die Richtlinie auf eine Datensicherungsbeziehung anwenden. 
+---
+= Bearbeiten der Sicherungsrichtlinien
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit System Manager können Sie eine Sicherungsrichtlinie ändern und die Richtlinie auf eine Datensicherungsbeziehung anwenden.
+
+.Über diese Aufgabe
+Die Sicherungsrichtlinien werden auf der Cluster-Ebene nicht angezeigt.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die Storage Virtual Machine (SVM) aus und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fensterbereich *Richtlinien* auf *Schutzrichtlinien*.
+. Wählen Sie die Schutzrichtlinie aus, die Sie bearbeiten möchten, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie die Übertragungspriorität, und aktivieren oder deaktivieren Sie dann die Netzwerkkomprimierung.
+. Sichern Sie bei einer asynchronen Spiegelrichtlinie alle Snapshot Quellkopien.
+. Ändern Sie für eine Vault-Richtlinie oder eine Mirror-Vault-Richtlinie die SnapMirror-Kennzeichnung und die Anzahl der Aufbewahrung.
++
+Sie können die SM_created-Bezeichnung für eine Spiegelgewölberichtlinie nicht entfernen.
+
+. Klicken Sie Auf *Speichern*.
+

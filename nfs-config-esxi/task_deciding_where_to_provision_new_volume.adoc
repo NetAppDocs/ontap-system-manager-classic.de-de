@@ -1,0 +1,38 @@
+---
+permalink: nfs-config-esxi/task_deciding_where_to_provision_new_volume.html 
+sidebar: sidebar 
+keywords: create, nfs, volume, exist, configuration, workflow, decide where to provision the new volume 
+summary: Bevor Sie ein NFS-Volume erstellen, müssen Sie entscheiden, ob es in ein vorhandenes und wenn ja, wie viel Konfiguration erforderlich ist. Diese Entscheidung bestimmt Ihren Workflow. 
+---
+= Legen Sie fest, wo das neue Volume bereitgestellt werden soll
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie ein NFS-Volume erstellen, müssen Sie entscheiden, ob es in ein vorhandenes und wenn ja, wie viel Konfiguration erforderlich ist. Diese Entscheidung bestimmt Ihren Workflow.
+
+
+
+== Verfahren
+
+* Wenn Sie eine neue Version möchten, befolgen Sie die Schritte zum Erstellen einer NFS-Aktivierung auf einer vorhandenen SVM.
++
+link:task_creating_new_nfs_enabled_svm.html["Erstellen einer neuen NFS-fähigen SVM"]
+
++
+Sie müssen diese Option auswählen, wenn NFS auf einer vorhandenen SVM nicht aktiviert ist.
+
+* Wenn Sie ein Volume auf einer vorhandenen SVM mit NFS-Aktivierung bereitstellen möchten, aber nicht konfiguriert sind, führen Sie die Schritte aus, die Sie für die Konfiguration des NFS-Zugriffs auf eine vorhandene SVM ausführen.
++
+link:concept_adding_nfs_access_to_existing_svm.html["Konfiguration des NFS-Zugriffs für eine vorhandene SVM"]
+
++
+Wenn Sie das Verfahren zum Erstellen der SVM befolgt haben.
+
+* Wenn Sie ein Volume auf einer vorhandenen Infrastruktur bereitstellen möchten, die vollständig für NFS-Zugriff konfiguriert ist, befolgen Sie diese Schritte, um die Einstellungen auf einer vorhandenen SVM zu überprüfen.
++
+link:task_verifying_that_nfs_is_enabled_on_existing_svm.html["Überprüfen der Einstellungen auf einer vorhandenen SVM"]
+
+

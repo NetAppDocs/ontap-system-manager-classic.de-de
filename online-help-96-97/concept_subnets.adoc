@@ -1,0 +1,64 @@
+---
+permalink: online-help-96-97/concept_subnets.html 
+sidebar: sidebar 
+keywords: system, manager, manage, subnet, online, help, edit, settings, modify, delete, ip, address 
+summary: Sie können System Manager zum Verwalten von Subnetzen verwenden. 
+---
+= Subnetze mit System Manager - ONTAP 9.7 und früher verwalten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) zum Verwalten von Subnetzen verwenden.
+
+
+
+== Subnetzeinstellungen bearbeiten
+
+[role="lead"]
+Mit System Manager können Sie die Subnetz-Attribute ändern, z. B. Name, Subnetz-Adresse, Bereich der IP-Adressen und Gateway-Adresse des Subnetzes.
+
+.Über diese Aufgabe
+* Sie können System Manager nicht zum Bearbeiten von Subnetzen im Cluster-IPspace verwenden.
++
+Sie müssen stattdessen die Befehlszeilenschnittstelle (CLI) verwenden.
+
+* Durch das Ändern der Gateway-Adresse wird die Route nicht aktualisiert.
++
+Sie müssen die Route mit der CLI aktualisieren.
+
+
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Subnetze*.
+. Wählen Sie das Subnetz aus, das Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
++
+Sie können das Subnetz auch ändern, wenn die LIF in diesem Subnetz noch verwendet wird.
+
+. Ändern Sie im Dialogfeld *Subnetz bearbeiten* die Subnetzattribute nach Bedarf.
+. Klicken Sie auf *Speichern und Schließen*.
+
+
+
+
+== Subnetze löschen
+
+Sie können mit System Manager ein Subnetz löschen, wenn Sie das Subnetz nicht mehr benötigen und die IP-Adressen, die dem Subnetz zugewiesen wurden, neu zuweisen möchten.
+
+.Bevor Sie beginnen
+Das Subnetz, das Sie löschen möchten, darf keine LIFs haben, die die IP-Adressen aus dem Subnetz verwenden.
+
+.Über diese Aufgabe
+Sie können System Manager nicht zum Löschen von Subnetzen im Cluster-IPspace verwenden. Sie müssen stattdessen die Befehlszeilenschnittstelle (CLI) verwenden.
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Subnetze*.
+. Wählen Sie das Subnetz aus, das Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_network_window.adoc[Netzwerkfenster]

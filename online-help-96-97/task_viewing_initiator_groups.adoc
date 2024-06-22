@@ -1,0 +1,21 @@
+---
+permalink: online-help-96-97/task_viewing_initiator_groups.html 
+sidebar: sidebar 
+keywords: view, initiator, group, lun, system, manager, online, help 
+summary: Mit der Registerkarte Initiatorgruppen in System Manager können Sie alle Initiatorgruppen und die Initiatoren anzeigen, die diesen Initiatorgruppen zugeordnet sind, sowie die LUNs und LUN-ID den Initiatorgruppen. 
+---
+= Zeigen Sie Initiatorgruppen mit System Manager - ONTAP 9.7 und früher an
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit der Registerkarte *Initiatorgruppen* im ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie alle Initiatorgruppen und die Initiatoren anzeigen, die diesen Initiatorgruppen zugeordnet sind, sowie die LUNs und LUN-IDs, die den Initiatorgruppen zugeordnet sind.
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Klicken Sie auf *Initiatorgruppen* und prüfen Sie die im oberen Bereich aufgeführten Initiatorgruppen.
+. Wählen Sie eine Initiatorgruppe aus, um die zu ihr gehörenden Initiatoren anzuzeigen. Diese werden im unteren Fensterbereich auf der Registerkarte *Initiatoren* aufgeführt.
+. Wählen Sie eine Initiatorgruppe aus, um die ihr zugeordneten LUNs anzuzeigen. Diese werden im unteren Bereich unter *zugeordneten LUNs* aufgeführt.
+

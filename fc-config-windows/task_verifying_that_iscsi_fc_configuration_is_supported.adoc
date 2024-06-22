@@ -1,0 +1,47 @@
+---
+permalink: fc-config-windows/task_verifying_that_iscsi_fc_configuration_is_supported.html 
+sidebar: sidebar 
+keywords: reliable, operation, verify, entire, fc, configuration, support, verify that the fc configuration is support 
+summary: Für einen zuverlässigen Betrieb müssen Sie überprüfen, ob die gesamte FC-Konfiguration unterstützt wird. 
+---
+= Vergewissern Sie sich, dass die FC-Konfiguration unterstützt wird
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Für einen zuverlässigen Betrieb müssen Sie überprüfen, ob die gesamte FC-Konfiguration unterstützt wird.
+
+.Schritte
+. Überprüfen Sie in der Interoperabilitäts-Matrix, ob eine Kombination der folgenden Komponenten unterstützt wird:
++
+** ONTAP Software
+** Host-Computer-CPU-Architektur (für Standard-Rack-Server)
+** Spezifisches Prozessor-Blade-Modell (für Blade Server)
+** FC Host Bus Adapter (HBA)-Modell und -Treiber, Firmware und BIOS-Versionen
+** Storage-Protokoll (FC)
+** Windows-Betriebssystemversion
+** Windows Unified Host Utilities
+
+
+. Klicken Sie auf den Konfigurationsnamen für die ausgewählte Konfiguration.
++
+Details zu dieser Konfiguration werden im Fenster Konfigurationsdetails angezeigt.
+
+. Überprüfen Sie die Informationen auf den folgenden Registerkarten:
++
+** Hinweise
++
+Listet wichtige Warnmeldungen und Informationen auf, die auf Ihre Konfiguration zugeschnitten sind.
+
++
+Prüfen Sie die Warnungen, um die Hotfixes zu ermitteln, die für Ihr Betriebssystem erforderlich sind.
+
+** Richtlinien und Richtlinien
++
+Allgemeine Richtlinien für alle SAN-Konfigurationen
+
+
+
+

@@ -1,0 +1,62 @@
+---
+permalink: online-help-96-97/task_moving_luns.html 
+sidebar: sidebar 
+keywords: move, lun, qtree, storage, virtual, machine, svm, online, help 
+summary: 'Mit System Manager kann eine LUN, die sich beinhaltet, von einem Volume auf ein anderes Volume oder einen qtree in einer Storage Virtual Machine (SVM) verschoben werden. Sie können die LUN auf ein Volume verschieben, das auf einem Aggregat mit hochperformanten Festplatten gehostet wird, wodurch die Performance beim Zugriff auf die LUN verbessert wird.' 
+---
+= Verschieben Sie LUNs mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) können Sie eine LUN vom zugehörigen Volume auf ein anderes Volume oder einen qtree innerhalb einer Storage Virtual Machine (SVM) verschieben. Sie können die LUN auf ein Volume verschieben, das auf einem Aggregat mit hochperformanten Festplatten gehostet wird, wodurch die Performance beim Zugriff auf die LUN verbessert wird.
+
+.Über diese Aufgabe
+* Sie können eine LUN nicht auf einen qtree innerhalb desselben Volumes verschieben.
+* Wenn Sie eine LUN aus einer Datei mit der Befehlszeilenschnittstelle (CLI) erstellt haben, können Sie die LUN nicht mit System Manager verschieben.
+* Die Verschiebung der LUN erfolgt unterbrechungsfrei. Sie kann durchgeführt werden, wenn die LUN online ist und Daten bereitstellt.
+* Sie können die LUN nicht mit System Manager verschieben, wenn der zugewiesene Speicherplatz im Ziel-Volume nicht ausreicht, um die LUN zu enthalten, und selbst wenn Autogrow auf dem Volume aktiviert ist.
++
+Sie sollten stattdessen die CLI verwenden.
+
+* Sie können LUNs auf SnapLock Volumes nicht verschieben.
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Wählen Sie auf der Registerkarte *LUN Management* die LUN aus, die Sie aus der Liste der LUNs verschieben möchten, und klicken Sie dann auf *Verschieben*.
+. *Optional:* im Bereich *Move Options* des Dialogfelds *Move LUN* geben Sie einen neuen Namen für die LUN an, wenn Sie den Standardnamen ändern möchten.
+. Wählen Sie das Storage-Objekt aus, auf das Sie die LUN verschieben möchten, und führen Sie eine der folgenden Aktionen aus:
++
+|===
+| Wenn Sie die LUN verschieben möchten... | Dann... 
+
+
+ a| 
+Ein neues Volume
+ a| 
+.. Wählen Sie ein Aggregat aus, in dem Sie das neue Volume erstellen möchten.
+.. Geben Sie einen Namen für das Volume an.
+
+
+
+
+ a| 
+Ein vorhandener Volume oder qtree
+ a| 
+.. Wählen Sie ein Volume aus, in das Sie die LUN verschieben möchten.
+.. Wenn das ausgewählte Volume qtrees enthält, wählen Sie den qtree aus, auf den Sie die LUN verschieben möchten.
+
+
+|===
+. Klicken Sie Auf *Verschieben*.
+. Bestätigen Sie den Vorgang LUN-Verschiebung, und klicken Sie auf *Weiter*.
++
+Für einen kurzen Zeitraum wird die LUN sowohl auf dem Ursprungs- als auch auf dem Ziel-Volume angezeigt. Nach Abschluss des Verschiebevorgangs wird die LUN auf dem Ziel-Volume angezeigt.
+
++
+Das Ziel-Volume oder qtree wird als neuer Container-Pfad für die LUN angezeigt.
+
+

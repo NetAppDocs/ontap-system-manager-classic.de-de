@@ -1,0 +1,36 @@
+---
+permalink: iscsi-config-windows/task_verifying_that_host_can_write_to_read_from_lun.html 
+sidebar: sidebar 
+keywords: lun, verify, host, write, data, verify that the host can write to and read from the lun 
+summary: Bevor Sie die LUN verwenden, sollten Sie überprüfen, ob der Host Daten auf die LUN schreiben und sie zurücklesen kann. 
+---
+= Vergewissern Sie sich, dass der Host schreiben und von der LUN lesen kann
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie die LUN verwenden, sollten Sie überprüfen, ob der Host Daten auf die LUN schreiben und sie zurücklesen kann.
+
+.Bevor Sie beginnen
+Die LUN muss initialisiert und mit einem Dateisystem formatiert werden.
+
+.Über diese Aufgabe
+Wenn der Storage-Cluster-Node, auf dem die LUN erstellt wird, einen Failover auf den Partner-Node durchführen kann, sollten Sie die Daten beim Failover des Node überprüfen. Dieser Test ist möglicherweise nicht möglich, wenn das Storage-Cluster in Produktion verwendet wird.
+
+Wenn einer der Tests fehlschlägt, sollten Sie überprüfen, ob der iSCSI-Service ausgeführt wird und die iSCSI-Pfade zur LUN überprüfen.
+
+.Schritte
+. Kopieren Sie auf dem Host eine oder mehrere Dateien auf die LUN.
+. Kopieren Sie die Dateien zurück in einen anderen Ordner auf der Originalfestplatte.
+. Vergleichen Sie die kopierten Dateien mit dem Original.
++
+Sie können das verwenden `comp` Befehl an der Windows-Eingabeaufforderung zum Vergleichen von zwei Dateien.
+
+. *Optional:* Failover über den Speicher-Cluster-Knoten mit der LUN und überprüfen Sie, dass Sie noch Zugriff auf die Dateien auf der LUN.
+. Verwenden Sie das native DSM, um die Pfade zur LUN anzuzeigen und zu überprüfen, ob Sie die erwartete Anzahl von Pfaden haben.
++
+Sie sollten zwei Pfade zum Storage-Cluster-Node, auf dem die LUN erstellt wird, und zwei Pfade zum Partner-Node sehen.
+
+

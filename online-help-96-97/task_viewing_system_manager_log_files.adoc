@@ -1,0 +1,56 @@
+---
+permalink: online-help-96-97/task_viewing_system_manager_log_files.html 
+sidebar: sidebar 
+keywords: view, ontap, system, manager, log, file, online, help 
+summary: Wenn bei der Verwendung von System Manager Probleme auftreten, können Sie die Protokolldateien an den technischen Support senden, um die Fehlerbehebung zu unterstützen. Die Protokolldateien des System Managers befinden sich im mlog-Verzeichnis zusammen mit den ONTAP-Protokolldateien. 
+---
+= Zeigen Sie die Log-Dateien des System Manager an – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei Problemen bei der Verwendung von ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) können Sie die Log-Dateien senden, um die Probleme zu beheben, falls Sie dazu aufgefordert werden. Die Log-Dateien von System Manager befinden sich im `mlog` Verzeichnis zusammen mit den ONTAP-Log-Dateien.
+
+.Schritte
+. Ermitteln Sie den Node, der die Cluster-Management-LIF hostet.
+. Geben Sie die folgende URL in einen Webbrowser ein: `+https://cluster-mgmt-LIF/spi+`
++
+`cluster-mgmt-LIF` Ist die IP-Adresse der Cluster-Management-LIF.
+
+. Geben Sie Ihre Cluster-Administrator-Anmeldeinformationen ein, und klicken Sie dann auf *OK*.
+. Klicken Sie im Fenster *Data ONTAP - Root-Volume-Dateizugriff* auf den Link *Logs* für den Knoten, der die Cluster-Management-LIF hostet.
+. Navigieren Sie zum `mlog` Verzeichnis für den Zugriff auf die Log-Dateien im System Manager
++
+Je nach Art des Problems sind möglicherweise die folgenden Protokolldateien erforderlich:
+
++
+** `sysmgr.log`
++
+Diese Datei enthält die neuesten Protokolle für System Manager.
+
+** `mgwd.log`
+** `php.log`
+** `apache_access.log`
+** `messages.log`
+
+
+
+
+
+
+== So funktioniert die Systemprotokollierung
+
+Die Systemprotokollierung ist ein wichtiges Tool für die Fehlerbehebung bei Anwendungen. Sie sollten die Systemprotokollierung aktivieren, damit bei Problemen mit einer Anwendung das Problem gefunden werden kann. Sie können System Manager-Protokollierung während der Laufzeit aktivieren, ohne die Anwendungsbinärdaten zu ändern.
+
+Die Protokollausgabe kann umfangreich sein und somit schwierig zu managen sein. Mit System Manager können Sie die Protokollausgabe verfeinern, indem Sie auswählen, welche Protokollausgabeart ausgegeben wird. Standardmäßig ist die Systemprotokollierung auf INFO festgelegt. Sie können eine der folgenden Protokollebenen auswählen:
+
+* AUS
+* FEHLER
+* WARNEN
+* INFO
+* DEBUGGEN
+
+
+Diese Ebenen funktionieren hierarchisch. Eine auf AUS eingestellte Protokollebene zeigt an, dass keine Meldungen protokolliert werden.

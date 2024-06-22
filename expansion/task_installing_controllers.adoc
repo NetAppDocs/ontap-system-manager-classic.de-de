@@ -1,0 +1,54 @@
+---
+permalink: expansion/task_installing_controllers.html 
+sidebar: sidebar 
+keywords: install, controller, exist, cluster, installation, setup, instruction, install the controllers 
+summary: Wenn Sie Controller installieren, die zu einem vorhandenen Cluster hinzugefügt werden, müssen Sie die ersten drei Schritte der entsprechenden Installations- und Setup-Anleitung befolgen. 
+---
+= Installieren Sie die Controller
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie Controller installieren, die zu einem vorhandenen Cluster hinzugefügt werden, müssen Sie die ersten drei Schritte der entsprechenden _Installation and Setup Instructions_ befolgen.
+
+[NOTE]
+.Über diese Aufgabe
+====
+Ab ONTAP 9.0 ist der HA-Modus auf der neuen Hardware standardmäßig aktiviert.
+
+====
+.Schritte
+. Anweisungen _Installation and Setup_ zur FAS-Modellnummer des Controller-Moduls einholen, die Sie zum Cluster hinzufügen möchten.
++
+** Für ein neues Controller-Modul ist das Dokument im Feld verfügbar.
+** Für ein Controller-Modul mit neuer Verwendung können Sie das Dokument herunterladen.
+https://mysupport.netapp.com/site/docs-and-kb["NetApp Dokumentation"]
+
+
+. Befolgen Sie den Abschnitt _Installation_ mit folgenden Ausnahmen:
++
+** Sie können alle Anweisungen zum Herunterladen von Software oder einem Arbeitsblatt überspringen.
+** Sie müssen eine serielle Konsolenverbindung bereitstellen, selbst wenn diese nicht in der _Installation and Setup Instructions_ aufgeführt ist.
++
+Sie benötigen eine serielle Konsole, da Sie Node-Management-LIFs mit der nodeshell CLI konfigurieren müssen.
+
++
+Wenn im Abschnitt ONTAP die serielle Konsole nicht erwähnt wird, können Sie den Abschnitt 7-Mode anzeigen.
+
+
+
+. Befolgen Sie den Abschnitt _Hardware installieren_.
+. Folgen Sie dem Abschnitt _Kabelspeicher_.
+. Überspringen Sie den Großteil des Abschnitts _Complete System Setup_ mit folgenden Ausnahmen:
++
+** Wenn Sie dazu aufgefordert werden, müssen Sie alle Festplatten-Shelfs einschalten und die IDs überprüfen.
+** Sie müssen die serielle Konsole verkabeln, damit Sie auf den Node zugreifen können.
++
+Wenn im Abschnitt ONTAP die serielle Konsole nicht erwähnt wird, können Sie den Abschnitt 7-Mode anzeigen.
+
+
+
+. Überspringen Sie den Abschnitt _vollständige Konfiguration_.
+

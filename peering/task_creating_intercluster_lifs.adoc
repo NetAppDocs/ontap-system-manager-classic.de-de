@@ -1,0 +1,36 @@
+---
+permalink: peering/task_creating_intercluster_lifs.html 
+sidebar: sidebar 
+keywords: creating, create, intercluster, logical, interface, lif, enable, network, communicate, ipspace, peer, relationship, create intercluster lif, Beginning with ontap 9.3 
+summary: 'Beginnend mit ONTAP 9.3 bis ONTAP 9.7 können Sie die klassische Benutzeroberfläche des ONTAP System Manager verwenden, um Cluster-logische Schnittstellen (LIFs) zu erstellen, die es dem Cluster-Netzwerk ermöglichen, mit einem Node zu kommunizieren. Sie müssen innerhalb jedes IPspaces, der für Peering verwendet wird, eine Intercluster LIF erstellen, auf jedem Node in jedem Cluster, für den Sie eine Peer-Beziehung erstellen möchten.' 
+---
+= Intercluster-LIFs erstellen (beginnend mit ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab ONTAP 9.3 können Sie bis ONTAP 9.7 über die ONTAP System Manager _classic_ Schnittstelle Cluster-übergreifende logische Schnittstellen (LIFs) erstellen, sodass das Cluster-Netzwerk mit einem Node kommunizieren kann. Sie müssen innerhalb jedes IPspaces, der für Peering verwendet wird, eine Intercluster LIF erstellen, auf jedem Node in jedem Cluster, für den Sie eine Peer-Beziehung erstellen möchten.
+
+.Über diese Aufgabe
+Wenn Sie beispielsweise ein Cluster mit vier Nodes haben, das Sie mit Cluster X über IPspace A Peer mit Cluster Y über IPspace Y erstellen möchten, benötigen Sie insgesamt acht Intercluster-LIFs. Vier auf IPspace A (einer pro Knoten) und vier auf IPspace Y (einer pro Knoten).
+
+Sie müssen dieses Verfahren auf beiden Clustern durchführen, für die Sie eine Peer-Beziehung erstellen möchten.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Erweitertes Cluster-Setup*.
+. Klicken Sie im Fenster *Setup Advanced Cluster Features* neben der Option *Cluster Peering* auf *Proceed*.
+. Wählen Sie einen IPspace aus der Liste *IPspace* aus.
+. Geben Sie für jeden Node die IP-Adresse, den Port, die Netzwerkmaske und das Gateway ein.
++
+image::../media/intercluster_lif_creation_93.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
+. Klicken Sie auf *Absenden und fortfahren*.
+
+
+
+
+== Nächste Schritte
+
+Sie sollten die Cluster-Details im Cluster-Peering-Fenster eingeben, um mit Cluster-Peering fortzufahren.

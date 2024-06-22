@@ -1,0 +1,75 @@
+---
+permalink: fc-config-esxi/task_creating_svm.html 
+sidebar: sidebar 
+keywords: storage, virutal, machine, svm, fc, target, host, access, lun, logical, lif, function, user, cluster, create a new svm 
+summary: Die Storage Virtual Machine stellt das FC-Ziel bereit, über das ein Host auf LUNs zugreift. 
+---
+= Erstellen einer neuen SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Storage Virtual Machine (SVM) stellt das FC-Ziel bereit, über das ein Host auf LUNs zugreift. Bei der Erstellung der SVM erstellen Sie auch logische Schnittstellen (LIFs), die Pfade zur LUN bereitstellen. Sie können eine SVM erstellen, um die Daten- und Administrationsfunktionen eines Benutzers von den anderen Benutzern in einem Cluster zu trennen.
+
+.Bevor Sie beginnen
+* Ihre FC-Fabric muss konfiguriert sein und die gewünschten physischen Ports müssen mit der Fabric verbunden werden.
+
+
+.Schritte
+. Navigieren Sie zum Fenster *SVMs*.
+. Klicken Sie Auf *Erstellen*.
+. Erstellen Sie im Fenster *Storage Virtual Machine (SVM) Setup* die SVM:
++
+.. Geben Sie einen eindeutigen Namen für die SVM an.
++
+Der Name muss entweder ein vollständig qualifizierter Domänenname (FQDN) sein oder einer anderen Konvention folgen, die eindeutige Namen in einem Cluster sicherstellt.
+
+.. Wählen Sie den IPspace aus, zu dem die SVM gehört.
++
+Wenn der Cluster nicht mehrere IPspaces verwendet, wird der IPspace „`Default`“ verwendet.
+
+.. Behalten Sie die standardmäßige Auswahl des Volume-Typs bei.
++
+Nur FlexVol Volumes werden mit SAN-Protokollen unterstützt.
+
+.. Wählen Sie alle Protokolle aus, für die Sie Lizenzen haben, und die Sie möglicherweise auf der SVM verwenden können, auch wenn Sie nicht alle Protokolle sofort konfigurieren möchten.
++
+Wenn Sie sowohl NFS als auch CIFS beim Erstellen der SVM auswählen, können die beiden Protokolle dieselben LIFs teilen. Das Hinzufügen dieser Protokolle zu einem späteren Zeitpunkt erlaubt es ihnen nicht, LIFs gemeinsam zu nutzen.
+
++
+Wenn CIFS eines der von Ihnen ausgewählten Protokolle ist, wird der Sicherheitsstil auf NTFS festgelegt. Andernfalls ist der Sicherheitsstil auf UNIX festgelegt.
+
+.. Behalten Sie die Standardeinstellung C.UTF-8 bei.
+.. Wählen Sie das gewünschte Root-Aggregat aus, das das SVM Root-Volume enthalten soll.
++
+Das Aggregat für das Daten-Volume wird später separat ausgewählt.
+
+.. Klicken Sie Auf *Absenden & Fortfahren*.
+
+
++
+Die SVM wird erstellt, die Protokolle sind jedoch noch nicht konfiguriert.
+
+. Wenn die Seite *CIFS/NFS-Protokoll konfigurieren* angezeigt wird, weil Sie CIFS oder NFS aktiviert haben, klicken Sie auf *Skip* und konfigurieren Sie dann CIFS oder NFS später.
+. Wenn die Seite *iSCSI-Protokoll konfigurieren* angezeigt wird, weil Sie iSCSI aktiviert haben, klicken Sie auf *Überspringen* und dann später iSCSI konfigurieren.
+. Konfigurieren Sie den FC-Service und die LIFs auf der Seite *FC/FCoE-Protokoll konfigurieren*:
++
+.. Aktivieren Sie das Kontrollkästchen *Daten-LIFs für FC* konfigurieren.
+.. Eingabe `2` Im Feld *LIFs pro Node*.
++
+Für jeden Node sind zwei LIFs erforderlich, um Verfügbarkeit und Datenmobilität zu gewährleisten.
+
+.. Überspringen Sie den optionalen *LUN bereitstellen für FCP Speicher* Bereich, da die LUN von der virtuellen Speicherkonsole für VMware vSphere in einem späteren Schritt bereitgestellt wird.
+.. Klicken Sie Auf *Absenden & Fortfahren*.
+
+
+. Wenn die Option *SVM Administration* angezeigt wird, konfigurieren oder verschieben Sie die Konfiguration eines separaten Administrators für diese SVM:
++
+** Klicken Sie auf *Überspringen* und konfigurieren Sie einen Administrator später, falls gewünscht.
+** Geben Sie die gewünschten Informationen ein und klicken Sie dann auf *Absenden & Fortfahren*.
+
+
+. Überprüfen Sie die Seite *Zusammenfassung*, notieren Sie die LIF-Informationen und klicken Sie dann auf *OK*.
+

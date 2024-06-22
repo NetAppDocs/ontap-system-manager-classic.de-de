@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_verifying_cluster_is_ready_for_expansion.html 
+sidebar: sidebar 
+keywords: expand, cluster, verify, plan, configuration, require, network, information, add, replace, switch, verify the cluster is ready for expansion 
+summary: Bevor Sie mit dem erweitern eines Clusters beginnen, müssen Sie die geplante Konfiguration überprüfen, die erforderlichen Netzwerkinformationen erfassen und bei Bedarf Switches hinzufügen oder ersetzen. 
+---
+= Vergewissern Sie sich, dass das Cluster bereit für die Erweiterung ist
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie mit dem erweitern eines Clusters beginnen, müssen Sie die geplante Konfiguration überprüfen, die erforderlichen Netzwerkinformationen erfassen und bei Bedarf Switches hinzufügen oder ersetzen.

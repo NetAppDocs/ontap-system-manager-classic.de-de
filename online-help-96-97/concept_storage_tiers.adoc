@@ -1,0 +1,18 @@
+---
+permalink: online-help-96-97/concept_storage_tiers.html 
+sidebar: sidebar 
+keywords: system, manager, storage, tiers, aggregates, security, requirements, backup, performance, data, sharing, online, help 
+summary: Mit System Manager können Aggregate erstellt werden, um die verschiedenen Sicherheitsanforderungen, Backup-Anforderungen, Performance-Anforderungen und Datenfreigabeanforderungen der Benutzer zu unterstützen. 
+---
+= Storage-Tiers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit System Manager können Aggregate erstellt werden, um die verschiedenen Sicherheitsanforderungen, Backup-Anforderungen, Performance-Anforderungen und Datenfreigabeanforderungen der Benutzer zu unterstützen.
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Festplatten- und Aggregatmanagement"]

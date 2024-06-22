@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_resizing_volumes.html 
+sidebar: sidebar 
+keywords: resize, volume, capacity, snapshot, copy, online, help 
+summary: Wenn ein Volume nahezu voll ausgelastet ist, können Sie die Größe des Volume erhöhen, einige Snapshot-Kopien löschen oder die Snapshot-Reserve anpassen. Sie können in System Manager den Assistenten zur Volume-Größe verwenden, um mehr freien Speicherplatz bereitzustellen. 
+---
+= Ändern Sie die Größe von Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn ein Volume eine nahezu volle Kapazität erreicht, können Sie ONTAP System Manager classic (verfügbar ab ONTAP 9.7 und früher) verwenden, um die Größe des Volumes zu erhöhen, einige Snapshot-Kopien zu löschen oder die Snapshot Reserve anzupassen. Sie können in System Manager den Assistenten zur Volume-Größe verwenden, um mehr freien Speicherplatz bereitzustellen.
+
+.Über diese Aufgabe
+* Für ein Volume, das automatisch erweitert werden soll, kann der Grenzwert für das Volume basierend auf der erhöhten Größe des Volume automatisch angepasst werden.
+* Sie können die Größe eines Datensicherungs-Volume nicht ändern, wenn seine gespiegelte Beziehung unterbrochen ist oder eine erneute Synchronisierung auf dem Volume durchgeführt wurde.
++
+Stattdessen müssen Sie die Befehlszeilenschnittstelle (CLI) verwenden.
+
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das Volume aus, das Sie die Größe ändern möchten.
+. Klicken Sie Auf *Mehr Aktionen* > *Größe*.
+. Geben Sie die vom Assistenten geforderten Informationen ein oder wählen Sie diese aus.
+. Bestätigen Sie die Details und klicken Sie dann auf *Fertig stellen*, um den Assistenten abzuschließen.
+. Überprüfen Sie im Fenster *Volumes* die Änderungen, die Sie am verfügbaren Speicherplatz vorgenommen haben, und den gesamten Speicherplatz des Volumes.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

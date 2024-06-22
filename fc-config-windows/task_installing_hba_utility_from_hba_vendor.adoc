@@ -1,0 +1,36 @@
+---
+permalink: fc-config-windows/task_installing_hba_utility_from_hba_vendor.html 
+sidebar: sidebar 
+keywords: hba, utility, view, worldwide, port, name, wwpn, fc, port, troubleshoot, fc, issue, install the hba utility from the hba vendor 
+summary: 'Das HBA-Dienstprogramm ermöglicht es Ihnen, den weltweiten Port-Namen (WWPN) jedes FC-Ports anzuzeigen. Das Dienstprogramm ist auch zur Behebung von FC-Problemen nützlich.' 
+---
+= Installieren Sie das HBA-Dienstprogramm vom HBA-Anbieter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das HBA-Dienstprogramm ermöglicht es Ihnen, den weltweiten Port-Namen (WWPN) jedes FC-Ports anzuzeigen. Das Dienstprogramm ist auch zur Behebung von FC-Problemen nützlich.
+
+.Über diese Aufgabe
+Jeder HBA-Anbieter verfügt über ein HBA-Dienstprogramm für seine FC-HBAs. Sie müssen die richtige Version für Ihr Host-Betriebssystem und die CPU herunterladen.
+
+Im Folgenden finden Sie eine teilweise Liste der HBA-Dienstprogramme:
+
+* Emulex HBA Manager, vormals OneCommand Manager für Emulex HBAs bekannt
+* QLogic QConvergeConsole für QLogic HBAs
+
+
+.Schritte
+. Laden Sie das entsprechende Dienstprogramm von der Website Ihres HBA-Anbieters herunter.
+. Führen Sie das Installationsprogramm aus, und befolgen Sie die Anweisungen, um die Installation abzuschließen.
+
+
+*Verwandte Informationen*
+
+https://www.broadcom.com/support/download-search?tab=search["Broadcom (Emulex) Support-Dokumente und Downloads"]
+
+https://www.broadcom.com/products/storage/fibre-channel-host-bus-adapters/emulex-hba-manager["Emulex HBA Manager"]
+
+http://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/OEM_Product_List.aspx?oemid=372["QLogic unter NetApp Downloads"]

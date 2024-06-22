@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_cloning_nvme_namespace.html 
+sidebar: sidebar 
+keywords: system, manager, clone, nvme, namespace, nqn, online, help 
+summary: Sie können System Manager verwenden, um schnell einen weiteren Namespace derselben Konfiguration zu erstellen, indem Sie einen Namespace klonen. Sie können den neu geklonten Namespace einem anderen Host-NQN zuordnen. 
+---
+= Klonen eines NVMe Namespace mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um schnell einen weiteren Namespace der gleichen Konfiguration zu erstellen, indem Sie einen Namespace klonen. Sie können den neu geklonten Namespace einem anderen Host-NQN zuordnen.
+
+.Bevor Sie beginnen
+Zum Klonen eines Namespace benötigen Sie eine FlexClone-Lizenz.
+
+.Über diese Aufgabe
+Sie können einen Namespace mit der ausgewählten Host-Zuordnung klonen und mit einem anderen Subsystem verknüpfen.
+
+.Schritte
+. Klicken Sie auf *NVMe* > *NVMe Namespaces*.
+. Wählen Sie im Fenster *NVMe Namespaces* den Namespace aus, den Sie klonen möchten.
+. Sie können den geklonten Namespace umbenennen, wenn Sie einen bestimmten Namen benötigen, dieser jedoch nicht erforderlich ist.
++
+Das Dialogfeld enthält einen Standardnamen für den zu klonenden Namespace.
+
+. Ändern der Subsystemzuordnung für den geklonten Namespace
+. Klicken Sie auf *OK*.
++
+Der online zugewiesene Namespace ist innerhalb derselben SVM mit einem anderen Namen geklont. Host Mapping wird nicht geklont.
+
+

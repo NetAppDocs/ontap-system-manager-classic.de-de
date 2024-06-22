@@ -1,0 +1,277 @@
+---
+permalink: online-help-96-97/concept_shares.html 
+sidebar: sidebar 
+keywords: online, help, share, system, manager, qtress, cifs, create, edit, manage, share, access, stop, home, directory, configure, smb 
+summary: Mit System Manager können Freigaben erstellt, bearbeitet und gemanagt werden. 
+---
+= Freigaben mit System Manager – ONTAP 9.7 und früher managen
+:allow-uri-read: 
+
+
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) zum Erstellen, Bearbeiten und Verwalten von Freigaben verwenden.
+
+
+
+== Erstellen Sie eine CIFS-Freigabe
+
+Mit System Manager können Sie eine CIFS-Freigabe erstellen, über die Sie den Ordner, qtree oder Volume angeben können, auf den CIFS-Benutzer zugreifen können.
+
+.Bevor Sie beginnen
+Sie müssen die CIFS-Lizenz installiert haben, bevor Sie CIFS einrichten und starten.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Shares*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die SVM aus, auf der Sie eine CIFS-Freigabe erstellen möchten.
+. Klicken Sie Auf *Freigabe Erstellen*.
+. Klicken Sie im Fenster *Create Share* auf *Browse* und wählen Sie dann den Ordner, qtree oder Volume aus, der freigegeben werden soll.
+. Geben Sie einen Namen für die neue CIFS-Freigabe an.
+. *Optional:* Aktivieren Sie das Kontrollkästchen *kontinuierliche Verfügbarkeit für Hyper-V und SQL*, damit Clients, die SMB 3.0 und höher unterstützen, Dateien dauerhaft während eines unterbrechungsfreien Betriebs öffnen können.
++
+Dateien, die über diese Option geöffnet werden, sind vor Ereignissen, die Unterbrechungen verursachen, wie Failover, Giveback und LIF-Migration geschützt.
+
++
+Ab System Manager 9.6 wird die kontinuierliche Verfügbarkeit für FlexGroup Volumes unterstützt.
+
+. Aktivieren Sie das Kontrollkästchen *Daten verschlüsseln, während Sie auf diese Freigabe zugreifen*, um die SMB 3.0-Verschlüsselung zu aktivieren.
+. Geben Sie eine Beschreibung oder einen Kommentar für die Freigabe an, und klicken Sie dann auf *Erstellen*.
+
+
+.Ergebnisse
+Die CIFS-Freigabe wird erstellt, wobei die Zugriffsrechte in der Gruppe auf „`Full Control for Everyone`“ eingestellt sind.
+
+
+
+== Den Zugriff auf Shares beenden
+
+Mit System Manager können Sie eine Freigabe anhalten, wenn Sie den freigegebenen Netzwerkzugriff auf einen Ordner, qtree oder Volume entfernen möchten.
+
+.Bevor Sie beginnen
+Sie müssen die CIFS-Lizenz installiert haben.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Shares*.
+. Wählen Sie aus dem Dropdown-Menü im Feld *SVM* die SVM aus, auf der sich die CIFS-Freigabe befindet, die Sie anhalten möchten.
+. Wählen Sie aus der Liste der Freigaben die Freigabe aus, die Sie nicht mehr freigeben möchten, und klicken Sie dann auf *Freigabe stoppen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Stopp*.
+. Stellen Sie sicher, dass die Freigabe nicht mehr im Fenster *Shares* aufgeführt ist.
+
+
+
+
+== Home Directory-Freigaben erstellen
+
+Mit System Manager können Sie eine Home Directory Freigabe erstellen und Suchpfade für Home Directorys verwalten.
+
+.Bevor Sie beginnen
+CIFS muss eingerichtet und gestartet werden.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Shares*.
+. Klicken Sie auf *Home Directory erstellen* und geben Sie dann die Musterinformationen an, die bestimmen, wie ein Benutzer einem Verzeichnis zugeordnet wird.
+. Klicken Sie Auf *Erstellen*.
+. Überprüfen Sie, ob das von Ihnen erstellte Home-Verzeichnis im Fenster *Shares* aufgelistet ist.
+
+
+
+
+== Freigabeinstellungen bearbeiten
+
+Mit System Manager können Sie die Einstellungen einer Freigabe ändern, z. B. die Einstellungen für symbolische Links, Zugriffsberechtigungen von Benutzern oder Gruppen und den Zugriffstyp für die Freigabe. Sie können auch die kontinuierliche Verfügbarkeit eines Shares über Hyper-V aktivieren oder deaktivieren und die Access-Based Enumeration (ABE) aktivieren oder deaktivieren. Ab System Manager 9.6 wird die kontinuierliche Verfügbarkeit für FlexGroup Volumes unterstützt.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Shares*.
+. Wählen Sie die Freigabe aus der Liste der Freigaben aus, die Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie im Dialogfeld *Freigabeeinstellungen bearbeiten* die Freigabeeinstellungen nach Bedarf:
++
+.. Aktivieren Sie auf der Registerkarte *Allgemein* die kontinuierliche Verfügbarkeit eines Share über Hyper-V.
++
+Durch die Aktivierung der kontinuierlichen Verfügbarkeit lassen sich SMB 3.0 und Clients, die SMB 3.0 unterstützen, Dateien auch während eines unterbrechungsfreien Betriebs dauerhaft öffnen. Dateien, die dauerhaft geöffnet werden, werden vor Unterbrechungen wie Failover, Giveback und LIF-Migration geschützt.
+
+.. Fügen Sie auf der Registerkarte *Berechtigungen* Benutzer oder Gruppen hinzu und weisen Sie dann Berechtigungen zu, um den Zugriffstyp festzulegen.
+.. Wählen Sie auf der Registerkarte *Optionen* die gewünschten Optionen aus.
+
+
+. Klicken Sie auf *Speichern und Schließen*.
+. Überprüfen Sie die Änderungen, die Sie an der ausgewählten Freigabe im Fenster *Shares* vorgenommen haben.
+
+
+
+
+== So ermöglicht ONTAP dynamische Home Directories
+
+Mit den ONTAP Home Directorys können Sie eine SMB-Freigabe konfigurieren, die verschiedenen Verzeichnissen anhand des Benutzers, der mit ihm verbunden wird, und einer Reihe von Variablen zugeordnet wird. Anstatt separate Shares für jeden Benutzer zu erstellen, können Sie eine Freigabe mit einigen Home-Directory-Parametern konfigurieren, um die Beziehung eines Benutzers zwischen einem Eintragspunkt (Share) und dem Home-Verzeichnis (ein Verzeichnis auf der SVM) zu definieren.
+
+Ein Benutzer, der als Gastbenutzer angemeldet ist, verfügt nicht über ein Home-Verzeichnis und kann nicht auf die Home-Verzeichnisse anderer Benutzer zugreifen. Es gibt vier Variablen, die bestimmen, wie ein Benutzer einem Verzeichnis zugeordnet wird:
+
+* *Name teilen*
++
+Dies ist der Name der Freigabe, die Sie erstellen, mit der der Benutzer eine Verbindung herstellt. Sie müssen die Home-Verzeichnis-Eigenschaft für diese Freigabe festlegen.
+
++
+Der Freigabename kann die folgenden dynamischen Namen verwenden:
+
++
+** `%w` (Der Windows-Benutzername des Benutzers)
+** `%d` (Windows-Domain-Name des Benutzers)
+** `%u` (Dem zugeordneten UNIX-Benutzernamen des Benutzers)
+
+
++
+Damit der Freigabename für alle Home-Verzeichnisse eindeutig ist, muss der Freigabenname entweder den enthalten/`%w` Oder im `%u` Variabel. Der Freigeben-Name kann beides enthalten `%d` Und das/`%w` Variable (z. B. `%d`/`%w`), oder der Freigabename kann einen statischen Teil und einen variablen Teil enthalten (z. B. Home_/`%w`).
+
+* *Pfad teilen*
++
+Dies ist der relative Pfad, der durch die Freigabe definiert wird und somit mit einem der Share-Namen verknüpft ist, der an jeden Suchpfad angehängt wird, um den gesamten Home-Directory-Pfad des Benutzers aus dem Root der SVM zu generieren. Er kann statisch sein (z.B. `home`), dynamisch (zum Beispiel, `%w`) Oder eine Kombination der beiden (zum Beispiel, `eng/%w`).
+
+* *Suchpfade*
++
+Dies ist die Gruppe der absoluten Pfade aus dem Root der SVM, die Sie angeben, dass die ONTAP-Suche nach Home Directorys geleitet wird. Sie können einen oder mehrere Suchpfade mithilfe des angeben `vserver cifs home-directory search-path add` Befehl. Wenn Sie mehrere Suchpfade angeben, versucht ONTAP sie in der angegebenen Reihenfolge, bis ein gültiger Pfad gefunden wird.
+
+* *Verzeichnis*
++
+Dies ist das Home-Verzeichnis des Benutzers, das Sie für den Benutzer erstellen. Der Verzeichnisname ist normalerweise der Name des Benutzers. Sie müssen das Home-Verzeichnis in einem der Verzeichnisse erstellen, die durch die Suchpfade definiert werden.
+
+
+
+Betrachten Sie als Beispiel die folgende Einrichtung:
+
+* Benutzer: John Smith
+* Benutzerdomäne: acme
+* Benutzername: Jsmith
+* SVM-Name: vs1
+* Home Directory share Name #1: Home_ `%w` - Freigabepfad: `%w`
+* Home-Verzeichnis Freigabenname #2: `%w` - Freigabepfad: `%d/%w`
+* Suchpfad #1: `/vol0home/home`
+* Suchpfad #2: `/vol1home/home`
+* Suchpfad #3: `/vol2home/home`
+* Home-Verzeichnis: `/vol1home/home/jsmith`
+
+
+Szenario 1: Der Benutzer stellt eine Verbindung her `\\vs1\home_jsmith`. Dies entspricht dem ersten Home-Verzeichnis-Freigabennamen und erzeugt den relativen Pfad `jsmith`. ONTAP sucht jetzt nach einem Verzeichnis mit dem Namen `jsmith` Indem Sie die einzelnen Suchpfade in der folgenden Reihenfolge überprüfen:
+
+* `/vol0home/home/jsmith` Ist nicht vorhanden; weiter zu Suchpfad #2.
+* `/vol1home/home/jsmith` Existiert; deshalb wird der Suchpfad #3 nicht überprüft; der Benutzer ist jetzt mit seinem Home-Verzeichnis verbunden.
+
+
+Szenario 2: Der Benutzer verbindet sich mit `\\vs1\jsmith`. Dies entspricht dem zweiten Home-Verzeichnis-Freigabennamen und erzeugt den relativen Pfad `acme/jsmith`. ONTAP sucht jetzt nach einem Verzeichnis mit dem Namen `acme/jsmith` Indem Sie die einzelnen Suchpfade in der folgenden Reihenfolge überprüfen:
+
+* `/vol0home/home/acme/jsmith` Ist nicht vorhanden; weiter zu Suchpfad #2.
+* `/vol1home/home/acme/jsmith` Ist nicht vorhanden; weiter zum Suchpfad #3.
+* `/vol2home/home/acme/jsmith` Ist nicht vorhanden; das Home-Verzeichnis ist nicht vorhanden; daher schlägt die Verbindung fehl.
+
+
+
+
+== Fenster „Freigaben“
+
+Sie können das Fenster „Freigaben“ zum Verwalten Ihrer Freigaben und zum Anzeigen von Informationen zu den Freigaben verwenden.
+
+
+
+=== Befehlsschaltflächen
+
+* *Freigabe Erstellen*
++
+Öffnet das Dialogfeld „Freigabe erstellen“, in dem Sie eine Freigabe erstellen können.
+
+* *Home Directory Erstellen*
++
+Öffnet das Dialogfeld „Home Directory-Freigabe erstellen“, in dem Sie eine neue Home-Directory-Freigabe erstellen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld „Einstellungen bearbeiten“, in dem Sie die Eigenschaften einer ausgewählten Freigabe ändern können.
+
+* *Freigabe Beenden*
++
+Verhindert, dass das ausgewählte Objekt freigegeben wird.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Shares-Liste
+
+In der Liste „Shares“ werden Name und Pfad der einzelnen Freigaben angezeigt.
+
+* *Name Der Weitergabe*
++
+Zeigt den Namen der Freigabe an.
+
+* *Pfad*
++
+Zeigt den vollständigen Pfadnamen eines vorhandenen Ordners, qtree oder Volumes an, der gemeinsam genutzt wird. Pfadtrenner können rückwärts oder vorwärts Schrägstriche sein, obwohl ONTAP alle Pfadtrenner als Schrägstriche anzeigt.
+
+* *Home Directory*
++
+Zeigt den Namen der Home-Directory-Freigabe an.
+
+* *Kommentar*
++
+Zeigt ggf. zusätzliche Beschreibungen der Freigabe an.
+
+* *Kontinuierlich Verfügbar Teilen*
++
+Zeigt an, ob die Freigabe für kontinuierliche Verfügbarkeit aktiviert ist. Ab System Manager 9.6 wird die kontinuierliche Verfügbarkeit für FlexGroup Volumes unterstützt.
+
+
+
+
+
+=== Detailbereich
+
+Im Bereich unterhalb der Liste „Shares“ werden die Freigabeigenschaften und die Zugriffsrechte für jede Freigabe angezeigt.
+
+* *Eigenschaften*
++
+** Name
++
+Zeigt den Namen der Freigabe an.
+
+** Oplocks-Status
++
+Gibt an, ob die Aktie opportunistische Sperren verwendet (Oplocks).
+
+** Durchsuchbar
++
+Gibt an, ob die Freigabe von Windows-Clients durchsucht werden kann.
+
+** Snapshot Anzeigen
++
+Gibt an, ob Snapshot Kopien von Clients angezeigt werden können.
+
+** Kontinuierlich Verfügbare Teile
++
+Gibt an, ob die Freigabe für kontinuierliche Verfügbarkeit aktiviert oder deaktiviert ist. Ab System Manager 9.6 wird die kontinuierliche Verfügbarkeit für FlexGroup Volumes unterstützt.
+
+** Access-Based Enumeration
++
+Gibt an, ob die Access-Based Enumeration (ABE) auf der Freigabe aktiviert oder deaktiviert ist.
+
+** BranchCache
++
+Gibt an, ob BranchCache auf der Freigabe aktiviert oder deaktiviert ist.
+
+** SMB-Verschlüsselung
++
+Gibt an, ob die Datenverschlüsselung mit SMB 3.0 auf Storage Virtual Machine (SVM)-Ebene oder auf Share-Ebene aktiviert ist. Wenn die SMB-Verschlüsselung auf SVM-Ebene aktiviert ist, wird die SMB-Verschlüsselung für alle Freigaben angewendet, und der Wert wird als aktiviert angezeigt (auf SVM-Ebene).
+
+** Frühere Versionen
++
+Gibt an, ob die vorherigen Versionen vom Client angezeigt und wiederhergestellt werden können.
+
+
+
+* *Zugriffskontrolle teilen*
++
+Zeigt die Zugriffsrechte der Domänenbenutzer, Domänengruppen, lokalen Benutzer und lokalen Gruppen für die Freigabe an.
+
+
+
+*Verwandte Informationen*
+
+xref:task_setting_up_cifs.adoc[Einrichten von CIFS]

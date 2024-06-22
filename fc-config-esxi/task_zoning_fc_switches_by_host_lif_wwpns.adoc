@@ -1,0 +1,44 @@
+---
+permalink: fc-config-esxi/task_zoning_fc_switches_by_host_lif_wwpns.html 
+sidebar: sidebar 
+keywords: zone, zoning, fc, switch, enable, host, connect, storage, path, management, interface, zone the fc switches by the host and lif wwpns 
+summary: Beim Zoning von FC-Switches werden die Hosts mit dem Storage verbunden und die Anzahl der Pfade begrenzt. Sie Zonen der Switches mithilfe der Managementoberfläche der Switches. 
+---
+= Zone der FC-Switches durch den Host und LIF-WWPNs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Beim Zoning von FC-Switches werden die Hosts mit dem Storage verbunden und die Anzahl der Pfade begrenzt. Sie Zonen der Switches mithilfe der Managementoberfläche der Switches.
+
+.Bevor Sie beginnen
+* Sie müssen über Administratoranmeldedaten für die Switches verfügen.
+* Sie müssen den WWPN der einzelnen Host-Initiator-Ports und jeder FC-LIF für die Storage Virtual Machine (SVM) kennen, in der Sie die LUN erstellt haben.
+
+
+.Über diese Aufgabe
+Informationen zum Zoning der Switches finden Sie in der Dokumentation des Switch-Anbieters.
+
+Sie müssen die Zone nach WWPN und nicht nach physischem Port angeben. Jeder Initiator-Port muss sich in einer separaten Zone mit allen entsprechenden Ziel-Ports befinden.
+
+LUNs sind einem Teil der Initiatoren in der Initiatorgruppe zugeordnet, um die Anzahl der Pfade vom Host auf die LUN zu begrenzen.
+
+* Standardmäßig verwendet ONTAP die selektive LUN-Zuordnung, um die LUN nur über Pfade auf dem Node, der die LUN und deren HA-Partner besitzt, zugänglich zu machen.
+* Für LUN-Mobilität müssen Sie weiterhin alle FC-LIFs auf jedem Node Zonen haben, falls die LUN auf einen anderen Node im Cluster verschoben wird.
+* Beim Verschieben eines Volumes oder einer LUN müssen Sie vor dem Verschieben die Liste Selective LUN Map Reporting Nodes ändern.
+
+
+Die folgende Abbildung zeigt einen Host, der mit einem Cluster mit vier Nodes verbunden ist. Es gibt zwei Zonen, eine Zone, die durch die durchgestrichene Linie und eine Zone durch die gestrichelten Linien angezeigt wird. Jede Zone enthält einen Initiator des Host und von jedem Storage Node eine LIF.
+
+image::../media/scm_en_drw_dual_fabric_zoning_fc_esxi.gif[Das Bild zeigt einen Host,two FC switches,and four storage nodes. Lines represent the two zones.]
+
+Sie müssen die WWPNs der Ziel-LIFs verwenden, nicht die WWPNs der physischen FC-Ports auf den Storage-Nodes. Die LIF-WWPNs befinden sich im Bereich `2x:xx:00:a0:98:xx:xx:xx`, Wo `x` Ist eine beliebige Hexadezimalzahl. Die physischen Port-WWPNs befinden sich alle im Bereich `50:0a:09:8x:xx:xx:xx:xx`.
+
+.Schritte
+. Melden Sie sich beim FC Switch-Administrationsprogramm an und wählen Sie dann die Zoning-Konfigurationsoption aus.
+. Erstellen Sie eine neue Zone, die den ersten Initiator und alle FC LIFs enthält, die mit demselben FC-Switch wie der Initiator verbunden sind.
+. Erstellen Sie für jeden FC-Initiator im Host zusätzliche Zonen.
+. Speichern Sie die Zonen, und aktivieren Sie dann die neue Zoning-Konfiguration.
+

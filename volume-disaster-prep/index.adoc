@@ -1,0 +1,45 @@
+---
+permalink: volume-disaster-prep/index.html 
+sidebar: sidebar 
+keywords: content, protect, source, volume, peer, ontap, cluster, preparation, disaster, recovery, configure, monitor, snapmirror, relationship, background, task, volume disaster recovery preparation overview 
+summary: Zur Vorbereitung auf die Disaster Recovery können Sie ein Quell-Volume auf einem ONTAP Cluster mit Peering schnell schützen. Sie sollten diesen Inhalt verwenden, um SnapMirror Beziehungen zwischen Peering Clustern zu konfigurieren und zu überwachen, damit bei Volume Disaster Recovery kein großer konzeptioneller Hintergrund für diese Aufgaben vorhanden ist. 
+---
+= Überblick über die Vorbereitung der Volume Disaster Recovery
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Zur Vorbereitung auf die Disaster Recovery können Sie ein Quell-Volume auf einem ONTAP Cluster mit Peering schnell schützen. Sie sollten dieses Verfahren verwenden, wenn Sie SnapMirror Beziehungen zwischen Peering Clustern für die Disaster Recovery von Volumes konfigurieren und überwachen möchten und keine großen konzeptionellen Hintergrundinformationen für diese Aufgaben benötigen.
+
+SnapMirror bietet asynchrone Datensicherung auf Blockebene in Planung. SnapMirror repliziert Snapshot Kopien und kann NAS- oder SAN-Volumes replizieren, auf denen Deduplizierung, Datenkomprimierung oder beides ausgeführt wird – einschließlich Volumes mit qtrees und LUNs. SnapMirror Konfigurationsinformationen werden in einer Datenbank gespeichert, die ONTAP auf alle Knoten im Cluster repliziert.
+
+Verwenden Sie diese Vorgehensweise, wenn Sie SnapMirror Beziehungen für die Disaster Recovery auf Volume-Ebene folgendermaßen erstellen möchten:
+
+* Sie arbeiten mit Clustern, auf denen ONTAP 9 ausgeführt wird.
+* Sie sind ein Cluster-Administrator.
+* Sie haben die Cluster-Peer-Beziehung und die SVM-Peer-Beziehung konfiguriert.
++
+link:../peering/index.html["Konfiguration des Cluster- und SVM-Peering"]
+
+* Sie haben die SnapMirror Lizenz sowohl auf dem Quell- als auch auf den Ziel-Clustern aktiviert.
+* Sie möchten Standardrichtlinien und -Zeitpläne verwenden und keine benutzerdefinierten Richtlinien erstellen.
+* Sie möchten Best Practices verwenden, nicht alle verfügbaren Optionen erkunden (ONTAP 9.7 und älter).
+
+
+
+
+== Weitere Möglichkeiten dies in ONTAP zu tun
+
+|===
+
+
+| So führen Sie diese Aufgaben durch: | Siehe... 
+
+
+| Der neu gestaltete System Manager (verfügbar ab ONTAP 9.7) | link:https://docs.netapp.com/us-en/ontap/task_dp_prepare_mirror.html["Bereiten Sie sich auf Spiegelung und Vaulting vor"^] 
+
+
+| Die ONTAP Befehlszeilenschnittstelle | link:https://docs.netapp.com/us-en/ontap/peering/create-cluster-relationship-93-later-task.html["Cluster-Peer-Beziehung erstellen (ONTAP 9.3 und höher)"^] 
+|===

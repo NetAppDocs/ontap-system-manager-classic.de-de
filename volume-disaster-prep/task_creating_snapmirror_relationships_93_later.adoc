@@ -1,0 +1,70 @@
+---
+permalink: volume-disaster-prep/task_creating_snapmirror_relationships_93_later.html 
+sidebar: sidebar 
+keywords: create, snapmirror, relationship, source, volume, cluster, destination, peer, data, recovery, disaster, create the snapmirror relationship, Beginning with ontap 9.3 
+summary: Sie müssen eine SnapMirror Beziehung zwischen dem Quell-Volume auf einem Cluster und dem Ziel-Volume auf dem Peering Cluster erstellen, um die Daten für Disaster Recovery zu replizieren. 
+---
+= SnapMirror Beziehung erstellen (beginnend mit ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen eine SnapMirror Beziehung zwischen dem Quell-Volume auf einem Cluster und dem Ziel-Volume auf dem Peering Cluster erstellen, um die Daten für Disaster Recovery zu replizieren.
+
+.Bevor Sie beginnen
+* Das Zielaggregat muss über verfügbaren Platz verfügen.
+* Beide Cluster müssen entsprechend konfiguriert und eingerichtet werden, um die Anforderungen Ihrer Umgebung für Benutzerzugriff, Authentifizierung und Client-Zugriff zu erfüllen.
+
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *source* ausführen.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie das Volume aus, für das Sie eine Spiegelbeziehung erstellen möchten, und klicken Sie dann auf *Aktionen* > *schützen*.
+. Wählen Sie im Abschnitt *Beziehungstyp* aus der Dropdown-Liste *Beziehungstyp* die Option *Spiegel* aus.
+. Geben Sie auf der Seite *Bände: Protect Volumes* folgende Informationen ein:
++
+.. Wählen Sie als Beziehungstyp * Mirror* aus.
+.. Wählen Sie das Ziel-Cluster, die Ziel-SVM und das Suffix für den Namen des Ziel-Volume aus.
++
+Es werden nur Peering SVMs und erlaubte SVMs unter Ziel-SVMs aufgeführt.
+
+.. Klicken Sie Auf image:../media/advanced_options_icon_disaster.gif["Symbol für erweiterte Optionen"].
+.. Überprüfen Sie das im Dialogfeld *Erweiterte Optionen* `MirrorAllSnapshots` Wird als Sicherungsrichtlinie festgelegt.
++
+`DPDefault` Und `MirrorLatest` Die anderen standardmäßigen Sicherungsrichtlinien für SnapMirror Beziehungen sind verfügbar.
+
+.. Wählen Sie einen Schutzzeitplan aus.
++
+Standardmäßig wird der verwendet `hourly` Der Zeitplan ist ausgewählt.
+
+.. Vergewissern Sie sich, dass *Ja* zur Initialisierung der SnapVault-Beziehung ausgewählt ist.
++
+Alle Datensicherungsbeziehungen werden standardmäßig initialisiert. Durch Initialisieren der SnapMirror Beziehung wird sichergestellt, dass das Ziel-Volume über eine Baseline zum Sichern des Quell-Volume verfügt.
+
+.. Klicken Sie auf *Anwenden*, um die Änderungen zu speichern.
++
+image::../media/snapmirror_advanced_options_93.gif[Fenster „Erweiterte Optionen“]
+
+
+
+. Klicken Sie auf *Save*, um die SnapMirror Beziehung zu erstellen.
+. Vergewissern Sie sich, dass der Beziehungsstatus der SnapMirror-Beziehung im lautet `Snapmirrored` Bundesland.
++
+.. Navigieren Sie zum Fenster *Volumes* und wählen Sie dann den Datenträger aus, für den Sie die SnapMirror-Beziehung erstellt haben.
+.. Doppelklicken Sie auf das Volume, um die Volume-Details anzuzeigen, und klicken Sie dann auf *SCHUTZ*, um den Datenschutzstatus des Volumes anzuzeigen.
+
+
++
+image::../media/snapmirror_9_3.gif[Screenshot mit dem SnapMirror Status]
+
+
+
+
+
+== Nächste Schritte
+
+Sie müssen die Einstellungen für das Quell-Volume wie Thin Provisioning, Deduplizierung, Komprimierung und Autogrow notieren. Sie können diese Informationen nutzen, um die Zielvolume-Einstellungen zu überprüfen, wenn Sie die SnapMirror-Beziehung unterbrechen.

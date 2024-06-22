@@ -1,0 +1,99 @@
+---
+permalink: online-help-96-97/concept_protection_policies.html 
+sidebar: sidebar 
+keywords: online, help, protection, policy, system, manager, create, edit, delete 
+summary: Mit System Manager können Sie Sicherungsrichtlinien erstellen, bearbeiten und löschen. 
+---
+= Management der Sicherungsrichtlinien mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Sicherungsrichtlinien zu erstellen, zu bearbeiten und zu löschen.
+
+
+
+== Sicherungsrichtlinien erstellen
+
+Mit System Manager können asynchrone Spiegelungsrichtlinien auf Cluster-Ebene, Vault-Richtlinien oder Richtlinien für Spiegelungen und Vault erstellt und diese Richtlinien auf eine Datensicherungsbeziehung auf Cluster-Ebene angewendet werden.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Schutzrichtlinien*.
+. Klicken Sie Auf *Erstellen*.
+. Wählen Sie im Dialogfeld *Richtlinie erstellen* den Richtlinientyp aus, den Sie erstellen möchten.
+. Geben Sie den Namen der Richtlinie und die Übertragungspriorität an.
++
+Niedrig zeigt an, dass die Übertragung die niedrigste Priorität hat. Transfers mit niedriger Priorität werden in der Regel nach Transfers mit normaler Priorität eingeplant. Standardmäßig ist die Übertragungspriorität auf Normal festgelegt.
+
+. *Optional:* Aktivieren Sie das Kontrollkästchen *Netzwerkkomprimierung aktivieren*, um die Daten zu komprimieren, die während einer Datenübertragung übertragen werden.
+. *Optional:* Wählen Sie für eine asynchrone Spiegelrichtlinie das Kontrollkästchen *Alle Quell-Snapshot-Kopien übertragen* aus, um die Regel „`all_source_Snapshots`“ in die Spiegelrichtlinie aufzunehmen, die alle Snapshot-Kopien vom Quell-Volume sichert.
+. *Optional:* Klicken Sie auf *Kommentar hinzufügen* um zusätzliche Kommentare für die Richtlinie hinzuzufügen.
+. Geben Sie für eine Vault-Richtlinie oder eine Mirror-Vault-Richtlinie ein SnapMirror-Etikett und eine Anzahl an Ziel-Aufbewahrung an.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Sicherungsrichtlinien
+
+Über das Fenster Protection Policies können Sie Informationen zu Mirror-, Vault- und Mirror-Richtlinien erstellen, managen und anzeigen.
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld „Create Policy“, in dem Sie eine Mirror-, Vault- oder Mirror-Vault-Richtlinie erstellen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Richtlinie bearbeiten, in dem Sie eine Richtlinie bearbeiten können.
+
+* *Löschen*
++
+Öffnet das Dialogfeld Richtlinie löschen, in dem Sie eine Richtlinie löschen können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der Sicherungsrichtlinien
+
+* *Name*
++
+Zeigt den Namen der Schutzrichtlinie an.
+
+* *Typ*
++
+Zeigt den Richtlinientyp an, der Vault, Mirror Vault oder Asynchronous Mirror sein kann.
+
+* *Kommentar*
++
+Zeigt die für die Richtlinie angegebene Beschreibung an.
+
+* * Priorität Übertragen*
++
+Zeigt die Datenübertragungspriorität an, z. B. Normal oder Niedrig.
+
+
+
+
+
+=== Detailbereich
+
+* *Registerkarte Policy Details*
++
+Zeigt Details der Sicherungsrichtlinie an, z. B. den Benutzer, der die Richtlinie erstellt hat, die Anzahl der Regeln, die Anzahl der Aufbewahrung und den Status der Netzwerkkomprimierung.
+
+* *Registerkarte Richtlinien*
++
+Zeigt Details der Regeln an, die auf die Richtlinie angewendet werden. Die Registerkarte Richtlinienregeln wird nur angezeigt, wenn die ausgewählte Richtlinie Regeln enthält.
+
+

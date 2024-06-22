@@ -1,0 +1,35 @@
+---
+permalink: nas-multiprotocol-config/task_deciding_where_to_provision_new_volume.html 
+sidebar: sidebar 
+keywords: create, multiprotocol, volume, volume, storage, virtual, machine, svm, configuration, decision, workflow, decide where to provision the new volume 
+summary: Bevor Sie ein neues Multiprotokoll-Volume erstellen, müssen Sie entscheiden, ob das Volume in eine vorhandene Storage Virtual Machine integriert werden soll. Falls ja, wie viel Konfiguration die SVM benötigt. Diese Entscheidung bestimmt Ihren Workflow. 
+---
+= Legen Sie fest, wo das neue Volume bereitgestellt werden soll
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie ein neues Multiprotokoll-Volume erstellen, müssen Sie entscheiden, ob das Volume in eine vorhandene Storage Virtual Machine (SVM) integriert werden soll. Falls ja, wie viel Konfiguration die SVM benötigt. Diese Entscheidung bestimmt Ihren Workflow.
+
+
+
+== Verfahren
+
+* Wenn Sie ein Volume auf einer neuen SVM bereitstellen möchten, erstellen Sie eine grundlegende SVM.
++
+link:task_creating_new_svm.html["Erstellen einer grundlegenden SVM"]
+
++
+Sie müssen diese Option auswählen, wenn CIFS und NFS noch nicht auf einer vorhandenen SVM aktiviert sind.
+
+* Wenn Sie ein Volume auf einer vorhandenen SVM mit aktiviertem CIFS und NFS bereitstellen möchten, jedoch nicht konfiguriert sind, fügen Sie der vorhandenen SVM CIFS- und NFS-Zugriff hinzu.
++
+link:concept_adding_nas_access_to_existing_svm.html["Hinzufügen von CIFS- und NFS-Zugriff auf eine vorhandene SVM"]
+
+* Wenn Sie ein Volume auf einer vorhandenen SVM bereitstellen möchten, die vollständig für CIFS- und NFS-Multi-Protokoll-Zugriff konfiguriert ist, können Sie das Volume direkt erstellen und konfigurieren.
++
+link:task_creating_configuring_volume.html["Erstellen und Konfigurieren eines Volumes"]
+
+

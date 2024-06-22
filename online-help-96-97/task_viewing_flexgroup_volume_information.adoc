@@ -1,0 +1,35 @@
+---
+permalink: online-help-96-97/task_viewing_flexgroup_volume_information.html 
+sidebar: sidebar 
+keywords: flexgroup, volume, graphical, online, help, system, manager 
+summary: Mit System Manager können Informationen über ein FlexGroup Volume angezeigt werden. Sie können eine grafische Darstellung des zugewiesenen Speicherplatzes, des Sicherungsstatus und der Performance eines FlexGroup Volume anzeigen. 
+---
+= Zeigen Sie Informationen zum FlexGroup Volume mit System Manager - ONTAP 9.7 und früher an
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie Informationen zu einem FlexGroup Volume anzeigen. Sie können eine grafische Darstellung des zugewiesenen Speicherplatzes, des Sicherungsstatus und der Performance eines FlexGroup Volume anzeigen.
+
+.Über diese Aufgabe
+Sie können auch die für das FlexGroup Volume verfügbaren Snapshot Kopien, die Datensicherungsbeziehungen für das FlexGroup Volume und die Kennzahlen zur durchschnittlichen Performance, Metriken zur Lese-Performance und Schreib-Performance des FlexGroup Volumes sehen, die auf Latenz, IOPS und Durchsatz basieren.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie in der angezeigten Liste der FlexGroup Volumes das FlexGroup-Volume aus, zu dem Sie Informationen anzeigen möchten.
++
+Es werden Informationen zum FlexGroup-Volume, den dem FlexGroup-Volume zugewiesenen Speicherplatz, der Sicherungsstatus des FlexGroup Volume und die Performance-Informationen zum FlexGroup Volume angezeigt.
+
+. Klicken Sie auf den Link *Mehr Details anzeigen*, um weitere Informationen zum FlexGroup Volume anzuzeigen.
+. Klicken Sie auf die Registerkarte *Snapshot Kopien*, um die Snapshot Kopien des FlexGroup Volumes anzuzeigen.
+. Klicken Sie auf die Registerkarte *Data Protection*, um die Datensicherungsbeziehungen für das FlexGroup-Volume anzuzeigen.
+. Klicken Sie auf die Registerkarte *Storage Efficiency*, um die Einstellungen zur Storage-Effizienz anzuzeigen.
+. Klicken Sie auf die Registerkarte *Performance*, um die durchschnittlichen Performance-Metriken, Metriken zur Lese-Performance und Metriken zur Schreib-Performance des FlexGroup Volumes anzuzeigen, die auf Latenz, IOPS und Durchsatz basieren.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

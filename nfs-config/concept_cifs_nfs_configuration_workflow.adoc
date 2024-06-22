@@ -1,0 +1,16 @@
+---
+permalink: nfs-config/concept_cifs_nfs_configuration_workflow.html 
+sidebar: sidebar 
+keywords: configuring, configure, creating, create, aggregate, workflow, goal-creating, nfs-enabled, svm, access, exist, volume, access, nfs configuration workflow 
+summary: 'Bei der Konfiguration von NFS müssen optional ein Aggregat erstellt und anschließend ein Workflow ausgewählt werden, der speziell auf Ihr Ziel zugeschnitten ist: Es wird eine neue SVM mit NFS-Unterstützung erstellt, NFS-Zugriff für eine vorhandene SVM konfiguriert oder ein NFS-Volume einfach einer vorhandenen SVM hinzugefügt, die bereits vollständig für NFS-Zugriff konfiguriert ist.' 
+---
+= NFS-Konfigurationsworkflow
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei der Konfiguration von NFS müssen optional ein Aggregat erstellt und anschließend ein Workflow ausgewählt werden, der auf Ihre Zielvorgabe zugeschnitten ist: Erstellung einer neuen SVM mit NFS-Aktivierung, Konfiguration des NFS-Zugriffs auf eine vorhandene SVM oder das Hinzufügen eines NFS-Volumes zu einer vorhandenen SVM, die bereits vollständig für NFS-Zugriff konfiguriert ist.
+
+image::../media/nfs_config.gif[Zeigt einen Überblick über den NFS-Setup-Prozess,including the steps that occur before NFS setup begins,and the steps that can be optionally performed afterwards.]

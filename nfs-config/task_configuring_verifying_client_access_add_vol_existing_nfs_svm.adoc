@@ -1,0 +1,37 @@
+---
+permalink: nfs-config/task_configuring_verifying_client_access_add_vol_existing_nfs_svm.html 
+sidebar: sidebar 
+keywords: client, access, unix, file, permission, administration, host, add, export, system, manager, group, volume, configure and verify nfs client access, add an nfs volume to an nfs-enabled svm 
+summary: Wenn Sie bereit sind, können Sie ausgewählten Clients Zugriff auf die Freigabe gewähren, indem Sie UNIX-Dateiberechtigungen auf einem UNIX-Administrationshost festlegen und eine Exportregel in System Manager hinzufügen. Anschließend sollten Sie testen, ob die betroffenen Benutzer oder Gruppen auf das Volume zugreifen können. 
+---
+= NFS-Client-Zugriff konfigurieren und überprüfen (NFS-Volume zu einer SVM mit NFS-Aktivierung hinzufügen)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie bereit sind, können Sie ausgewählten Clients Zugriff auf die Freigabe gewähren, indem Sie UNIX-Dateiberechtigungen auf einem UNIX-Administrationshost festlegen und eine Exportregel in System Manager hinzufügen. Anschließend sollten Sie testen, ob die betroffenen Benutzer oder Gruppen auf das Volume zugreifen können.
+
+.Schritte
+. Legen Sie fest, welche Clients und Benutzer oder Gruppen Zugriff auf die Freigabe erhalten.
+. Verwenden Sie auf einem UNIX-Administrationshost den Root-Benutzer, um die UNIX-Eigentumsrechte und Berechtigungen auf dem Volume festzulegen.
+. Fügen Sie in System Manager der Exportrichtlinie Regeln hinzu, damit NFS-Clients auf die Freigabe zugreifen können.
++
+.. Wählen Sie die Storage Virtual Machine (SVM) aus und klicken Sie auf *SVM Settings*.
+.. Klicken Sie im Fensterbereich *Richtlinien* auf *Richtlinien exportieren*.
+.. Wählen Sie die Exportrichtlinie mit demselben Namen wie das Volume aus.
+.. Klicken Sie auf der Registerkarte *Exportregeln* auf *Hinzufügen* und geben Sie einen Satz von Clients an.
+.. Wählen Sie *2* für den *Regelindex* aus, damit diese Regel nach der Regel ausgeführt wird, die den Zugriff auf den Administrationshost ermöglicht.
+.. Wählen Sie *NFSv3* aus.
+.. Geben Sie die gewünschten Zugriffsdaten an, und klicken Sie auf *OK.*
++
+Sie können den Clients vollständigen Lese-/Schreibzugriff gewähren, indem Sie das Subnetz eingeben `10.1.1.0/24` Als *Client Specification* und alle Zugangskästen außer *Superuser Access zulassen* auswählen.
+
++
+image::../media/export_rule_for_clients_nfs_nfs.gif[Dieser Screenshot wird durch den vorhergehenden Text beschrieben.]
+
+
+
+. Melden Sie sich auf einem UNIX-Client als einer der Benutzer an, der nun Zugriff auf das Volume hat, und überprüfen Sie, ob Sie das Volume mounten und eine Datei erstellen können.
+

@@ -1,0 +1,66 @@
+---
+permalink: expansion/task_verifying_health_system.html 
+sidebar: sidebar 
+keywords: expand, cluster, verify, component, healthy, config, advisor, tool, run, ontap, cli, command, verify the health of the system 
+summary: Bevor Sie ein Cluster erweitern, müssen Sie überprüfen, ob alle Komponenten des Clusters ordnungsgemäß sind, indem Sie das Config Advisor Tool ausführen und mehrere ONTAP-CLI-Befehle ausführen. 
+---
+= Überprüfen Sie den Systemzustand
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie ein Cluster erweitern, müssen Sie überprüfen, ob alle Komponenten des Clusters ordnungsgemäß sind, indem Sie das Config Advisor Tool ausführen und mehrere ONTAP-CLI-Befehle ausführen.
+
+.Schritte
+. Vergewissern Sie sich, dass die neueste Version von Config Advisor verfügbar ist:
++
+** Wenn Sie Config Advisor nicht auf Ihrem Laptop haben, laden Sie es herunter.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"]
+
+** Wenn Sie Config Advisor haben, starten Sie es, klicken Sie auf *Hilfe* > *nach Updates suchen* und folgen Sie den Anweisungen, um es ggf. zu aktualisieren.
++
+[NOTE]
+====
+Deinstallieren Sie die vorherige Version des Tools nicht, oder löschen Sie den Datenordner während des Upgrades. Das Tool deinstalliert die vorherige Version und ersetzt sie durch die neueste Version. Er benennt den Datenordner als den neuesten Ordner und behält alle Inhalte im Ordner bei.
+
+====
+
+
+. Überprüfen Sie die Verkabelung und Konfiguration, indem Sie Config Advisor ausführen:
++
+.. Verbinden Sie Ihren Laptop mit dem Managementnetzwerk des Clusters.
+.. Klicken Sie Auf *Daten Sammeln*.
++
+Config Advisor zeigt alle gefundenen Probleme an.
+
+.. Wenn Probleme gefunden werden, beheben Sie sie, und führen Sie das Tool erneut aus.
+
+
+. Überprüfen Sie den Systemzustand des Systems mit den folgenden Befehlen:
++
+.. Vergewissern Sie sich, dass sich das Cluster mit dem in einem ordnungsgemäßen Zustand befindet `system health status show` Befehl und Überprüfung des Status `ok`.
++
+[listing]
+----
+cluster1::> system health status show
+Status
+---------------
+ok
+----
+.. Vergewissern Sie sich, dass sich alle Nodes im Cluster in einem ordnungsgemäßen Zustand befinden. Verwenden Sie dazu die `cluster show` Überprüfen Sie den Befehl und, ob der Systemzustand der einzelnen Nodes lautet `true`.
++
+[listing]
+----
+cluster1::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+cluster1-1            true    true
+cluster1-2            true    true
+2 entries were displayed.
+----
+
+
+

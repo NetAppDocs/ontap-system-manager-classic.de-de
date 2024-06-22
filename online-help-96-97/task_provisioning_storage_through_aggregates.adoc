@@ -1,0 +1,318 @@
+---
+permalink: online-help-96-97/task_provisioning_storage_through_aggregates.html 
+sidebar: sidebar 
+keywords: provision, storage, aggregates, snaplock, fabricpool, online, help, flash, pool 
+summary: Sie können ein Aggregat auf Basis von Storage-Empfehlungen oder manuell je nach Anforderung erstellen. Sie können Flash Pool Aggregate, SnapLock Aggregate und einen FabricPool-fähigen Aggregate erstellen, um mithilfe von System Manager Storage für ein oder mehrere Volumes bereitzustellen. 
+---
+= Bereitstellung von Storage über Aggregate mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um ein Aggregat auf Basis von Storage-Empfehlungen oder manuell zu erstellen, je nach Ihren Anforderungen. Sie können Flash Pool Aggregate, SnapLock Aggregate und einen FabricPool-fähigen Aggregate erstellen, um mithilfe von System Manager Storage für ein oder mehrere Volumes bereitzustellen.
+
+.Bevor Sie beginnen
+Sie müssen über genügend freie Disketten verfügen, um ein Aggregat zu erstellen.
+
+.Über diese Aufgabe
+Sie können die folgenden Aktionen nicht mit System Manager ausführen:
+
+* Kombinieren Sie Festplatten unterschiedlicher Größen, auch wenn genügend freie Disketten unterschiedlicher Größen vorhanden sind.
++
+Sie können zunächst ein Aggregat mit Festplatten derselben Größe erstellen und dann später Festplatten einer anderen Größe hinzufügen.
+
+* Kombinieren Sie Festplatten mit verschiedenen Prüfsummenarten.
++
+Sie können zunächst ein Aggregat mit einem einzelnen Prüfsummentyp erstellen und später Storage-Erweiterungen eines anderen Prüfsummentyps hinzufügen.
+
+
+
+
+
+== Erstellen Sie ein Aggregat auf Basis von Storage-Empfehlungen
+
+Sie können ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um ein Aggregat auf Basis von Storage-Empfehlungen zu erstellen. System Manager analysiert die Konfiguration Ihres Storage-Systems und gibt Storage-Empfehlungen, wie z. B. die Anzahl der erstellten Aggregate, die verfügbaren Nodes und die verfügbaren freien Festplatten.
+
+.Über diese Aufgabe
+* Es kann kein Aggregat auf Basis von Storage-Empfehlungen in Konfigurationen mit Cloud Volumes ONTAP, ONTAP Select und MetroCluster erstellt werden.
+* Fehler werden auf dem Bildschirm angezeigt.
++
+Sie können diese Fehler beheben und dann ein Aggregat auf Basis der Storage-Empfehlungen erstellen oder Sie können ein Aggregat manuell erstellen.
+
+
+
+.Schritte
+. Erstellen Sie ein Aggregat mit einer der folgenden Methoden:
++
+** Klicken Sie Auf *Applikationen & Tiers* > *Storage Tiers* > *Aggregat Hinzufügen*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate* > *Erstellen*.
+
+
+. Überprüfen Sie die Lagerempfehlungen, und klicken Sie dann auf *Absenden*.
++
+Das Dialogfeld Informationen zeigt den Status der Aggregate an.
+
+. Klicken Sie auf *Ausführen im Hintergrund*, um zum Fenster *Aggregate* zu navigieren.
+. Klicken Sie auf *Aktualisieren*, um die erstellten Aggregate anzuzeigen.
+
+
+
+
+== Erstellen Sie manuell ein Aggregat
+
+Sie können manuell ein Aggregat erstellen, das aus nur HDDs oder nur SSDs besteht, wenn Sie ONTAP System Manager Classic verwenden (verfügbar in ONTAP 9.7 und älter).
+
+.Bevor Sie beginnen
+Alle Festplatten müssen dieselbe Größe haben.
+
+.Über diese Aufgabe
+* Wenn Sie in ONTAP Select ein Aggregat auf einem Cluster mit vier Nodes erstellen, ist die Option für gespiegeltes Aggregat standardmäßig ausgewählt.
+* Ab ONTAP 9.0 können Sie Aggregate mit einer Festplattengröße von mindestens 10 TB erstellen.
+* Wenn der Festplattentyp der Aggregat-Festplatten FSAS oder MSATA ist und die Festplattengröße mindestens 10 TB beträgt, ist RAID-TEC der einzige verfügbare RAID-Typ.
+
+
+.Schritte
+. Erstellen Sie ein Aggregat mit einer der folgenden Methoden:
++
+** Klicken Sie Auf *Applikationen & Tiers* > *Storage Tiers* > *Aggregat Hinzufügen*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate* > *Erstellen*.
+
+
+. Aktivieren Sie die Option *Manually Create Aggregate*, um ein Aggregat zu erstellen.
+. So erstellen Sie ein Aggregat:
++
+.. Geben Sie den Namen des Aggregats, den Festplattentyp und die Anzahl der Festplatten oder Partitionen an, die in das Aggregat einbezogen werden sollen.
++
+Die minimale Hot-Spare-Regel wird auf die Laufwerksgruppe angewendet, die die größte Festplattengröße hat.
+
+.. *Optional:* RAID-Konfiguration des Aggregats ändern:
++
+... Klicken Sie Auf *Ändern*.
+... Geben Sie im Dialogfeld *RAID-Konfiguration* ändern den RAID-Typ und die RAID-Gruppengröße an.
++
+Gemeinsam genutzte Festplatten unterstützen zwei RAID-Typen: RAID DP und RAID-TEC.
+
+... Klicken Sie Auf *Speichern*.
+
+
+.. Wenn Sie das Aggregat spiegeln wollen, aktivieren Sie das Kontrollkästchen *Dieses Aggregat* spiegeln.
++
+Bei MetroCluster-Konfigurationen ist das Erstellen von nicht gespiegelten Aggregaten eingeschränkt. Daher ist die Spiegelungsoption für MetroCluster-Konfigurationen standardmäßig aktiviert.
+
+
+
+. Klicken Sie Auf *Erstellen*.
+
+
+.Ergebnisse
+Das Aggregat wird mit der angegebenen Konfiguration erstellt und der Liste der Aggregate im Fenster Aggregate hinzugefügt.
+
+
+
+== Erstellen Sie manuell ein Flash Pool Aggregat
+
+Mit ONTAP System Manager classic (erhältlich in ONTAP 9.7 und älter) können Sie manuell ein Flash Pool Aggregat erstellen oder ein vorhandenes HDD-Aggregat zu einem Flash Pool Aggregat konvertieren, indem Sie SSDs hinzufügen. Wenn Sie ein neues HDD-Aggregat erstellen, können Sie ihm einen SSD-Cache bereitstellen und ein Flash Pool Aggregat erstellen.
+
+.Bevor Sie beginnen
+* Sie müssen sich mit plattformspezifischen Best Practices und Workload-spezifischen Best Practices für die Größe und Konfiguration der SSD-Tiers für Flash Pool Aggregate vertraut machen.
+* Sämtliche HDDs müssen bei Null angegeben werden.
+* Wenn Sie dem Aggregat SSDs hinzufügen möchten, müssen alle vorhandenen SSDs und dedizierten SSDs dieselbe Größe haben.
+
+
+.Über diese Aufgabe
+* Sie können nicht partitionierte SSDs verwenden, während Sie ein Flash Pool Aggregat erstellen.
+* Sie können die Aggregate nicht spiegeln, wenn die Cache-Quelle Storage Pools ist.
+* Ab ONTAP 9.0 können Sie Aggregate mit einer Festplattengröße von mindestens 10 TB erstellen.
+* Wenn der Festplattentyp der Aggregat-Festplatten FSAS oder MSATA ist und die Festplattengröße mindestens 10 TB beträgt, ist RAID-TEC die einzige Option, die für den RAID-Typ verfügbar ist.
+
+
+.Schritte
+. Erstellen Sie ein Aggregat mit einer der folgenden Methoden:
++
+** Klicken Sie Auf *Applikationen & Tiers* > *Storage Tiers* > *Aggregat Hinzufügen*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate* > *Erstellen*.
+
+
+. Aktivieren Sie die Option *Manually Create Aggregate*, um ein Aggregat zu erstellen.
+. Geben Sie im Fenster *Create Aggregate* den Namen des Aggregats, den Festplattentyp und die Anzahl der Festplatten oder Partitionen an, die für die HDDs im Aggregat berücksichtigt werden sollen.
+. Wenn Sie das Aggregat spiegeln wollen, aktivieren Sie das Kontrollkästchen *Dieses Aggregat* spiegeln.
++
+Bei MetroCluster-Konfigurationen ist das Erstellen von nicht gespiegelten Aggregaten eingeschränkt. Daher ist die Spiegelungsoption für MetroCluster-Konfigurationen standardmäßig aktiviert.
+
+. Klicken Sie *Verwenden Sie Flash Pool Cache mit diesem Aggregat*.
+. Geben Sie die Cache-Quelle an:
++
+|===
+| Wenn Sie die Cache-Quelle auswählen möchten, als... | Dann... 
+
+
+ a| 
+Storage-Pools
+ a| 
+.. Wählen Sie *Speicherpools* als Cache-Quelle aus.
+.. Wählen Sie den Speicherpool aus, aus dem der Cache abgerufen werden kann, und geben Sie dann die Cachegröße an.
+.. Ändern Sie gegebenenfalls den RAID-Typ.
+
+
+
+
+ a| 
+Dedizierte SSDs
+ a| 
+.. Wählen Sie als Cache-Quelle * Dedicated SSDs* aus.
+.. Wählen Sie die SSD-Größe und die Anzahl der SSDs aus, die im Aggregat enthalten sein sollen.
+.. Ändern Sie die RAID-Konfiguration, falls erforderlich:
++
+... Klicken Sie Auf *Ändern*.
+... Geben Sie im Dialogfeld RAID-Konfiguration ändern den RAID-Typ und die RAID-Gruppengröße an.
+... Klicken Sie Auf *Speichern*.
+
+
+
+
+|===
+. Klicken Sie Auf *Erstellen*.
+
+
+.Ergebnisse
+Das Flash Pool Aggregat wird mit der angegebenen Konfiguration erstellt und der Liste der Aggregate im Fenster Aggregate hinzugefügt.
+
+
+
+== Manuelles Erstellen eines SnapLock Aggregats
+
+Sie können System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um manuell ein SnapLock-Compliance-Aggregat oder ein SnapLock Enterprise-Aggregat zu erstellen. Sie können SnapLock Volumes auf diesen Aggregaten erstellen, die mit WORM-Funktionen „`write once, read many`“ (WORM) verfügbar sind.
+
+.Bevor Sie beginnen
+Die SnapLock Lizenz muss hinzugefügt worden sein.
+
+.Über diese Aufgabe
+* In MetroCluster Konfigurationen können nur SnapLock Enterprise Aggregate erstellt werden.
+* Bei Array-LUNs werden nur SnapLock Enterprise Aggregate unterstützt.
+* Ab ONTAP 9.0 können Sie Aggregate mit einer Festplattengröße von mindestens 10 TB erstellen.
+* Wenn der Festplattentyp der Aggregat-Festplatten FSAS oder MSATA ist und die Festplattengröße mindestens 10 TB beträgt, ist RAID-TEC die einzige Option, die für den RAID-Typ verfügbar ist.
+* Ab ONTAP 9.1 können Sie ein SnapLock Aggregat auf einer AFF Plattform erstellen.
+
+
+.Schritte
+. Erstellen Sie ein SnapLock Aggregat mit einer der folgenden Methoden:
++
+** Klicken Sie Auf *Applikationen & Tiers* > *Storage Tiers* > *Aggregat Hinzufügen*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate* > *Erstellen*.
+
+
+. Aktivieren Sie die Option *Manually Create Aggregate*, um ein Aggregat zu erstellen.
+. So erstellen Sie ein SnapLock Aggregat:
++
+.. Geben Sie den Namen des Aggregats, den Festplattentyp und die Anzahl der Festplatten oder Partitionen an, die in das Aggregat einbezogen werden sollen.
++
+Sie können den Namen eines SnapLock Compliance-Aggregats nicht ändern, nachdem Sie das Aggregat erstellt haben.
+
++
+Die minimale Hot-Spare-Regel wird auf die Laufwerksgruppe angewendet, die die größte Festplattengröße hat.
+
+.. *Optional:* RAID-Konfiguration des Aggregats ändern:
++
+... Klicken Sie Auf *Ändern*.
+... Geben Sie im Dialogfeld RAID-Konfiguration ändern den RAID-Typ und die RAID-Gruppengröße an.
++
+Gemeinsam genutzte Festplatten unterstützen zwei RAID-Typen: RAID-DP und RAID-TEC.
+
+... Klicken Sie Auf *Speichern*.
+
+
+.. Geben Sie den SnapLock-Typ an.
+.. Wenn Sie das System ComplexClock nicht initialisiert haben, aktivieren Sie das Kontrollkästchen *ComplianceClock initialisieren*.
++
+Diese Option wird nicht angezeigt, wenn die ComplexClock bereits auf dem Knoten initialisiert ist.
+
++
+[NOTE]
+====
+Sie müssen sicherstellen, dass die aktuelle Systemzeit korrekt ist. Die ComlianceClock wird basierend auf der Systemuhr eingestellt. Sobald die ComplexClock eingestellt ist, können Sie die ComplianceClock nicht ändern oder beenden.
+
+====
+.. *Optional:* Wenn Sie das Aggregat spiegeln wollen, aktivieren Sie das Kontrollkästchen *dieses Aggregat spiegeln*.
++
+Bei MetroCluster-Konfigurationen ist das Erstellen von nicht gespiegelten Aggregaten eingeschränkt. Daher ist die Spiegelungsoption für MetroCluster-Konfigurationen standardmäßig aktiviert.
+
++
+Standardmäßig ist die Spiegelungsoption für SnapLock Compliance-Aggregate deaktiviert.
+
+
+
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Manuelles Erstellen eines FabricPool fähigen Aggregats
+
+Mithilfe von ONTAP System Manager classic (verfügbar ab ONTAP 9.7) kann manuell ein FabricPool-fähiges Aggregat erstellt oder ein vorhandenes SSD-Aggregat in ein FabricPool-fähiges Aggregat konvertiert werden, indem ein Cloud-Tier an das SSD-Aggregat angehängt wird.
+
+.Bevor Sie beginnen
+* Sie müssen eine Cloud-Tier erstellt und an den Cluster angeschlossen haben, in dem sich das SSD-Aggregat befindet.
+* Ein Cloud-Tier vor Ort muss erstellt worden sein.
+* Zwischen dem Cloud Tier und dem Aggregat muss eine dedizierte Netzwerkverbindung bestehen.
+
+
+.Über diese Aufgabe
+Die folgenden Objektspeicher können als Cloud-Tiers verwendet werden:
+
+* StorageGRID
+* Alibaba Cloud (ab System Manager 9.6)
+* Amazon Web Services (AWS) Simple Storage Service (S3)
+* Amazon Web Services (AWS) Commercial Cloud Service (C2S)
+* Microsoft Azure Blob Storage
+* IBM Cloud
+* Google Cloud
+
+
+[NOTE]
+====
+* Azure Stack, bei dem es sich um lokale Azure Services handelt, wird nicht unterstützt.
+* Wenn Sie einen beliebigen Objektspeicher außer StorageGRID als Cloud-Tier verwenden möchten, müssen Sie über die FabricPool Kapazitätslizenz verfügen.
+
+
+====
+.Schritte
+. Mit einer der folgenden Methoden erstellen Sie ein FabricPool-fähiges Aggregat:
++
+** Klicken Sie Auf *Applikationen & Tiers* > *Storage Tiers* > *Aggregat Hinzufügen*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate* > *Erstellen*.
+
+
+. Aktivieren Sie die Option *Manually Create Aggregate*, um ein Aggregat zu erstellen.
+. Erstellung eines FabricPool-fähigen Aggregats:
++
+.. Geben Sie den Namen des Aggregats, den Festplattentyp und die Anzahl der Festplatten oder Partitionen an, die in das Aggregat einbezogen werden sollen.
++
+[NOTE]
+====
+Nur rein Flash-basierte Aggregate unterstützen FabricPool-fähige Aggregate.
+
+====
++
+Die minimale Hot-Spare-Regel wird auf die Laufwerksgruppe angewendet, die die größte Festplattengröße hat.
+
+.. *Optional:* RAID-Konfiguration des Aggregats ändern:
++
+... Klicken Sie Auf *Ändern*.
+... Geben Sie im Dialogfeld RAID-Konfiguration ändern den RAID-Typ und die RAID-Gruppengröße an.
++
+Gemeinsam genutzte Festplatten unterstützen zwei RAID-Typen: RAID-DP und RAID-TEC.
+
+... Klicken Sie Auf *Speichern*.
+
+
+
+
+. Aktivieren Sie das Kontrollkästchen *FabricPool*, und wählen Sie dann eine Cloud-Ebene aus der Liste aus.
+. Klicken Sie Auf *Erstellen*.
+
+
+*Verwandte Informationen*
+
+http://www.netapp.com/us/media/tr-4070.pdf["Technischer Bericht 4070 zu NetApp: Flash Pool Design und Implementierung"^]

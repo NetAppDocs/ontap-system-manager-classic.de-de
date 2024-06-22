@@ -1,0 +1,91 @@
+---
+permalink: volume-move/task_moving_volume_using_system_manager.html 
+sidebar: sidebar 
+keywords: move, volume, system, manager, destination, aggregate, operation, monitor, job, move a volume using system manager 
+summary: Über die klassische Benutzeroberfläche von ONTAP System Manager mit ONTAP 9.7 oder einer älteren Version können Sie ein Volume verschieben, indem Sie ein Volume und das Zielaggregat auswählen, den Verschiebevorgang starten und optional den Auftrag zur Volume-Verschiebung überwachen. Bei Nutzung von System Manager wird die Verschiebung eines Volumes automatisch abgeschlossen. 
+---
+= Verschieben Sie ein Volume mit System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ein Volume über die Schnittstelle ONTAP System Manager _classic_ mit ONTAP 9.7 oder einer älteren Version verschieben, indem Sie ein Volume und das Zielaggregat auswählen, den Verschiebevorgang starten und optional den Auftrag zur Volume-Verschiebung überwachen. Bei Nutzung von System Manager wird die Verschiebung eines Volumes automatisch abgeschlossen.
+
+.Bevor Sie beginnen
+Sie sollten den verfügbaren Platz auf dem Quellaggregat und dem Zielaggregat vor der Verschiebung des Volumes und nach der Verschiebung des Volumes überprüft haben.
+
+.Über diese Aufgabe
+Ein Volume-Verschiebevorgang wird nur in demselben Cluster unterstützt. Darüber hinaus muss sich das Aggregat, von dem Sie das Volume verschieben, und das Aggregat, von dem Sie das Volume verschieben, in derselben Storage Virtual Machine (SVM) befinden. Durch eine Verschiebung eines Volumes wird der Client-Zugriff nicht unterbrochen.
+
+.Schritte
+. Navigieren Sie zum Fenster *Volumes*.
+. Wählen Sie das Volumen aus, das Sie verschieben möchten, und klicken Sie dann auf *Aktionen* > *Verschieben*.
+. Wählen Sie das Zielaggregat aus, und starten Sie dann die Volume-Verschiebung:
++
+.. Wählen Sie aus der Liste der möglichen Aggregate ein Zielaggregat aus, das nur die Aggregate mit der erforderlichen Kapazität enthält.
++
+Sie sollten den verfügbaren Speicherplatz, den gesamten Speicherplatz, den RAID-Typ und den Storage-Typ der Aggregate überprüfen. Wenn das Ziel beispielsweise besteht, die Performance-Merkmale des Volumes zu ändern, können Sie sich auf Aggregate mit dem gewünschten Storage-Typ konzentrieren.
+
+.. Klicken Sie auf *Move* und klicken Sie dann erneut auf *Move*, um zu bestätigen, dass Sie mit dem Vorgang Volume Move fortfahren möchten.
++
+Wenn das Dialogfeld Volume verschieben angezeigt wird, lassen Sie das Dialogfeld geöffnet, wenn Sie den Job zum Verschieben von Volumes überwachen möchten.
+
+
+
+. *Optional:* [[ste4-Monitor]]Überwachen Sie den Job zur Volume-Verschiebung:
++
+.. Klicken Sie im Dialogfeld *Volume verschieben* auf den Link zur *Job-ID* des Volume-Move-Jobs.
+.. Suchen Sie den Job zum Verschieben von Volumes, und prüfen Sie die Informationen in der Spalte *Status*.
++
+Der Job kann in mehreren Phasen ausgeführt werden, z. B. durch die Übertragung der ursprünglichen Basisdaten oder durch den Start eines Wechsels.
+
++
+image::../media/volume_move_3_job_cutover.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
+.. Klicken Sie im Fenster *Jobs* auf *Aktualisieren*, um den aktualisierten Jobstatus anzuzeigen.
++
+image::../media/volume_move_4_job_is_successful.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
++
+Der Jobstatus wird in geändert `Complete: Successful` Wenn die Bewegung des Volumens abgeschlossen ist.
+
+
+
+. Wenn der Auftrag zur Verschiebung eines Volumes in die Phase der verzögerten Umstellung wechselt, führen Sie eine manuelle Umstellung durch.
++
+.. Wählen Sie im Fenster *Volumes* das Volume aus, für das Sie den Job Volume Move initiiert haben.
+.. Initiierung der Umstellung für das Volume:
++
+|===
+
+
+| Wenn Sie laufen... | Führen Sie diese Schritte aus... 
+
+
+ a| 
+ONTAP 9.3 oder höher
+ a| 
+... Erweitern Sie die Lautstärke und klicken Sie auf den Link *Weitere Details anzeigen*, um weitere Informationen zum Volume anzuzeigen.
+... Klicken Sie auf der Registerkarte *Übersicht* auf *Umstellung*.
+
+
+
+
+ a| 
+ONTAP 9.2 oder früher
+ a| 
+Klicken Sie auf der Registerkarte *Volume Move Details* auf *Umstellung*.
+
+|===
+.. Klicken Sie im Dialogfeld *Umstellung* auf *Erweiterte Optionen* .
+.. Legen Sie die Umstellungsaktion und die Umstellungsdauer fest.
++
+image::../media/vol_move_cutover.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
+.. Klicken Sie auf *OK*.
+
+
+. Wiederholen <<step4-monitor,Schritt 4>>.
+

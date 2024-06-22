@@ -1,0 +1,34 @@
+---
+permalink: volume-disaster-recovery/task_verifying_source_volume_status.html 
+sidebar: sidebar 
+keywords: source, volume, unavailable, verify, offline, identify, destination, volume, activate, providing, provide, data, access, verify the status of the source volume 
+summary: Falls das Quell-Volume nicht verfügbar ist, müssen Sie sicherstellen, dass das Quell-Volume offline ist, und dann das Ziel-Volume identifizieren, das für den Datenzugriff aktiviert werden muss. 
+---
+= Überprüfen Sie den Status des Quell-Volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Falls das Quell-Volume nicht verfügbar ist, müssen Sie sicherstellen, dass das Quell-Volume offline ist, und dann das Ziel-Volume identifizieren, das für den Datenzugriff aktiviert werden muss.
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *source* ausführen.
+
+.Schritte
+. Navigieren Sie zum Fenster *Volumes*.
+. Wählen Sie das Quell-Volume aus, und überprüfen Sie dann, ob das Quell-Volume offline ist.
+. Identifizieren des Ziel-Volume in der SnapMirror Beziehung
++
+** Ab ONTAP 9.3: Doppelklicken Sie auf das Quell-Volume, um die Details anzuzeigen, und klicken Sie dann auf *PROTECTION*, um das Ziel-Volume in der SnapMirror-Beziehung und den Namen der SVM zu identifizieren, die das Volume enthält.
++
+image::../media/snapmirror_destination_93.gif[snapmirror Ziel 93]
+
+** ONTAP 9.2 oder früher: Klicken Sie auf die Registerkarte *Datensicherung* unten auf der Seite Volumes, um das Ziel-Volume in der SnapMirror-Beziehung und den Namen der SVM, die das Volume enthält, zu identifizieren.
++
+image::../media/volume_status_2.gif[Das Bild zeigt das Zielvolumen]
+
+
+
+

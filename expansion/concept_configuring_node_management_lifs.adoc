@@ -1,0 +1,58 @@
+---
+permalink: expansion/concept_configuring_node_management_lifs.html 
+sidebar: sidebar 
+keywords: controller, module, physical, install, power, configure, node-mangement, lif, configure node-management lifs 
+summary: Nachdem die Controller-Module physisch installiert sind, können Sie jedes einzelne einschalten und seine Node-Management-LIF konfigurieren. 
+---
+= Konfigurieren Sie LIFs für das Node-Management
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nachdem die Controller-Module physisch installiert sind, können Sie jedes einzelne einschalten und seine Node-Management-LIF konfigurieren.
+
+.Über diese Aufgabe
+Sie müssen dieses Verfahren auf beiden Knoten durchführen.
+
+.Schritte
+. Greifen Sie über die serielle Konsole auf das Controller-Modul zu.
+. Schalten Sie das Controller-Modul ein, und warten Sie, während der Node gebootet wird, und der Cluster Setup-Assistent wird automatisch auf der Konsole gestartet.
++
+[listing]
+----
+Welcome to the cluster setup wizard.
+
+You can enter the following commands at any time:
+  "help" or "?" - if you want to have a question clarified,
+  "back" - if you want to change previously answered questions, and
+  "exit" or "quit" - if you want to quit the cluster setup wizard.
+   Any changes you made before quitting will be saved.
+
+You can return to cluster setup at any time by typing "cluster setup".
+To accept a default or omit a question, do not enter a value.
+----
+. Befolgen Sie die Anweisungen im webbasierten Cluster Setup-Assistenten, um eine Node-Management-LIF unter Verwendung der zuvor erfassten Netzwerkinformationen zu konfigurieren.
+. Typ `exit` Nach der Konfiguration der LIF für das Node-Management wurde der Setup-Assistent beendet und die Administrationsaufgaben ausgeführt.
++
+[listing]
+----
+Use your web browser to complete cluster setup by accessing
+https://10.63.11.29
+
+Otherwise, press Enter to complete cluster setup using the command line interface:
+exit
+----
+. Melden Sie sich bei dem Node als an `admin` Benutzer, der kein Passwort erfordert.
++
+[listing]
+----
+Tue Mar 4 23:13:33 UTC 2015
+login: admin
+******************************************************
+* This is a serial console session. Output from this *
+* session is mirrored on the SP console session.     *
+----
+. Wiederholen Sie das gesamte Verfahren für das zweite neu installierte Controller-Modul.
+

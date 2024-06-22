@@ -1,0 +1,14 @@
+---
+permalink: peering/concept_creating_peer_relationships_93_later.html 
+sidebar: sidebar 
+keywords: peer, relationship, define, network, connection, enable, cluster, svm, exchange, data, secure, ontap, configure, configure peer relationships, Beginning with ontap 9.3 
+summary: Eine Peer-Beziehung definiert die Netzwerkverbindungen, mit denen Cluster und SVMs einen sicheren Datenaustausch ermöglichen. Beginnend mit ONTAP 9.3 bis ONTAP 9.7 können Sie die klassische Benutzeroberfläche des ONTAP System Manager verwenden, um eine vereinfachte Methode zum Konfigurieren von Peer-Beziehungen zwischen Clustern und zwischen SVMs durchzuführen. 
+---
+= Konfiguration von Peer-Beziehungen (beginnend mit ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Eine Peer-Beziehung definiert die Netzwerkverbindungen, mit denen Cluster und SVMs einen sicheren Datenaustausch ermöglichen. Ab ONTAP 9.3 können Sie bis ONTAP 9.7 mithilfe der Benutzeroberfläche des ONTAP System Manager _classic_ eine vereinfachte Methode zum Konfigurieren von Peer-Beziehungen zwischen Clustern und zwischen SVMs ausführen.

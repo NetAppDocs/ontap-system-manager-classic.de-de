@@ -1,0 +1,512 @@
+---
+permalink: online-help-96-97/concept_managing_network.html 
+sidebar: sidebar 
+keywords: system, manager, storage, create, manage, ipspace, broadcast, domain, subnet, network, interface, ethernet, port, fc, fcoe, adapter, online, help 
+summary: Mit System Manager kann das Netzwerk des Storage-Systems gemanagt werden, indem IPspaces, Broadcast-Domänen, Subnetze, Netzwerkschnittstellen, Ethernet-Ports, Und FC/FCoE-Adapter. 
+---
+= Managen Sie das Netzwerk mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) wird das Netzwerk des Storage-Systems verwaltet. Dazu werden IPspaces, Broadcast-Domänen, Subnetze, Netzwerkschnittstellen, Ethernet-Ports, Und FC/FCoE-Adapter.
+
+
+
+== Netzwerkfenster
+
+[role="lead"]
+Im Fenster Netzwerk können Sie die Liste der Netzwerkkomponenten anzeigen, wie Subnetze, Netzwerkschnittstellen, Ethernet-Ports, Broadcast-Domänen, FC/FCoE- und NVMe-Adapter und IPspaces ermöglichen, diese Komponenten in Ihrem Storage-System zu erstellen, zu bearbeiten oder zu löschen.
+
+
+
+=== Registerkarten
+
+* *Subnetz*
++
+Ermöglicht Ihnen, eine Liste von Subnetzen anzuzeigen und Subnetze zu erstellen, zu bearbeiten oder zu löschen.
+
+* *Netzwerkschnittstellen*
++
+Ermöglicht Ihnen das Anzeigen einer Liste von Netzwerkschnittstellen, das Erstellen, Bearbeiten oder Löschen von Schnittstellen aus Ihrem Storage-System, das Migrieren der LIFs, das Ändern des Status der Schnittstelle und das Rücksenden der Schnittstelle an den Home Port.
+
+* *Ethernet-Ports*
++
+Ermöglicht Ihnen das Anzeigen und Bearbeiten der Ports eines Clusters sowie das Erstellen, Bearbeiten oder Löschen von Schnittstellengruppen und VLAN-Ports.
+
+* *Broadcast-Domains*
++
+Ermöglicht Ihnen, eine Liste von Broadcast-Domänen anzuzeigen und Domänen aus Ihrem Storage-System zu erstellen, zu bearbeiten oder zu löschen.
+
+* * FC/FCoE und NVMe Adapter*
++
+Ermöglicht Ihnen, die Ports in einem Cluster anzuzeigen und die FC/FCoE- und NVMe-Adaptereinstellungen zu bearbeiten.
+
+* *IPspaces*
++
+Ermöglicht Ihnen, eine Liste von IPspaces und Broadcast-Domänen anzuzeigen und einen IPspace vom Speichersystem zu erstellen, zu bearbeiten oder zu löschen.
+
+
+
+
+
+=== Registerkarte Subnetz
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Subnetz erstellen, in dem Sie neue Subnetze erstellen können, die Konfigurationsinformationen zum Erstellen einer Netzwerkschnittstelle enthalten.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Subnetz bearbeiten, in dem Sie bestimmte Attribute eines Subnetzes ändern können, z. B. Name, Subnetzadresse, IP-Adressbereich und Gateway-Details.
+
+* *Löschen*
++
+Löscht das ausgewählte Subnetz.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Subnetz-Liste
+
+* *Name*
++
+Gibt den Namen des Subnetzes an.
+
+* *Subnetz-IP/Subnetzmaske*
++
+Gibt die Details der Subnetzadresse an.
+
+* *Gateway*
++
+Gibt die IP-Adresse des Gateways an.
+
+* *Verfügbar*
++
+Gibt die Anzahl der im Subnetz verfügbaren IP-Adressen an.
+
+* *Verwendet*
++
+Gibt die Anzahl der im Subnetz verwendeten IP-Adressen an.
+
+* *Gesamtzahl*
++
+Gibt die Gesamtzahl der IP-Adressen (verfügbar und verwendet) im Subnetz an.
+
+* *Broadcast-Domain*
++
+Gibt die Broadcast-Domäne an, zu der das Subnetz gehört.
+
+* *IPspace*
++
+Gibt den IPspace an, zu dem das Subnetz gehört.
+
+
+
+
+
+=== Detailbereich
+
+Der Bereich unterhalb der Subnetz-Liste zeigt detaillierte Informationen über das ausgewählte Subnetz an, einschließlich des Subnetzes und eines Diagramms, in dem die verfügbare, verwendete und Gesamtzahl der IP-Adressen angezeigt wird.
+
+
+
+=== Einschränkungen der Registerkarte Netzwerkschnittstellen
+
+* Für Cluster-LIFs, Node-Management-LIFs, VIP-LIFs und BGP-LIFs können Sie System Manager nicht zum Ausführen der folgenden Aktionen verwenden:
++
+** Erstellen, bearbeiten, löschen, aktivieren oder deaktivieren Sie die LIFs
+** Migrieren Sie die LIFs oder senden Sie die LIFs zurück an den Home Port
+
+
+* Für Cluster-Management-LIFs können Sie mit System Manager die LIFs migrieren oder die LIFs zurück an den Home-Port senden.
++
+Sie können jedoch nicht erstellen, bearbeiten, löschen, aktivieren, Oder deaktivieren Sie die LIFs.
+
+* Für Intercluster-LIFs können Sie mit System Manager die LIFs erstellen, bearbeiten, löschen, aktivieren oder deaktivieren.
++
+Sie können jedoch die LIFs nicht migrieren oder die LIFs zurück an den Home Port senden.
+
+* Netzwerkschnittstellen können in den folgenden Konfigurationen nicht erstellt, bearbeitet oder gelöscht werden:
++
+** Eine MetroCluster-Konfiguration
+** SVMs für Disaster Recovery (DR) konfiguriert:
+
+
+
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld „Netzwerkschnittstelle erstellen“, mit dem Sie Netzwerkschnittstellen erstellen und LIFs für Intercluster erstellen können, um Daten bereitzustellen und SVMs zu managen.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld „Netzwerkschnittstelle bearbeiten“, das Sie für den Management-Zugriff für eine Daten-LIF verwenden können.
+
+* *Löschen*
++
+Löscht die ausgewählte Netzwerkschnittstelle.
+
++
+Diese Schaltfläche ist nur aktiviert, wenn die Daten-LIF deaktiviert ist.
+
+* *Status*
++
+Öffnen Sie das Dropdown-Menü, in dem die Option zum Aktivieren oder Deaktivieren der ausgewählten Netzwerkschnittstelle angezeigt wird.
+
+* * Migrieren*
++
+Ermöglicht Ihnen, eine Daten-LIF oder eine Cluster-Management-LIF zu einem anderen Port desselben Node oder eines anderen Node im Cluster zu migrieren.
+
+* *Nach Hause senden*
++
+Ermöglicht Ihnen, die LIF wieder auf ihrem Home Port zu hosten.
+
++
+Diese Schaltfläche ist nur aktiviert, wenn die ausgewählte Schnittstelle auf einem nicht-Home-Port gehostet wird und wenn der Home-Port verfügbar ist.
+
++
+Diese Schaltfläche ist deaktiviert, wenn ein Node im Cluster ausfällt.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Schnittstellenliste
+
+Sie können den Zeiger über das farbcodierte Symbol bewegen, um den Betriebsstatus der Schnittstelle anzuzeigen:
+
+* Grün gibt an, dass die Schnittstelle aktiviert ist.
+* Rot gibt an, dass die Schnittstelle deaktiviert ist.
+* *Schnittstellenname*
++
+Gibt den Namen der Netzwerkschnittstelle an.
+
+* *Storage Virtual Machine*
++
+Gibt die SVM an, zu der die Schnittstelle gehört.
+
+* *IP-Adresse/WWPN*
++
+Gibt die IP-Adresse oder den weltweiten Port-Namen (WWPN) der Schnittstelle an.
+
+* *Aktueller Port*
++
+Gibt den Namen des Node und des Ports an, auf dem die Schnittstelle gehostet wird.
+
+* *Datenprotokollzugriff*
++
+Gibt das Protokoll an, das für den Datenzugriff verwendet wird.
+
+* * Managementzugriff*
++
+Gibt an, ob der Managementzugriff auf der Schnittstelle aktiviert ist.
+
+* *Subnetz*
++
+Gibt das Subnetz an, zu dem die Schnittstelle gehört.
+
+* *mx-Rolle*
++
+Gibt die Betriebsrolle der Schnittstelle an. Diese kann Daten-, Cluster-, Cluster-, Cluster- oder Node-Management sein.
+
+
+
+
+
+=== Detailbereich
+
+Im Bereich unterhalb der Schnittstellenliste werden ausführliche Informationen über die ausgewählte Schnittstelle angezeigt: Failover-Eigenschaften wie der Home-Port, der aktuelle Port, die Geschwindigkeit der Ports, Failover-Policy, Failover-Gruppe und Failover-Status sowie allgemeine Eigenschaften wie Administrationsstatus, Rolle, IPspace, Broadcast-Domäne, Netzwerkmaske, Gateway und DDNS-Status.
+
+
+
+=== Registerkarte „Ethernet-Ports“
+
+
+
+=== Befehlsschaltflächen
+
+* *Schnittstellengruppe Erstellen*
++
+Öffnet das Dialogfeld Schnittstellengruppen erstellen, in dem Sie Schnittstellengruppen erstellen können, indem Sie die Ports auswählen und die Verwendung von Ports und der Netzwerkdatendatendatendatendatenverteilung bestimmen.
+
+* *Erstellen Sie VLAN*
++
+Öffnet das Dialogfeld VLAN erstellen, in dem Sie ein VLAN erstellen können, indem Sie einen Ethernet-Port oder eine Schnittstellengruppe auswählen und VLAN-Tags hinzufügen.
+
+* *Bearbeiten*
++
+Öffnet eines der folgenden Dialogfelder:
+
++
+** Dialogfeld „Ethernet-Port bearbeiten“: Ermöglicht das Ändern von Ethernet-Port-Einstellungen.
+** Dialogfeld „VLAN bearbeiten“: Ermöglicht das Ändern von VLAN-Einstellungen.
+** Dialogfeld Interface Group bearbeiten: Ermöglicht das Ändern von Schnittstellengruppen.
+
+
++
+Sie können nur VLANs bearbeiten, die nicht einer Broadcast-Domäne zugeordnet sind.
+
+* *Löschen*
++
+Öffnet eines der folgenden Dialogfelder:
+
++
+** Dialogfeld „VLAN löschen“: Ermöglicht das Löschen eines VLANs.
+** Dialogfeld Interface Group löschen: Hier können Sie eine Schnittstellengruppe löschen.
+
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Ports-Liste
+
+Sie können den Zeiger über das farbcodierte Symbol bewegen, um den Betriebsstatus des Ports anzuzeigen:
+
+* Grün gibt an, dass der Port aktiviert ist.
+* Rot gibt an, dass der Port deaktiviert ist.
+* *Port*
++
+Zeigt den Portnamen des physischen Ports, des VLAN-Ports oder der Schnittstellengruppe an.
+
+* *Knoten*
++
+Zeigt den Knoten an, auf dem sich die physische Schnittstelle befindet.
+
+* *Broadcast-Domäne*
++
+Zeigt die Broadcast-Domäne des Ports an.
+
+* *IPspace*
++
+Zeigt den IPspace an, zu dem der Port gehört.
+
+* *Typ*
++
+Zeigt den Typ der Schnittstelle an, z. B. Schnittstellengruppe, physische Schnittstelle, vip oder VLAN.
+
+
+
+
+
+=== Detailbereich
+
+Im Bereich unterhalb der Liste Ports werden detaillierte Informationen über die Porteigenschaften angezeigt.
+
+* *Registerkarte Details*
++
+Zeigt administrative Details und Betriebsdetails an.
+
++
+Im Rahmen der Betriebsdetails wird auf der Registerkarte der Integritätsstatus der Ports angezeigt. Die Ports können in einem ordnungsgemäßen Zustand oder zu einer eingeschränkten Performance führen. Ein beeinträchtigter Port ist ein Port, an dem kontinuierliche Netzwerkschwankungen auftreten, oder ein Port, der keine Verbindung zu anderen Ports in derselben Broadcast-Domäne aufweist.
+
++
+Zudem werden auf der Registerkarte der Schnittstellenname, die SVM-Details und die IP-Adresse der Netzwerkschnittstellen angezeigt, die auf dem ausgewählten Port gehostet werden. Er gibt außerdem an, ob sich die Schnittstelle am Home-Port befindet oder nicht.
+
+* *Registerkarte Leistung*
++
+Zeigt Performance-Metriken der ethernet-Ports an, einschließlich Fehlerrate und Durchsatz.
+
++
+Wenn Sie die Client-Zeitzone oder die Cluster-Zeitzone ändern, werden die Diagramme mit den Performance-Metriken beeinträchtigt. Sie sollten Ihren Browser aktualisieren, um die aktualisierten Diagramme anzuzeigen.
+
+
+
+
+
+=== Registerkarte Broadcast-Domäne
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Broadcast-Domäne erstellen, in dem Sie neue Broadcast-Domänen erstellen können, die Ports enthalten.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld „Broadcast-Domäne bearbeiten“, in dem Sie die Attribute einer Broadcast-Domäne ändern können, z. B. Name, MTU-Größe und zugehörige Ports.
+
+* *Löschen*
++
+Löscht die ausgewählte Broadcast-Domäne.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der Broadcast-Domänen
+
+* *Broadcast-Domäne*
++
+Gibt den Namen der Broadcast-Domain an.
+
+* *MTU*
++
+Gibt die MTU-Größe an.
+
+* *IPspace*
++
+Gibt den IPspace an.
+
+* *Status Der Kombinierten Port-Aktualisierung*
++
+Gibt den Status der Portaktualisierung an, wenn Sie eine Broadcast-Domäne erstellen oder bearbeiten. Alle Fehler in den Portaktualisierungen werden in einem separaten Fenster angezeigt, das Sie öffnen können, indem Sie auf den zugehörigen Link klicken.
+
+
+
+
+
+=== Detailbereich
+
+Der Bereich unterhalb der Broadcast-Domain-Liste zeigt alle Ports in einer Broadcast-Domäne an. Wenn in einem nicht standardmäßigen IPspace eine Broadcast-Domäne über Anschlüsse mit Aktualisierungsfehlern verfügt, werden diese Ports im Detailbereich nicht angezeigt. Sie können den Zeiger über das farbcodierte Symbol bewegen, um den Betriebsstatus der Ports anzuzeigen:
+
+* Grün gibt an, dass der Port aktiviert ist.
+* Rot gibt an, dass der Port deaktiviert ist.
+
+
+
+
+=== Registerkarte „FC/FCoE und NVMe Adapter“
+
+
+
+=== Befehlsschaltflächen
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld FC/FCoE- und NVMe-Einstellungen bearbeiten, in dem Sie die Geschwindigkeit des Adapters ändern können.
+
+* *Status*
++
+Ermöglicht es Ihnen, den Adapter in den Online-Modus zu versetzen oder ihn in den Offline-Modus zu versetzen.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der FC/FCoE- und NVMe-Adapter
+
+* *WWNN*
++
+Gibt die eindeutige Kennung des FC/FCoE- und NVMe-Adapters an.
+
+* *Knotenname*
++
+Gibt den Namen des Node an, der den Adapter verwendet.
+
+* *Slot*
++
+Gibt den Steckplatz an, der den Adapter verwendet.
+
+* *WWPN*
++
+Gibt den weltweiten FC-Port-Namen (WWPN) des Adapters an.
+
+* *Status*
++
+Gibt an, ob der Status des Adapters online oder offline ist.
+
+* *Geschwindigkeit*
++
+Gibt an, ob die Geschwindigkeitseinstellungen automatisch oder manuell sind.
+
+
+
+
+
+=== Detailbereich
+
+Im Bereich unter der Liste FC/FCoE und NVMe Adapter werden detaillierte Informationen über die ausgewählten Adapter angezeigt.
+
+* *Registerkarte Details*
++
+Zeigt Adapterdetails an, z. B. Medientyp, Portadresse, Datenverbindungsrate, Verbindungsstatus, Betriebsstatus, Der Fabric-Status und die Geschwindigkeit des Adapters.
+
+* *Registerkarte Leistung*
++
+Zeigt Performance-Metriken des FC/FCoE- und NVMe-Adapters an, einschließlich IOPS und Antwortzeiten.
+
++
+Wenn Sie die Client-Zeitzone oder die Cluster-Zeitzone ändern, werden die Diagramme mit den Performance-Metriken beeinträchtigt. Sie sollten Ihren Browser aktualisieren, um die aktualisierten Diagramme anzuzeigen.
+
+
+
+
+
+=== Registerkarte „IPspaces“
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld „IPspace erstellen“, in dem Sie einen neuen IPspace erstellen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld „IPspace bearbeiten“, in dem Sie einen vorhandenen IPspace umbenennen können.
+
+* *Löschen*
++
+Löscht den ausgewählten IPspace.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== IPspaces-Liste
+
+* *Name*
++
+Gibt den Namen des IPspaces an.
+
+* *Broadcast-Domains*
++
+Gibt die Broadcast-Domäne an.
+
+
+
+
+
+=== Detailbereich
+
+Im Bereich unterhalb der Liste IPspaces wird die Liste der Storage Virtual Machines (SVMs) im ausgewählten IPspace angezeigt.

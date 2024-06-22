@@ -1,0 +1,50 @@
+---
+permalink: volume-disaster-recovery/task_configuring_destination_volume_for_data_access.html 
+sidebar: sidebar 
+keywords: activating, activate, destination, volume, configure, data, access, nas, client, san, host, access, data, source, reactivate, configure the destination volume for data access 
+summary: Nach Aktivierung des Ziel-Volume müssen Sie das Volume für den Datenzugriff konfigurieren. NAS-Clients und SAN-Hosts können auf die Daten vom Ziel-Volume zugreifen, bis das Quell-Volume erneut aktiviert ist. 
+---
+= Ziel-Volume für Datenzugriff konfigurieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach Aktivierung des Ziel-Volume müssen Sie das Volume für den Datenzugriff konfigurieren. NAS-Clients und SAN-Hosts können auf die Daten vom Ziel-Volume zugreifen, bis das Quell-Volume erneut aktiviert ist.
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *Ziel* ausführen.
+
+
+
+== Verfahren
+
+* NAS-Umgebung:
++
+.. Mounten Sie die NAS-Volumes mit dem Namespace über denselben Verbindungspfad, an den das Quell-Volume in der Quell-SVM angehängt war.
+.. Wenden Sie die entsprechenden ACLs auf die CIFS-Freigaben am Ziel-Volume an.
+.. Weisen Sie die NFS-Exportrichtlinien dem Ziel-Volume zu.
+.. Wenden Sie die Kontingentregeln auf das Ziel-Volume an.
+.. Leiten Sie die Clients an das Ziel-Volume weiter, indem Sie die erforderlichen Schritte durchführen, z. B. die DNS-Namensauflösung ändern.
+.. NFS- und CIFS-Freigaben erneut auf den Clients einbinden.
+
+
+* SAN-Umgebung:
++
+.. Ordnen Sie die LUNs der entsprechenden Initiatorgruppe zu, um die LUNs im Volume den SAN-Clients zur Verfügung zu stellen.
+.. Erstellen Sie für iSCSI-Sitzungen von den SAN-Host-Initiatoren zu den SAN-LIFs.
+.. Führen Sie auf dem SAN-Client einen erneuten Speicherscan durch, um die verbundenen LUNs zu erkennen.
+
+
+
+
+
+
+== Nächste Schritte
+
+Sie sollten das Problem beheben, das dazu geführt hat, dass das Quell-Volume nicht mehr verfügbar ist. Sie müssen das Quell-Volume nach Möglichkeit wieder online schalten, dann erneut synchronisieren und das Quell-Volume erneut aktivieren.
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 Dokumentationszentrum"]

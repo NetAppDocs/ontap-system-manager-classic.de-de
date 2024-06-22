@@ -1,0 +1,23 @@
+---
+permalink: volume-disaster-prep/concept_snapmirror_intercluster_configuration_workflow.html 
+sidebar: sidebar 
+keywords: preparing, prepare, volume, disaster, recovery, verify, cluster, peer, relationship, snapmirror, residing, reside, peer, destination, periodical, volume disaster recovery preparation workflow 
+summary: Bei der Vorbereitung von Volumes für Disaster Recovery müssen die Cluster-Peer-Beziehung überprüft werden, die SnapMirror Beziehung zwischen Volumes auf Peering-Clustern erstellt, Ziel-SVM für den Datenzugriff festgelegt und die SnapMirror Beziehung regelmäßig überwacht werden. 
+---
+= Volume Workflow zur Vorbereitung der Disaster Recovery
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei der Vorbereitung von Volumes für Disaster Recovery müssen die Cluster-Peer-Beziehung überprüft werden, die SnapMirror Beziehung zwischen Volumes auf Peering-Clustern erstellt, Ziel-SVM für den Datenzugriff festgelegt und die SnapMirror Beziehung regelmäßig überwacht werden.
+
+image::../media/snapmirror_intercluster_cfg_workflow.gif[Diese Abbildung ist ein Flussdiagramm des Arbeitsablaufs für die Vorbereitung der Disaster Recovery des Volumes. Die Schritte im Workflow stimmen mit den Themen überein.]
+
+Es stehen zusätzliche Dokumentation zur Verfügung, mit denen Sie das Ziel-Volume aktivieren können, um die Disaster Recovery-Einrichtung zu testen oder im Falle eines Ausfalls zu helfen. Weitere Informationen zur Reaktivierung des Quell-Volumes nach einem Ausfall finden Sie im Artikel.
+
+xref:../volume-disaster-recovery/index.html[Volume Disaster Recovery]
+
++
+Beschreibt, wie ein Ziel-Volume nach einem Ausfall schnell aktiviert und dann das Quell-Volume in ONTAP reaktiviert wird.

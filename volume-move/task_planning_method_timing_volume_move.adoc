@@ -1,0 +1,67 @@
+---
+permalink: volume-move/task_planning_method_timing_volume_move.html 
+sidebar: sidebar 
+keywords: system, manager, volume, manual, cutover, lun, report, node, advance, procedure, command-line, interface, cli, plan, plan the method and timing of a volume move 
+summary: 'Verwenden Sie die klassische Benutzeroberfläche von ONTAP System Manager mit ONTAP 9.7 oder einer früheren Version, um ein Volume zu verschieben und zu entscheiden, ob eine manuelle Umstellung erforderlich ist. Wenn Sie die LUN-Nodes für die Berichterstellung aktualisieren müssen Sie die erweiterte Prozedur in der Befehlszeilenschnittstelle (CLI) befolgen. Optional können Sie auch den Zeitpunkt für eine Volume-Verschiebung planen.' 
+---
+= Planung der Methode und des Zeitpunkts einer Volume-Verschiebung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mithilfe der Schnittstelle „ONTAP System Manager _classic_“ mit ONTAP 9.7 oder einer älteren Version können Sie ein Volume verschieben und entscheiden, ob eine manuelle Umstellung erforderlich ist. Wenn Sie die LUN-Nodes für die Berichterstellung aktualisieren müssen Sie die erweiterte Prozedur in der Befehlszeilenschnittstelle (CLI) befolgen. Optional können Sie auch den Zeitpunkt für eine Volume-Verschiebung planen.
+
+.Über diese Aufgabe
+Das Quell-Volume einer SnapMirror oder SnapVault Beziehung kann verschoben werden, während das Volume gespiegelt wird. Bei SnapMirror Services erfolgt eine kurze Pause während der Umstellungsphase des Volume-Verschiebungs-Jobs.
+
+Das Ziel-Volume kann auch verschoben werden. In der iterativen Phase werden SnapMirror oder SnapVault Updates und Volume-Verschiebung gleichzeitig ausgeführt. Bei der Evaluierung, ob eine Umstellung in der Umstellungsphase möglich ist, wird die Priorität zwischen der Umstellung und SnapMirror oder SnapVault Updates auf der First Come und First Service-Basis festgelegt. Bis der erste Vorgang abgeschlossen ist, werden andere Vorgänge blockiert.
+
+.Schritte
+. Entscheiden Sie, ob Sie eine manuelle Umstellung benötigen.
++
+_Umstellung_ ist der Moment, an dem der Vorgang abgeschlossen wird und ONTAP beginnt, Daten vom Volume auf dem neuen Aggregat bereitzustellen. Die Umstellung kann automatisch erfolgen oder Sie können die Umstellung manuell auslösen.
+
++
+Wenn im Rahmen der Standardpraxis Ihres Unternehmens bestimmte Änderungen im Storage-System kontrolliert werden müssen, können Sie die endgültige Umstellung des Verschiebevorgangs manuell während eines Wartungsfensters durchführen.
+
++
+Eine Umstellung erfordert keinen Ausfall, Sie können jedoch ein Wartungsfenster verwenden, um ihn zu kontrollieren, sobald_ dieser erfolgt.
+
++
+[NOTE]
+====
+Die Verschiebung des Volumes erfolgt unterbrechungsfrei, unabhängig davon, ob Sie sich für eine automatische oder manuelle Umstellung entscheiden.
+
+====
+. Wenn das Volume LUNs enthält und das Cluster vier oder mehr Nodes enthält, aktualisieren Sie die LUN-Nodes zur Berichterstellung über die CLI, wenn das Volume zu einem anderen HA-Paar verschoben wird.
++
+Wenn das Volume keine LUNs enthält oder nur zwei Nodes enthält, können Sie diesen Schritt überspringen.
+
+. *Optional:* Planen Sie eine Zeit unter Verwendung der folgenden Überlegungen:
++
+** Ein Vorgang zur Verschiebung eines Volumes kann länger dauern als erwartet, da Verschiebungen im Hintergrund unterbrechungsfrei ausgeführt werden und so den Client-Zugriff und die gesamte System-Performance erhalten bleiben.
++
+ONTAP drosselt beispielsweise die Ressourcen, die für die Volume-Verschiebung zur Verfügung stehen.
+
+** Wenn der Vorgang so schnell wie möglich erfolgen soll, müssen Sie eine Zeit mit weniger Cluster-Aktivität auswählen, insbesondere die folgenden Aktivitäten:
++
+*** I/O-Vorgänge auf dem Volume
+*** Aufträge, die Hintergrundressourcen verwenden, z. B. wenn die Controller-CPU-Auslastung weniger als 50 Prozent beträgt
+*** Jobs, die den Cluster Interconnect verwenden
+
+
+** Eine Verschiebung kann nicht gestartet werden, während das Volume von folgenden Vorgängen betroffen ist: Volume offline, Einschränkung oder Zerstörung; SnapMirror Resync, Break, Oder Restore. Und Snapshot Restore.
++
+Sie müssen warten, bis diese spezifischen Vorgänge abgeschlossen sind, bevor Sie den Vorgang starten können.
+
+** Während die Verschiebung eines Volumes erfolgt, kann ein MetroCluster-Switchback nicht erfolgen, obwohl dies möglicherweise zu einer Umschaltung erfolgt.
+** MetroCluster-Switchports werden blockiert, wenn Vorgänge zum Verschieben von Volumes durchgeführt werden, die zum Switched-Site gehören. Switchbacks werden nicht gesperrt, wenn Volume-Ververschiebungsvorgänge für Volumes auf lokale zum verbleibenden Standort ausgeführt werden.
+** Bei laufenden Volume-Verschiebungsvorgängen kann es zu einem erzwungenen MetroCluster-Umschalter kommen.
+
+
+
+
+.Verwandte Informationen
+link:task_verifying_lun_reporting_nodes_after_moving_volume.html["Überprüfung der Nodes für LUN-Berichte nach der Verschiebung eines Volumes"]

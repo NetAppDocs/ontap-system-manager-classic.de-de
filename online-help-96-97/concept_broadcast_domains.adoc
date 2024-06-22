@@ -1,0 +1,64 @@
+---
+permalink: online-help-96-97/concept_broadcast_domains.html 
+sidebar: sidebar 
+keywords: system, manager, create, manage, broadcast, domain, online, help, edit, settings, port, delete 
+summary: Broadcast-Domänen lassen sich mit System Manager erstellen und managen. 
+---
+= Management von Broadcast-Domänen mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) lassen sich Broadcast-Domänen erstellen und managen.
+
+
+
+== Einstellungen für die Broadcast-Domäne bearbeiten
+
+Mit System Manager können Sie die Attribute einer Broadcast-Domäne ändern, z. B. den Namen, die MTU-Größe und die Ports, die der Broadcast-Domäne zugeordnet sind.
+
+.Über diese Aufgabe
+* Sie dürfen die MTU-Größe der Broadcast-Domäne, der der Management-Port E0M zugewiesen ist, nicht ändern.
+* Sie können mit System Manager keine Broadcast-Domänen im IP-Bereich des Clusters bearbeiten.
++
+Sie müssen stattdessen die Befehlszeilenschnittstelle (CLI) verwenden.
+
+
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Broadcast Domains*.
+. Wählen Sie die Broadcast-Domäne aus, die Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie im Dialogfeld *Broadcast-Domäne bearbeiten* die Broadcast-Domain-Attribute nach Bedarf.
+. Klicken Sie auf *Speichern und Schließen*.
+
+
+
+
+== Broadcast-Domänen löschen
+
+Wenn Sie die Broadcast-Domäne nicht mehr benötigen, können Sie eine Broadcast-Domäne mit System Manager löschen.
+
+.Bevor Sie beginnen
+Der Broadcast-Domäne, die Sie löschen möchten, dürfen keine Subnetze zugeordnet werden.
+
+.Über diese Aufgabe
+* Wenn Sie eine Broadcast-Domäne löschen, werden die Ports, die der Broadcast-Domäne zugeordnet sind, dem standardmäßigen IPspace zugewiesen, und die MTU-Einstellungen der Ports werden nicht geändert.
+* Sie können mit System Manager keine Broadcast-Domänen löschen, die sich im IP-Bereich des Clusters befinden.
++
+Sie müssen stattdessen die Befehlszeilenschnittstelle (CLI) verwenden.
+
+
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Broadcast Domains*.
+. Wählen Sie die Broadcast-Domäne aus, die Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_network_window.adoc[Netzwerkfenster]
+
+https://docs.netapp.com/us-en/ontap/networking/index.html["Netzwerkmanagement"]

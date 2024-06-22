@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_restoring_volume_from_snapshot_copy.html 
+sidebar: sidebar 
+keywords: restore, volume, snapshot, copy, system, manager, online, help 
+summary: Sie können mit System Manager ein Volume in einem Zustand wiederherstellen, der in einer zuvor erstellten Snapshot Kopie aufgezeichnet wurde, um verlorene Informationen abzurufen. Wenn Sie ein Volume aus einer Snapshot Kopie wiederherstellen, überschreibt der Wiederherstellungsvorgang die vorhandene Volume-Konfiguration. Alle Änderungen an den Daten auf dem Volume nach der Erstellung der Snapshot Kopie gehen verloren. 
+---
+= Stellen Sie ein Volume aus einer Snapshot Kopie mit System Manager - ONTAP 9.7 und früher wieder her
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager classic (verfügbar unter ONTAP 9.7 und früher) verwenden, um ein Volume in einen Zustand wiederherzustellen, der in einer zuvor erstellten Snapshot-Kopie aufgezeichnet wurde, um verlorene Informationen abzurufen. Wenn Sie ein Volume aus einer Snapshot Kopie wiederherstellen, überschreibt der Wiederherstellungsvorgang die vorhandene Volume-Konfiguration. Alle Änderungen an den Daten auf dem Volume nach der Erstellung der Snapshot Kopie gehen verloren.
+
+.Bevor Sie beginnen
+* Die SnapRestore-Lizenz muss auf Ihrem System installiert sein.
+* Wenn das FlexVol Volume, das Sie wiederherstellen möchten, eine LUN enthält, muss die LUN abgehängt oder nicht zugeordnet werden.
+* Für das wiederhergestellte Volume muss genügend Platz vorhanden sein.
+* Benutzer, die auf das Volume zugreifen, müssen benachrichtigt werden, dass Sie ein Volume zurücksetzen, und dass die Daten aus der ausgewählten Snapshot Kopie die aktuellen Daten im Volume ersetzen.
+
+
+.Über diese Aufgabe
+* Wenn das wiederhergestellte Volume Verbindungspunkte zu anderen Volumes enthält, werden die Volumes, die auf diesen Verbindungspunkten angehängt sind, nicht wiederhergestellt.
+* Sie können Snapshot Kopien für SnapLock Compliance Volumes nicht wiederherstellen.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das Volume aus, das Sie aus einer Snapshot Kopie wiederherstellen möchten.
+. Klicken Sie Auf *Mehr Aktionen* > *Snapshots Verwalten* > *Wiederherstellen*.
+. Wählen Sie die entsprechende Snapshot-Kopie aus, und klicken Sie dann auf *Wiederherstellen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Wiederherstellen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

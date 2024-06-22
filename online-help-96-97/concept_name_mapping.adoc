@@ -1,0 +1,132 @@
+---
+permalink: online-help-96-97/concept_name_mapping.html 
+sidebar: sidebar 
+keywords: name, mapping, system, manager, specify, user, platform, online, help, command, button, rules 
+summary: Sie können mit System Manager Einträge zur Namenszuweisung festlegen, um Benutzer von verschiedenen Plattformen zuzuordnen. 
+---
+= Name-Zuordnung mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Einträge für die Namenszuweisung für Benutzer von verschiedenen Plattformen anzugeben.
+
+
+
+== Konvertierungsregeln für Namenszuordnungen
+
+Ein ONTAP System behält eine Reihe von Konversionsregeln für jede SVM bei. Jede Regel besteht aus zwei Teilen: Einem _pattern_ und einem _Replacement_. Konvertierungen beginnen am Anfang der entsprechenden Liste und führen eine Substitution basierend auf der ersten übereinstimmenden Regel durch. Das Muster ist ein normaler Ausdruck im UNIX-Stil. Der Ersatz ist eine Zeichenkette, die Escape-Sequenzen enthält, die Unterausdrücke aus dem Muster darstellen, wie im UNIX `sed` Programm.
+
+
+
+== Fenster „Namenszuordnung“
+
+Über das Fenster „Namenszuordnung“ können Sie die Einträge für die Namenszuordnung festlegen, die Benutzern von verschiedenen Plattformen zugeordnet werden.
+
+
+
+=== Namenszuordnungen
+
+Sie können Namenszuordnungen erstellen und verwenden, um Ihre UNIX-Benutzer den Windows-Benutzern, Windows-Benutzern UNIX-Benutzern oder Kerberos-Benutzern zuzuordnen.
+
+
+
+=== Befehlsschaltflächen
+
+* *Hinzufügen*
++
+Öffnet das Dialogfeld Name Mapping hinzufügen, in dem Sie eine Namenszuweisung auf Storage Virtual Machines (SVMs) erstellen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld „Edit Name Mapping“, in dem Sie eine Namenszuweisung auf SVMs bearbeiten können.
+
+* *Löschen*
++
+Öffnet das Dialogfeld „Einträge der Namenszuordnung löschen“, in dem Sie einen Eintrag für die Namenszuweisung löschen können.
+
+* *Tausch*
++
+Öffnet das Dialogfeld Einträge für die Namenszuordnung tauschen, in dem Sie die Positionen der beiden ausgewählten Einträge für die Namenszuordnung ändern können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der Namenszuordnungen
+
+* *Position*
++
+Gibt die Position der Namenszuweisung in der Prioritätenliste an. Namenszuordnungen werden in der Reihenfolge angewendet, in der sie in der Prioritätsliste vorkommen.
+
+* *Muster*
++
+Gibt das Muster für den Benutzernamen an, das berücksichtigt werden muss.
+
+* *Ersatz*
++
+Gibt das Ersatzmuster für den Benutzernamen an.
+
+* *Richtung*
++
+Gibt die Richtung der Namenszuordnung an. Mögliche Werte sind krb_unix für eine Namenszuweisung zwischen Kerberos und UNIX, Win_unix für eine Namenszuweisung unter Windows auf UNIX und unix_win für eine Namenszuweisung unter UNIX-to-Windows.
+
+
+
+
+
+=== Befehlsschaltflächen
+
+* *Hinzufügen*
++
+Öffnet das Dialogfeld Gruppenzuordnung hinzufügen, in dem Sie eine Gruppenzuordnung auf SVMs erstellen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Gruppenzuordnung bearbeiten, in dem Sie die Gruppenzuordnung auf SVMs bearbeiten können.
+
+* *Löschen*
++
+Öffnet das Dialogfeld Gruppenzuordnung-Einträge löschen, in dem Sie einen Gruppenzuordnungseintrag löschen können.
+
+* *Tausch*
++
+Öffnet das Dialogfeld Gruppenzuordnung Einträge tauschen, in dem Sie die Positionen der beiden ausgewählten Gruppenzuordnung-Einträge ändern können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der Gruppenzuordnungen
+
+* *Position*
++
+Gibt die Position der Gruppenzuordnung in der Prioritätsliste an. Gruppenzuordnungen werden in der Reihenfolge angewendet, in der sie in der Prioritätsliste auftreten.
+
+* *Muster*
++
+Gibt das Muster für den Benutzernamen an, das berücksichtigt werden muss.
+
+* *Ersatz*
++
+Gibt das Ersatzmuster für die Benutzernamen an.
+
+* *Richtung*
++
+Gibt die Richtung der Gruppenzuordnung an. Mögliche Werte sind `krb_unix` Für die Zuordnung von Kerberos-zu-UNIX-Gruppen `win_unix` Für die Zuordnung einer Windows-zu-UNIX-Gruppe, und `unix_win` Für die Zuordnung von UNIX-zu-Windows-Gruppen.
+
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/smb-admin/index.html["SMB/CIFS-Management"]

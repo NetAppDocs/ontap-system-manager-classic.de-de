@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_mirroring_aggregates.html 
+sidebar: sidebar 
+keywords: mirror, aggregate, system, manager, data, lun, array, online, help 
+summary: System Manager sichert Daten und sorgt für erhöhte Ausfallsicherheit, indem Daten in Echtzeit innerhalb eines einzigen Aggregats gespiegelt werden. Die Spiegelung von Aggregaten beseitigt Single Points of Failure bei der Verbindung zu Festplatten und Array LUNs. 
+---
+= Aggregate mit System Manager spiegeln – ONTAP 9.7 und früher
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) können Sie Daten sichern und erhöhte Ausfallsicherheit durch Echtzeitspiegelung von Daten innerhalb eines einzelnen Aggregats ermöglichen. Die Spiegelung von Aggregaten beseitigt Single Points of Failure bei der Verbindung zu Festplatten und Array LUNs.
+
+.Bevor Sie beginnen
+Im anderen Pool muss es ausreichend freie Disketten geben um das Aggregat zu spiegeln.
+
+.Über diese Aufgabe
+Sie können ein Flash Pool Aggregat nicht spiegeln, wenn die Cache-Quelle Storage Pool ist.
+
+.Schritte
+. Wählen Sie eine der folgenden Methoden:
++
+** Klicken Sie Auf *Anwendungen & Tiers* > *Storage Tiers*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate*.
+
+
+. Wählen Sie das Aggregat aus, das Sie spiegeln möchten, und klicken Sie dann auf MENU:Mehr Aktionen[Spiegel].
++
+[NOTE]
+====
+SyncMirror wird auf FabricPool-fähigen Aggregaten nicht unterstützt.
+
+====
+. Klicken Sie im Dialogfeld *Mirror this Aggregat* auf *Mirror*, um die Spiegelung zu initiieren.
+

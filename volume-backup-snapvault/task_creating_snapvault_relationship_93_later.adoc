@@ -1,0 +1,67 @@
+---
+permalink: volume-backup-snapvault/task_creating_snapvault_relationship_93_later.html 
+sidebar: sidebar 
+keywords: create, snapvault, relationship, source, volume, cluster, destination, peer, backup, create a snapvault relationship, Beginning with ontap 9.3 
+summary: Sie müssen eine SnapVault-Beziehung zwischen dem Quell-Volume auf einem Cluster und dem Ziel-Volume auf dem Peering Cluster erstellen, um ein SnapVault Backup zu erstellen. 
+---
+= SnapVault-Beziehung erstellen (beginnend mit ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen eine SnapVault-Beziehung zwischen dem Quell-Volume auf einem Cluster und dem Ziel-Volume auf dem Peering Cluster erstellen, um ein SnapVault Backup zu erstellen.
+
+.Bevor Sie beginnen
+* Sie müssen über den Benutzernamen und das Passwort des Cluster-Administrators für das Ziel-Cluster verfügen.
+* Das Zielaggregat muss über verfügbaren Platz verfügen.
+
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *source* ausführen.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie das Volumen aus, das Sie sichern möchten, und klicken Sie dann auf *Aktionen* > *Schützen*.
++
+Es können auch mehrere Quell-Volumes ausgewählt und SnapVault Beziehungen mit einem einzelnen Ziel-Volume erstellt werden.
+
+. Geben Sie auf der Seite *Bände: Protect Volumes* folgende Informationen ein:
++
+.. Wählen Sie in der Dropdown-Liste *Beziehungstyp* * * * die Option *Vault* aus.
+.. Wählen Sie das Ziel-Cluster, Ziel-SVM und das Suffix für das Ziel-Volume aus.
++
+Unter den Ziel-SVMs werden nur Peered SVMs und erlaubte SVMs aufgeführt.
+
++
+Das Ziel-Volume wird automatisch erstellt. Der Name des Ziel-Volumes ist der Name des Quell-Volumes, der mit dem Suffix angehängt ist.
+
+.. Klicken Sie Auf image:../media/advanced_options_icon_backup.gif[""].
+.. Überprüfen Sie im Dialogfeld *Erweiterte Optionen*, ob die *Schutzrichtlinie* als festgelegt ist `XDPDefault`.
+.. Wählen Sie den *Schutzplan* aus.
++
+Standardmäßig wird der verwendet `daily` Der Zeitplan ist ausgewählt.
+
+.. Vergewissern Sie sich, dass *Ja* zur Initialisierung der SnapVault-Beziehung ausgewählt ist.
++
+Alle Datensicherungsbeziehungen werden standardmäßig initialisiert.
+
+.. Klicken Sie auf *Anwenden*, um die Änderungen zu speichern.
++
+image::../media/snapvault_advanced_options.gif[Erweiterte Optionen von SnapVault]
+
+
+
+. Klicken Sie auf der Seite *Volumes: Protect Volumes* auf *Validate*, um zu überprüfen, ob die Volumes mit den SnapMirror-Labels übereinstimmen.
+. Klicken Sie auf *Speichern*, um die SnapVault-Beziehung zu erstellen.
+. Vergewissern Sie sich, dass der Status der SnapVault-Beziehung im angezeigt wird `Snapmirrored` Bundesland.
++
+.. Navigieren Sie zum Fenster *Volumes*, und wählen Sie dann das gesicherte Volume aus.
+.. Erweitern Sie den Datenträger und klicken Sie auf *PROTECTION*, um den Datenschutzstatus des Volumes anzuzeigen.
+
+
++
+image::../media/snapvault_9_3.gif[SnapVault 9 3]
+
+

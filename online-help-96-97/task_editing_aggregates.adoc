@@ -1,0 +1,52 @@
+---
+permalink: online-help-96-97/task_editing_aggregates.html 
+sidebar: sidebar 
+keywords: online, help, edit, aggregates, raid, type, group, size, online, help 
+summary: Mit System Manager können Sie den Namen des Aggregats, den RAID-Typ und die RAID-Gruppengröße eines vorhandenen Aggregats ändern, falls erforderlich. 
+---
+= Bearbeiten Sie Aggregate mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um den Aggregatnamen, den RAID-Typ und die RAID-Gruppengröße eines vorhandenen Aggregats zu ändern, falls erforderlich.
+
+.Bevor Sie beginnen
+Für die Änderung des RAID-Typs eines Aggregats von RAID4 zu RAID-DP muss das Aggregat genug kompatible Ersatzfestplatten enthalten, ausgenommen die Hot Spares.
+
+.Über diese Aufgabe
+* Sie können die RAID-Gruppe von ONTAP-Systemen, die Array-LUNs unterstützen, nicht ändern.
++
+RAID0 ist die einzige verfügbare Option.
+
+* Sie können den RAID-Typ von partitionierten Festplatten nicht ändern.
++
+RAID-DP ist die einzige Option für partitionierte Festplatten.
+
+* Sie können ein SnapLock-Compliance-Aggregat nicht umbenennen.
+* Wenn das Aggregat aus SSDs mit Storage-Pool besteht, können Sie nur den Namen des Aggregats ändern.
+* Wenn die dreifache Parity-Festplattengröße 10 TB ist und die anderen Festplatten kleiner als 10 TB sind, können Sie RAID-DP oder RAID-TEC als RAID-Typ auswählen.
+* Wenn die Größe der Triple-Parity-Festplatte 10 TB beträgt und selbst eine der anderen Festplatten größer als 10 TB ist, ist RAID-TEC die einzige verfügbare Option für den RAID-Typ.
+
+
+.Schritte
+. Wählen Sie eine der folgenden Methoden:
++
+** Klicken Sie Auf *Anwendungen & Tiers* > *Storage Tiers*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate*.
+
+
+. Wählen Sie das Aggregat aus, das Sie bearbeiten möchten, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie im Dialogfeld *Aggregat* den Aggregatnamen, den RAID-Typ und die RAID-Gruppengröße nach Bedarf.
+. Klicken Sie Auf *Speichern*.
+
+
+*Verwandte Informationen*
+
+xref:reference_aggregates_window.adoc[Fenster „Aggregate“]
+
+xref:concept_what_compatible_spare_disks_are.adoc[Welche kompatiblen Ersatzfestplatten sind]
+
+xref:reference_storage_tiers_window.adoc[Fenster „Storage Tiers“]

@@ -1,0 +1,168 @@
+---
+permalink: online-help-96-97/concept_kerberos_realm_services.html 
+sidebar: sidebar 
+keywords: online, help, kerberos, realm, service, system, manager, svm, edit, security, strong, nfs, authentication, microsoft, ntlm, ntlm v2, client 
+summary: Mit System Manager können Sie Kerberos-Bereichsdienste erstellen und verwalten. 
+---
+= Verwalten Sie Kerberos-Realm-Dienste mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Kerberos-Realm-Dienste zu erstellen und zu verwalten.
+
+
+
+== Erstellen Sie eine Kerberos-Bereichskonfiguration
+
+Wenn Sie die Kerberos-Authentifizierung für den Client-Zugriff verwenden möchten, müssen Sie die SVM (Storage Virtual Machine) so konfigurieren, dass ein vorhandener Kerberos-Bereich verwendet wird. Sie können mit System Manager eine Kerberos-Bereichskonfiguration erstellen, sodass SVMs die Kerberos-Sicherheitsdienste für NFS verwenden können.
+
+.Bevor Sie beginnen
+* Die CIFS-Lizenz muss bei Verwendung von CIFS-Freigaben installiert werden, und bei Verwendung eines LDAP-Servers muss die NFS-Lizenz installiert werden.
+* Active Directory (Windows 2003 oder Windows 2008) mit DER MD5-Verschlüsselungsfunktion muss verfügbar sein.
+* Sie müssen die Zeitzone festlegen und die Zeit über das Cluster hinweg durch das Konfigurieren von NTP synchronisiert haben.
++
+Dadurch werden Authentifizierungsfehler verhindert und es wird sichergestellt, dass die Zeitstempel in Protokolldateien im gesamten Cluster konsistent sind.
+
+
+
+.Über diese Aufgabe
+Beim Erstellen eines Kerberos-Bereichs müssen Sie im Assistenten zum Erstellen von Kerberos-Bereichen die folgenden Attribute festlegen:
+
+* Kerberos-Bereich
+* KDC-IP-Adresse und Portnummer
++
+Die Standard-Portnummer ist 88.
+
+* Kerberos Key Distribution Center (KDC)-Anbieter
+* IP-Adresse des administrativen Servers, wenn der KDC-Anbieter nicht Microsoft ist
+* IP-Adresse des Kennwortservers
+* Active Directory-Servername und IP-Adresse, wenn der KDC-Anbieter Microsoft ist
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Dienste* auf *Kerberos-Bereich*.
+. Klicken Sie im Fenster *Kerberos-Bereich* auf *Erstellen*.
+. Geben Sie die vom Assistenten geforderten Informationen ein oder wählen Sie diese aus.
+. Bestätigen Sie die Details und klicken Sie dann auf *Fertig stellen*, um den Assistenten abzuschließen.
+
+
+
+
+== Bearbeiten einer Kerberos-Bereichskonfiguration
+
+Mit System Manager können Sie eine Kerberos-Bereichskonfiguration auf der SVM-Ebene (Storage Virtual Machine) bearbeiten.
+
+.Über diese Aufgabe
+Sie können die folgenden Attribute mit dem Assistenten zum Bearbeiten des Kerberos-Bereichs ändern:
+
+* Die KDC-IP-Adresse und die Portnummer
+* Die IP-Adresse des administrativen Servers, wenn der KDC-Anbieter nicht Microsoft ist
+* Die IP-Adresse des Kennwortservers
+* Der Active Directory-Servername und die IP-Adresse, wenn der KDC-Anbieter Microsoft ist
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Dienste* auf *Kerberos-Bereich*.
+. Wählen Sie im Fenster *Kerberos-Bereich* die Kerberos-Bereichskonfiguration aus, die Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Geben Sie die vom Assistenten geforderten Informationen ein oder wählen Sie diese aus.
+. Bestätigen Sie die Details und klicken Sie dann auf *Fertig stellen*, um den Assistenten abzuschließen.
+
+
+
+
+== Löschen von Kerberos-Bereichskonfigurationen
+
+Mit System Manager können Sie eine Kerberos-Bereichskonfiguration löschen.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Dienste* auf *Kerberos-Bereich*.
+. Wählen Sie im Fenster *Kerberos-Bereich* eine oder mehrere Kerberos-Bereichskonfigurationen aus, die Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+
+
+== Hohe Sicherheit durch Kerberos mit NFS
+
+Mit Kerberos können SVMs und NFS-Clients eine enge Authentifizierung für eine sichere NFS-Kommunikation ermöglichen. Durch das Konfigurieren von NFS mit Kerberos wird die Integrität und Sicherheit der NFS-Client-Kommunikation mit dem Storage-System erhöht.
+
+
+
+== Kerberos Authentifizierung für CIFS
+
+Mit Kerberos-Authentifizierung verhandelt der Client bei der Verbindung mit Ihrem CIFS-Server das höchstmögliche Sicherheitsniveau. Wenn der Client jedoch keine Kerberos-Authentifizierung verwenden kann, wird Microsoft NTLM oder NTLM V2 zur Authentifizierung beim CIFS-Server verwendet.
+
+
+
+== Kerberos-Bereich
+
+Mithilfe des Kerberos-Bereichs können Sie die Authentisierung zwischen Storage Virtual Machines (SVMs) und NFS Clients bereitstellen, um die sichere NFS-Kommunikation sicherzustellen.
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet den Assistenten „Kerberos-Bereich erstellen“, mit dem Sie einen Kerberos-Bereich konfigurieren können, um Benutzerinformationen abzurufen.
+
+* *Bearbeiten*
++
+Öffnet den Assistenten zum Bearbeiten von Kerberos-Bereichen, mit dem Sie eine Kerberos-Bereichskonfiguration basierend auf der Anforderung für SVM-Authentifizierung und -Autorisierung bearbeiten können.
+
+* *Löschen*
++
+Öffnet das Dialogfeld Kerberos-Bereiche löschen, in dem Sie die Konfiguration des Kerberos-Bereichs löschen können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Kerberos-Bereichsliste
+
+Bietet Details zu den Kerberos-Bereichen im Tabellenformat.
+
+* *Realm*
++
+Gibt den Namen des Kerberos-Bereichs an.
+
+* *KDC-Lieferant*
++
+Gibt den Namen des Kerberos Distribution Center (KDC)-Anbieters an.
+
+* *KDC-IP-Adresse*
++
+Gibt die von der Konfiguration verwendete KDC-IP-Adresse an.
+
+
+
+
+
+=== Detailbereich
+
+Im Detailbereich werden Informationen wie KDC-IP-Adresse und Portnummer, KDC-Anbieter, IP-Adresse des Administrationsservers und Portnummer, Active Directory-Server und Server-IP-Adresse der ausgewählten Kerberos-Bereichskonfiguration angezeigt.
+
+*Verwandte Informationen*
+
+xref:task_setting_time_zone_for_cluster.adoc[Einstellen der Zeitzone für ein Cluster]
+
+link:https://www.netapp.com/pdf.html?item=/media/10720-tr-4067.pdf["Technischer Bericht 4067: NFS in NetApp ONTAP"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19384-tr-4616.pdf["Technischer Bericht von NetApp 4616: NFS Kerberos im ONTAP mit Microsoft Active Directory"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19423-tr-4835.pdf["Technischer Bericht von NetApp 4835: Konfigurieren von LDAP in ONTAP"^]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/index.html["NFS-Management"^]

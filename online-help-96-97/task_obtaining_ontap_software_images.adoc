@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_obtaining_ontap_software_images.html 
+sidebar: sidebar 
+keywords: online, help, obtain, ontap, software, image, netapp, support, site, online, help 
+summary: Bei ONTAP 9.4 und höher lässt sich das ONTAP Software-Image von der NetApp Support-Website in einen lokalen Ordner kopieren. Für Upgrades von ONTAP 9.3 oder früher müssen Sie das ONTAP Software-Image auf einen HTTP-Server oder FTP-Server in Ihrem Netzwerk kopieren. 
+---
+= Beziehen Sie ONTAP-Software-Images mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP Software Images mit ONTAP System Manager classic erhalten (erhältlich in ONTAP 9.7 und früher). Bei ONTAP 9.4 und höher lässt sich das ONTAP Software-Image von der NetApp Support-Website in einen lokalen Ordner kopieren. Für Upgrades von ONTAP 9.3 oder früher müssen Sie das ONTAP Software-Image auf einen HTTP-Server oder FTP-Server in Ihrem Netzwerk kopieren.
+
+.Über diese Aufgabe
+Für ein Upgrade des Clusters auf die Zielversion von ONTAP benötigen Sie Zugriff auf Software-Images. Software-Images, Informationen zu Firmware-Versionen und die neueste Firmware für Ihr Plattformmodell finden Sie auf der NetApp Support Site. Sie sollten folgende wichtige Informationen beachten:
+
+* Software-Images sind für Plattformmodelle spezifisch.
++
+Sie müssen das richtige Image für Ihr Cluster erhalten.
+
+* Software-Images enthalten die neueste Version der System-Firmware, die verfügbar war, wenn eine bestimmte Version von ONTAP veröffentlicht wurde.
+* Wenn Sie ein System mit NetApp Volume Encryption auf ONTAP 9.5 oder höher aktualisieren, müssen Sie das ONTAP Software-Image für Länder herunterladen, für die keine Beschränkungen bestehen. Dazu gehören auch NetApp Volume Encryption.
++
+Wenn Sie zum Upgrade eines Systems mit NetApp Volume Encryption das ONTAP Software-Image für eingeschränkte Länder verwenden, kommt es zu einer Systempanik, während der Zugriff auf die Volumes verloren geht.
+
+* Wenn Sie ein Upgrade von ONTAP 9.3 auf 9.7 durchführen, müssen Sie das Software-Image für ONTAP 9.5 und 9.7 kopieren.
+
+
+.Schritte
+. Sie finden die Ziel-ONTAP Software im Bereich *Software Downloads* auf der NetApp Support Website.
+. Kopieren Sie das Software-Image.
++
+** Kopieren Sie für ONTAP 9.3 oder eine frühere Version das Software-Image (z. B. `93_q_image.tgz`) Von der NetApp Support Site zum Verzeichnis auf dem HTTP-Server oder FTP-Server, von dem das Image bereitgestellt wird
+** Kopieren Sie für ONTAP 9.4 oder höher das Software-Image (z. B. `97_q_image.tgz`) Von der NetApp Support Site zum Verzeichnis auf dem HTTP- oder FTP-Server, von dem das Image bereitgestellt wird, oder zu einem lokalen Ordner.
+
+
+

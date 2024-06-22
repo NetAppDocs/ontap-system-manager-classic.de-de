@@ -1,0 +1,80 @@
+---
+permalink: online-help-96-97/concept_high_availability.html 
+sidebar: sidebar 
+keywords: high, availability, system, manager, hardware, redundancy, nondisruptive, operations, fault, tolerance 
+summary: 'Mit System Manager können HA-Paare (High Availability, Hochverfügbarkeit) erstellt werden, die für unterbrechungsfreien Betrieb und Fehlertoleranz die erforderliche Hardware-Redundanz bieten.' 
+---
+= Erstellen Sie Hochverfügbarkeitspaare mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) lassen sich HA-Paare für Hochverfügbarkeit erstellen, die für unterbrechungsfreien Betrieb und Fehlertoleranz Hardware-Redundanz bieten.
+
+
+
+== Hochverfügbarkeit
+
+Das Fenster Hochverfügbarkeit bietet eine Bilddarstellung des Hochverfügbarkeits-(HA-)Zustands, des Interconnect-Status und des Takeover- oder Giveback-Status aller HA-Paare in ONTAP. Sie können auch manuell einen Takeover- oder Giveback-Vorgang über das Fenster „Hochverfügbarkeit“ initiieren.
+
+Sie können Details wie den Takeover- oder Giveback-Status und den Interconnect-Status anzeigen, indem Sie auf das HA-Paar-Image klicken.
+
+Die Farbe gibt den Status des HA-Paars an:
+
+* Grün: Zeigt an, dass das HA-Paar und der Interconnect optimal konfiguriert sind und für Takeover oder Giveback zur Verfügung stehen.
++
+Grün zeigt außerdem den Status der Übernahme in Bearbeitung, Giveback in Bearbeitung und Warten auf Giveback.
+
+* Rot: Zeigt einen heruntergestuften Zustand an, z. B. einen Übernahmefehler.
+* Gelb: Zeigt an, dass der Verbindungsstatus ausgefallen ist.
+
+
+Wenn mehrere HA-Paare in einem Cluster gleichzeitig an Storage Failover-Vorgängen beteiligt sind, basiert der angezeigte Cluster-Status auf dem Status und dem Schweregrad des HA-Paars. Während der Anzeige des Cluster-Status wird die folgende Reihenfolge des Schweregrads berücksichtigt: Übernahme in Bearbeitung, Rückgabe in Bearbeitung, Warten auf Giveback.
+
+
+
+=== Aktionen
+
+Aufgaben wie Übernahme oder Rückgabe können basierend auf dem Status der Nodes im HA-Paar durchgeführt werden.
+
+* Übernahme `node_name`
++
+Ermöglicht Ihnen die Durchführung eines Übernahmvorgangs, wenn für den Partner-Node Wartungsarbeiten erforderlich sind.
+
+* Giveback `node_name`
++
+Ermöglichen Sie die Durchführung eines Giveback-Vorgangs, wenn der übergebene Partner-Node auf Giveback wartet oder sich teilweise Giveback befindet.
+
+* Aktivieren oder Deaktivieren des automatischen Giveback
++
+Aktiviert oder deaktiviert den automatischen Giveback-Vorgang.
+
++
+[NOTE]
+====
+Standardmäßig ist das automatische Giveback aktiviert.
+
+====
+
+
+
+
+=== Befehlsschaltflächen
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
++
+[NOTE]
+====
+Die im Fenster hohe Verfügbarkeit angezeigten Informationen werden automatisch alle 60 Sekunden aktualisiert.
+
+====
+
+
+*Verwandte Informationen*
+
+xref:task_monitoring_ha_pairs.adoc[Monitoring von HA-Paaren]

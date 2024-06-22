@@ -1,0 +1,131 @@
+---
+permalink: online-help-96-97/concept_ethernet_ports.html 
+sidebar: sidebar 
+keywords: system, manager, manager, ethernet, port, create, online, help, create, interface, group, lacp, vlan, settings, duplex, mode, speed, mtu, size,  port, nodes, fcp, 
+summary: Mit System Manager können Ethernet-Ports erstellt und gemanagt werden. 
+---
+= Managen sie ethernet-Ports mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (erhältlich in ONTAP 9.7 und früher) können Sie Ethernet-Ports erstellen und verwalten.
+
+
+
+== Erstellen von Schnittstellengruppen
+
+Mit System Manager können Sie eine Schnittstellengruppe erstellen – Einzelmodus, statisches Multimode oder dynamisches Multimode (LACP) – um Clients eine einzige Schnittstelle bereitzustellen, indem Sie die Funktionen der aggregierten Netzwerkports kombinieren.
+
+.Bevor Sie beginnen
+Freie Ports müssen verfügbar sein, die keiner Broadcast-Domäne oder Schnittstellengruppe angehören, oder dass Host ein VLAN.
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Ethernet-Ports*.
+. Klicken Sie Auf *Schnittstellengruppe Erstellen*.
+. Geben Sie im Dialogfeld *Schnittstellengruppe erstellen* die folgenden Einstellungen an:
++
+** Der Name der Schnittstellengruppe
+** Knoten
+** Ports, die Sie in die Schnittstellengruppe aufnehmen möchten
+** Verwendungsmodus der Ports: Single-Mode, statischer Multimodus oder dynamischer Multimode (LACP)
+** Verteilung der Netzwerklast: IP-basiert, MAC-address-based, sequenziell oder Port
+** Broadcast-Domäne für die Schnittstellengruppe, falls erforderlich
+
+
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== VLAN-Schnittstellen erstellen
+
+Sie können ein VLAN erstellen, um separate Broadcast-Domänen innerhalb derselben Netzwerkdomäne zu unterhalten, indem Sie System Manager verwenden.
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Ethernet-Ports*.
+. Klicken Sie auf *VLAN erstellen*.
+. Wählen Sie im Dialogfeld *VLAN erstellen* den Knoten, die physische Schnittstelle und die Broadcast-Domäne aus (falls erforderlich).
++
+Die Liste der physischen Schnittstellen enthält nur Ethernet-Ports und Schnittstellengruppen. Die Liste zeigt keine Schnittstellen an, die sich in einer anderen Schnittstellengruppe oder in einem vorhandenen VLAN befinden.
+
+. Geben Sie ein VLAN-Tag ein, und klicken Sie dann auf *Hinzufügen*.
++
+Sie müssen eindeutige VLAN-Tags hinzufügen.
+
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Ethernet-Porteinstellungen bearbeiten
+
+Sie können Ethernet-Porteinstellungen wie den Duplexmodus und die Geschwindigkeitseinstellungen mit System Manager bearbeiten.
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Ethernet-Ports*.
+. Wählen Sie den physischen Port aus, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie im Dialogfeld *Ethernet-Port bearbeiten* die Einstellungen für Duplexmodus und Geschwindigkeit entweder auf `manual` Oder `automatic`.
+. Klicken Sie Auf *Bearbeiten*.
+
+
+
+
+== Bearbeiten Sie die Einstellungen der Schnittstellengruppen
+
+Mit System Manager können Sie Ports zu einer Schnittstellengruppe hinzufügen, Ports aus einer Schnittstellengruppe entfernen und den Nutzungsmodus und das Lastverteilungsmuster der Ports in einer Schnittstellengruppe ändern.
+
+.Über diese Aufgabe
+Sie können die MTU-Einstellungen einer Schnittstellengruppe, die einer Broadcast-Domäne zugewiesen ist, nicht ändern.
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Ethernet-Ports*.
+. Wählen Sie eine Schnittstellengruppe aus, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie die Einstellungen der Schnittstellengruppe nach Bedarf und klicken Sie dann auf *Speichern und Schließen*.
+
+
+
+
+== Ändern Sie die MTU-Größe eines VLANs
+
+Wenn Sie die MTU-Größe einer VLAN-Schnittstelle ändern möchten, die nicht Teil einer Broadcast-Domäne ist, können Sie mit System Manager die Größe ändern.
+
+.Über diese Aufgabe
+Sie dürfen die MTU-Größe des Management-Ports E0M nicht ändern.
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Ethernet-Ports*.
+. Wählen Sie das VLAN aus, das Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie im Dialogfeld *VLAN bearbeiten* die MTU-Größe nach Bedarf und klicken Sie dann auf *Speichern*.
+
+
+
+
+== Löschen von VLANs
+
+Sie können VLANs, die auf Netzwerkports konfiguriert sind, mit System Manager löschen. Möglicherweise müssen Sie ein VLAN löschen, bevor Sie einen NIC aus seinem Steckplatz entfernen. Wenn Sie ein VLAN löschen, wird das VLAN automatisch aus allen Failover-Regeln und -Gruppen entfernt, die das VLAN verwenden.
+
+.Bevor Sie beginnen
+Dem VLAN müssen keine LIFs zugewiesen werden.
+
+.Schritte
+. Klicken Sie Auf *Netzwerk* > *Ethernet-Ports*.
+. Wählen Sie das VLAN aus, das Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+
+
+== Ports und Adapter
+
+Die Ports werden unter den Nodes gruppiert, und die Nodes werden basierend auf der ausgewählten Protokollkategorie angezeigt. Wenn beispielsweise die Daten mit dem FC-Protokoll bereitgestellt werden, werden nur die Nodes mit FCP-Adaptern angezeigt. Die Anzahl der gehosteten Schnittstellen hilft Ihnen bei der Auswahl eines Ports, der weniger geladen ist.
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/networking/index.html["Netzwerkmanagement"]
+
+https://docs.netapp.com/us-en/ontap/concepts/index.html["ONTAP-Konzepte"]
+
+xref:reference_network_window.adoc[Netzwerkfenster]

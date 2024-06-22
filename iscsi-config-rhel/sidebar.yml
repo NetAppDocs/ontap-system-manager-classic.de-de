@@ -1,0 +1,47 @@
+---
+section: iscsi-config-rhel
+title: ISCSI-Konfiguration für Red hat Enterprise Linux
+entries:
+- title: Überblick
+  url: "/iscsi-config-rhel/index.html"
+- title: ISCSI-Konfigurations- und Bereitstellungs-Workflow
+  url: "/iscsi-config-rhel/concept_iscsi_configuration_provisioning_workflow.html"
+  entries:
+  - title: Vergewissern Sie sich, dass die iSCSI-Konfiguration unterstützt wird
+    url: "/iscsi-config-rhel/task_verifying_that_iscsi_fc_configuration_is_supported.html"
+  - title: Füllen Sie das iSCSI-Konfigurationsarbeitsblatt aus
+    url: "/iscsi-config-rhel/reference_completing_iscsi_configuration_worksheet.html"
+  - title: Installation von Linux Unified Host Utilities und Optimierung der I/O-Performance
+    url: "/iscsi-config-rhel/task_installing_linux_unified_host_utilities_optimizing_i_o_performance.html"
+  - title: Notieren Sie den iSCSI-Knotennamen
+    url: "/iscsi-config-rhel/task_recording_iscsi_node_name.html"
+  - title: Legen Sie den Wert für die Zeitüberschreitung für den iSCSI-Ersatz fest
+    url: "/iscsi-config-rhel/task_setting_iscsi_replacement_timeout_value.html"
+  - title: Starten Sie den iSCSI-Dienst
+    url: "/iscsi-config-rhel/task_starting_iscsi_service.html"
+  - title: Konfigurieren Sie DM-Multipath
+    url: "/iscsi-config-rhel/task_configuring_dm_multipath.html"
+  - title: Erstellen Sie ein Aggregat
+    url: "/iscsi-config-rhel/task_creating_aggregate.html"
+  - title: Legen Sie fest, wo das Volume bereitgestellt werden soll
+    url: "/iscsi-config-rhel/task_deciding_where_to_provision_volume.html"
+    entries:
+    - title: Vergewissern Sie sich, dass der iSCSI-Service auf einer vorhandenen SVM
+        ausgeführt wird
+      url: "/iscsi-config-rhel/task_verifying_iscsi_is_running_on_existing_vserver.html"
+    - title: Erstellen einer LUN
+      url: "/iscsi-config-rhel/task_creating_lun_its_containing_volume.html"
+    - title: Konfigurieren Sie iSCSI auf einer vorhandenen SVM
+      url: "/iscsi-config-rhel/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html"
+    - title: Erstellen einer neuen SVM
+      url: "/iscsi-config-rhel/task_creating_svm.html"
+  - title: Starten Sie die iSCSI-Sitzungen mit dem Ziel
+    url: "/iscsi-config-rhel/task_starting_iscsi_sessions_with_target.html"
+  - title: Erkennen neuer SCSI-Geräte (LUNs) und Multipath-Geräte
+    url: "/iscsi-config-rhel/task_discovering_new_scsi_devices_dm_multipath_devices.html"
+  - title: Konfigurieren Sie logische Volumes auf Multipath-Geräten und erstellen
+      Sie ein Filesystem
+    url: "/iscsi-config-rhel/task_configuring_logical_volumes_on_multipath_devices_creating_file_system.html"
+  - title: Vergewissern Sie sich, dass der Host auf ein Multipath-Gerät schreiben
+      und von diesem lesen kann
+    url: "/iscsi-config-rhel/task_verifying_that_host_can_write_to_read_fom_lun.html"

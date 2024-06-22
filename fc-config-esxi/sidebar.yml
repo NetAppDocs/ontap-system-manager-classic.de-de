@@ -1,0 +1,40 @@
+---
+section: fc-config-esxi
+title: FC-Konfiguration für ESXi mit VSC
+entries:
+- title: Überblick
+  url: "/fc-config-esxi/index.html"
+- title: FC-Konfigurations-Workflow
+  url: "/fc-config-esxi/concept_fc_configuration_workflow.html"
+  entries:
+  - title: Vergewissern Sie sich, dass die FC-Konfiguration unterstützt wird
+    url: "/fc-config-esxi/task_verifying_that_iscsi_fc_configuration_is_supported.html"
+  - title: Füllen Sie das FC-Konfigurationsarbeitsblatt aus
+    url: "/fc-config-esxi/reference_completing_iscsi_configuration_worksheet.html"
+  - title: Installation Der Virtual Storage Console
+    url: "/fc-config-esxi/task_installing_virtual_storage_console_for_vmware_vsphere.html"
+  - title: Fügen Sie das Storage-Cluster oder SVM zu VSC für VMware vSphere hinzu
+    url: "/fc-config-esxi/task_adding_storage_cluster_to_virtual_storage_cluster.html"
+  - title: Aktualisieren Sie den HBA-Treiber, die Firmware und das BIOS
+    url: "/fc-config-esxi/task_updating_hba_firmware.html"
+  - title: Konfigurieren Sie die Best Practice-Einstellungen für den ESXi Host
+    url: "/fc-config-esxi/task_configuring_esxi_host_best_practice_settings.html"
+  - title: Erstellen Sie ein Aggregat
+    url: "/fc-config-esxi/task_creating_aggregate.html"
+  - title: Legen Sie fest, wo das Volume bereitgestellt werden soll
+    url: "/fc-config-esxi/task_deciding_where_to_provision_volume.html"
+    entries:
+    - title: Vergewissern Sie sich, dass der FC-Service auf einer vorhandenen SVM
+        ausgeführt wird
+      url: "/fc-config-esxi/task_verifying_that_fc_service_is_running_on_existing_svm.html"
+    - title: Konfigurieren Sie FC für eine vorhandene SVM
+      url: "/fc-config-esxi/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html"
+    - title: Erstellen einer neuen SVM
+      url: "/fc-config-esxi/task_creating_svm.html"
+  - title: Zone der FC-Switches durch den Host und LIF-WWPNs
+    url: "/fc-config-esxi/task_zoning_fc_switches_by_host_lif_wwpns.html"
+  - title: Stellen Sie einen Datenspeicher bereit und erstellen Sie dessen zugehörige
+      LUN und Volume
+    url: "/fc-config-esxi/task_provisioning_datastore_creating_its_containing_lun_volume.html"
+  - title: Vergewissern Sie sich, dass der Host schreiben und von der LUN lesen kann
+    url: "/fc-config-esxi/task_verifying_host_can_write_to_read_from_lun.html"

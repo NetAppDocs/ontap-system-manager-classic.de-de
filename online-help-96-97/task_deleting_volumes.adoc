@@ -1,0 +1,49 @@
+---
+permalink: online-help-96-97/task_deleting_volumes.html 
+sidebar: sidebar 
+keywords: online, help, delete, volumes, system, manager, flexvol, volume 
+summary: Sie können mit System Manager ein FlexVol Volume löschen, wenn Sie nicht mehr die Daten benötigen, die in einem Volume enthalten sind, oder die Daten, die sich in ein Volume enthalten, an einen anderen Speicherort kopiert haben. Wenn Sie ein Volume löschen, werden alle Daten des Volume zerstört, und diese Daten können nicht wiederhergestellt werden. 
+---
+= Löschen Sie Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) ein FlexVol Volume löschen, wenn Sie keine Daten mehr benötigen, die ein Volume enthält, oder die Daten, die ein Volume enthält, an einen anderen Speicherort kopiert haben. Wenn Sie ein Volume löschen, werden alle Daten des Volume zerstört, und diese Daten können nicht wiederhergestellt werden.
+
+.Bevor Sie beginnen
+Bevor Sie ein FlexVol Volume löschen, müssen die folgenden Bedingungen vorliegen:
+
+* Das Volume muss abgehängt werden und sich im Offline-Zustand befinden.
+* FlexClone Volumes müssen entweder vom übergeordneten Volume abgetrennt oder zerstört werden, wenn das FlexVol Volume geklont wird.
+* Die SnapMirror Beziehungen müssen gelöscht werden, wenn sich das Volume in einer oder mehreren SnapMirror Beziehungen befindet.
+
+
+.Über diese Aufgabe
+Beim Löschen eines FlexVol Volumes sollten Sie die folgenden Einschränkungen beachten:
+
+* Sie können ein komplettes SnapLock Enterprise Volume oder eine Datei in einem SnapLock Enterprise Volume löschen. Es ist jedoch nicht möglich, nur die Daten einer Datei in einem SnapLock Enterprise Volume zu löschen.
+* Ein SnapLock-Konformitätsvolume kann nicht gelöscht werden, wenn Daten auf das Volume gesetzt sind.
+* Wenn die FlexVol sowohl qtrees als auch Volumes enthält, werden die qtrees als Verzeichnisse angezeigt. Beim Löschen von Volumes sollten Sie darauf achten, dass die qtrees nicht versehentlich gelöscht werden.
+* Falls Ihnen FlexCache-Volumes mit einem Ursprungs-Volume verbunden sind, müssen Sie die FlexCache-Volumes löschen, bevor Sie das Ursprungs-Volume löschen können.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie aus dem Dropdown-Menü im Feld *SVM* die Storage Virtual Machine (SVM) aus, in der sich das zu löschende Volume befindet.
+. Wählen Sie die Volumes aus, die Sie löschen möchten.
++
+[NOTE]
+====
+Überprüfen Sie, ob Sie die richtigen Volumes ausgewählt haben, die Sie löschen möchten. Wenn Sie ein Volume löschen, werden alle Daten des Volume zerstört, und diese Daten können nicht wiederhergestellt werden.
+
+====
+. Klicken Sie Auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

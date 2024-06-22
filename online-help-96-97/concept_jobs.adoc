@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/concept_jobs.html 
+sidebar: sidebar 
+keywords: jobs, system, manager, job, task, display, information, progress, asynchronous, volume, operation, copy, move, mirror, data, queue, cluster, administrator, online, help 
+summary: Mit System Manager können Sie Job-Aufgaben verwalten, z. B. das Anzeigen von Jobinformationen und das Monitoring des Fortschritts eines Jobs. 
+---
+= Verwalten Sie Jobs mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie Aufgabenaufgaben verwalten, z. B. die Anzeige von Jobinformationen und die Überwachung des Fortschritts eines Jobs.
+
+
+
+== Jobs
+
+_Jobs_ sind asynchrone Aufgaben und in der Regel langwierige Volume-Vorgänge, wie das Kopieren, Verschieben oder Spiegeln von Daten. Jobs werden in eine Jobwarteschlange gelegt und ausgeführt, wenn Ressourcen verfügbar sind. Der Clusteradministrator kann alle Aufgaben zum Jobmanagement ausführen.
+
+Ein Job kann eine der folgenden Kategorien sein:
+
+* Ein _Server-verbundener_ Job wird vom Management-Framework in die Warteschlange gestellt, das in einem bestimmten Knoten ausgeführt werden soll.
+* Ein _Cluster-verbundener_ Job wird vom Management-Framework in die Warteschlange gestellt, der in einem beliebigen Knoten im Cluster ausgeführt werden soll.
+* Ein _private_-Job ist spezifisch für einen Knoten und verwendet nicht die replizierte Datenbank (RDB) oder einen anderen Cluster-Mechanismus.
++
+Sie benötigen die erweiterte Berechtigungsebene oder höher, um die Befehle zum Verwalten privater Jobs auszuführen.
+
+
+
+Sie können Jobs folgendermaßen verwalten:
+
+* Anzeigen von Jobinformationen, einschließlich der folgenden:
++
+** Jobs pro Node
+** Cluster-verbundene Jobs
+** Abgeschlossene Aufträge
+** Jobverlauf
+
+
+* Überwachen des Fortschritts eines Jobs
+* Anzeigen von Informationen über den Initialisierungsstatus für Job Manager.
+
+
+Sie können das Ergebnis eines abgeschlossenen Jobs durch Überprüfen des Ereignisprotokolls bestimmen.
+
+
+
+== Job-Fenster
+
+Im Fenster Job können Sie Job-Aufgaben verwalten, z. B. die Anzeige von Jobinformationen und die Überwachung des Fortschritts eines Jobs.
+
+
+
+=== Befehlsschaltfläche
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Registerkarten
+
+* *Aktuelle Jobs*
++
+Auf dieser Registerkarte werden Informationen zu den laufenden Job-Aufgaben angezeigt.
+
+* *Jobverlauf*
++
+Auf dieser Registerkarte werden Informationen zu allen Jobs angezeigt.
+
+
+
+
+
+=== Joste
+
+* *Job-ID*
++
+Zeigt die ID des Jobs an.
+
+* *Startzeit*
++
+Zeigt die Startzeit des Jobs an.
+
+* *Auftragsname*
++
+Zeigt den Namen des Jobs an.
+
+* *Knoten*
++
+Zeigt den Namen des Node an.
+
+* *Bundesland*
++
+Zeigt den Status des Jobs an.
+
+* *Stellenbeschreibung*
++
+Zeigt die Beschreibung des Jobs an.
+
+* *Fortschritt*
++
+Zeigt den Status des Jobs an.
+
+* *Terminplanname*
++
+Zeigt den Namen des Zeitplans an.
+
+

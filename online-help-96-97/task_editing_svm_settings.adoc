@@ -1,0 +1,87 @@
+---
+permalink: online-help-96-97/task_editing_svm_settings.html 
+sidebar: sidebar 
+keywords: online, help, system, manager, edit, svm, settings 
+summary: 'Mit System Manager können Sie die Eigenschaften von Storage Virtual Machines (SVMs) bearbeiten, z. B. Name Service Switch, Name Mapping Switch und Aggregatliste.' 
+---
+= Bearbeiten Sie SVM-Einstellungen mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie die Eigenschaften von Storage Virtual Machines (SVMs) bearbeiten, z. B. Name Service Switch, Name Mapping-Switch und Aggregatliste.
+
+.Über diese Aufgabe
+* Sie können die Werte der folgenden SVM-Eigenschaften bearbeiten:
++
+** Name Service Switch
+** Protokolle, die für die Bereitstellung von Daten aktiviert sind
++
+[NOTE]
+====
+Das auf der SVM konfigurierte CIFS-Protokoll stellt weiterhin Daten bereit, selbst wenn Sie das Protokoll auf dieser SVM deaktivieren.
+
+====
+** Liste der zur Erstellung von Volumes verfügbaren Aggregate
++
+[NOTE]
+====
+Bei FlexVol Volumes können Sie Aggregate nur zuweisen, wenn Sie eine Administration zu einem SVM-Administrator delegiert haben.
+
+====
+
+
+* System Manager zeigt nicht die Werte des Name Service Switch und den Name Mapping-Switch für eine SVM an, die über die Befehlszeilenschnittstelle oder für die SVM-Services erstellt wird, die nicht konfiguriert sind und von ONTAP nicht auf die Standardwerte festgelegt sind.
++
+Sie können die Dienste über die Befehlszeilenschnittstelle anzeigen, da die Registerkarte Dienste deaktiviert ist.
+
++
+System Manager zeigt den Switch Name Service und den Namenszuordnungsschalter einer SVM nur an, wenn sie mit System Manager erstellt wird oder wenn die Services der SVM von ONTAP auf die Standardwerte festgelegt sind.
+
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie auf der Registerkarte *Details* die erforderlichen Protokolle.
+. Wählen Sie auf der Registerkarte *Ressourcenzuordnung* eine der folgenden Methoden zur Delegierung der Volume-Erstellung aus:
++
+|===
+| Wenn Sie Volume-Erstellung bereitstellen möchten... | Dann... 
+
+
+ a| 
+Für alle Aggregate
+ a| 
+Wählen Sie die Option *Volume-Erstellung nicht delegieren* aus.
+
+
+
+ a| 
+Für bestimmte Aggregate
+ a| 
+.. Wählen Sie die Option *Volume-Erstellung Delegieren* aus.
+.. Wählen Sie die erforderlichen Aggregate zum Delegieren der Volume-Erstellung aus.
+
+
+|===
+. Geben Sie auf der Registerkarte *Service* die Quellen für den Namensdienst-Switch für die erforderlichen Datenbanktypen und die Reihenfolge an, in der sie zum Abrufen von Namensdienstinformationen konsultiert werden sollen.
++
+Die Standardwerte für jeden Datenbanktyp sind wie folgt:
+
++
+** Hosts: Dateien, dns
+** Namemap: Dateien
+** Gruppe: Dateien
+** Netzgruppe: Dateien
+** Passwd: Dateien
+
+
+. Klicken Sie auf *Speichern und Schließen*.
+
+
+*Verwandte Informationen*
+
+xref:concept_how_data_ontap_name_service_switch_configuration_works.adoc[Funktionsweise der Switch-Konfiguration für den ONTAP Name Service]

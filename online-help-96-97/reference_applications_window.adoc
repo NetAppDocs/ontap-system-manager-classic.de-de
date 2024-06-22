@@ -1,0 +1,143 @@
+---
+permalink: online-help-96-97/reference_applications_window.html 
+sidebar: sidebar 
+keywords: applications, window, svm, online, help, storage, virtual, machine, online, help, action, icon, tab, column 
+summary: 'Mit System Manager können Sie eine Liste der Applikationen einer Storage Virtual Machine (SVM) anzeigen. Die Liste enthält detaillierte Informationen zu den einzelnen Anwendungen.' 
+---
+= Anwendungen-Fenster in System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie eine Liste der Applikationen einer Storage Virtual Machine (SVM) anzeigen. Die Liste enthält detaillierte Informationen zu den einzelnen Anwendungen.
+
+
+
+== Registerkarten
+
+Abhängig von der Cluster-Konfiguration zeigt System Manager Informationen über Applikationen mit einer der folgenden Methoden an:
+
+* *Keine Registerkarten*
++
+Detaillierte Informationen zur Applikation, einschließlich Name, Typ, Storage-Auslastung, Performance Und verwandten Themen.
+
+* *Zwei Registerkarten*
++
+Das Display enthält zwei Registerkarten mit Informationen zur Anwendung.
+
++
+** * Erweitert*
++
+Detaillierte Informationen zur Applikation, einschließlich Name, Typ, Storage-Auslastung, Performance Und verwandten Themen.
+
+** *Einfach*
++
+Grundlegende Informationen zur Anwendung.
+
+
+
+
+
+
+
+== Liste von Applikationen
+
+Die Anwendungen für die ausgewählte SVM werden auf der Registerkarte * Enhanced* auf folgende Weise in einer Liste angezeigt:
+
+* Für System Manager 9.5 und frühere Versionen werden in der Liste bis zu 32 Applikationen angezeigt.
+* Für System Manager 9.6 werden die ersten 25 Applikationen in der Liste angezeigt. Wenn Sie zum Ende der Liste blättern, werden weitere 25 Anwendungen zur Liste hinzugefügt. Wenn Sie die Bildlaufleiste fortsetzen 25, können Sie die Liste bis zu 1000 Anwendungen gleichzeitig hinzufügen.
+
+
+
+
+== Spalten auflisten
+
+Die Informationen zu den einzelnen Anwendungen werden in den folgenden Spalten auf der Registerkarte * Erweitert* angezeigt.
+
+* *Pfeil erweitern/reduzieren image:../media/arrow_expand_collapse_white_background.gif[""]*
++
+Enthält einen Pfeil, auf den Sie klicken können, um die Informationen zu einer Detailansicht anzuzeigen oder um die Informationen zurück in die Zusammenfassungsansicht zu reduzieren.
+
+* *Name*
++
+Der Name der Anwendung.
+
+* *Typ*
++
+Applikationstyp.
+
+* * Komponente*
++
+Die Komponente der Anwendung.
+
+* *ONTAP Service Level*
++
+Der ONTAP Service Level für die Applikation.
+
+* *Verwendung*
++
+Ein grafischer Balken, der den Prozentsatz der Nutzung anzeigt.
+
+* *Verwendet*
++
+Die Menge an Speicherplatz, der von der Applikation verwendet wird.
+
+* *Verfügbar*
++
+Die Menge an Speicherplatz, die für die Anwendung noch verfügbar ist.
+
+* *Größe*
++
+Der Größe der Applikation.
+
+* *IOPS*
++
+Die Anzahl der ein- und Ausgabevorgänge pro Sekunde (IOPS) für die Applikation.
+
+* *Latenz*
++
+Die Höhe der Latenz für die Applikation.
+
+
+
+
+
+== Eingabefelder
+
+Mit den folgenden Feldern können Sie die Informationsanzeige ändern:
+
+* *SVM*
++
+Ermöglicht Ihnen die Anzeige einer Dropdown-Liste der SVMs, aus der Sie die SVM mit den anzuzeigenden Applikationen auswählen können.
+
+* *Suchfeld*
++
+Ermöglicht die Eingabe eines Anwendungsnamens ganz oder teilweise, um eine Suche basierend auf den von Ihnen verwendeten Kriterien zu initiieren. In der Liste werden dann nur die Applikationen mit Namen angezeigt, die den Kriterien entsprechen.
+
+* *Sortieren nach Feld*
++
+Ermöglicht das Sortieren der Liste von Anwendungen nach Name, Größe oder Typ.
+
+
+
+
+
+== Aktionssymbole
+
+Die folgenden Symbole auf der Registerkarte * Erweitert* können verwendet werden, um Aktionen zu initiieren:
+
+* *Symbol hinzufügen image:../media/add_plus_sign.gif[""]*
++
+Hiermit können Sie eine Applikation zur ausgewählten SVM hinzufügen.
+
+* *Filtersymbol image:../media/filter_icon_white_background.gif[""]*
++
+Hier können Sie den Anwendungstyp angeben, der in den Suchergebnissen angezeigt werden soll.
+
+* *Symbol Anzeige image:../media/display_icon.gif[""]*
++
+Ermöglicht das Umschalten zwischen einer Listenansicht und einer Kartenansicht der Anwendungsinformationen.
+
+

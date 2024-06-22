@@ -1,0 +1,97 @@
+---
+permalink: online-help-96-97/task_setting_up_branchcache.html 
+sidebar: sidebar 
+keywords: cifs, svm, system, manager, online, help, branchcache, set, up, modify, settings, delete 
+summary: 'Mit System Manager kann BranchCache auf einer CIFS-fähigen Storage Virtual Machine (SVM) konfiguriert werden, damit Inhalte auf lokalen Computern für die Clients, die die Anfrage anfordern, zwischengespeichert werden.' 
+---
+= Konfigurieren Sie BranchCache mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (erhältlich ab ONTAP 9.7) lässt sich BranchCache auf einer Storage Virtual Machine (SVM) mit CIFS-Unterstützung konfigurieren, damit Inhalte auf Computern, die für die anfordernden Clients lokal sind, zwischengespeichert werden können.
+
+.Bevor Sie beginnen
+* CIFS muss lizenziert und ein CIFS-Server konfiguriert sein.
+* Für BranchCache Version 1 muss SMB 2.1 oder höher aktiviert sein.
+* Für BranchCache Version 2 muss SMB 3.0 aktiviert sein, und die Remote-Windows-Clients müssen BranchCache 2 unterstützen.
+
+
+.Über diese Aufgabe
+* BranchCache auf SVMs lassen sich konfigurieren.
+* Sie können eine Konfiguration mit BranchCache für alle Freigaben erstellen, wenn Sie Caching-Services für alle Inhalte anbieten möchten, die sich auf allen SMB-Freigaben auf dem CIFS-Server befinden.
+* Sie können eine Konfiguration mit BranchCache für Freigaben erstellen, wenn Sie Caching-Services für Inhalte anbieten möchten, die in ausgewählten SMB-Freigaben auf dem CIFS-Server enthalten sind.
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie auf der Registerkarte *BranchCache* auf *Einrichten*.
+. Geben Sie im Dialogfeld *BranchCache Setup* die folgenden Informationen ein:
++
+.. Geben Sie den Pfad zum Hash-Speicher an.
++
+Der Pfad kann zu einem bestehenden Verzeichnis sein, in dem die Hash-Daten gespeichert werden sollen. Der Zielpfad muss schreibgeschützt sein. Schreibgeschützte Pfade wie Snapshot Verzeichnisse sind nicht zulässig.
+
+.. Geben Sie die maximale Größe (in KB, MB, GB, TB oder PB) für einen Hash-Datenspeicher an.
++
+Wenn die Hash-Daten diesen Wert überschreiten, werden ältere Hashes gelöscht, um Platz für neuere Hashes bereitzustellen. Die Standardgröße für einen Hash-Speicher beträgt 1 GB.
+
+.. Legen Sie den Betriebsmodus für die BranchCache-Konfiguration fest.
++
+Der Standardbetriebsmodus ist auf alle Freigaben eingestellt.
+
+.. Geben Sie einen Serverschlüssel an, um zu verhindern, dass Clients den BranchCache-Server imitieren.
++
+Sie können den Server-Schlüssel auf einen bestimmten Wert legen, sodass Clients Hash-Funktionen von jedem Server verwenden können, wenn mehrere Server BranchCache-Daten für die gleichen Dateien bereitstellen. Wenn der Serverschlüssel Leerzeichen enthält, müssen Sie den Serverschlüssel in Anführungszeichen einschließen.
+
+.. Wählen Sie die erforderliche BranchCache-Version aus.
++
+Standardmäßig sind alle Versionen ausgewählt, die vom Client unterstützt werden.
+
+
+
+. Klicken Sie Auf *Einrichten*.
+
+
+
+
+== Ändern Sie die BranchCache-Einstellungen
+
+Über das CIFS-Fenster in System Manager können Sie die BranchCache-Einstellungen ändern, die für eine CIFS-fähige Storage Virtual Machine (SVM) konfiguriert sind. Sie können den Hash-Speicherpfad, die Hash-Speichergröße, den Betriebsmodus und die unterstützten BranchCache-Versionen ändern.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie auf der Registerkarte *BranchCache* auf *Bearbeiten*.
+. Ändern Sie im Dialogfeld *BranchCache-Einstellungen* die erforderlichen Informationen:
++
+** Hash-Speicherpfad
++
+Wenn Sie den Hash-Speicherpfad ändern, können Sie die im Cache gespeicherten Hash-Daten aus dem vorherigen Hash-Speicher behalten.
+
+** Hash-Speichergröße
+** Betriebsmodus
+** BranchCache-Version
+
+
+. Klicken Sie Auf *Ändern*.
+
+
+
+
+== Löschen Sie die BranchCache-Konfiguration
+
+Mit System Manager kann die Konfiguration von BranchCache gelöscht werden, wenn Caching-Services nicht mehr auf der für BranchCache konfigurierten Storage Virtual Machine (SVM) angeboten werden sollen.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie auf der Registerkarte *BranchCache* auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
++
+Sie können auch vorhandene Hashes aus dem Hash-Speicher entfernen.
+
+

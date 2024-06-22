@@ -1,0 +1,348 @@
+---
+permalink: online-help-96-97/concept_quotas.html 
+sidebar: sidebar 
+keywords: system, manager, quota, online, help, view, activate, deactivate, information, types, targets, default, limits, space, files, manage, tree, group 
+summary: Mit System Manager können Sie Kontingente erstellen, bearbeiten und löschen. 
+---
+= Verwalten Sie Quoten mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Quoten zu erstellen, zu bearbeiten und zu löschen.
+
+
+
+== Erstellen von Quotas
+
+Quoten ermöglichen es Ihnen, den Festplattenspeicherplatz und die Anzahl der Dateien zu beschränken, die von einem Benutzer, einer Gruppe oder einem qtree verwendet werden. Sie können den Assistent zum Hinzufügen von Kontingenten in System Manager verwenden, um eine Quote zu erstellen und die Quote auf ein bestimmtes Volume oder einen bestimmten qtree anzuwenden.
+
+.Über diese Aufgabe
+Mit System Manager können Sie den Hardlimit und das weiche Limit für die Anzahl der Dateien angeben, für die das Kontingent besitzen kann, ist 1000. Wenn Sie einen Wert unter 1000 angeben möchten, sollten Sie die Befehlszeilenschnittstelle (CLI) verwenden.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Quotas*.
+. Wählen Sie aus dem Dropdown-Menü im Feld *SVM* die Storage Virtual Machine (SVM) aus, auf der Sie eine Quote erstellen möchten.
+. Klicken Sie auf der Registerkarte * Benutzerdefinierte Quoten* auf *Erstellen*.
++
+Der Assistent zum Erstellen von Quota wird angezeigt.
+
+. Geben Sie die vom Assistenten geforderten Informationen ein oder wählen Sie diese aus.
+. Bestätigen Sie die Details und klicken Sie dann auf *Fertig stellen*, um den Assistenten abzuschließen.
+
+
+
+
+=== Nächste Schritte
+
+Sie können den lokalen Benutzernamen verwenden oder ENTFERNEN, um Benutzer Quoten zu erstellen. Wenn Sie das Benutzerkontingent oder Gruppenkontingent unter Verwendung des Benutzernamens oder Gruppennamens erstellen, wird das angezeigt ``/etc/passwd``Datei und der``/etc/group``Die Datei muss entsprechend aktualisiert werden.
+
+
+
+== Kontingente löschen
+
+Mit System Manager können Sie eine oder mehrere Quoten löschen, wenn sich Ihre Benutzer und ihre Storage-Anforderungen und Einschränkungen ändern.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Quotas*.
+. Wählen Sie aus dem Dropdown-Menü im Feld *SVM* die Storage Virtual Machine (SVM) aus, auf der sich die zu löschenden Quoten befinden.
+. Wählen Sie eine oder mehrere Quoten aus, die Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+
+
+== Bearbeiten Sie Kontingentgrenzen
+
+Sie können mit System Manager den Speicherplatzschwellenwert, die harte Grenze und die weiche Grenze für die Menge des Festplattenspeichers, den das Kontingentnutzer verwenden können, sowie die harte Grenze und die weiche Grenze für die Anzahl der Dateien, die das Kontingentnutzer besitzen kann.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Quotas*.
+. Wählen Sie aus dem Dropdown-Menü im Feld *SVM* die Storage Virtual Machine (SVM) aus, auf der sich das Kontingent befindet, das Sie bearbeiten möchten.
+. Wählen Sie die Quote aus, die Sie bearbeiten möchten, und klicken Sie auf *Grenzen bearbeiten*.
+. Bearbeiten Sie im Dialogfeld *Limits bearbeiten* die Quota-Einstellungen nach Bedarf.
++
+Hundert (100) ist der Mindestwert, den Sie für die harte Grenze und die weiche Grenze für die Anzahl der Dateien, die die Quote besitzen können festlegen können. Wenn Sie einen Wert unter 100 angeben möchten, verwenden Sie die Befehlszeilenschnittstelle (CLI).
+
+. Klicken Sie auf *Speichern und Schließen*.
+. Überprüfen Sie die Änderungen, die Sie an der ausgewählten Quote vorgenommen haben, auf der Registerkarte * Benutzerdefinierte Quoten*.
+
+
+
+
+== Quoten aktivieren oder deaktivieren
+
+Mit System Manager können Sie für eine oder mehrere Volumes, die Sie auf Ihrem Storage-System auswählen, Quoten aktivieren oder deaktivieren. Sie können Kontingente aktivieren oder deaktivieren, wenn sich Benutzer und ihre Storage-Anforderungen und Einschränkungen ändern.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Quotas*.
+. Wählen Sie im Dropdown-Menü des Feldes SVM die Storage Virtual Machine (SVM) aus, zu der die Kontingente, die aktiviert oder deaktiviert werden sollen, liegen sollen.
+. Wählen Sie auf der Registerkarte *Quota Status on Volumes* ein oder mehrere Volumes aus, für die Sie Quoten aktivieren oder deaktivieren möchten.
+. Klicken Sie bei Bedarf auf *Aktivieren* oder *Deaktivieren*.
+. Wenn Sie ein Kontingent deaktivieren, aktivieren Sie das Bestätigungsfeld und klicken dann auf *OK*.
+. Überprüfen Sie den Kontingentstatus auf den Volumes in der Spalte *Status*.
+
+
+
+
+== Ändern der Größe von Kontingenten
+
+Sie können das Dialogfeld „Kontingent ändern“ in System Manager verwenden, um die aktiven Quoten in dem angegebenen Volume anzupassen, sodass sie die Änderungen widerspiegeln, die Sie an einer Quote vorgenommen haben.
+
+.Bevor Sie beginnen
+Für die Volumes, für die Sie die Größe der Quoten ändern möchten, müssen Quoten aktiviert werden.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Quotas*.
+. Wählen Sie auf der Registerkarte *Quotenstatus auf Bänden* des Fensters *Quotas* ein oder mehrere Bände aus, für die Sie die Größe der Quoten ändern möchten.
+. Klicken Sie Auf *Größe*.
+
+
+
+
+== Anzeigen von Quota-Informationen
+
+Mit dem Quotenfenster in System Manager können Sie Details zu Kontingenten wie Volume und qtrees anzeigen, auf die das Kontingent angewendet wird, die Art der Quota, den Benutzer oder die Gruppe, auf die das Kontingent angewendet wird, sowie Platz und Datei.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Quotas*.
+. Wählen Sie aus dem Dropdown-Menü im Feld *SVM* die Storage Virtual Machine (SVM) aus, auf der das Kontingent, das Sie Informationen über residents anzeigen möchten, angezeigt werden soll.
+. Führen Sie die entsprechende Aktion aus:
++
+[cols="1a,1a"]
+|===
+| Wenn... | Dann... 
+
+
+ a| 
+Sie möchten Details zu allen von Ihnen erstellten Quoten anzeigen
+ a| 
+Klicken Sie auf die Registerkarte * Benutzerdefinierte Quoten*.
+
+
+
+ a| 
+Sie möchten Details zu den Kontingenten anzeigen, die derzeit aktiv sind
+ a| 
+Klicken Sie auf die Registerkarte *Quota Report*.
+
+|===
+. Wählen Sie das Kontingent aus, über das Informationen aus der angezeigten Liste der Quoten angezeigt werden sollen.
+. Überprüfen Sie die Kontingentdetails.
+
+
+
+
+== Arten von Kontingenten
+
+Quoten können auf der Grundlage der Ziele, auf die sie angewendet werden, klassifiziert werden.
+
+Die folgenden Quotenarten basieren auf den Zielen, auf denen sie angewendet werden:
+
+* *Benutzerquote*
++
+Das Ziel ist ein Benutzer.
+
++
+Der Benutzer kann durch einen UNIX-Benutzernamen, UNIX-UID, eine Windows-SID, eine Datei oder ein Verzeichnis, deren UID dem Benutzer entspricht, einen Windows-Benutzernamen im Format vor Windows 2000 und eine Datei oder ein Verzeichnis mit einer ACL darstellen, die der SID des Benutzers gehört. Sie können es auf ein Volume oder einen qtree anwenden.
+
+* *Gruppenquote*
++
+Das Ziel ist eine Gruppe.
+
++
+Die Gruppe wird durch einen UNIX-Gruppennamen, eine GID oder eine Datei oder ein Verzeichnis repräsentiert, deren GID der Gruppe entspricht. ONTAP wendet keine Gruppenkontingente auf Grundlage einer Windows-ID an. Sie können eine Quote auf ein Volume oder einen qtree anwenden.
+
+* *Qtree Quote*
++
+Das Ziel ist ein qtree, der durch den Pfadnamen zum qtree angegeben wird.
+
++
+Sie können die Größe des Ziel-qtree festlegen.
+
+* *Standardkontingent*
++
+Wendet automatisch ein Kontingentlimit auf eine Vielzahl von Kontingentzielen an, ohne für jedes Ziel separate Quoten zu erstellen.
+
++
+Die Standardquoten können auf alle drei Arten von Kontingenttypen (Benutzer, Gruppen und qtrees) angewendet werden. Der Kontingenttyp wird durch den Wert des Typfelds bestimmt.
+
+
+
+
+
+== Kontingentbeschränkungen
+
+Sie können eine Speicherplatzbegrenzung anwenden oder die Anzahl der Dateien für jeden Kontingenttyp begrenzen. Wenn Sie kein Limit für ein Kontingent angeben, wird kein Wert angewendet.
+
+Kontingente können „weich“ oder „hart“ sein. Wenn festgelegte Grenzwerte überschritten werden, sorgt eine Soft Quota dafür, dass Data ONTAP eine Benachrichtigung sendet, wohingegen eine Hard Quota in diesem Fall einen Schreibvorgang fehlschlagen lässt.
+
+Harte Quoten zwingen zu einer harten Begrenzung der Systemressourcen. Jeder Vorgang, der die Grenze überschreiten würde, schlägt fehl. Mit den folgenden Einstellungen werden harte Quoten erstellt:
+
+* Parameter für Festplattenlimit
+* Parameter für Dateibegrenzung
+
+
+Wenn die Ressourcennutzung eine bestimmte Stufe erreicht, wird eine Warnmeldung ausgegeben, sie hat jedoch keine Auswirkungen auf den Datenzugriff. So können Sie Maßnahmen ergreifen, bevor die Quote überschritten wird. Mit den folgenden Einstellungen werden Soft Quotas erstellt:
+
+* Schwellenwert für den Parameter „Datenträgerlimit“
+* Parameter für die Begrenzung der Softdiskette
+* Parameter für die Begrenzung von Softdateien
+
+
+Mit Schwellenwerten und Soft Disk Quotas können Administratoren mehr als eine Benachrichtigung über ein Kontingent erhalten. In der Regel legen Administratoren den Schwellenwert für das Festplattenlimit auf einen Wert fest, der nur etwas kleiner als das Festplattenlimit ist, sodass der Schwellenwert für die „letzte Warnung“ vorliegt, bevor ein Schreibvorgang fehlschlagen wird.
+
+* *Festplattenspeicherlimit*
++
+Limit für Speicherplatz für Festplattenkontingente:
+
+* *Leerlimit für Speicherplatz*
++
+Speicherplatzlimit für Soft Quotas.
+
+* *Grenzwert*
++
+Grenzwert für Festplattenspeicherplatz gilt für Schwellenwertkontingente.
+
+* * Dateien harte Grenze*
++
+Die maximale Anzahl von Dateien auf einem harten Kontingent.
+
+* *Softlimit für Dateien*
++
+Die maximale Anzahl von Dateien auf einem Softkontingent.
+
+
+
+
+
+== Kontingentverwaltung
+
+System Manager enthält verschiedene Funktionen, mit denen Sie Kontingente erstellen, bearbeiten oder löschen können. Sie können ein Benutzer-, Gruppen- oder Baumkontingent erstellen und Sie können Kontingentgrenzen auf Festplatten- und Dateiebene festlegen. Alle Quoten werden auf Volume-Basis festgelegt.
+
+Nach dem Erstellen einer Quote können Sie die folgenden Aufgaben ausführen:
+
+* Aktivieren und Deaktivieren von Kontingenten
+* Ändern der Größe von Kontingenten
+
+
+
+
+== Fenster „Kontingente“
+
+Mit dem Fenster „Quotas“ können Sie Informationen zu Kontingenten erstellen, anzeigen und managen.
+
+
+
+=== Registerkarten
+
+* *Benutzerdefinierte Quoten*
++
+Sie können die Registerkarte *Benutzerdefinierte Quoten* verwenden, um Details zu den von Ihnen erstellten Quoten anzuzeigen und Quoten zu erstellen, zu bearbeiten oder zu löschen.
+
+* *Quotenbericht*
++
+Mit der Registerkarte Quotenbericht können Sie die Speicherplatz- und Dateiverwendung anzeigen und die Speicherplatz- und Dateigrenzen für aktive Kontingente bearbeiten.
+
+* *Quota Status auf Volumes*
++
+Über die Registerkarte Quotenstatus auf Volumes können Sie den Status einer Quote anzeigen, Quoten ein- oder ausschalten und die Größe von Kontingenten anpassen.
+
+
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet den Create Quota Wizard, mit dem Sie Quoten erstellen können.
+
+* *Grenzen Bearbeiten*
++
+Öffnet das Dialogfeld Grenzen bearbeiten, in dem Sie die Einstellungen des ausgewählten Kontingents bearbeiten können.
+
+* *Löschen*
++
+Löscht die ausgewählte Quote aus der Quotenliste.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Benutzerdefinierte Quotenliste
+
+In der Liste der Kontingente werden Name und Storage-Informationen für die einzelnen Kontingente angezeigt.
+
+* *Lautstärke*
++
+Gibt das Volumen an, auf das das Kontingent angewendet wird.
+
+* *Qtree*
++
+Gibt den mit dem Kontingent verknüpften qtree an. „`All Qtrees`“ gibt an, dass die Quote mit allen qtrees verknüpft ist.
+
+* *Typ*
++
+Gibt den Kontingenttyp an: Benutzer, Gruppe oder Struktur.
+
+* * Benutzer/Gruppe*
++
+Gibt einen Benutzer oder eine Gruppe an, die mit dem Kontingent verknüpft ist. „Alle Benutzer“ gibt an, dass das Kontingent allen Benutzern zugeordnet ist. „Alle Gruppen“ gibt an, dass die Quote mit allen Gruppen verknüpft ist.
+
+* *Kontingentnutzer*
++
+Gibt den Zieltyp an, dem das Kontingent zugewiesen ist. Als Ziel kann qtree, Benutzer oder Gruppe verwendet werden.
+
+* *Space Hard Limit*
++
+Gibt das auf harte Kontingente angewendete Speicherplatzlimit an.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+* *Space Soft Limit*
++
+Gibt das Speicherplatzlimit für Soft Quotas an.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+* *Schwellenwert*
++
+Gibt das auf Schwellenwertkontingente angewendete Speicherplatzlimit an.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+* *Harte Dateibegrenzung*
++
+Gibt die maximale Anzahl von Dateien in einem harten Kontingent an.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+* *Soft Limit Für Dateien*
++
+Gibt die maximale Anzahl von Dateien in einem Softkontingent an.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+
+
+
+
+=== Detailbereich
+
+Im Bereich unterhalb der Quotenliste werden Quota-Details angezeigt, beispielsweise Quota-Fehler, Platzverbrauch und -Grenzwerte sowie Dateinutzung und -Grenzen.
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/volumes/index.html["Logisches Storage-Management"^]

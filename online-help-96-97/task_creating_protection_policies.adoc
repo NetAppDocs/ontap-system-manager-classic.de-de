@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_creating_protection_policies.html 
+sidebar: sidebar 
+keywords: create, protection, policies, online, help, system, manager 
+summary: Mit System Manager können asynchrone Spiegelungsrichtlinien, Vault-Richtlinien oder Richtlinien für Spiegelungen und Vault erstellt werden. Außerdem können diese Richtlinien für eine Datensicherungsbeziehung angewendet werden. 
+---
+= Sicherungsrichtlinien erstellen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit System Manager können asynchrone Spiegelungsrichtlinien, Vault-Richtlinien oder Richtlinien für Spiegelungen und Vault erstellt werden. Außerdem können diese Richtlinien für eine Datensicherungsbeziehung angewendet werden.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die Storage Virtual Machine (SVM) aus, für die Sie eine Sicherungsrichtlinie erstellen möchten, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fensterbereich *Richtlinien* auf *Schutzrichtlinien*.
+. Klicken Sie Auf *Erstellen*.
+. Wählen Sie im Dialogfeld *Richtlinien erstellen* den Richtlinientyp aus, den Sie erstellen möchten.
+. Geben Sie den Namen der Richtlinie und die Übertragungspriorität an.
++
+Niedrig gibt an, dass die Übertragung die geringste Priorität hat und die Übertragung normalerweise nach normalen Prioritätstransfers geplant ist. Standardmäßig ist die Priorität auf „Normal“ festgelegt.
+
+. Wählen Sie für eine Richtlinie vom Typ Asynchronous Mirror das Kontrollkästchen *Alle Quell-Snapshot-Kopien übertragen* aus, um die Regel „`all_source_Snapshots`“ in die Spiegelrichtlinie aufzunehmen, die alle Snapshot Kopien vom Quell-Volume sichert.
+. Aktivieren Sie das Kontrollkästchen *Netzwerkkomprimierung aktivieren*, um die Daten zu komprimieren, die während einer Datenübertragung übertragen werden.
+. Klicken Sie auf *Kommentare hinzufügen*, um zusätzliche Kommentare für die Richtlinie hinzuzufügen.
+. Geben Sie für eine Richtlinie des Typs Vault oder Mirror Vault ein SnapMirror Label und die Anzahl der Ziel-Aufbewahrung an.
+. Klicken Sie Auf *Erstellen*.
+

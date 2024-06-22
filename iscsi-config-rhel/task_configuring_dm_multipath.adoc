@@ -1,0 +1,85 @@
+---
+permalink: iscsi-config-rhel/task_configuring_dm_multipath.html 
+sidebar: sidebar 
+keywords: dm-multipath, manage, path, linux, host, storage, cluster, configuring, configure, lun, scsi, device, component, fail, cluster, configure, configure dm-multipath 
+summary: DM-Multipath managt mehrere Pfade zwischen dem Linux-Host und dem Storage-Cluster. Die Konfiguration von DM-Multipath auf einer LUN, die dem Linux-Host als SCSI-Gerät angezeigt wird, ermöglicht es Ihrem Linux-Host, auf seine LUN auf dem Storage-Cluster zuzugreifen, wenn ein Pfad oder eine Komponente ausfällt. 
+---
+= Konfigurieren Sie DM-Multipath
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+DM-Multipath managt mehrere Pfade zwischen dem Linux-Host und dem Storage-Cluster. Die Konfiguration von DM-Multipath auf einer LUN, die dem Linux-Host als SCSI-Gerät angezeigt wird, ermöglicht es Ihrem Linux-Host, auf seine LUN auf dem Storage-Cluster zuzugreifen, wenn ein Pfad oder eine Komponente ausfällt.
+
+.Bevor Sie beginnen
+Sie müssen die erforderliche Version von DM-Multipath aus dem Interoperabilitäts-Matrix-Tool ermittelt haben.
+
+https://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"]
+
+[NOTE]
+====
+Der empfohlene Ansatz besteht darin, dass Sie in jedem Fabric oder Ethernet-Netzwerk zwei Pfade pro Node konfigurieren. So schlägt ein Pfad fehl, ohne der Node zu seinem Partner wechseln zu müssen. Die Verwendung von Link Aggregation (LAG) für die physischen Ports wird bei einem Windows-basierten Betriebssystem nicht empfohlen.
+
+====
+.Schritte
+. Bearbeiten Sie das `/etc/multipath.conf` Datei wie folgt:
++
+.. Ermitteln Sie, ob es nicht-NetApp SCSI-Geräte zum Ausschließen gibt (Blacklist).
++
+Dies sind Geräte, die nicht angezeigt werden, wenn Sie das eingeben `sanlun lun show` Befehl.
+
++
+*** Falls nicht von NetApp ausbestimmte SCSI-Geräte vorhanden sind, geben Sie im Blacklist-Abschnitt des die weltweite Kennung (WWID) für die Geräte ein `multipath.conf` Datei:
++
+Um die WWID eines SCSI-Geräts anzuzeigen, geben Sie den folgenden Befehl auf dem Gerät ein, das Sie ausschließen möchten `SCSI_device_name` Ist ein Gerät, das Sie angeben: `/lib/udev/scsi_id -gud /dev/SCSI_device_name`
+
++
+Beispiel: Wenn `/dev/sda` Gibt es das nicht-NetApp SCSI-Gerät, das Sie ausschließen möchten, Folgendes ein:
+
++
+`/lib/udev/scsi_id -gud /dev/sda`
+
++
+Hier wird die WWID des Geräts angezeigt, die Sie kopieren und in das einfügen können `multipath.conf` Datei:
+
++
+Im folgenden Beispiel, das den Blacklist-Abschnitt des zeigt `multipath.conf` File, das nicht von NetApp stammende SCSI-Gerät mit WWID `3600508e000000000753250f933cc4606` Ist ausgeschlossen:
+
++
+[listing]
+----
+blacklist {
+            **wwid       3600508e000000000753250f933cc4606**
+            devnode    "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+            devnode    "^hd[a-z]"
+            devnode     "^cciss.*"
+}
+----
+*** Wenn keine Geräte zum Ausschließen vorhanden sind, entfernen Sie die Zeile _wwid_ aus dem `multipath.conf` Datei:
+
+
+.. Aktivieren Sie die von NetApp empfohlenen DM-Multipath-Einstellungen, indem Sie den folgenden String an das Ende der Kernel-Zeile im Boot-Loader anhängen: `rdloaddriver=scsi_dh_alua`
+
+
+. Starten Sie den DM-Multipath-Daemon:
++
+`/etc/init.d/multipathd start`
+
+. Fügen Sie den Multipath-Service zur Boot-Sequenz hinzu, damit der Multipath-Daemon immer beim Booten des Systems startet:
++
+`chkconfig multipathd on`
+
+. Starten Sie den Linux-Host neu.
+. Überprüfen Sie das `rdloaddriver` Die Einstellung wird in der Ausgabe angezeigt, wenn Sie ausgeführt werden `cat /proc/cmdline`.
++
+Der `rdloaddriver` Die Einstellung wird als eine von mehreren Startoptionen angezeigt, die an den Kernel übergeben werden:
+
++
+[listing]
+----
+# cat /proc/cmdline
+ro root=/dev/mapper/vg_ibmx3650210104-lv_root rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD rd_LVM_LV=vg_ibmx3650210104/lv_root SYSFONT=latarcyrheb-sun16 rd_LVM_LV=vg_ibmx3650210104/lv_swap crashkernel=129M@0M  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet **rdloaddriver=scsi_dh_alua**
+----
+

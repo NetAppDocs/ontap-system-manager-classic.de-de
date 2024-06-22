@@ -1,0 +1,205 @@
+---
+permalink: online-help-96-97/task_updating_cluster_name.html 
+sidebar: sidebar 
+keywords: system, manager, update, cluster, name, online, help 
+summary: Mit System Manager können Sie bei Bedarf den Namen eines Clusters ändern. 
+---
+= Richten Sie das Cluster mit System Manager - ONTAP 9.7 und früher ein
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Cluster mit ONTAP System Manager classic (erhältlich in ONTAP 9.7 und früher) einrichten.
+
+Beim Einrichten des Clusters werden Konfigurationsinformationen gesammelt, Cluster-Management- und Node-Managementoberflächen erstellt, Lizenzen hinzugefügt, die Cluster-Zeit eingerichtet und HA-Paare überwacht.
+
+
+
+== Aktualisiert den Cluster-Namen
+
+Mit System Manager können Sie bei Bedarf den Namen eines Clusters ändern.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Konfigurationsupdates*.
+. Klicken Sie im Fensterbereich *Cluster Details* auf *Cluster-Name aktualisieren*.
+. Geben Sie im Dialogfeld *Cluster-Name aktualisieren* einen neuen Namen für den Cluster an, und klicken Sie dann auf *Absenden*.
+
+
+
+
+== Ändern des Cluster-Passworts
+
+Sie können mit System Manager das Passwort eines Clusters zurücksetzen.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Konfigurationsupdates*.
+. Klicken Sie im Fensterbereich *Cluster Details* auf *Passwort ändern*.
+. Geben Sie im Dialogfeld *Passwort ändern* ein neues Passwort ein, bestätigen Sie das neue Passwort und klicken Sie dann auf *Ändern*.
+
+
+
+
+== DNS-Konfigurationen bearbeiten
+
+Mit System Manager können Sie Host-Informationen hinzufügen, um DNS-Konfigurationen zentral zu managen. Sie können die DNS-Details ändern, wenn Sie die Domain-Namen oder IP-Adressen ändern möchten.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Konfigurationsupdates*.
+. Klicken Sie im Fensterbereich *Cluster Details* auf *DNS-Konfiguration bearbeiten*.
+. Fügen Sie im Bereich *DNS Domains* die DNS-Domain-Namen hinzu oder ändern Sie sie.
+. Fügen Sie im Bereich *Name Servers* die IP-Adressen hinzu oder ändern Sie sie.
+. Klicken Sie auf *OK*.
+
+
+
+
+== Erstellen einer logischen Cluster-Management-Schnittstelle
+
+Sie können mit System Manager eine logische Cluster-Management-Schnittstelle (Logical Interface, LIF) erstellen, die eine einzige Managementoberfläche für einen Cluster bereitstellen. Sie können diese LIF verwenden, um alle Aktivitäten des Clusters zu verwalten.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Konfigurationsupdates*.
+. Klicken Sie im Fensterbereich *Cluster Details* auf *Cluster-Management-LIF erstellen*.
+. Geben Sie im Dialogfeld *Cluster-Management LIF* einen Namen für die Cluster-Management-LIF an.
+. Weisen Sie der Cluster-Management-LIF eine IP-Adresse zu:
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+Geben Sie die IP-Adresse mithilfe eines Subnetzes an
+ a| 
+.. Wählen Sie *mit einem Subnetz* aus.
+.. Wählen Sie im Dialogfeld Details hinzufügen das Subnetz aus, aus dem die IP-Adresse zugewiesen werden soll.
++
+Bei einer Intercluster-LIF werden nur die Subnetze angezeigt, die dem ausgewählten IPspace zugeordnet sind.
+
+.. Wenn Sie dem LIF eine bestimmte IP-Adresse zuweisen möchten, wählen Sie *Verwenden Sie eine bestimmte IP-Adresse* und geben Sie dann die IP-Adresse ein.
++
+Die angegebene IP-Adresse wird dem Subnetz hinzugefügt, wenn die IP-Adresse nicht bereits im Subnetz-Bereich vorhanden ist.
+
+.. Klicken Sie auf *OK*.
+
+
+
+
+ a| 
+Geben Sie die IP-Adresse manuell an, ohne ein Subnetz zu verwenden
+ a| 
+.. Wählen Sie *ohne Subnetz*.
+.. Führen Sie im Dialogfeld Details hinzufügen die folgenden Schritte aus:
++
+... Geben Sie die IP-Adresse und die Netzwerkmaske oder das Präfix an.
+... Optional: Geben Sie das Gateway an.
+... Wenn Sie den Standardwert für das Feld Ziel nicht verwenden möchten, geben Sie einen neuen Zielwert an.
++
+Wenn Sie keinen Wert angeben, wird das Feld Ziel basierend auf der Familie der IP-Adresse mit dem Standardwert gefüllt.
+
+
+
++
+Wenn keine Route vorhanden ist, wird automatisch eine neue Route basierend auf dem Gateway und dem Ziel erstellt.
+
+.. Klicken Sie auf *OK*.
+
+
+|===
+. Wählen Sie im Bereich *Port Details* die erforderlichen Ports aus.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Bearbeiten Sie den Node-Namen
+
+Mit System Manager können Sie bei Bedarf den Namen eines Node ändern.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Konfigurationsupdates*.
+. Wählen Sie auf der Registerkarte *Nodes* den Knoten aus, den Sie umbenennen möchten, und klicken Sie dann auf *Node Name bearbeiten*.
+. Geben Sie im Dialogfeld *Knotenname bearbeiten* den neuen Namen für den Knoten ein, und klicken Sie dann auf *Absenden*.
+
+
+
+
+== Erstellen einer logischen Node-Management-Schnittstelle
+
+Mit System Manager können Sie eine dedizierte logische Schnittstelle für das Node-Management (Logical Interface, LIF) zum Verwalten eines bestimmten Node in einem Cluster erstellen. Sie können diese LIF zum Verwalten der Systemwartungsaktivitäten des Node verwenden.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Konfigurationsupdates*.
+. Wählen Sie auf der Registerkarte *Nodes* den Knoten aus, für den Sie eine Knoten-Management-LIF erstellen möchten, und klicken Sie dann auf *Node-Management LIF erstellen*.
+. Geben Sie im Dialogfeld *Node-Management LIF* einen Namen für die Knoten-Management-LIF an.
+. Weisen Sie der Node-Management-LIF die IP-Adresse zu:
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+Geben Sie die IP-Adresse mithilfe eines Subnetzes an
+ a| 
+.. Wählen Sie *mit einem Subnetz* aus.
+.. Wählen Sie im Dialogfeld Details hinzufügen das Subnetz aus, aus dem die IP-Adresse zugewiesen werden soll.
++
+Bei einer Intercluster-LIF werden nur die Subnetze angezeigt, die dem ausgewählten IPspace zugeordnet sind.
+
+.. Wenn Sie dem LIF eine bestimmte IP-Adresse zuweisen möchten, wählen Sie *Verwenden Sie eine bestimmte IP-Adresse* und geben Sie dann die IP-Adresse ein.
++
+Die angegebene IP-Adresse wird dem Subnetz hinzugefügt, wenn die IP-Adresse nicht bereits im Subnetz-Bereich vorhanden ist.
+
+.. Klicken Sie auf *OK*.
+
+
+
+
+ a| 
+Geben Sie die IP-Adresse manuell an, ohne ein Subnetz zu verwenden
+ a| 
+.. Wählen Sie *ohne Subnetz*.
+.. Führen Sie im Dialogfeld Details hinzufügen die folgenden Schritte aus:
++
+... Geben Sie die IP-Adresse und die Netzwerkmaske oder das Präfix an.
+... Optional: Geben Sie das Gateway an.
+... Wenn Sie den Standardwert für das Feld Ziel nicht verwenden möchten, geben Sie einen neuen Zielwert an.
++
+Wenn Sie keinen Wert angeben, wird das Feld Ziel basierend auf der Familie der IP-Adresse mit dem Standardwert gefüllt.
+
+
+
++
+Wenn keine Route vorhanden ist, wird automatisch eine neue Route basierend auf dem Gateway und dem Ziel erstellt.
+
+.. Klicken Sie auf *OK*.
+
+
+|===
+. Wählen Sie im Bereich *Ports Details* die erforderlichen Ports aus.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+=== Nächste Schritte
+
+Wenn Sie eine vorhandene Node-Management-LIF löschen möchten, müssen Sie die Befehlszeilenschnittstelle (CLI) verwenden.
+
+
+
+== AutoSupport-Einstellungen bearbeiten
+
+Mit System Manager können Sie Ihre AutoSupport-Einstellungen ändern, um eine E-Mail-Adresse anzugeben, von der aus E-Mail-Benachrichtigungen gesendet werden, und mehrere E-Mail-Hostnamen hinzuzufügen.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* > *AutoSupport*.
+. Wählen Sie den Knoten aus, für den Sie AutoSupport-Einstellungen ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Geben Sie auf der Registerkarte *E-Mail-Empfänger* die E-Mail-Adresse ein, von der E-Mail-Benachrichtigungen gesendet werden, geben Sie die E-Mail-Empfänger und den Nachrichteninhalt für jeden E-Mail-Empfänger an, und fügen Sie dann die Mail-Hosts hinzu.
++
+Sie können für jeden Host bis zu fünf E-Mail-Adressen hinzufügen.
+
+. Wählen Sie auf der Registerkarte *Sonstiges* ein Transportprotokoll für die E-Mail-Nachrichten aus und geben Sie dann die HTTP- oder HTTPS-Proxyserver-Details an.
+. Klicken Sie auf *OK*.
+

@@ -1,0 +1,14 @@
+---
+permalink: online-help-96-97/concept_setting_up_physical_storage.html 
+sidebar: sidebar 
+keywords: physical, storage, set, up, online, help, disk, node, spare, aggregates 
+summary: Die Einrichtung des physischen Storage besteht aus der Zuweisung von Festplatten zu Nodes, der Nullsetzen der freien Festplatten und der Erstellung von Aggregaten. 
+---
+= Einrichtung von physischem Storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Einrichtung des physischen Storage besteht aus der Zuweisung von Festplatten zu Nodes, der Nullsetzen der freien Festplatten und der Erstellung von Aggregaten.

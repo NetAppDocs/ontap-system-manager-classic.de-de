@@ -1,0 +1,66 @@
+---
+permalink: online-help-96-97/task_tracing_file_access_to_diagnose_access_errors_on_svms.html 
+sidebar: sidebar 
+keywords: trace, file, access, diagnost, error, svm, system, manager, online, help 
+summary: 'Ab System Manager 9.6 können Sie CIFS- oder NFS-Dateizugriffsfehler auf einer Storage Virtual Machine (SVM) diagnostizieren.' 
+---
+= Verfolgen Sie den Dateizugriff, um mit System Manager Fehler beim Zugriff auf SVMs zu diagnostizieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab System Manager 9.6 können Sie CIFS- oder NFS-Dateizugriffsfehler auf einer Storage Virtual Machine (SVM) diagnostizieren.
+
+.Über diese Aufgabe
+Probleme beim Dateizugriff, z. B. ein Fehler „`Access Denied`“, treten wahrscheinlich auf, wenn Probleme mit einer Freigabkonfiguration, Berechtigungen oder Benutzerzuordnung auftreten. Mit System Manager können Sie Probleme beim Dateizugriff beheben, indem Sie die Ergebnisse der Zugriffspurenverfolgung für die Datei oder die Freigabe anzeigen, auf die ein Benutzer zugreifen möchte. System Manager zeigt an, ob die Datei oder Freigabe über effektive Lese-, Schreib- oder Ausführungsberechtigungen verfügt und warum der Zugriff wirksam ist oder nicht.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, die die Dateien oder Shares enthält, für die Dateizugriffsfehler eingegangen sind.
+. Klicken Sie Auf *Trace File Access*.
++
+Im Fenster Trace File Access für die ausgewählte SVM werden die Voraussetzungen und Schritte angezeigt, die zum Nachverfolgen der Dateizugriffsberechtigungen erforderlich sind.
+
+. Klicken Sie auf *Weiter*, um den Vorgang der Dateiverfolgung zu starten.
+. Wählen Sie das Protokoll aus, das für den Zugriff auf Dateien oder Freigaben auf der ausgewählten SVM verwendet wird.
+. Geben Sie im Feld *Benutzername* den Namen des Benutzers ein, der versucht hat, auf die Datei oder Freigabe zuzugreifen.
+. *Optional:* Klicken image:../media/advanced_options.gif[""] Um weitere Details anzugeben, um den Umfang der Kurve einzugrenzen.
++
+Im Dialogfeld „Erweiterte Optionen“ können Sie die folgenden Details angeben:
+
++
+** *Client-IP-Adresse*: Geben Sie die IP-Adresse des Clients an.
+** *Datei*: Geben Sie den Dateinamen oder den Pfad für die Verfolgung an.
+** *In Trace Results anzeigen*: Geben Sie an, ob Sie nur Zugriff verweigert Einträge oder alle Einträge anzeigen möchten.
+Klicken Sie auf *Anwenden*, um die von Ihnen angegebenen Details anzuwenden und zum Fenster Trace File Access zurückzukehren.
+
+
+. Klicken Sie Auf *Start Tracing*.
++
+Die Kurve wird initiiert und eine Ergebnistabelle angezeigt. Die Tabelle ist leer, bis Benutzer beim anfordern des Dateizugriffs Fehler erhalten. Die Ergebnistabelle wird alle 15 Sekunden aktualisiert und zeigt Meldungen in umgekehrter chronologischer Reihenfolge an.
+
+. Informieren Sie den betroffenen Benutzer oder die betroffenen Benutzer, dass sie innerhalb der nächsten 60 Minuten versuchen sollten, auf die Dateien zuzugreifen.
++
+Details zu den Zugriffsanforderungen für abgeleuerte Dateien werden in der Ergebnistabelle angezeigt, wenn für den angegebenen Benutzernamen für die Dauer der Ablaufverfolgung Fehler auftreten. In der Spalte „Gründe“ werden die Probleme identifiziert, die verhindern, dass der Benutzer auf Dateien zugreift, und die Gründe für den Fehler angezeigt.
+
+. *Optional:* Klicken Sie in der Spalte *Gründe* der Ergebnistabelle auf *Berechtigungen anzeigen*, um Berechtigungen für die Datei anzuzeigen, auf die der Benutzer zugreifen möchte.
++
+** Wenn das Trace-Ergebnis eine Meldung anzeigt, dass der Zugriff nicht für "Synchronisieren", "Lesekontrolle", "Attribute lesen", "Ausführen", "EA lesen" gewährt wird, „Schreiben“, oder „Lesen“, die Meldung gibt an, dass der gewünschte Zugriff für den aufgelisteten Berechtigungssatz nicht gewährt wurde. Um den aktuellen Berechtigungsstatus anzuzeigen, müssen Sie die Berechtigungen über den bereitgestellten Link anzeigen.
+** Wenn Sie das CIFS-Protokoll angegeben haben, wird das Dialogfeld effektive Datei- und Freigabeberechtigungen angezeigt, in dem sowohl Datei- als auch Freigabeberechtigungen aufgeführt sind, die mit der Freigabe und der Datei verknüpft sind, auf die der Benutzer zugreifen möchte.
+** Wenn Sie das NFS-Protokoll angegeben haben, wird das Dialogfeld „effektive Dateiberechtigungen“ angezeigt. Darin werden die Dateiberechtigungen aufgeführt, die mit der Datei verknüpft sind, auf die der Benutzer zugreifen möchte.
+Ein Häkchen zeigt an, dass Berechtigungen erteilt werden und ein „`X`“ bedeutet, dass keine Berechtigungen erteilt werden.
+
+
++
+Klicken Sie auf *OK*, um zum Fenster Trace File Access zurückzukehren.
+
+. *Optional:* die Ergebnistabelle zeigt schreibgeschützte Daten an. Sie können die folgenden Aktionen mit den Ergebnissen der Kurve ausführen:
++
+** Klicken Sie auf *in Zwischenablage kopieren*, um die Ergebnisse in die Zwischenablage zu kopieren.
+** Klicken Sie auf *Trace Results exportieren*, um die Ergebnisse in eine CSV-Datei zu exportieren.
+
+
+. Wenn Sie die Ablaufverfolgung beenden möchten, klicken Sie auf *Tracing stoppen*.
+

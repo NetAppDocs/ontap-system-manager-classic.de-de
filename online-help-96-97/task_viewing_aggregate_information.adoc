@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/task_viewing_aggregate_information.html 
+sidebar: sidebar 
+keywords: view, aggregate, information, online, help, system, manager 
+summary: Sie können das Fenster Aggregate in System Manager verwenden, um Name, Status und Informationen zu einem Aggregat anzuzeigen. 
+---
+= Zeigen Sie aggregierte Informationen mit System Manager - ONTAP 9.7 und früher an
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können das Fenster Aggregate in ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Name, Status und Platzinformationen zu einem Aggregat anzuzeigen.
+
+.Schritte
+. Wählen Sie eine der folgenden Methoden:
++
+** Klicken Sie Auf *Anwendungen & Tiers* > *Storage Tiers*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate*.
+
+
+. Klicken Sie auf den Aggregatnamen, um Details zum ausgewählten Aggregat anzuzeigen.
+

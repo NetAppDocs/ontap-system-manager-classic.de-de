@@ -1,0 +1,93 @@
+---
+permalink: online-help-96-97/task_delegating_administration_to_svm_administrators.html 
+sidebar: sidebar 
+keywords: online, help, delegate, administration, svm, administrator 
+summary: 'Nachdem Sie eine funktionsfähige Storage Virtual Machine (SVM) oder SVMs mit grundlegender Netzwerkkonfiguration eingerichtet haben, können Sie optional die Administration der SVM an SVM-Administratoren delegieren.' 
+---
+= Delegation der Administration an SVM-Administratoren mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) kann die SVM-Administration optional an SVM-Administratoren delegiert werden, nachdem eine funktionsfähige Storage Virtual Machine (SVM) oder SVMs mit einer grundlegenden Netzwerkkonfiguration eingerichtet wurden.
+
+.Über diese Aufgabe
+SVM-Administratoren können delegierte SVMs nicht mit System Manager managen. Administratoren können sie nur über die Befehlszeilenschnittstelle (CLI) verwalten.
+
+.Schritte
+. Richten Sie im Abschnitt *Administratordetails* ein Passwort für den ein `vsadmin` Benutzerkonto.
+. Wenn Sie eine dedizierte LIF für SVM-Verwaltung benötigen, wählen Sie *Erstellen einer logischen Schnittstelle für SVM-Management* aus, und geben Sie dann die Netzwerkdetails an.
++
+Für SAN-Protokolle ist eine dedizierte SVM-Management-LIF erforderlich, bei der Daten- und Managementprotokolle nicht dieselbe LIF teilen können. Das SVM-Management LIFs können nur auf Daten-Ports erstellt werden.
+
+. Geben Sie zum Erstellen von iSCSI LIFs Netzwerkdetails an, einschließlich Subnetzdetails:
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+Geben Sie die IP-Adresse mithilfe eines Subnetzes an
+ a| 
+.. Wählen Sie *mit einem Subnetz* aus.
+.. Wählen Sie im Dialogfeld Details hinzufügen das Subnetz aus, dem die IP-Adresse zugewiesen werden muss.
++
+Für Intercluster-LIFs werden nur die Subnetze angezeigt, die dem ausgewählten IPspace zugeordnet sind.
+
+.. Wenn Sie der Schnittstelle eine bestimmte IP-Adresse zuweisen möchten, wählen Sie *eine bestimmte IP-Adresse verwenden* aus, und geben Sie dann die IP-Adresse ein.
++
+Die angegebene IP-Adresse wird dem Subnetz hinzugefügt, wenn die IP-Adresse nicht bereits im Subnetz-Bereich vorhanden ist.
+
+.. Klicken Sie auf *OK*.
+
+
+
+
+ a| 
+Geben Sie die IP-Adresse manuell an, ohne ein Subnetz zu verwenden
+ a| 
+.. Wählen Sie *ohne Subnetz*.
+.. Führen Sie im Dialogfeld Details hinzufügen die folgenden Schritte aus:
++
+... Geben Sie die IP-Adresse und die Netzwerkmaske oder das Präfix an.
+... Optional: Geben Sie das Gateway an.
+... Wenn Sie den Standardwert für das Feld Ziel nicht verwenden möchten, geben Sie einen neuen Zielwert an.
++
+Wenn Sie keinen benutzerdefinierten Wert angeben, wird das Feld Ziel basierend auf der Familie der IP-Adresse mit dem Standardwert gefüllt.
+
++
+Wenn keine Route vorhanden ist, wird automatisch eine neue Route basierend auf dem Gateway und dem Ziel erstellt.
+
+
+
+.. Klicken Sie auf *OK*.
+
+
+|===
+. Geben Sie einen Port zum Erstellen einer Daten-LIF an:
++
+.. Klicken Sie Auf *Durchsuchen*.
+.. Wählen Sie im Dialogfeld Netzwerkport oder Adapter einen Port auswählen aus.
+.. Klicken Sie auf *OK*.
+
+
+
+
+.Ergebnisse
+Der `vsadmin` Konto ist entsperrt und mit dem Kennwort konfiguriert.
+
+Die Standardzugriffsmethoden für das `vsadmin` Konto ist ONTAP API `(ontapi)` Und SSH `(ssh)`. Der SVM-Administrator kann sich über die Management-IP-Adresse beim Storage-System anmelden.
+
+
+
+== Nächste Schritte
+
+Sie müssen der SVM Aggregate über das Dialogfeld „Storage Virtual Machine bearbeiten“ zuweisen.
+
+[NOTE]
+====
+Wenn der SVM noch keine Aggregate zugewiesen sind, kann der SVM-Administrator keine Volumes erstellen.
+
+====

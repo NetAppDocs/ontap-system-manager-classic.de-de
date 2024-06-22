@@ -1,0 +1,49 @@
+---
+permalink: volume-disaster-prep/task_verifying_cluster_peer_relationship.html 
+sidebar: sidebar 
+keywords: set, up, volume, disaster, recovery, verify, source, destination, cluster, communicate, peer, relationship, verify the cluster peer relationship and svm peer relationship 
+summary: Bevor Sie ein Volume für die Disaster Recovery einrichten, müssen Sie sicherstellen, dass die Quell- und Ziel-Cluster Peering durchgeführt werden und über die Peer-Beziehung miteinander kommunizieren. 
+---
+= Überprüfung der Cluster-Peer-Beziehung und der SVM-Peer-Beziehung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie ein Volume für die Disaster Recovery einrichten, müssen Sie sicherstellen, dass die Quell- und Ziel-Cluster Peering durchgeführt werden und über die Peer-Beziehung miteinander kommunizieren.
+
+
+
+== Verfahren
+
+* Wenn ONTAP 9.3 oder höher ausgeführt wird, führen Sie die folgenden Schritte aus, um die Cluster-Peer-Beziehung und die SVM-Peer-Beziehung zu überprüfen:
++
+.. Klicken Sie Auf *Konfiguration* > *Cluster Peers*.
+.. Vergewissern Sie sich, dass der Peering-Cluster authentifiziert und verfügbar ist.
++
+image::../media/cluster_pper_930_disaster.gif[Cluster pper 930 Disaster]
+
+.. Klicken Sie auf *Konfiguration* > *SVM-Peers*.
+.. Vergewissern Sie sich, dass die Ziel-SVM mit der Quell-SVM Peering durchgeführt wird.
+
+
+* Wenn Sie ONTAP 9.2 oder eine frühere Version ausführen, führen Sie die folgenden Schritte aus, um die Cluster-Peer-Beziehung und die SVM-Peer-Beziehung zu überprüfen:
++
+.. Klicken Sie auf die Registerkarte *Konfigurationen*.
+.. Klicken Sie im Fensterbereich *Cluster Details* auf *Cluster Peers*.
+.. Vergewissern Sie sich, dass der Peering-Cluster authentifiziert und verfügbar ist.
++
+image::../media/cluster_peer_health_disaster.gif[Cluster-Peer-Zustandskatastrophe]
+
+.. Klicken Sie auf die Registerkarte *SVMs* und wählen Sie die Quell-SVM aus.
+.. Überprüfen Sie im Bereich *Peer Storage Virtual Machines*, ob die Ziel-SVM mit der Quell-SVM Peering durchgeführt wird.
++
+Wenn in diesem Bereich keine Peered SVM angezeigt wird, können Sie beim Erstellen der SnapMirror Beziehung die SVM-Peer-Beziehung erstellen.
+
+
+
++
+xref:task_creating_snapmirror_relationships_92_earlier.adoc[Erstellung der SnapMirror Beziehung (ONTAP 9.2 oder älter)]
+
+

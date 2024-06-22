@@ -1,0 +1,46 @@
+---
+permalink: online-help-96-97/concept_applications.html 
+sidebar: sidebar 
+keywords: application, predefined, template, system, manager, configuration, provision 
+summary: Mit vordefinierten Anwendungsvorlagen können Sie in System Manager neue Konfigurationen erstellen, die auf vorhandenen Applikationsvorlagen basieren. Sie können dann Instanzen der Applikation im ONTAP bereitstellen. 
+---
+= Konfigurieren Sie Applikationen mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit vordefinierten Applikationsvorlagen können Sie in ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) neue Konfigurationen erstellen, die auf vorhandenen Applikationsvorlagen basieren. Sie können dann Instanzen der Applikation im ONTAP bereitstellen.
+
+Sie konfigurieren Anwendungen, indem Sie auf *Anwendungen &Tiers* > *Anwendungen* klicken.
+
+[NOTE]
+====
+Wenn jemand neue Anwendungen mithilfe der CLI oder DER REST-API hinzufügt, während Sie die Liste der Anwendungen anzeigen, können Sie diese neuen Anwendungen nicht anzeigen, wenn Sie durch die Liste blättern.
+
+====
+Die folgenden Applikationen können in System Manager konfiguriert werden:
+
+*Allgemeine Anwendungen*
+
+* NAS-Container (Volume wird zu NFS- oder CIFS-Clients exportiert)
+* Allgemeine SAN-Anwendung (Satz von LUNs, die auf den Anwendungsserver exportiert wurden)
+
+
+* Datenbanken*
+
+* MongoDB (über SAN)
+* Oracle (über NFS oder SAN)
+* Oracle (Real Application Cluster über NFS oder SAN)
+* Microsoft SQL Server (über SAN oder SMB )
+
+
+* Virtuelle Infrastruktur*
+
+* Virtuelle Server (mit VMware, Hyper-V oder XEN)
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/concepts/index.html["ONTAP-Konzepte"]

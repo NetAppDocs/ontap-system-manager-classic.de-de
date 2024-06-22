@@ -1,0 +1,17 @@
+---
+permalink: smb-config/concept_adding_protocol_volume_to_protocol_enabled_svm.html 
+sidebar: sidebar 
+keywords: add, cifs, volume, cifs-enabled, svm, involves, creating, create, configure, configuring, share, set, permission, verify, windows, administration, host, add a cifs volume to a cifs-enabled svm 
+summary: Zum Hinzufügen eines CIFS-Volumes zu einer SVM mit CIFS-Aktivierung müssen ein Volume erstellt und konfiguriert, eine Freigabe erstellt und dessen Berechtigungen festgelegt und der Zugriff von einem Windows Administrations-Host überprüft werden. Anschließend können Sie den CIFS-Client-Zugriff konfigurieren. 
+---
+= Fügen Sie ein CIFS Volume zu einer CIFS-fähigen SVM hinzu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Zum Hinzufügen eines CIFS-Volumes zu einer SVM mit CIFS-Aktivierung müssen ein Volume erstellt und konfiguriert, eine Freigabe erstellt und dessen Berechtigungen festgelegt und der Zugriff von einem Windows Administrations-Host überprüft werden. Anschließend können Sie den CIFS-Client-Zugriff konfigurieren.
+
+.Bevor Sie beginnen
+CIFS muss vollständig auf der SVM eingerichtet sein.

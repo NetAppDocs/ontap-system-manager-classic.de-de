@@ -1,0 +1,285 @@
+---
+permalink: online-help-96-97/task_editing_vault_relationships.html 
+sidebar: sidebar 
+keywords: edit, vault, relationships, system, manager, online, help, cluster, schedule 
+summary: Mit System Manager können Sie eine Vault-Beziehung bearbeiten, indem Sie eine vorhandene Richtlinie auswählen oder im Cluster einen Zeitplan festlegen oder eine neue Richtlinie oder einen neuen Zeitplan erstellen. Sie können jedoch die Parameter einer vorhandenen Richtlinie oder eines vorhandenen Zeitplans nicht bearbeiten. 
+---
+= Managen Sie Vault-Beziehungen mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) verwenden, um Vault-Beziehungen zu aktualisieren, fortzusetzen, stillzulegen, zu initialisieren und zu löschen sowie Vault-Beziehungen von einer Ziel-SVM zu erstellen.
+
+
+
+== Beziehungen bearbeiten
+
+Mit System Manager können Sie eine Vault-Beziehung bearbeiten, indem Sie eine vorhandene Richtlinie auswählen oder im Cluster einen Zeitplan festlegen oder eine neue Richtlinie oder einen neuen Zeitplan erstellen. Sie können jedoch die Parameter einer vorhandenen Richtlinie oder eines vorhandenen Zeitplans nicht bearbeiten.
+
+.Bevor Sie beginnen
+Die Quell- und Ziel-Cluster müssen eine gesunde Peer-Beziehung aufweisen.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Tresorbeziehung aus, für die Sie die Richtlinie oder den Zeitplan ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Wählen Sie im Dialogfeld *Beziehung bearbeiten* die entsprechende Aktion aus:
++
+|===
+| Ihr Ziel ist | Gehen Sie wie folgt vor... 
+
+
+ a| 
+Wählen Sie eine vorhandene Richtlinie aus
+ a| 
+Klicken Sie auf *Durchsuchen* und wählen Sie dann eine vorhandene Richtlinie aus.    Sie können eine Richtlinie auswählen, die die maximale Anzahl übereinstimmender Etiketten mit der Snapshot-Richtlinie enthält, die mit dem Quell-Volume verbunden ist.
+
+
+
+ a| 
+Erstellen Sie eine neue Richtlinie
+ a| 
+.. Klicken Sie Auf *Create Policy*.
+.. Geben Sie einen Namen für die Richtlinie an.
+.. Legen Sie die Priorität für geplante Transfers fest.
++
+Niedrig gibt an, dass die Übertragung die geringste Priorität hat und normalerweise nach normalen Prioritätstransfers geplant ist. Standardmäßig ist die Priorität auf „Normal“ festgelegt.
+
+.. Aktivieren Sie das Kontrollkästchen *Netzwerkkomprimierung* aktivieren, um die zu übertragenden Daten zu komprimieren.
+.. Geben Sie ein SnapMirror-Etikett und die Anzahl der Ziel-Aufbewahrung für die Vault-Richtlinie an.
++
+Sie müssen sicherstellen, dass auf dem Quell-Volume eine Snapshot-Kopie mit demselben Label erstellt wird, damit das neue SnapMirror Label wirksam wird.
+
+.. Klicken Sie Auf *Erstellen*.
+
+
+|===
+. Geben Sie einen Zeitplan für die Beziehung an:
++
+|===
+| Wenn... | Gehen Sie wie folgt vor... 
+
+
+ a| 
+Sie möchten einen vorhandenen Zeitplan zuweisen
+ a| 
+Wählen Sie einen vorhandenen Zeitplan aus der Liste aus.
+
+
+
+ a| 
+Sie möchten einen neuen Zeitplan erstellen
+ a| 
+.. Klicken Sie Auf *Zeitplan Erstellen*.
+.. Geben Sie einen Namen für den Zeitplan an.
+.. Wählen Sie eine der folgenden Optionen:
++
+*** *Einfach*
++
+Sie können diese Option auswählen, um nur den Wochentag, die Uhrzeit und das Übertragungsintervall anzugeben.
+
+*** *Erweitert*
++
+Sie können diese Option auswählen, um einen Zeitplan im cron-Stil festzulegen.
+
+
+
+.. Klicken Sie Auf *Erstellen*.
+
+
+
+
+ a| 
+Sie möchten keinen Zeitplan zuweisen
+ a| 
+Wählen Sie *Keine*.
+
+|===
+. Klicken Sie auf *OK*.
+
+
+*Verwandte Informationen*
+
+xref:reference_protection_window.adoc[Sicherungsfenster]
+
+
+
+== Beziehungen initialisieren
+
+Sie können System Manager zum Initialisieren einer Vault-Beziehung verwenden, wenn Sie sie beim Erstellen der Beziehung noch nicht initialisiert haben. Vom Quell-FlexVol Volume zum FlexVol Ziel-Volume wird ein Basistransfer der Daten initiiert.
+
+.Bevor Sie beginnen
+Die Quell- und Ziel-Cluster müssen eine gesunde Peer-Beziehung aufweisen.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Beziehung aus, die Sie initialisieren möchten, und klicken Sie auf *Operationen* > *Initialisieren*.
+. Klicken Sie im Fenster *Initialisieren* auf *Initialisieren*.
+
+
+.Ergebnisse
+Eine Snapshot Kopie wird erstellt und an das Ziel übertragen.
+
+Diese Snapshot Kopie dient als Basis für nachfolgende inkrementelle Snapshot Kopien.
+
+*Verwandte Informationen*
+
+xref:reference_protection_window.adoc[Sicherungsfenster]
+
+
+
+== Beziehungen von einer Ziel-SVM erstellen
+
+Mit System Manager kann eine Vault-Beziehung von der Ziel-Storage Virtual Machine (SVM) erstellt und eine Vault-Richtlinie zur Erstellung eines Backup Vault zugewiesen werden. Im Falle eines Datenverlustes oder einer Beschädigung auf einem System können gesicherte Daten vom Backup-Vault-Ziel wiederhergestellt werden.
+
+.Bevor Sie beginnen
+* Der Quell-Cluster muss ONTAP 8.2.2 oder höher ausführen.
+* Die SnapVault Lizenz oder die SnapMirror Lizenz muss sowohl auf dem Quell-Cluster als auch auf dem Ziel-Cluster aktiviert sein.
++
+[NOTE]
+====
+Bei einigen Plattformen ist es nicht erforderlich, dass die SnapVault Lizenz oder die SnapMirror Lizenz aktiviert ist, wenn auf dem Ziel-Cluster die SnapVault Lizenz oder die SnapMirror Lizenz vorhanden ist und die DPO-Lizenz aktiviert ist.
+
+====
+* Das Quell-Cluster und das Ziel-Cluster müssen sich in einer gesunden Peer-Beziehung befinden.
+* Der Ziel-SVM muss über Speicherplatz verfügen.
+* Das Quellaggregat und das Zielaggregat müssen 64-Bit-Aggregate sein.
+* Ein Quell-Volume vom Typ Read/Write (rw) muss vorhanden sein.
+* Eine Vault-Richtlinie (XDP) muss vorhanden sein.
++
+Wenn keine Tresor-Richtlinie vorhanden ist, müssen Sie eine Vault-Richtlinie erstellen oder die automatisch zugewiesene Standard-Vault-Richtlinie (XDPStandard) akzeptieren.
+
+* FlexVol Volumes müssen online sein und Lese-/Schreibvorgänge sein.
+* Der SnapLock-Aggregattyp muss identisch sein.
+* Wenn Sie eine Verbindung von einem Cluster mit ONTAP 9.2 oder einer älteren Version zu einem Remote-Cluster herstellen, auf dem die SAML-Authentifizierung aktiviert ist, muss die passwortbasierte Authentifizierung auf dem Remote-Cluster aktiviert sein.
+
+
+.Über diese Aufgabe
+* System Manager unterstützt keine Kaskadenbeziehung.
++
+Beispielsweise kann ein Ziel-Volume in einer Beziehung nicht das Quell-Volume in einer anderen Beziehung sein.
+
+* Es kann keine Vault-Beziehung zwischen einer SVM mit synchroner Quelle und einer SVM in einer MetroCluster-Konfiguration erstellt werden.
+* Sie können eine Vault-Beziehung zwischen synchronen Quell-SVMs in einer MetroCluster Konfiguration erstellen.
+* Sie können eine Vault-Beziehung von einem Volume auf einer Quell-SVM zu einem Volume auf einer Datenservice-SVM erstellen.
+* Sie können eine Vault-Beziehung von einem Volume auf einer Datenservice-SVM zu einem Datensicherungs-Volume (DP) auf einer synchronen Quell-SVM erstellen.
+* Sie können eine Vault-Beziehung nur zwischen einem nicht-SnapLock (primäres Volume) und einem SnapLock Ziel-Volume (sekundäres Volume) erstellen.
+* In einer Auswahl können maximal 25 Volumes geschützt werden.
+
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Klicken Sie im Fenster *Relationships* auf *Erstellen*.
+. Wählen Sie im Dialogfeld *SVM durchsuchen* eine SVM für das Ziel-Volume aus.
+. Wählen Sie im Dialogfeld *Schutzbeziehung erstellen* aus der Dropdown-Liste *Beziehungstyp* die Option *Vault* aus.
+. Geben Sie den Cluster, die SVM und das Quell-Volume an.
++
+Wenn auf dem angegebenen Cluster eine Version der ONTAP Software vor ONTAP 9.3 ausgeführt wird, werden nur Peering SVMs aufgelistet. Wenn im angegebenen Cluster ONTAP 9.3 oder höher ausgeführt wird, werden die Peering-SVMs und erlaubte SVMs aufgelistet.
+
+. Geben Sie ein Suffix für Volume-Namen ein.
++
+Das Suffix des Volume-Namens wird an die Namen des Quell-Volumes angehängt, um die Namen des Ziel-Volumes zu generieren.
+
+. Wenn Sie ein SnapLock-Volume erstellen, geben Sie den Standardaufbewahrungszeitraum an.
++
+Die standardmäßige Aufbewahrungsfrist kann auf einen beliebigen Wert zwischen 1 Tag bis 70 Jahre oder unbegrenzt festgelegt werden.
+
+. *Optional:* Klicken Sie auf *Durchsuchen* und ändern Sie dann die Tresorrichtlinie.
+. Wählen Sie einen Zeitplan für die Beziehung aus der Liste der vorhandenen Zeitpläne aus.
+. *Optional:* Wählen Sie *Initialisieren Sie die Beziehung*, um die Tresorbeziehung zu initialisieren.
+. Aktivieren Sie SnapLock Aggregate und wählen Sie anschließend ein SnapLock Compliance Aggregat oder ein SnapLock Enterprise Aggregat aus.
+. Aktivieren Sie FabricPool-fähige Aggregate und wählen Sie anschließend eine entsprechende Tiering-Richtlinie aus.
+. Klicken Sie auf *Validieren*, um zu überprüfen, ob die ausgewählten Volumes entsprechende Etiketten haben.
+. Klicken Sie Auf *Erstellen*.
+
+
+.Ergebnisse
+Wenn Sie sich dafür entschieden haben, ein Ziel-Volume zu erstellen, wird ein Volume vom Typ _dp_ mit den folgenden Standardeinstellungen erstellt:
+
+* Autogrow ist aktiviert.
+* Die Deduplizierung wird je nach Benutzerpräferenz oder nach der Deduplizierungseinstellung des Quell-Volume aktiviert oder deaktiviert.
+* Die Komprimierung ist deaktiviert.
+* Das Sprachattribut ist auf das Sprachattribut des Quellvolumens eingestellt.
+
+
+Zwischen dem Ziel-Volume und dem Quell-Volume wird eine Vault-Beziehung erstellt. Die Basis-Snapshot-Kopie wird an das Ziel-Volume übertragen, wenn Sie sich für die Initialisierung der Beziehung entschieden haben.
+
+
+
+== Beziehungen aktualisieren
+
+Mit System Manager können Sie manuell eine außerplanmäßige inkrementelle Aktualisierung initiieren. Möglicherweise benötigen Sie ein manuelles Update, um Datenverlust aufgrund eines bevorstehenden Stromausfalls, geplanter Wartungsarbeiten oder Datenmigrationen zu vermeiden.
+
+.Bevor Sie beginnen
+Die Vault-Beziehung muss initialisiert werden.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Beziehung aus, für die Sie die Daten aktualisieren möchten, und klicken Sie auf *Operationen* > *Update*.
+. Wählen Sie eine der folgenden Optionen:
++
+** Wählen Sie *gemäß Richtlinie* aus, um eine inkrementelle Übertragung aus der kürzlich erstellten Snapshot Kopie zwischen den Quell- und Ziel-Volumes durchzuführen.
+** Wählen Sie *Snapshot Kopie* aus und geben Sie die Snapshot Kopie an, die Sie übertragen möchten.
+
+
+. *Optional:* Wählen Sie *Limit Transfer bandwidth to*, um die für Transfers verwendete Netzwerkbandbreite zu begrenzen und die maximale Übertragungsgeschwindigkeit festzulegen.
+. Klicken Sie Auf *Aktualisieren*.
+. Überprüfen Sie den Übertragungsstatus auf der Registerkarte *Details*.
+
+
+
+
+== Beziehungen löschen
+
+Mithilfe von System Manager kann eine Vault-Beziehung zwischen einem Quell- und Ziel-Volume beendet und die Snapshot Kopien vom Quellvolume freigegeben werden.
+
+.Über diese Aufgabe
+Durch die Freigabe der Beziehung werden die Snapshot Kopien, die von der Vault-Beziehung auf dem Quell-Volume verwendet werden, endgültig entfernt. Um die Vault-Beziehung neu zu erstellen, müssen Sie die Neusynchronisierung vom Quell-Volume mithilfe der Befehlszeilenschnittstelle (CLI) ausführen.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie das Volume aus, für das Sie die Tresor-Beziehung löschen möchten, und klicken Sie auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
++
+Sie können auch das Kontrollkästchen Basiskopien von Snapshots aktivieren, um die von der Vault-Beziehung auf dem Quell-Volume genutzten Basis-Snapshot Kopien zu löschen.
+
++
+Wenn die Beziehung nicht freigegeben ist, müssen Sie die CLI verwenden, um den Release-Vorgang auf dem Quell-Cluster auszuführen, um die Snapshot Kopien der Basis zu löschen, die für die Vault-Beziehung vom Quell-Volume erstellt wurden.
+
+
+
+
+
+== Beziehungen wieder aufnehmen
+
+Sie können mit System Manager eine stillgelegte Vault-Beziehung fortsetzen. Wenn Sie die Beziehung fortsetzen, wird der normale Datentransfer zum FlexVol Ziel-Volume fortgesetzt und alle Vault-Aktivitäten werden neu gestartet.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Beziehung aus, für die Sie die Datenübertragung fortsetzen möchten, und klicken Sie auf *Operationen* > *Fortsetzen*.
+. Klicken Sie im Fenster *Fortsetzen* auf *Fortsetzen*.
+
+
+.Ergebnisse
+Normale Datenübertragungen werden fortgesetzt. Wenn ein geplanter Transfer für die Beziehung vorhanden ist, wird der Transfer vom nächsten Zeitplan gestartet.
+
+
+
+== Beziehungen stilllegen
+
+Sie können mit System Manager Datentransfers zum Ziel-FlexVol-Volume deaktivieren, indem Sie die Vault-Beziehung stilllegen.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Beziehung aus, für die Sie die geplanten Datenübertragungen anhalten möchten, und klicken Sie auf *Operationen* > *Quiesce*.
+. Klicken Sie im Fenster *Quiesce* auf *Quiesce*.
+
+
+.Ergebnisse
+Wenn keine Übertragung läuft, wird der Transferstatus als stillgelegt angezeigt. Wenn eine Übertragung ausgeführt wird, ist die Übertragung nicht betroffen, und der Übertragungsstatus wird als Umleitung angezeigt, bis die Übertragung abgeschlossen ist.
+
+*Verwandte Informationen*
+
+xref:reference_protection_window.adoc[Sicherungsfenster]

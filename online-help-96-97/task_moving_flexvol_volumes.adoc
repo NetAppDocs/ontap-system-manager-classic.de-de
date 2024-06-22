@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_moving_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: move, flexvol, volume, aggregate, system, manager, online, help 
+summary: Ein FlexVol Volume lässt sich zur Kapazitätsauslastung unterbrechungsfrei auf ein anderes Aggregat oder einen anderen Node verschieben und die Performance verbessert sich mit System Manager. 
+---
+= Verschieben Sie FlexVol Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (erhältlich in ONTAP 9.7 und früher) können Sie ein FlexVol Volume unterbrechungsfrei auf ein anderes Aggregat oder einen anderen Node verschieben, um Kapazitätsauslastung und Performance zu verbessern.
+
+.Bevor Sie beginnen
+Wenn Sie ein Datensicherungs-Volume verschieben, müssen Beziehungen zur Datensicherung-Spiegelung initialisiert werden, bevor Sie das Volume verschieben.
+
+.Über diese Aufgabe
+* Wenn Sie ein Volume, das auf einem Flash Pool Aggregat gehostet wird, verschieben, werden nur die im Festplatten-Tier gespeicherten Daten in das Zielaggregat verschoben.
++
+Die gecachten Daten, die mit dem Volume verbunden sind, werden nicht in das Zielaggregat verschoben. Daher kann nach der Volume-Verschiebung ein gewisses Performance-Problem auftreten.
+
+* Sie können Volumes nicht von einem SnapLock Aggregat verschieben.
+* Es ist nicht möglich, Volumes von einer SVM zu einem FabricPool-fähigen Aggregat zu verschieben, das für die Disaster Recovery konfiguriert ist.
+
+
+.Schritte
+. Wählen Sie eine der folgenden Methoden:
++
+** Klicken Sie Auf *Anwendungen & Tiers* > *Storage Tiers*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate*.
+
+
+. Wählen Sie das Aggregat aus, das das Volume enthält, und klicken Sie dann auf Menü:Weitere Aktionen[Volume Move].
+. Geben Sie die vom Assistenten geforderten Informationen ein oder wählen Sie diese aus.
+. Bestätigen Sie die Details und klicken Sie dann auf *Fertig stellen*, um den Assistenten abzuschließen.
+

@@ -1,0 +1,282 @@
+---
+permalink: online-help-96-97/concept_export_policies.html 
+sidebar: sidebar 
+keywords: system, manager, create, edit, manage, export, policy, online, help, volume, rules, svm, qtree, rename 
+summary: Mit System Manager können Sie Richtlinien für den Export erstellen, bearbeiten und managen. 
+---
+= Exportrichtlinien mit System Manager - ONTAP 9.7 und früher managen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Exportrichtlinien zu erstellen, zu bearbeiten und zu managen.
+
+
+
+== Erstellen Sie eine Exportrichtlinie
+
+Sie können mit System Manager eine Exportrichtlinie erstellen, über die Clients auf bestimmte Volumes zugreifen können.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fensterbereich *Richtlinien* auf *Richtlinien exportieren*.
+. Klicken Sie Auf *Erstellen*.
+. Geben Sie im Dialogfeld *Exportrichtlinie erstellen* einen Namen für die Exportrichtlinie an.
+. Wenn Sie eine Exportrichtlinie erstellen möchten, indem Sie die Regeln aus einer vorhandenen Exportrichtlinie kopieren, aktivieren Sie das Kontrollkästchen *Regeln aus* kopieren, und wählen Sie dann die Storage Virtual Machine (SVM) und die Exportrichtlinie aus.
++
+Zum Erstellen einer Exportrichtlinie sollten Sie die Ziel-SVM für die Disaster Recovery nicht aus dem Dropdown-Menü auswählen.
+
+. Klicken Sie im Bereich **Exportregeln**auf *Hinzufügen*, um der Exportrichtlinie Regeln hinzuzufügen.
+. Klicken Sie Auf *Erstellen*.
+. Überprüfen Sie, ob die von Ihnen erstellte Exportrichtlinie im Fenster *Richtlinien exportieren* angezeigt wird.
+
+
+
+
+== Exportrichtlinien umbenennen
+
+Sie können System Managererto eine vorhandene Exportrichtlinie umbenennen.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fensterbereich *Richtlinien* auf *Richtlinien exportieren*.
+. Wählen Sie die Exportrichtlinie aus, die Sie umbenennen möchten, und klicken Sie dann auf *Richtlinie umbenennen*.
+. Geben Sie im Dialogfeld *Richtlinie umbenennen* einen neuen Richtliniennamen an, und klicken Sie dann auf *Ändern*.
+. Überprüfen Sie die Änderungen, die Sie im Fenster *Richtlinien exportieren* vorgenommen haben.
+
+
+
+
+== Exportrichtlinien löschen
+
+Sie können System Manager verwenden, um nicht mehr benötigte Exportrichtlinien zu löschen.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fensterbereich *Richtlinien* auf *Richtlinien exportieren*.
+. Wählen Sie die Exportrichtlinie aus, die Sie löschen möchten, und klicken Sie dann auf *Richtlinie löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+
+
+== Fügen Sie einer Exportrichtlinie Regeln hinzu
+
+Mit System Manager können Sie einer Exportrichtlinie Regeln hinzufügen, um den Client-Zugriff auf Daten zu definieren.
+
+.Bevor Sie beginnen
+Sie müssen die Exportrichtlinie erstellt haben, zu der Sie die Exportregeln hinzufügen möchten.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fensterbereich *Richtlinien* auf *Richtlinien exportieren*.
+. Wählen Sie die Exportrichtlinie aus, der Sie Regeln hinzufügen möchten, und klicken Sie auf der Registerkarte *Regeln exportieren* auf *Hinzufügen*.
+. Führen Sie im Dialogfeld *Exportregel erstellen* die folgenden Schritte aus:
++
+.. Geben Sie den Client an, der Zugriff auf die Daten benötigt.
++
+Sie können mehrere Clients als kommagetrennte Werte angeben.
+
++
+Sie können den Client in einem der folgenden Formate angeben:
+
++
+*** Als Hostname, z. B. host1
+*** Als IPv4-Adresse, z. B. 10.1.12.24
+*** Als IPv4-Adresse mit Netzwerkmaske, z. B. 10.1.16.0/255.255.255.0
+*** Als IPv6-Adresse; z. B. FE80::0202:B3FF:FE1E:8329
+*** Als IPv6-Adresse mit Netzwerkmaske, z. B. 2001:db8:/32
+*** Als Netzwerkgruppe, wobei der Netzwerkgruppenname einem AT-Symbol (@) vorangestellt ist; z. B. @netgroup
+*** Als Domänenname, der einem Punkt (.) vorangegangen ist; z. B. .example.com
+
+
++
+[NOTE]
+====
+Sie dürfen keinen IP-Adressbereich eingeben, z. B. 10.1.12.10 bis 10.1.12.70. Einträge in diesem Format werden als Textzeichenfolge interpretiert und als Hostname behandelt.
+
+====
++
+Sie können die IPv4-Adresse eingeben `0.0.0.0/0` Um den Zugriff auf alle Hosts zu ermöglichen.
+
+.. Wenn Sie die Nummer des Regelindex ändern möchten, wählen Sie die entsprechende Nummer des Regelindex aus.
+.. Wählen Sie ein oder mehrere Zugriffsprotokolle aus.
++
+Wenn Sie kein Zugriffsprotokoll auswählen, wird der Exportregel der Standardwert „`any`“ zugewiesen.
+
+.. Wählen Sie einen oder mehrere Sicherheitstypen und Zugriffsregeln aus.
+
+
+. Klicken Sie auf *OK*.
+. Überprüfen Sie, ob die von Ihnen hinzugefügte Exportregel auf der Registerkarte *Exportregeln* für die ausgewählte Exportrichtlinie angezeigt wird.
+
+
+
+
+== Exportrichtlinien ändern
+
+Mit System Manager können Sie den angegebenen Client, die Zugriffsprotokolle und die Zugriffsberechtigungen einer Regel für die Exportrichtlinie ändern.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fensterbereich *Richtlinien* auf *Richtlinien exportieren*.
+. Wählen Sie im Fenster *Richtlinien exportieren* die Exportrichtlinie aus, für die Sie die Exportregel bearbeiten möchten. Wählen Sie auf der Registerkarte *Regeln exportieren* die Regel aus, die Sie bearbeiten möchten, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie die folgenden Parameter nach Bedarf:
++
+** Client-Spezifikationen
+** Zugriffsprotokolle
+** Zugriffsdetails
+
+
+. Klicken Sie auf *OK*.
+. Überprüfen Sie, ob die aktualisierten Änderungen für die Exportregel auf der Registerkarte *Regeln für den Export* angezeigt werden.
+
+
+
+
+== Löschen Sie die Regeln für die Exportrichtlinie
+
+Sie können mit System Manager Regeln für die Exportrichtlinie löschen, die nicht mehr benötigt werden.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fensterbereich *Richtlinien* auf *Richtlinien exportieren*.
+. Wählen Sie die Exportrichtlinie aus, für die Sie die Exportregel löschen möchten.
+. Wählen Sie auf der Registerkarte *Regeln exportieren* die Exportregel aus, die Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Klicken Sie im Bestätigungsfeld auf *Löschen*.
+
+
+
+
+== Wie Exportrichtlinien den Client-Zugriff auf Volumes oder qtrees steuern
+
+Exportrichtlinien enthalten mindestens eine _Exportregel_, die jede Clientzugriffsanforderung verarbeitet. Das Ergebnis des Prozesses legt fest, ob der Client-Zugriff verweigert oder gewährt wird und welche Zugriffsstufe. Auf der Storage Virtual Machine (SVM) muss eine Exportrichtlinie mit Exportregeln vorhanden sein, damit Clients auf Daten zugreifen können.
+
+Sie verknüpfen jedem Volume oder qtree exakt eine Exportrichtlinie, um den Client-Zugriff auf das Volume oder qtree zu konfigurieren. Die SVM kann mehrere Exportrichtlinien enthalten. Dies ermöglicht Ihnen die folgenden Aktionen für SVMs mit mehreren Volumes oder qtrees:
+
+* Jedem Volume oder qtree der SVM müssen für jedes Volume oder qtree verschiedene Exportrichtlinien zugewiesen werden, um für jedes Volume oder qtree in der SVM individuelle Zugriffskontrollen zu ermöglichen.
+* Weisen Sie für eine identische Client-Zugriffskontrolle dieselbe Exportrichtlinie mehreren Volumes oder qtrees der SVM zu, ohne dass für jedes Volume oder qtree eine neue Exportrichtlinie erstellt werden muss.
+
+
+Wenn ein Client eine Zugriffsanforderung stellt, die von der entsprechenden Exportrichtlinie nicht zulässig ist, schlägt die Anforderung mit einer Nachricht, die eine Berechtigung verweigert hat, fehl. Wenn ein Client keine Regel in der Exportrichtlinie enthält, wird der Zugriff verweigert. Wenn eine Exportrichtlinie leer ist, werden alle Zugriffe implizit verweigert.
+
+Sie können eine Exportrichtlinie auf einem System, auf dem ONTAP ausgeführt wird, dynamisch ändern.
+
+
+
+== Fenster „Exportrichtlinien“
+
+Sie können das Fenster Richtlinien exportieren verwenden, um Informationen zu Exportrichtlinien und zugehörigen Exportregeln zu erstellen, anzuzeigen und zu verwalten.
+
+
+
+=== Exportrichtlinien
+
+Über das Fenster Richtlinien exportieren können Sie die für die SVM (Storage Virtual Machine) erstellten Exportrichtlinien anzeigen und managen.
+
+* *Befehlsschaltflächen*
++
+** Erstellen
++
+Öffnet das Dialogfeld Exportrichtlinie erstellen, in dem Sie eine Exportrichtlinie erstellen und Exportregeln hinzufügen können. Sie können auch Exportregeln aus einer vorhandenen SVM kopieren.
+
+** Umbenennen
++
+Öffnet das Dialogfeld Richtlinie umbenennen, in dem Sie die ausgewählte Exportrichtlinie umbenennen können.
+
+** Löschen
++
+Öffnet das Dialogfeld Exportrichtlinie löschen, in dem Sie die ausgewählte Exportrichtlinie löschen können.
+
+** Aktualisierung
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+
+
+=== Registerkarte „Exportregeln“
+
+Auf der Registerkarte „Exportregeln“ können Sie Informationen zu den für eine bestimmte Exportrichtlinie erstellten Exportregeln anzeigen. Sie können auch Regeln hinzufügen, bearbeiten und löschen.
+
+* *Befehlsschaltflächen*
++
+** Zusatz
++
+Öffnet das Dialogfeld „Exportregel erstellen“, in dem Sie der ausgewählten Exportrichtlinie eine Exportregel hinzufügen können.
+
+** Bearbeiten
++
+Öffnet das Dialogfeld Exportregel ändern, in dem Sie die Attribute der ausgewählten Exportregel ändern können.
+
+** Löschen
++
+Öffnet das Dialogfeld Exportregel löschen, in dem Sie die ausgewählte Exportregel löschen können.
+
+** Nach Oben
++
+Verschiebt den Regelindex der ausgewählten Exportregel nach oben.
+
+** Nach Unten Verschieben
++
+Verschiebt den Regelindex der ausgewählten Exportregel nach unten.
+
+** Aktualisierung
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+* *Liste der Exportregeln*
++
+** Regelindex
++
+Gibt die Priorität an, anhand derer die Exportregeln verarbeitet werden. Sie können die Priorität über die Schaltflächen nach oben und nach unten auswählen.
+
+** Client
++
+Gibt den Client an, auf den die Regel zutrifft.
+
+** Zugriffsprotokolle
++
+Zeigt das Zugriffsprotokoll an, das für die Exportregel festgelegt ist.
+
++
+Wenn Sie kein Zugriffsprotokoll angegeben haben, wird der Standardwert „`any`“ berücksichtigt.
+
+** Schreibgeschützte Regel
++
+Gibt einen oder mehrere Sicherheitstypen für den schreibgeschützten Zugriff an.
+
+** Lese-/Schreibregel
++
+Gibt einen oder mehrere Sicherheitstypen für Lese-/Schreibzugriff an.
+
+** Superuser-Zugriff
++
+Gibt den Sicherheitstyp oder -Typen für Superuser-Zugriff an.
+
+
+
+
+
+
+
+=== Registerkarte zugewiesene Objekte
+
+Auf der Registerkarte zugewiesene Objekte können Sie die Volumes und qtrees anzeigen, die der ausgewählten Exportrichtlinie zugewiesen sind. Sie können auch anzeigen, ob das Volume verschlüsselt ist oder nicht.
+
+*Verwandte Informationen*
+
+xref:task_setting_up_cifs.adoc[Einrichten von CIFS]

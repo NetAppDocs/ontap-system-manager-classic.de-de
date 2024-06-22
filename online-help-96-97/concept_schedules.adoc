@@ -1,0 +1,177 @@
+---
+permalink: online-help-96-97/concept_schedules.html 
+sidebar: sidebar 
+keywords: online, help, system, manager, manage, schedule, storage 
+summary: Mit System Manager können Zeitpläne in Ihrem Storage-System erstellt und gemanagt werden. 
+---
+= Managen Sie Pläne mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie Zeitpläne in Ihrem Storage-System erstellen und managen.
+
+
+
+== Erstellen von Zeitplänen
+
+Mit System Manager können Sie Zeitpläne zum Ausführen eines Jobs zu einem bestimmten Zeitpunkt oder zu regelmäßigen Zeiträumen erstellen.
+
+.Über diese Aufgabe
+Wenn Sie in einer MetroCluster-Konfiguration einen Zeitplan erstellen, empfiehlt es sich, auch am verbliebenen Standort einen gleichwertigen Zeitplan auf dem Cluster zu erstellen.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Termine*.
+. Klicken Sie Auf *Erstellen*.
+. Geben Sie im Dialogfeld *Zeitplan erstellen* den Terminplannamen an.
+. Erstellen Sie einen Zeitplan basierend auf Ihren Anforderungen:
++
+|===
+| Wenn Sie erstellen möchten... | Tun Sie das... 
+
+
+ a| 
+Ein täglicher oder bestimmter Zeitplan an bestimmten Tagen
+ a| 
+Wählen Sie *Basic* aus, und geben Sie die Termindaten und Wiederholungsdetails an (in Stunden und Minuten).
+
+
+
+ a| 
+Ein Zeitplan, der in einem bestimmten Intervall ausgeführt wird
+ a| 
+Wählen Sie *Intervall* aus, und geben Sie die Details zu Zeitplan und Wiederholung an (in Tagen, Stunden und Minuten).
+
+
+
+ a| 
+Ein Zeitplan, der zu einem bestimmten Zeitraum ausgeführt wird
+ a| 
+Wählen Sie *Erweitert* aus, und geben Sie die Termindaten und Wiederholungsdetails an (in Monaten, Tagen, Wochentagen, Stunden und Minuten).
+
+|===
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Schichtpläne bearbeiten
+
+Sie können Änderungen an einem zuvor erstellten Cron-Zeitplan oder einen Intervallzeitplan vornehmen, wenn dieser Ihre Anforderungen nicht mit System Manager erfüllt. Sie können Terminplandetails wie wiederkehrende Tage und Stunden, Intervalloptionen und erweiterte Cron-Optionen ändern.
+
+.Über diese Aufgabe
+Wenn Sie einen Zeitplan in einer MetroCluster-Konfiguration bearbeiten, empfiehlt es sich, auch den entsprechenden Zeitplan auf dem verbleibenden Site-Cluster zu bearbeiten.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Termine*.
+. Wählen Sie den Zeitplan aus, den Sie ändern möchten, und klicken Sie auf *Bearbeiten*.
+. Ändern Sie im Dialogfeld *Zeitplan bearbeiten* den Zeitplan, indem Sie die entsprechende Aktion ausführen:
++
+|===
+| Wenn Sie die Terminplanoption auswählen: | Tun Sie das.. 
+
+
+ a| 
+Basic
+ a| 
+Geben Sie die wiederkehrenden Tage und die Terminplandetails an.
+
+
+
+ a| 
+Intervall
+ a| 
+Geben Sie die Intervalloptionen in Tagen, Stunden und Minuten an.
+
+
+
+ a| 
+Erweitert
+ a| 
+Geben Sie die erweiterten Cron-Optionen in Monaten, Tagen, Wochentagen (falls zutreffend), Stunden und Minuten an.
+
+|===
+. Klicken Sie auf *OK*.
+
+
+
+
+== Löschen von Zeitplänen
+
+[role="lead"]
+Sie können mit System Manager die Zeitpläne löschen, aus denen bestimmte Storage Management-Aufgaben ausgeführt werden.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Termine*.
+. Wählen Sie den zu löschenden Zeitplan aus und klicken Sie auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+
+
+== Terminpläne managen
+
+Sie können viele Aufgaben konfigurieren (z. B. Volume Snapshot Kopien und Replikationen), um auf bestimmten Zeitplänen ausgeführt zu werden. Zeitpläne, die an bestimmten Zeitplänen ausgeführt werden, werden aufgrund ihrer Ähnlichkeit zu UNIX als _cron_-Zeitpläne bezeichnet `cron` Zeitpläne. Zeitpläne, die in Intervallen ausgeführt werden, werden als _interval_-Zeitpläne bezeichnet.
+
+Es gibt folgende Möglichkeiten zur Verwaltung von Zeitplänen:
+
+* Erstellen eines Cron-Zeitplans oder eines Intervallplans
+* Anzeigen von Informationen zu allen Zeitplänen
+* Ändern eines Cron-Zeitplans oder eines Intervallplans
+* Löschen eines Cron-Zeitplans oder eines Intervallplans
++
+Sie können keinen Zeitplan löschen, der derzeit von einem laufenden Job verwendet wird.
+
+
+
+Der Cluster-Administrator kann alle Planungsverwaltungsaufgaben ausführen.
+
+
+
+== Zeitplanfenster
+
+Im Fenster „Zeitpläne“ können Sie geplante Aufgaben verwalten, z. B. Erstellen, Anzeigen von Informationen über Zeitpläne, Ändern und Löschen.
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Zeitplan erstellen, in dem Sie zeitbasierte und Intervallzeitpläne erstellen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Zeitplan bearbeiten, in dem Sie die ausgewählten Zeitpläne bearbeiten können.
+
+* *Löschen*
++
+Öffnet das Dialogfeld Zeitplan löschen, in dem Sie die ausgewählten Zeitpläne löschen können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der Schichtpläne
+
+* *Name*
++
+Gibt den Namen des Zeitplans an.
+
+* *Typ*
++
+Gibt den Typ des zeitbasierten Zeitplans oder Intervallbasierten an.
+
+
+
+
+
+=== Detailbereich
+
+Im Detailbereich werden Informationen darüber angezeigt, wann ein ausgewählter Zeitplan ausgeführt wird.

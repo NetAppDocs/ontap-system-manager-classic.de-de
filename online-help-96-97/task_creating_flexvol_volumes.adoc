@@ -1,0 +1,233 @@
+---
+permalink: online-help-96-97/task_creating_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: flexvol, create, volume, online, help 
+summary: Sie können ein FlexVol Volume für Ihre Daten erstellen, indem Sie das Dialogfeld Volume erstellen in System Manager verwenden. Es muss immer ein separates Volume für die Daten erstellt werden, statt Daten im Root-Volume zu speichern. 
+---
+= Erstellen Sie FlexVol Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ein FlexVol-Volume für Ihre Daten erstellen, indem Sie das Dialogfeld Volume erstellen im ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und älter) verwenden. Es muss immer ein separates Volume für die Daten erstellt werden, statt Daten im Root-Volume zu speichern.
+
+.Bevor Sie beginnen
+* Das Cluster muss ein nicht-Root-Aggregat und eine Storage Virtual Machine (SVM) enthalten.
+* Wenn Sie Volumes mit Lese-/Schreibzugriff erstellen möchten, müssen Sie die Protokolle für die SVM konfiguriert haben und entweder die SnapMirror Lizenz oder die SnapVault Lizenz installiert haben.
++
+Falls Sie die Protokolle noch nicht konfiguriert, aber eine dieser Lizenzen installiert haben, können Sie nur Datensicherungs-Volumes erstellen.
+
+* Zum Erstellen eines verschlüsselten Volumes müssen Sie die Volume-Verschlüsselungslizenz mit System Manager installiert haben, und Sie müssen „`Key-Manager Setup`“ über die Befehlszeilenschnittstelle (CLI) aktiviert haben.
++
+Sie müssen Ihren Webbrowser aktualisieren, nachdem Sie „`key-Manager Setup`“ aktiviert haben.
+
+
+
+.Über diese Aufgabe
+* Sie können die Storage-Servicequalität (QoS) nur für ein Lese-/Schreib-Volume aktivieren.
+* Wenn ein DP-Volume auf der synchronen Quell-SVM in einer MetroCluster Konfiguration erstellt wird, wird das Volume nicht auf der SVM mit dem synchronen Ziel repliziert.
+* Wenn Sie in einer MetroCluster Konfiguration ein DP-Volume erstellen, wird das Quell-Volume nicht in der Ziel-SVM repliziert (gespiegelt oder archiviert).
+* In einer MetroCluster-Konfiguration zeigt System Manager nur die folgenden Aggregate zum Erstellen von Volumes an:
++
+** Wenn Sie im normalen Modus Volumes auf den synchronen Quell-SVMs oder auf DatenbereitstellungsSVMs im primären Standort erstellen, werden nur die Aggregate angezeigt, die zum Cluster im primären Standort gehören.
+** Wenn Sie im Umschaltmodus Volumes auf SVMs mit synchronen Zielen oder DatenserverSVMs im verbleibenden Standort erstellen, werden nur Over-Aggregate angezeigt.
+
+
+* Sie können ein Volume nicht in Cloud Volumes ONTAP verschlüsseln.
+* Wenn auf dem Quell-Volume die Verschlüsselung aktiviert ist und auf dem Ziel-Cluster eine ältere Version der ONTAP Software als ONTAP 9.3 ausgeführt wird, wird die Verschlüsselung auf dem Ziel-Volume standardmäßig deaktiviert.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Klicken Sie auf *Erstellen* > *FlexVol erstellen*.
+. Durchsuchen Sie die SVM, in der Sie das Volume erstellen möchten, und wählen Sie sie aus.
++
+Das Dialogfeld Volume erstellen wird angezeigt. Das Dialogfeld enthält die folgenden Registerkarten:
+
++
+** Allgemein
+** Storage-Effizienz
+** SnapLock
+** Quality of Service
+** Darstellt
+
+
+. Führen Sie auf der Registerkarte *Allgemein* die folgenden Schritte aus:
++
+.. Geben Sie einen Namen für das FlexVol Volume an.
+.. Klicken Sie auf die Schaltfläche *FabricPool*, um anzugeben, dass es sich bei dem Volume um ein FabricPool-Volume handelt.
+.. Klicken Sie auf *Wählen*, um ein Aggregat auszuwählen.
++
+Wenn es sich um ein FabricPool FlexVol Volume handelt, können nur FabricPool-fähige Aggregate ausgewählt werden. Wenn es sich um ein FabricPool Volume ohne FabricPool FlexVol Volume handelt, können Sie nur Aggregate auswählen, die nicht FabricPool aktiviert sind. Wenn Sie ein verschlüsseltes Aggregat (NAE) auswählen, übernimmt das erstellte Volume die Verschlüsselung des Aggregats.
+
+.. Wählen Sie einen Speichertyp aus.
+.. Geben Sie die Volume-Größe und die Maßeinheiten an.
+.. Geben Sie an, wie viel Speicherplatz für Snapshot Kopien reserviert werden soll.
+.. Wählen Sie im Dropdown-Menü *Space Reserve* eine Option zur Platzreservierung aus.
+.. Aktivieren Sie das Kontrollkästchen *Volume Encryption*, um die Verschlüsselung für das Volume zu aktivieren. Diese Option steht nur zur Verfügung, wenn Sie die Lizenz für Volume Encryption aktiviert haben und wenn die entsprechende Plattform Verschlüsselung unterstützt.
+
+
+. Führen Sie auf der Registerkarte * Storage Efficiency* die folgenden Schritte aus:
++
+.. Wählen Sie den Speichertyp aus, für den Sie dieses Volume erstellen.
++
+Sie müssen *Datensicherung* auswählen, wenn Sie ein SnapMirror Ziel-Volume erstellen. Sie erhalten schreibgeschützten Zugriff auf dieses Volume.
+
+.. Legen Sie die Tiering-Richtlinie für das Volume fest.
+.. Geben Sie die Größe des Volumes und den Prozentsatz der Gesamtgröße des Volumes an, die Sie für Snapshot Kopien reservieren möchten.
++
+Der für Snapshot-Kopien reservierte Standardspeicherplatz beträgt null Prozent für SAN-Volumes und VMware Volumes. Bei NAS-Volumes beträgt der Standardwert 5 Prozent.
+
+.. Wählen Sie *Standard*, *Thin Provisioning* oder *Thick Provisioning* für das Volume aus.
++
+Bei aktiviertem Thin Provisioning wird dem Volume von dem Aggregat nur dann Speicherplatz zugewiesen, wenn Daten auf das Volume geschrieben werden.
+
++
+[NOTE]
+====
+*** Bei AFF-Storage-Systemen ist Thin Provisioning „Standard“, und bei anderen Storage-Systemen ist der Wert von Thick Provisioning „Standard“.
+*** Bei FabricPool-fähigen Aggregaten ist Thin Provisioning der Wert von „Default“.
+
+
+====
+.. Geben Sie an, ob die Deduplizierung auf dem Volume aktiviert werden soll.
++
+System Manager verwendet den standardmäßigen Deduplizierungszeitplan. Falls die angegebene Volume-Größe die für eine Deduplizierung erforderliche Obergrenze überschreitet, wird das Volume erstellt und die Deduplizierung nicht aktiviert.
+
++
+Für Systeme mit All-Flash-optimiertem Charakter, Inline-Komprimierung und `auto` Der Deduplizierungszeitplan ist standardmäßig aktiviert.
+
+
+
+. Führen Sie auf der Registerkarte *Quality of Service* die folgenden Schritte aus:
++
+.. Aktivieren Sie das Kontrollkästchen *Storage Quality of Service* managen, wenn Sie Storage QoS für das FlexVol Volume aktivieren möchten, um die Workload-Performance zu managen.
+.. Erstellung einer neuen Storage-QoS-Richtliniengruppe oder Auswahl einer vorhandenen Richtliniengruppe zur Steuerung der I/O-Performance (Input/Output) des FlexVol Volumes:
++
+|===
+| Ihr Ziel ist | Tun Sie das... 
+
+
+ a| 
+Erstellen Sie eine neue Richtliniengruppe
+ a| 
+... Wählen Sie *Neue Richtliniengruppe*.
+... Geben Sie den Namen der Richtliniengruppe an.
+... Geben Sie die minimale Durchsatzbegrenzung an.
++
+**** In System Manager 9.5 können Sie die Durchsatzbegrenzung nur auf Performance-basierten All Flash-optimierten Systemen festlegen. In System Manager 9.6 können Sie das Mindestdurchsatz-Limit für die Richtliniengruppe festlegen.
+**** Sie können das Mindestdurchsatz für Volumes nicht auf einem FabricPool-fähigen Aggregat festlegen.
+**** Wenn Sie den Mindestdurchsatzwert nicht angeben oder der Mindestdurchsatzwert auf 0 gesetzt ist, wird „`Keine`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.
+
+
+
+... Geben Sie das maximale Durchsatzlimit an, um sicherzustellen, dass die Workload der Objekte in der Richtliniengruppe das angegebene Durchsatzlimit nicht überschreitet.
++
+**** Die minimale Durchsatzbegrenzung und die maximale Durchsatzbegrenzung müssen vom selben Einheitstyp sein.
+**** Wenn Sie das minimale Durchsatzlimit nicht angeben, können Sie die maximale Durchsatzbegrenzung für IOPS, B/s, KB/s, MB/s usw. festlegen.
+**** Wenn Sie den maximalen Durchsatzwert nicht angeben, wird „`Unlimited`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet. Die angegebene Einheit hat keinen Einfluss auf den maximalen Durchsatz.
+
+
+
+
+
+
+
+ a| 
+Wählen Sie eine vorhandene Richtliniengruppe aus
+ a| 
+... Wählen Sie *vorhandene Richtliniengruppe* aus, und klicken Sie dann auf *Auswählen*, um eine vorhandene Richtliniengruppe im Dialogfeld Richtliniengruppe auswählen auszuwählen.
+... Geben Sie die minimale Durchsatzbegrenzung an.
++
+**** In System Manager 9.5 können Sie die Durchsatzbegrenzung nur auf Performance-basierten All Flash-optimierten Systemen festlegen. In System Manager 9.6 können Sie das Mindestdurchsatz-Limit für die Richtliniengruppe festlegen.
+**** Sie können das Mindestdurchsatz für Volumes nicht auf einem FabricPool-fähigen Aggregat festlegen.
+**** Wenn Sie den Mindestdurchsatzwert nicht angeben oder der Mindestdurchsatzwert auf 0 gesetzt ist, wird „`Keine`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.
+
+
+
+... Geben Sie das maximale Durchsatzlimit an, um sicherzustellen, dass die Workload der Objekte in der Richtliniengruppe das angegebene Durchsatzlimit nicht überschreitet.
++
+**** Die minimale Durchsatzbegrenzung und die maximale Durchsatzbegrenzung müssen vom selben Einheitstyp sein.
+**** Wenn Sie das minimale Durchsatzlimit nicht angeben, können Sie die maximale Durchsatzbegrenzung für IOPS, B/s, KB/s, MB/s usw. festlegen.
+**** Wenn Sie den maximalen Durchsatzwert nicht angeben, wird „`Unlimited`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet. Die angegebene Einheit hat keinen Einfluss auf den maximalen Durchsatz.
+
+
+
++
+Wenn die Richtliniengruppe mehr als einem Objekt zugewiesen ist, wird der maximale Durchsatz, den Sie angeben, von den Objekten gemeinsam genutzt.
+
+
+
+|===
+
+
+. Führen Sie auf der Registerkarte *Schutz* die folgenden Schritte aus:
++
+.. Geben Sie an, ob Sie *Volume Protection* aktivieren möchten.
++
+Ein nicht FabricPool FlexGroup Volume kann mit einem FabricPool FlexGroup Volume gesichert werden.
+
++
+Ein FabricPool FlexGroup Volume kann mit einem nicht FabricPool FlexGroup Volume gesichert werden.
+
+.. Wählen Sie den Typ *Replikation* aus:
+
+
++
+|===
+| Wenn Sie den Replikationstyp ausgewählt haben als... | Tun Sie das... 
+
+
+ a| 
+Asynchron
+ a| 
+.. *Optional:* Wenn Sie den Replikationstyp und den Beziehungstyp nicht kennen, klicken Sie auf *Hilfe Auswählen*, legen Sie die Werte fest und klicken Sie dann auf *Anwenden*.
+.. Wählen Sie den Beziehungstyp aus.
++
+Der Beziehungstyp kann gespiegelt, Vault, auch gespiegelt und Vault sein.
+
+.. Wählen Sie ein Cluster und eine SVM für das Ziel-Volume aus.
++
+Wenn auf dem ausgewählten Cluster eine Version der ONTAP Software vor ONTAP 9.3 ausgeführt wird, werden nur Peering SVMs aufgelistet. Wenn auf dem ausgewählten Cluster ONTAP 9.3 oder höher ausgeführt wird, werden die Peering SVMs und zulässige SVMs aufgelistet.
+
+.. Ändern Sie das Suffix des Volume-Namens, falls erforderlich.
+
+
+
+
+ a| 
+Synchron
+ a| 
+.. *Optional:* Wenn Sie den Replikationstyp und den Beziehungstyp nicht kennen, klicken Sie auf *Hilfe Auswählen*, legen Sie die Werte fest und klicken Sie dann auf *Anwenden*.
+.. Wählen Sie die Synchronisierungsrichtlinie aus.
++
+Die Synchronisierungsrichtlinie kann StrictSync oder Sync lauten.
+
+.. Wählen Sie ein Cluster und eine SVM für das Ziel-Volume aus.
++
+Wenn auf dem ausgewählten Cluster eine Version der ONTAP Software vor ONTAP 9.3 ausgeführt wird, werden nur Peering SVMs aufgelistet. Wenn auf dem ausgewählten Cluster ONTAP 9.3 oder höher ausgeführt wird, werden die Peering SVMs und zulässige SVMs aufgelistet.
+
+.. Ändern Sie das Suffix des Volume-Namens, falls erforderlich.
+
+
+|===
+. Klicken Sie Auf *Erstellen*.
+. Überprüfen Sie, ob das erstellte Volume in der Liste der Volumes im Fenster *Volume* enthalten ist.
++
+Das Volume wird mit Unix-Stil Sicherheit und UNIX 700 „`read write execute`“ Berechtigungen für den Eigentümer erstellt.
+
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

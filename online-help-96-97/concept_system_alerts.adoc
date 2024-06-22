@@ -1,0 +1,217 @@
+---
+permalink: online-help-96-97/concept_system_alerts.html 
+sidebar: sidebar 
+keywords: system, manager, monitor, cluster, health, alerts, delete, 
+summary: Mit System Manager können verschiedene Teile eines Clusters überwacht werden. 
+---
+= Managen Sie Systemwarnungen mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie verschiedene Teile eines Clusters überwachen.
+
+
+
+== Bestätigen Sie Warnmeldungen zum Systemzustand
+
+Mit System Manager können Sie Systemzustandsmeldungen für Subsysteme bestätigen und darauf reagieren. Sie können die angezeigten Informationen nutzen, um die empfohlene Aktion zu ergreifen und das durch die Meldung gemeldete Problem zu beheben.
+
+.Schritte
+. Klicken Sie Auf *Events & Jobs* > *Systemwarnungen*.
+. Klicken Sie im Fenster *System Alerts* auf das Pfeilsymbol neben dem Namen des Subsystems.
+. Wählen Sie den Alarm aus, den Sie bestätigen möchten, und klicken Sie dann auf *Bestätigen*.
+. Geben Sie Ihren Namen ein, und klicken Sie dann auf *Bestätigen*.
+
+
+
+
+== Systemzustandsmeldungen werden nicht unterdrückt
+
+Sie können System Manager verwenden, um Warnmeldungen zum Systemzustand zu unterdrücken, die keine Eingriffe von Ihnen erfordern.
+
+.Schritte
+. Klicken Sie Auf *Events & Jobs* > *Systemwarnungen*.
+. Klicken Sie im Fenster *System Alerts* auf das Pfeilsymbol neben dem Namen des Subsystems.
+. Wählen Sie die Warnung aus, die Sie unterdrücken möchten, und klicken Sie dann auf *unterdrücken*.
+. Geben Sie Ihren Namen ein, und klicken Sie dann auf *unterdrücken*.
+
+
+
+
+== Löschen von Systemzustandsmeldungen
+
+Sie können mit System Manager Warnmeldungen zum Systemzustand löschen, auf die Sie bereits geantwortet haben.
+
+.Schritte
+. Klicken Sie Auf *Events & Jobs* > *Systemwarnungen*.
+. Klicken Sie im Fenster *System Alerts* auf das Pfeilsymbol neben dem Namen des Subsystems.
+. Wählen Sie den Alarm aus, den Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Klicken Sie auf *OK*.
+
+
+
+
+== Verfügbare Cluster-Zustandsmonitore
+
+Verschiedene Systemzustandsüberwachung überwachen verschiedene Teile eines Clusters. Die Zustandsüberwachung unterstützen Sie bei der Wiederherstellung nach Fehlern in ONTAP Systemen. Dazu werden Ereignisse erkannt, Warnmeldungen an Sie gesendet und Ereignisse gelöscht, sobald sie gelöscht werden.
+
+[cols="1a,1a,1a"]
+|===
+| Name der Systemzustandsüberwachung (Kennung) | Subsystemname (Kennung) | Zweck 
+
+
+ a| 
+Cluster-Switch (Cluster-Switch)
+ a| 
+Switch (Switch-Health)
+ a| 
+Überwacht Cluster-Netzwerk-Switches und Management-Netzwerk-Switches auf Temperatur, Auslastung, Schnittstellenkonfiguration, Redundanz (nur Cluster-Netzwerk-Switches) sowie Lüfter- und Netzteilbetrieb. Die Cluster-Switch-Systemzustandsüberwachung kommuniziert mit Switches über SNMP. SNMPv2c ist die Standardeinstellung.
+
+[NOTE]
+====
+Ab ONTAP 9.2 kann dieser Monitor erkennen und melden, wenn ein Cluster-Switch seit der letzten Abrufzeit neu gestartet wurde.
+
+====
+
+
+ a| 
+MetroCluster Fabric
+ a| 
+Switch
+ a| 
+Überwacht die Back-End-Fabric-Topologie der MetroCluster Konfiguration und erkennt Fehlkonfigurationen wie falsche Verkabelung und Zoning oder ISL-Ausfälle.
+
+
+
+ a| 
+Systemzustand von MetroCluster
+ a| 
+Interconnect, RAID und Storage
+ a| 
+Überwacht FC-VI-Adapter, FC Initiator-Adapter, Aggregate und Festplatten im Hintergrund sowie Cluster-Ports
+
+
+
+ a| 
+Node-Konnektivität (Node-Connect)
+ a| 
+Unterbrechungsfreier CIFS-Betrieb (CIFS-NDO)
+ a| 
+Überwachung von SMB-Verbindungen für unterbrechungsfreien Betrieb von Hyper-V Applikationen
+
+
+
+ a| 
+Storage (SAS-Connect)
+ a| 
+Überwacht Shelfs, Festplatten und Adapter auf Node-Ebene für entsprechende Pfade und Verbindungen.
+
+
+
+ a| 
+System
+ a| 
+Keine Angabe
+ a| 
+Fasst Informationen aus anderen Zustandsmonitoren zusammen.
+
+
+
+ a| 
+Systemkonnektivität (System-connect)
+ a| 
+Storage (SAS-Connect)
+ a| 
+Überwachung von Shelfs auf Cluster-Ebene für geeignete Pfade zu zwei HA-Cluster Nodes
+
+|===
+
+
+== Möglichkeiten zur Reaktion auf Systemzustandsmeldungen
+
+Wenn eine Systemzustandsmeldung auftritt, können Sie sie bestätigen, mehr darüber erfahren, den zugrunde liegenden Zustand reparieren und verhindern, dass er erneut auftritt.
+
+Wenn eine Systemzustandsüberwachung eine Meldung aufwirft, können Sie auf folgende Arten reagieren:
+
+* Informieren Sie sich über die Meldung, zu der die betroffene Ressource, der Schweregrad der Warnmeldung, die wahrscheinliche Ursache, die mögliche Auswirkung und die Korrekturmaßnahmen gehören.
+* Detaillierte Informationen über die Warnmeldung, z. B. den Zeitpunkt, zu dem die Warnmeldung ausgegeben wurde und ob jemand anderer die Warnmeldung bereits bestätigt hat.
+* Abrufen von Systemzustandsinformationen zum Status der betroffenen Ressource oder Subsysteme, z. B. ein bestimmtes Shelf oder eine bestimmte Festplatte
+* Bestätigen Sie den Alarm, um anzuzeigen, dass jemand an dem Problem arbeitet und identifizieren Sie sich als „`Danker`“.
+* Beheben Sie das Problem, indem Sie die in der Warnmeldung angegebenen Korrekturmaßnahmen ergreifen, z. B. Kabelbefestigung zur Behebung eines Verbindungsproblems.
+* Löschen Sie die Meldung, wenn sie vom System nicht automatisch gelöscht wurde.
+* Unterdrücken einer Meldung, um zu verhindern, dass sie den Integritätsstatus eines Subsystems beeinflusst.
++
+Das Unterdrücken ist nützlich, wenn Sie ein Problem verstehen. Nachdem Sie eine Meldung unterdrückt haben, kann sie weiterhin auftreten, der Systemzustand des Subsystems wird jedoch als „`ok-with-unterdrückung`“ angezeigt, wenn die unterdrückte Meldung auftritt.
+
+
+
+
+
+== Das Fenster Systemwarnmeldungen
+
+Sie können das Fenster Systemwarnmeldungen verwenden, um mehr über SystemSystemzustandsmeldungen zu erfahren. Sie können Alarme auch über das Fenster bestätigen, löschen und unterdrücken.
+
+
+
+=== Befehlsschaltflächen
+
+* * Quittieren*
++
+Hiermit können Sie die ausgewählte Warnmeldung bestätigen, um anzuzeigen, dass das Problem behoben wird, und die Person identifiziert, die auf die Schaltfläche klickt, als „`` Danker“.
+
+* *Unterdrücken*
++
+Ermöglicht Ihnen, die ausgewählte Warnung zu unterdrücken, um zu verhindern, dass Sie vom System erneut über dieselbe Warnung benachrichtigt werden und Sie als „`S-Kompressor`“ identifiziert werden.
+
+* *Löschen*
++
+Löscht die ausgewählte Warnmeldung.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Alarmliste
+
+* *Subsystem (Nr. Der Warnungen)*
++
+Zeigt den Namen des Subsystems an, z. B. die SAS-Verbindung, den Switch-Zustand, CIFS NDO oder MetroCluster, für die die Meldung generiert wird.
+
+* *Alarm-ID*
++
+Zeigt die Alarm-ID an.
+
+* *Knoten*
++
+Zeigt den Namen des Node an, für den die Meldung generiert wird.
+
+* *Severity*
++
+Zeigt den Schweregrad der Warnmeldung als Unbekannt, Sonstige, Informationen, beeinträchtigt, Minderjährige, Schwerwiegend, kritisch oder tödlich.
+
+* * Ressource*
++
+Zeigt die Ressource an, die die Meldung generiert hat, z. B. ein bestimmtes Shelf oder eine bestimmte Festplatte.
+
+* *Zeit*
++
+Zeigt die Uhrzeit an, zu der die Meldung generiert wurde.
+
+
+
+
+
+=== Detailbereich
+
+Im Detailbereich werden ausführliche Informationen zur Warnmeldung angezeigt, z. B. die Zeit, zu der die Warnmeldung generiert wurde und ob die Warnmeldung bestätigt wurde. Der Bereich enthält außerdem Informationen über die wahrscheinliche Ursache und die mögliche Auswirkung der durch die Warnmeldung erzeugten Bedingung sowie die empfohlenen Maßnahmen zur Behebung des durch die Warnmeldung gemeldeten Problems.
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Systemadministration"]

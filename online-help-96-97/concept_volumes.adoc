@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/concept_volumes.html 
+sidebar: sidebar 
+keywords: system, manager, create, edit, delete, volume, tab, cif, nfs, online, help 
+summary: Mit System Manager können Sie Volumes erstellen, bearbeiten und löschen. 
+---
+= Verwalten Sie Volumes mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (erhältlich ab 9.7) können Sie Volumes erstellen, bearbeiten und löschen.
+
+Sie können über die Registerkarte Volumes auf alle Volumes im Cluster zugreifen oder über *SVMs* > *Volumes* auf die für eine SVM spezifischen Volumes zugreifen.
+
+[NOTE]
+====
+Die Registerkarte Volumes wird nur angezeigt, wenn Sie die CIFS- und NFS-Lizenzen aktiviert haben.
+
+====
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/concepts/index.html["ONTAP-Konzepte"^]
+
+https://docs.netapp.com/us-en/ontap/volumes/index.html["Logisches Storage-Management"^]

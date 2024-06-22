@@ -1,0 +1,42 @@
+---
+permalink: fc-config-esxi/task_verifying_host_can_write_to_read_from_lun.html 
+sidebar: sidebar 
+keywords: lun, verify, write, data, verify that the host can write to and read from the lun 
+summary: Bevor Sie die LUN verwenden, sollten Sie überprüfen, ob der Host Daten auf die LUN schreiben und sie zurücklesen kann. 
+---
+= Vergewissern Sie sich, dass der Host schreiben und von der LUN lesen kann
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie die LUN verwenden, sollten Sie überprüfen, ob der Host Daten auf die LUN schreiben und sie zurücklesen kann.
+
+.Über diese Aufgabe
+Wenn der Cluster-Node, auf dem die LUN erstellt wurde, einen Failover auf seinen Partner-Node durchführen kann, sollten Sie die Daten beim Failover des Node überprüfen. Dieser Test ist möglicherweise nicht möglich, wenn das Cluster sich in Produktionsumgebungen befindet.
+
+.Schritte
+. Klicken Sie auf der Seite vSphere Web Client *Home* auf *Hosts und Cluster*.
+. Klicken Sie im Navigationsbereich auf die Registerkarte *Storage*.
+. Erweitern Sie das Rechenzentrum, und wählen Sie dann den neuen Datastore aus.
+. Klicken Sie im mittleren Fenster auf *Verwalten* > *Dateien*.
++
+Der Inhalt des Datastore wird angezeigt.
+
+. Erstellen Sie einen neuen Ordner im Datastore, und laden Sie eine Datei in den neuen Ordner hoch.
++
+Möglicherweise müssen Sie das Client Integration Plug-in installieren.
+
+. Stellen Sie sicher, dass Sie auf die gerade verfasste Datei zugreifen können.
+. *Optional:* Failover über den Clusterknoten, der die LUN enthält, und überprüfen Sie, ob Sie weiterhin eine Datei schreiben und lesen können.
++
+Wenn einer der Tests fehlschlägt, überprüfen Sie, ob der FC-Service auf dem Storage Cluster ausgeführt wird, und überprüfen Sie die FC-Pfade zum LUN- und FC-Switch-Zoning.
+
+. *Optional:* Wenn Sie über den Cluster-Knoten gescheitert sind, stellen Sie sicher, den Knoten wieder zu geben und alle LIFs an ihre Home-Ports zurückzugeben.
+. Zeigen Sie bei einem ESXi-Cluster den Datenspeicher von jedem ESXi-Host im Cluster an und überprüfen Sie, ob die hochgeladene Datei angezeigt wird.
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/high-availability/index.html["ONTAP 9 High-Availability-Konfiguration"]

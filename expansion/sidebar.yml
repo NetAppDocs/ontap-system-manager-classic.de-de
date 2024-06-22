@@ -1,0 +1,62 @@
+---
+section: expansion
+title: Cluster-Administration
+entries:
+- title: Administration der Cluster-Erweiterung
+  entries:
+  - title: Überblick
+    url: "/expansion/index.html"
+  - title: Cluster-Erweiterungs-Workflow
+    url: "/expansion/concept_cluster_expansion_workflow.html"
+    entries:
+    - title: Vergewissern Sie sich, dass das Cluster bereit für die Erweiterung ist
+      url: "/expansion/task_verifying_cluster_is_ready_for_expansion.html"
+      entries:
+      - title: Überprüfen Sie die geplante Konfiguration
+        url: "/expansion/task_verifying_planned_configuration.html"
+      - title: Sammeln Sie die erforderlichen Netzwerkinformationen
+        url: "/expansion/task_gathering_required_information.html"
+      - title: Schalter hinzufügen oder ersetzen
+        url: "/expansion/task_adding_or_replacing_switches.html"
+    - title: Bereiten Sie den Cluster auf die Erweiterung vor
+      url: "/expansion/task_preparing_cluster_for_expansion.html"
+      entries:
+      - title: Fügen Sie Node-gesperrte Lizenzen hinzu
+        url: "/expansion/task_adding_node_locked_licenses.html"
+      - title: Überprüfen Sie den Systemzustand
+        url: "/expansion/task_verifying_health_system.html"
+      - title: Sichern der Cluster-Konfiguration
+        url: "/expansion/task_backing_up_cluster_configuration.html"
+      - title: Generieren Sie eine AutoSupport-Meldung über den Start der Erweiterung
+        url: "/expansion/task_generating_autosupport_message_about_starting_expansion.html"
+    - title: Die neuen Nodes installieren
+      url: "/expansion/task_installing_new_nodes.html"
+      entries:
+      - title: Installieren Sie die Controller
+        url: "/expansion/task_installing_controllers.html"
+      - title: Konfigurieren Sie LIFs für das Node-Management
+        url: "/expansion/concept_configuring_node_management_lifs.html"
+      - title: Aktualisieren oder Downgrade der Nodes
+        url: "/expansion/task_upgrading_or_downgrading_nodes.html"
+      - title: Stellen Sie sicher, dass die Hochverfügbarkeit auf Hardwareebene aktiviert
+          ist
+        url: "/expansion/task_ensuring_hardware_level_ha_is_enabled.html"
+      - title: Fügen Sie Nodes zu einem Cluster mit System Manager hinzu
+        url: "/expansion/task_adding_nodes_to_cluster_using_system_manager.html"
+      - title: Verbinden Sie die Nodes mit dem Cluster mithilfe der CLI
+        url: "/expansion/concept_joining_nodes_to_cluster_using_cli.html"
+    - title: Die Erweiterung abschließen
+      url: "/expansion/task_completing_expansion.html"
+      entries:
+      - title: Konfigurieren Sie die Details zum Node in System Manager
+        url: "/expansion/task_configuring_node_details_system_manager.html"
+      - title: Konfigurieren Sie AutoSupport auf den neuen Nodes
+        url: "/expansion/task_configuring_autosupport_on_new_nodes_using_cli.html"
+      - title: Konfigurieren Sie das Service Processor Netzwerk
+        url: "/expansion/task_configuring_service_processor_network_cli.html"
+      - title: Überprüfen Sie die Konfiguration des erweiterten Clusters
+        url: "/expansion/task_validating_configuration_expanded_cluster.html"
+      - title: Generieren Sie eine AutoSupport-Meldung über den Abschluss der Erweiterung
+        url: "/expansion/task_generating_autosupport_message_about_completing_expansion.html"
+      - title: Aktualisieren Sie die LUN-Pfade für die neuen Nodes
+        url: "/expansion/task_updating_lun_paths_for_new_nodes.html"

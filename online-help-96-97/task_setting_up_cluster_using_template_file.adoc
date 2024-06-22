@@ -1,0 +1,106 @@
+---
+permalink: online-help-96-97/task_setting_up_cluster_using_template_file.html 
+sidebar: sidebar 
+keywords: set, up, cluster, template, file, system, manager, online, help, autosupport 
+summary: 'Mit der in System Manager bereitgestellten Vorlagendatei können Sie ein Cluster einrichten, das Node-Management und die Cluster-Managementnetzwerke einrichten und anschließend Ereignisbenachrichtigungen einrichten. (Ab ONTAP System Manager 9.6 wird AutoSupport nicht unterstützt.) Sie können die Vorlagendatei im .xlsx-Format oder im .csv-Format herunterladen.' 
+---
+= Richten Sie einen Cluster mithilfe der Vorlagendatei in System Manager – ONTAP 9.7 und früher ein
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit der Vorlagendatei, die im ONTAP System Manager Classic (erhältlich unter ONTAP 9.7 und älter) zur Verfügung steht, können Sie ein Cluster einrichten, indem Sie ein Cluster erstellen, das Node-Management und die Cluster-Managementnetzwerke einrichten und dann Ereignisbenachrichtigungen einrichten. (Ab ONTAP System Manager 9.6 wird AutoSupport nicht unterstützt.) Sie können die Vorlagendatei in herunterladen `.xlsx` Format oder `.csv` Formatieren.
+
+.Über diese Aufgabe
+* Wenn der Cluster ONTAP 9.1 oder höher unterstützt, können Sie nur Storage-Systeme mit ONTAP 9.1 oder höher hinzufügen.
+* Alle Felder werden beim Hochladen der Datei nicht automatisch ausgefüllt.
++
+Sie müssen den Wert einiger Felder, z. B. Passwort und Cluster-Managementport, manuell eingeben.
+
+
+
+.Schritte
+. Öffnen Sie den Webbrowser, und geben Sie anschließend die IP-Adresse für die Knotenverwaltung ein, die Sie konfiguriert haben: `+https://node-management-IP+`
++
+** Wenn Sie die Anmeldedaten für das Cluster eingerichtet haben, wird die Anmeldeseite angezeigt.
++
+Sie müssen die Anmeldeinformationen eingeben, um sich anzumelden.
+
+** Wenn Sie die Anmeldedaten für das Cluster nicht eingerichtet haben, wird das Fenster Guided Setup angezeigt.
+
+
+. Laden Sie die herunter `.xlsx` Vorlagendatei oder der `.csv` Vorlagendatei.
+. Geben Sie alle erforderlichen Werte in der Vorlagendatei ein, und speichern Sie die Datei.
++
+[NOTE]
+====
+** Bearbeiten Sie keine andere Spalte in der Vorlage außer Wert.
+** Ändern Sie nicht die Version der Vorlagendatei.
+
+
+====
+. Klicken Sie auf *Durchsuchen* und wählen Sie die aktualisierte Vorlagendatei aus.
++
+** Sie können die Vorlagendatei nur im hochladen `.csv` Formatieren. Wenn Sie die Vorlagendatei in heruntergeladen haben `.xlsx` Format: Sie müssen die Datei als speichern `.csv` Datei und anschließend die Datei hochladen.
+** Sie müssen sicherstellen, dass die für diese Datei verwendete Codierung lautet `UTF8`. Wenn nicht, werden die Werte nicht gelesen.
+
+
+. Klicken Sie Auf *Upload*.
++
+Die Details, die Sie in der Vorlagendatei angegeben haben, werden zum Abschließen des Cluster-Setups verwendet.
+
+. Klicken Sie auf das Symbol * Guided Setup*, um die Details für den Cluster anzuzeigen.
+. Überprüfen Sie die Details im *Cluster*-Fenster, und klicken Sie dann auf *Absenden und Fortfahren*.
++
+Sie können bei Bedarf die Cluster-Details bearbeiten.
+
++
+Wenn Sie sich zum zweiten Mal im Cluster-Fenster anmelden, ist standardmäßig das Feld *Feature Licenses* aktiviert. Sie können neue Feature-Lizenzschlüssel hinzufügen oder die bereits ausgefüllten Lizenzschlüssel behalten.
+
+. Überprüfen Sie die Details im Fenster *Netzwerk*, und klicken Sie dann auf *Absenden und fortfahren*.
++
+Sie können die Netzwerkdetails bei Bedarf bearbeiten.
+
+. Überprüfen Sie die Details im *Support*-Fenster, und klicken Sie dann auf *Absenden und Fortfahren*.
++
+Sie können bei Bedarf die Support-Details bearbeiten.
+
+. Überprüfen Sie die Details im Fenster *Storage*, und erstellen Sie dann Aggregate oder beenden Sie das Cluster-Setup:
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+Beenden Sie die Cluster-Einrichtung, ohne Storage bereitzustellen und eine SVM zu erstellen
+ a| 
+Klicken Sie auf *überspringen Sie diesen Schritt*.
+
+
+
+ a| 
+Stellen Sie Storage mithilfe von Aggregaten bereit und erstellen Sie eine SVM
+ a| 
+Klicken Sie auf *Absenden und fortfahren*.
+
+|===
++
+Sie können bei Bedarf die Support-Details bearbeiten.
+
+. Überprüfen Sie die Details im Fenster *Storage Virtual Machine (SVM)* und klicken Sie dann auf *Submit and Continue*.
++
+Sie können den SVM-Namen bearbeiten, ein anderes Datenprotokoll auswählen und ggf. die Netzwerkschnittstelle und Adapterdetails ändern.
+
+. Wenn Sie im *Storage*-Fenster auf *Skip this Step* geklickt haben, sehen Sie sich die Details im *Zusammenfassung*-Fenster an und klicken Sie dann auf *Cluster verwalten*, um den System Manager zu starten.
+. Wenn Sie im Fenster *Storage* auf *Absenden und Fortfahren* geklickt haben, überprüfen Sie die Details im SVM-Fenster und klicken Sie dann auf *Absenden und fortfahren*.
++
+Bei Bedarf können Sie die SVM-Details bearbeiten.
+
+. Überprüfen Sie alle Details im Fenster *Zusammenfassung* und klicken Sie dann auf *Anwendung bereitstellen*, um Speicher für Anwendungen bereitzustellen, oder klicken Sie auf *Cluster verwalten*, um den Cluster-Setup-Prozess abzuschließen und System Manager zu starten, oder klicken Sie auf *Konfiguration exportieren*, um die Konfigurationsdatei herunterzuladen.
+
+
+*Verwandte Informationen*
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/System_Manager_Cluster_Guided_Setup_Templates["System Manager Cluster Guided Setup Vorlagen"]

@@ -1,0 +1,45 @@
+---
+permalink: online-help-96-97/task_performing_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, perform, switchback, system, manager, online, help 
+summary: 'Ab System Manager 9.6 können Sie einen Switchback-Vorgang durchführen, der nach Abschluss des Switchover-Vorgangs die Kontrolle über den ursprünglichen MetroCluster Standort (Standort B) wiederherstellt.' 
+---
+= Zurückwechseln
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab System Manager 9.6 können Sie einen Switchback-Vorgang durchführen, der nach Abschluss des Switchover-Vorgangs die Kontrolle über den ursprünglichen MetroCluster Standort (Standort B) wiederherstellt.
+
+.Bevor Sie beginnen
+Bevor Sie einen Switchback-Vorgang durchführen, müssen Sie die folgenden Aufgaben ausführen:
+
+* Sie müssen die MetroCluster-Sites bis vorbereiten xref:task_performing_negotiated_planned_switchover.adoc[Durchführen einer ausgehandelten (geplanten) Umschaltung] Oder xref:task_performing_unplanned_switchover.adoc[Durchführung einer ungeplanten Umschaltung].
+* Wenn während des Heilvorgangs Fehler aufgetreten sind, müssen Sie die angezeigten Anweisungen befolgen, um sie zu beheben.
+* Wenn der Status des Remote-Standorts als „`Vorbereitungen für den Wechsel zurück`“ angezeigt wird, werden die Aggregate weiterhin neu synchronisiert. Sie sollten warten, bis der Status des Remote-Standorts angibt, dass er für den Wechsel bereit ist.
+
+
+.Über diese Aufgabe
+Wenn ein Switchover erfolgreich durchgeführt wird, wird das Fenster MetroCluster Switchover und Switch Back Operations angezeigt. Das Fenster zeigt den Status beider Standorte an und enthält eine Meldung, die Ihnen anzeigt, dass der Vorgang erfolgreich war.
+
+.Schritte
+. Klicken Sie auf *Switch Back von Standort A nach Standort B*, um den Switchback-Betrieb zu starten.
++
+Eine Warnmeldung gibt an, dass der zurückkehrende Vorgang die Steuerung des MetroCluster an Standort B zurückgibt und dass der Vorgang möglicherweise eine gewisse Zeit in Anspruch nehmen kann.
+
+. Wenn Sie fortfahren möchten, klicken Sie auf *Ja*.
+. Führen Sie einen der folgenden Teilschritte durch, wenn der Switch-Back-Vorgang abgeschlossen ist:
++
+** Wenn der Vorgang zum Umkehren erfolgreich war, klicken Sie auf *Fertig*, um den Abschluss der MetroCluster-Vorgänge zu bestätigen.
++
+[NOTE]
+====
+Bis Sie den Abschluss des Vorgangs zum Rückwechseln bestätigen, wird im System Manager weiterhin die Meldung angezeigt, dass der Vorgang abgeschlossen wurde. Sie können erst dann einen anderen Vorgang starten oder den nachfolgenden Umschalttavorgang überwachen, wenn Sie den Abschluss des Switchback-Vorgangs bestätigen.
+
+====
+** Wenn der Vorgang zum zurückwechseln nicht erfolgreich ist, werden oben im Statusbereich Fehlermeldungen angezeigt. Nehmen Sie ggf. Korrekturen vor, und klicken Sie auf *Switch Back von Standort A nach Standort B*, um den Prozess erneut zu versuchen.
+
+
+

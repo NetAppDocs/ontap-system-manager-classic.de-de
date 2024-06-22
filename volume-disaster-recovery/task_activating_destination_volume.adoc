@@ -1,0 +1,14 @@
+---
+permalink: volume-disaster-recovery/task_activating_destination_volume.html 
+sidebar: sidebar 
+keywords: source, volume, data, corruption, deletion, offline, state, destination, recover, access, activation, snapmirror, relationship, activate the destination volume 
+summary: Wenn das Quell-Volume aufgrund von Ereignissen wie Datenkorruption, versehentlichem Löschen oder offline-Status keine Daten bereitstellen kann, müssen Sie das Ziel-Volume aktivieren, um den Datenzugriff zu ermöglichen, bis Sie die Daten des Quell-Volume wiederherstellen. Die Aktivierung beinhaltet das Stoppen zukünftiger SnapMirror-Datentransfers und das Aufbrechen der SnapMirror Beziehung. 
+---
+= Aktivieren Sie die Ziellautstärke
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn das Quell-Volume aufgrund von Ereignissen wie Datenkorruption, versehentlichem Löschen oder offline-Status keine Daten bereitstellen kann, müssen Sie das Ziel-Volume aktivieren, um den Datenzugriff zu ermöglichen, bis Sie die Daten des Quell-Volume wiederherstellen. Die Aktivierung beinhaltet das Stoppen zukünftiger SnapMirror-Datentransfers und das Aufbrechen der SnapMirror Beziehung.

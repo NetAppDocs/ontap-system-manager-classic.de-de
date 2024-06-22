@@ -1,0 +1,41 @@
+---
+permalink: volume-disaster-recovery/index.html 
+sidebar: sidebar 
+keywords: content, destination, activate, volume, disaster, reactivate, source, ontap, volume disaster recovery overview 
+summary: 'Sie können nach einem Notfall schnell ein Ziel-Volume aktivieren und dann das Quell-Volume in ONTAP mithilfe der klassischen Schnittstelle des ONTAP System Managers (ONTAP 9.7 und früher) erneut aktivieren.' 
+---
+= Übersicht über die Disaster Recovery von Volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können nach einem Notfall schnell ein Ziel-Volume aktivieren und dann das Quell-Volume in ONTAP mithilfe der klassischen Schnittstelle des ONTAP System Managers (ONTAP 9.7 und früher) erneut aktivieren.
+
+Gehen Sie folgendermaßen vor, wenn Sie eine Disaster Recovery auf Volume-Ebene auf folgende Weise durchführen möchten:
+
+* Sie arbeiten mit Clustern, auf denen ONTAP 9 ausgeführt wird.
+* Sie sind ein Cluster-Administrator.
+* Sie haben die SnapMirror-Beziehung wie folgt konfiguriert xref:../volume-disaster-prep/index.html[Vorbereitung der Volume Disaster Recovery]
+* Der Cluster-Administrator des Quell-Clusters hat erklärt, dass die Daten im Quell-Volume nicht verfügbar sind, weil Ereignisse wie Virusinfektion, die zu Datenbeschädigung oder versehentlichem Löschen von Daten führen.
+* Sie möchten den System Manager verwenden, nicht die ONTAP Befehlszeilenschnittstelle oder ein automatisiertes Scripting Tool.
+* Sie möchten die klassische Benutzeroberfläche des System Manager für ONTAP 9.7 und ältere Versionen verwenden, nicht die ONTAP System Manager Benutzeroberfläche für ONTAP 9.7 und höher.
+* Sie möchten Best Practices verwenden und nicht alle verfügbaren Optionen erkunden.
+* Sie wollen nicht viel konzeptuellen Hintergrund lesen.
+
+
+
+
+== Weitere Möglichkeiten dies in ONTAP zu tun
+
+[cols="2"]
+|===
+| So führen Sie diese Aufgaben durch: | Inhalt anzeigen... 
+
+
+| Der neu gestaltete System Manager (verfügbar ab ONTAP 9.7) | link:https://docs.netapp.com/us-en/ontap/task_dp_serve_data_from_destination.html["Stellen Sie Daten von einem SnapMirror Ziel bereit"^] 
+
+
+| Die ONTAP Befehlszeilenschnittstelle | link:https://docs.netapp.com/us-en/ontap/data-protection/make-destination-volume-writeable-task.html["Aktivieren Sie die Ziellautstärke"^] 
+|===

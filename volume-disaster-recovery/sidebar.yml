@@ -1,0 +1,29 @@
+---
+section: volume-disaster-recovery
+title: Volume Disaster Recovery
+entries:
+- title: Überblick
+  url: "/volume-disaster-recovery/index.html"
+- title: Volume Disaster Recovery Workflow
+  url: "/volume-disaster-recovery/concept_volume_disaster_recovery_workflow.html"
+  entries:
+  - title: Aktivieren Sie die Ziellautstärke
+    url: "/volume-disaster-recovery/task_activating_destination_volume.html"
+    entries:
+    - title: Überprüfen Sie den Status des Quell-Volume
+      url: "/volume-disaster-recovery/task_verifying_source_volume_status.html"
+    - title: SnapMirror Beziehung unterbrechen
+      url: "/volume-disaster-recovery/task_breaking_snapmirror_relationship.html"
+    - title: Überprüfen Sie den Status des Ziel-Volumes
+      url: "/volume-disaster-recovery/task_verifying_destination_volume_status.html"
+  - title: Ziel-Volume für Datenzugriff konfigurieren
+    url: "/volume-disaster-recovery/task_configuring_destination_volume_for_data_access.html"
+  - title: Aktivieren Sie das Quellvolumen erneut
+    url: "/volume-disaster-recovery/task_reactivating_source_volume.html"
+    entries:
+    - title: Synchronisieren Sie das Quell-Volume neu
+      url: "/volume-disaster-recovery/task_resynchronizing_source_volume.html"
+    - title: Aktualisieren Sie das Quell-Volume
+      url: "/volume-disaster-recovery/task_updating_source_volume.html"
+    - title: Aktivieren Sie das Quellvolumen erneut
+      url: "/volume-disaster-recovery/task_returning_recovered_volume_to_source_role.html"

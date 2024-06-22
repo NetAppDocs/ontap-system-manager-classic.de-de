@@ -1,0 +1,43 @@
+---
+section: fc-config-windows
+title: FC-Konfiguration für Windows
+entries:
+- title: Überblick
+  url: "/fc-config-windows/index.html"
+- title: FC-Konfigurations-Workflow
+  url: "/fc-config-windows/concept_fc_configuration_workflow.html"
+  entries:
+  - title: Vergewissern Sie sich, dass die FC-Konfiguration unterstützt wird
+    url: "/fc-config-windows/task_verifying_that_iscsi_fc_configuration_is_supported.html"
+  - title: Füllen Sie das FC-Konfigurationsarbeitsblatt aus
+    url: "/fc-config-windows/reference_completing_iscsi_configuration_worksheet.html"
+  - title: Installieren Sie das HBA-Dienstprogramm vom HBA-Anbieter
+    url: "/fc-config-windows/task_installing_hba_utility_from_hba_vendor.html"
+  - title: Aktualisieren Sie den HBA-Treiber, die Firmware und das BIOS
+    url: "/fc-config-windows/task_updating_hba_driver_firmware_bios.html"
+  - title: Notieren Sie den WWPN für jeden Host-FC-Port
+    url: "/fc-config-windows/task_record_wwpn_for_each_host_fc_port.html"
+  - title: Installieren Sie Windows Unified Host Utilities
+    url: "/fc-config-windows/task_installing_windows_unified_host_utilities.html"
+  - title: Erstellen Sie ein Aggregat
+    url: "/fc-config-windows/task_creating_aggregate.html"
+  - title: Legen Sie fest, wo das Volume bereitgestellt werden soll
+    url: "/fc-config-windows/task_deciding_where_to_provision_volume.html"
+    entries:
+    - title: Vergewissern Sie sich, dass der FC-Service auf einer vorhandenen SVM
+        ausgeführt wird
+      url: "/fc-config-windows/task_verifying_that_fc_service_is_running_on_existing_svm.html"
+    - title: Erstellen einer LUN
+      url: "/fc-config-windows/task_creating_lun_its_containing_volume.html"
+    - title: Konfigurieren Sie FC für eine vorhandene SVM
+      url: "/fc-config-windows/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html"
+    - title: Erstellen einer neuen SVM
+      url: "/fc-config-windows/task_creating_svm.html"
+  - title: Zone der FC-Switches durch den Host und LIF-WWPNs
+    url: "/fc-config-windows/task_zoning_fc_switches_by_host_lif_wwpns.html"
+  - title: Erkennen neuer Festplatten
+    url: "/fc-config-windows/task_discovering_new_disks.html"
+  - title: Initialisieren und formatieren Sie die LUN
+    url: "/fc-config-windows/task_initializing_formatting_lun.html"
+  - title: Vergewissern Sie sich, dass der Host schreiben und von der LUN lesen kann
+    url: "/fc-config-windows/task_verifying_that_host_can_write_to_read_from_lun.html"

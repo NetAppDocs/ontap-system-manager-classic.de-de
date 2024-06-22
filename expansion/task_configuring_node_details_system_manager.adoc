@@ -1,0 +1,45 @@
+---
+permalink: expansion/task_configuring_node_details_system_manager.html 
+sidebar: sidebar 
+keywords: system, manager, configure, node, management, lif, service, processor, setting, add, configure the node details in system manager 
+summary: Mit System Manager können Sie die LIF- und Service-Prozessor-Einstellungen für das Node-Management für die neu hinzugefügten Nodes konfigurieren. 
+---
+= Konfigurieren Sie die Details zum Node in System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit System Manager können Sie die LIF- und Service-Prozessor-Einstellungen für das Node-Management für die neu hinzugefügten Nodes konfigurieren.
+
+.Bevor Sie beginnen
+* Im Standard-IPspace muss für die LIF-Erstellung eine ausreichende Anzahl von Ports vorhanden sein.
+* Alle Ports müssen betriebsbereit sein und ausgeführt werden.
+
+
+.Schritte
+. Konfiguration des Node-Managements:
++
+.. Geben Sie die IP-Adresse in das Feld * IP-Adresse* ein.
+.. Wählen Sie den Port für die Knotenverwaltung im Feld *Port* aus.
+.. Geben Sie die Netzmaske und Gateway-Details ein.
+
+
+. Konfigurieren Sie die Service Processor-Einstellungen:
++
+.. Aktivieren Sie das Kontrollkästchen *Standardeinstellungen überschreiben*, um die Standardwerte zu überschreiben.
+.. Geben Sie IP-Adresse, Netmask und Gateway-Details ein.
+
+
+. Klicken Sie auf *Senden und Fortfahren*, um die Netzwerkkonfiguration der Knoten abzuschließen.
+. Überprüfen Sie die Details der Knoten auf der Seite *Zusammenfassung*.
+
+
+
+
+== Nächste Schritte
+
+* Wenn Ihr Cluster geschützt ist, sollten Sie die erforderliche Anzahl von Intercluster LIFs in den neu hinzugefügten Nodes erstellen, um TeilPeering und einen ungesunden Schutz zu vermeiden.
+* Wenn SAN-Datenprotokolle in Ihrem Cluster aktiviert sind, sollten Sie die erforderliche Anzahl an SAN-Daten-LIFs für die Datenbereitstellung erstellen.
+

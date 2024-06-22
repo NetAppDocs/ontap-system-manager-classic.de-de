@@ -1,0 +1,39 @@
+---
+permalink: volume-move/task_verifying_lun_reporting_nodes_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, lun, destination, aggregate, high-availability, ha, pair, ontap, selective, reporting-nodes, list, path, verify, verify lun reporting nodes after moving a volume 
+summary: Sie können Nodes für die LUN-Berichterstellung hinzufügen, um optimierte LUN-Pfade beibehalten zu können. 
+---
+= Nach dem Verschieben eines Volumes überprüfen Sie die Nodes für LUN-Berichte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Nodes für die LUN-Berichterstellung hinzufügen, um optimierte LUN-Pfade beibehalten zu können.
+
+Wenn das zu verschiebende Volume LUNs enthält und sich das Zielaggregat auf einem anderen HA-Paar befindet, fügt ONTAP der Liste Selective LUN Map Reporting Nodes automatisch ein HA-Paar hinzu
+
+.Bevor Sie beginnen
+Es müssen zwei LIFs konfiguriert werden: Eine LIF auf dem Ziel-Node und die andere LIF auf dem HA-Partner des Ziel-Node.
+
+.Über diese Aufgabe
+Diese Vorgehensweise ist nur erforderlich, wenn Sie ein Volume von einem HA-Paar auf ein anderes HA-Paar verschieben. Wenn Sie ein Volume zu einem anderen Node desselben HA-Paares verschieben – beispielsweise wenn Sie ein 2-Node-Cluster oder eine MetroCluster-Konfiguration haben – können Sie diesen Vorgang überspringen.
+
+.Schritte
+. Vergewissern Sie sich, dass sich der Ziel-Node und sein Partner-Node in der Liste der Reporting-Nodes des Volumes befinden. Wenn sich die Knoten nicht in der Liste der Reporting-Nodes befinden, fügen Sie den Ziel-Node und dessen Partner-Node der Liste der Reporting-Nodes des Volumes hinzu:
++
+`lun mapping add-reporting-nodes`
+
+. Scannen Sie den Host neu, um die neu hinzugefügten Pfade zu erkennen.
+. Fügen Sie die neuen Pfade zu Ihrer MPIO-Konfiguration hinzu.
+. Entfernen Sie den vorherigen LUN-Eigentümer und seinen Partner-Node aus der Liste der Reporting-Nodes:
++
+`lun mapping remove-reporting-nodes -remote-nodes -vserver vserver_name -path lun_path -igroup igroup_name`
+
+. Der Host wird erneut gescannt, um das Entfernen alter Pfade zu überprüfen.
++
+Spezifische Schritte zum erneuten Scannen Ihrer Hosts finden Sie in Ihrer Host-Dokumentation.
+
+

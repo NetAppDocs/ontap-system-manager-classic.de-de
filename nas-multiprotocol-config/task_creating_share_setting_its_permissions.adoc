@@ -1,0 +1,44 @@
+---
+permalink: nas-multiprotocol-config/task_creating_share_setting_its_permissions.html 
+sidebar: sidebar 
+keywords: windows, user, access, volume, create, cifs, restrict, access, modify, control, list, acl, share, create a share and set its permission 
+summary: 'Bevor Windows Benutzer auf ein Volume zugreifen können, müssen Sie eine CIFS-Freigabe auf dem Volume erstellen und den Zugriff auf die Freigabe durch Ändern der Zugriffssteuerungsliste (Access Control List, ACL) für die Freigabe einschränken.' 
+---
+= Erstellen Sie eine Freigabe und legen Sie deren Berechtigungen fest
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Windows Benutzer auf ein Volume zugreifen können, müssen Sie eine CIFS-Freigabe auf dem Volume erstellen und den Zugriff auf die Freigabe durch Ändern der Zugriffssteuerungsliste (Access Control List, ACL) für die Freigabe einschränken.
+
+.Über diese Aufgabe
+Zu Testzwecken sollten Sie nur Administratoren Zugriff gewähren. Später können Sie nach der Prüfung, ob auf das Volume zugegriffen werden kann, den Zugriff auf mehr Clients ermöglichen.
+
+.Schritte
+. Navigieren Sie zum Fenster *Shares*.
+. Erstellen einer Freigabe, sodass SMB-Clients auf das Volume zugreifen können:
++
+.. Klicken Sie Auf *Freigabe Erstellen*.
+.. Klicken Sie im Dialogfeld *Freigabe erstellen* auf *Durchsuchen*, erweitern Sie die Namespace-Hierarchie und wählen Sie dann das zuvor erstellte Volume aus.
+.. Wenn Sie möchten, dass der Freigabename vom Namen des Volumes abweicht, ändern Sie den Freigabennamen.
+.. Klicken Sie Auf *Erstellen*.
+
+
++
+Die Freigabe wird mit einer Standard-ACL für die Gruppe „Alle“ auf „vollständige Kontrolle“ gesetzt.
+
+. Einschränken des Zugriffs auf die Freigabe durch Ändern der share ACL:
++
+.. Wählen Sie die Freigabe aus, und klicken Sie dann auf *Bearbeiten*.
+.. Wählen Sie auf der Registerkarte *Berechtigungen* die Gruppe *alle* aus und klicken Sie dann auf *Entfernen*.
+.. Klicken Sie auf *Hinzufügen*, und geben Sie dann den Namen einer in der Windows Active Directory-Domäne definierten Administratorgruppe ein, die die SVM enthält.
+.. Wenn die neue Administratorgruppe ausgewählt ist, wählen Sie alle Berechtigungen dafür aus.
+.. Klicken Sie auf *Speichern und Schließen*.
+
+
++
+Die aktualisierten Zugriffsberechtigungen für Freigaben sind im Bereich Share Access Control aufgeführt.
+
+

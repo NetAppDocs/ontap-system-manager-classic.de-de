@@ -1,0 +1,37 @@
+---
+permalink: iscsi-config-esxi/task_deciding_where_to_provision_volume.html 
+sidebar: sidebar 
+keywords: provision, volume, lun, add, exist, storage, virtual, machine, svm, iscsi, decide where to provision the volume 
+summary: Bevor Sie ein Volume bereitstellen, das die LUNs enthält, müssen Sie entscheiden, ob Sie das Volume zu einer vorhandenen Storage Virtual Machine hinzufügen oder eine neue SVM für das Volume erstellen möchten. Darüber hinaus müssen Sie iSCSI auch auf einer vorhandenen SVM konfigurieren. 
+---
+= Legen Sie fest, wo das Volume bereitgestellt werden soll
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie ein Volume bereitstellen, das die LUNs enthält, müssen Sie entscheiden, ob Sie das Volume zu einer vorhandenen Storage Virtual Machine (SVM) hinzufügen oder eine neue SVM für das Volume erstellen möchten. Darüber hinaus müssen Sie iSCSI auch auf einer vorhandenen SVM konfigurieren.
+
+.Über diese Aufgabe
+Wenn eine vorhandene SVM bereits mit den erforderlichen Protokollen konfiguriert ist und über LIFs verfügt, auf die über den Host zugegriffen werden kann, wird die Nutzung der vorhandenen SVM vereinfacht.
+
+Sie können eine neue SVM erstellen, wodurch Daten oder eine Administration von anderen Benutzern des Storage-Clusters getrennt werden. Ein Vorteil besteht darin, dass separate SVMs nur zur Trennung verschiedener Protokolle genutzt werden können.
+
+
+
+== Verfahren
+
+* Wenn Sie Volumes auf einer SVM bereitstellen möchten, die bereits für iSCSI konfiguriert ist, müssen Sie überprüfen, ob der iSCSI-Service ausgeführt wird.
++
+link:task_verifying_iscsi_is_running_on_existing_vserver.html["Überprüfung, ob der iSCSI-Service auf einer vorhandenen SVM ausgeführt wird"]
+
+* Wenn Sie Volumes auf einer vorhandenen SVM bereitstellen möchten, für die iSCSI aktiviert, aber nicht konfiguriert ist, konfigurieren Sie iSCSI auf der vorhandenen SVM.
++
+link:task_configuring_iscsi_fc_creating_lun_on_existing_svm.html["Konfigurieren von iSCSI auf einer vorhandenen SVM"]
+
++
+Dies ist der Fall, wenn Sie dieses Verfahren nicht zur Erstellung der SVM beim Konfigurieren eines anderen Protokolls befolgt haben.
+
+* Falls Sie Volumes auf einer neuen SVM bereitstellen möchten, link:task_creating_svm.html["Erstellen einer neuen SVM"].
+

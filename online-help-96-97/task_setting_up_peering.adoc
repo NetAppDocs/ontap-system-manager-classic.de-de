@@ -1,0 +1,244 @@
+---
+permalink: online-help-96-97/task_setting_up_peering.html 
+sidebar: sidebar 
+keywords: set, up, peering, intercluster, logical, interfaces, lif, node, online, help, svm, prerequisites, cluster, connectivity, requirements, passphrases 
+summary: 'Das Einrichten von Peering umfasst die Erstellung von Clusterlogischen Schnittstellen (LIFs) auf jedem Node, das Erstellen von Cluster-Peering und das Erstellen von SVM-Peering.' 
+---
+= Peering mit System Manager - ONTAP 9.7 und früher einrichten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) zum Einrichten von Peering verwenden. Das Einrichten von Peering umfasst die Erstellung von Clusterlogischen Schnittstellen (LIFs) auf jedem Node, das Erstellen von Cluster-Peering und das Erstellen von SVM-Peering.
+
+image::../media/peering_workflow.gif[Peering-Workflow]
+
+
+
+== [[Prerequisites-Peering, Voraussetzungen für Cluster Peering]] Voraussetzungen für Cluster-Peering
+
+Bevor Sie Cluster-Peering einrichten, sollten Sie bestätigen, dass Konnektivität, Port, IP-Adresse, Subnetz, Firewall, Und die Anforderungen für die Cluster-Benennung erfüllen.
+
+
+
+=== Konnektivitätsanforderungen erfüllen
+
+Jede Intercluster LIF auf dem lokalen Cluster muss in der Lage sein, mit jeder Intercluster LIF auf dem Remote-Cluster zu kommunizieren.
+
+Es ist zwar nicht erforderlich, aber in der Regel ist es einfacher, die IP-Adressen zu konfigurieren, die für Intercluster LIFs im selben Subnetz verwendet werden. Die IP-Adressen können sich im gleichen Subnetz wie Daten-LIFs oder in einem anderen Subnetz befinden. Das in jedem Cluster verwendete Subnetz muss die folgenden Anforderungen erfüllen:
+
+* Das Subnetz muss zur Broadcast-Domäne gehören, die die Ports enthält, die für die Kommunikation zwischen Clustern verwendet werden.
+
+
+Intercluster-LIFs können eine IPv4-Adresse oder eine IPv6-Adresse besitzen.
+
+[NOTE]
+====
+ONTAP 9 ermöglicht Ihnen die Migration Ihrer Peering-Netzwerke von IPv4 zu IPv6, indem Sie optional zulassen, dass beide Protokolle gleichzeitig auf den Intercluster LIFs vorhanden sind. In früheren Versionen waren alle Cluster-Beziehungen für einen gesamten Cluster entweder IPv4 oder IPv6. Somit war eine Änderung der Protokolle ein potenziell störendes Ereignis.
+
+====
+
+
+=== Port-Anforderungen
+
+Sie können dedizierte Ports für die Cluster-übergreifende Kommunikation verwenden oder vom Datennetzwerk verwendete Ports freigeben. Ports müssen folgende Anforderungen erfüllen:
+
+* Alle Ports, die für die Kommunikation mit einem bestimmten Remote-Cluster verwendet werden, müssen sich im selben IPspace befinden.
++
+Sie können mehrere IPspaces verwenden, um mit mehreren Clustern zu Punkten. Paarweise ist Vollmaschenverbindung nur innerhalb eines IPspaces erforderlich.
+
+* Die Broadcast-Domäne, die für die Intercluster-Kommunikation verwendet wird, muss mindestens zwei Ports pro Node enthalten, damit die Intercluster-Kommunikation von einem Port zu einem anderen Port ausfallen kann.
++
+Ports, die einer Broadcast-Domäne hinzugefügt werden, können physische Netzwerk-Ports, VLANs oder Interface Groups (iffrps) sein.
+
+* Alle Ports müssen verkabelt sein.
+* Alle Ports müssen sich in einem ordnungsgemäßen Zustand befinden.
+* Die MTU-Einstellungen der Ports müssen konsistent sein.
+
+
+
+
+=== Anforderungen an die Firewall
+
+Firewalls und die Cluster-übergreifende Firewall-Richtlinie müssen folgende Protokolle zulassen:
+
+* ICMP-Dienst
+* TCP auf die IP-Adressen aller Cluster-LIFs über die Ports 10000, 11104 und 11105
+* Bidirektionales HTTPS zwischen den Intercluster-LIFs
+
+
+Der Standardwert `intercluster` Firewall-Richtlinie ermöglicht den Zugriff über das HTTPS-Protokoll und über alle IP-Adressen (0.0.0.0/0). Sie können die Richtlinie bei Bedarf ändern oder ersetzen.
+
+
+
+== Erstellen von Intercluster-LIFs
+
+Durch die Erstellung von Cluster-logischen Schnittstellen (LIFs) kann das Cluster-Netzwerk mit einem Node kommunizieren. Sie müssen innerhalb jedes IPspaces, der für Peering verwendet wird, eine Intercluster LIF erstellen, auf jedem Node in jedem Cluster, für den Sie eine Peer-Beziehung erstellen möchten.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Erweitertes Cluster-Setup*.
+. Klicken Sie im Fenster *Setup Advanced Cluster Features* neben der Option *Cluster Peering* auf *Proceed*.
+. Wählen Sie einen IPspace aus der Liste *IPspace* aus.
+. Geben Sie für jeden Node die IP-Adresse, den Port, die Netzwerkmaske und das Gateway ein.
+. Klicken Sie auf *Absenden und fortfahren*.
+
+
+
+
+=== Nächste Schritte
+
+Sie sollten die Cluster-Details im Cluster-Peering-Fenster eingeben, um mit Cluster-Peering fortzufahren.
+
+
+
+== Erstellen von Cluster-Peer-Beziehungen
+
+Sie können eine authentifizierte Cluster-Peer-Beziehung erstellen, um Cluster zu verbinden, sodass die Cluster in der Peer-Beziehung sicher miteinander kommunizieren können.
+
+.Bevor Sie beginnen
+* Sie müssen die Anforderungen zur Durchführung dieser Aufgabe geprüft und erfüllt haben.
++
+<<prerequisites-peering,Voraussetzungen für Cluster-Peering>>
+
+* Sie müssen logische Schnittstellen (LIFs) zwischen Clustern erstellt haben.
+* Sie sollten beachten, welche Version von ONTAP für jedes Cluster ausgeführt wird.
+
+
+.Über diese Aufgabe
+* Wenn Sie eine Peer-Beziehung zu einem Cluster mit Data ONTAP 8.2.2 oder einer älteren Version erstellen möchten, müssen Sie die CLI verwenden.
+* Sie können eine Peer-Beziehung zwischen einem Cluster, auf dem ONTAP 9.5 ausgeführt wird, und einem Cluster mit ONTAP 9.6 erstellen. Allerdings wird die Verschlüsselung in ONTAP 9.5 nicht unterstützt, sodass die Peer-Beziehung nicht verschlüsselt werden kann.
+* Wenn Sie in einer MetroCluster-Konfiguration eine Peer-Beziehung zwischen dem primären und einem externen Cluster erstellen, empfiehlt es sich, eine Peer-Beziehung zwischen dem verbleibenden Standort-Cluster und dem externen Cluster zu erstellen.
+* Sie können eine benutzerdefinierte Passphrase erstellen oder die vom System generierte Passphrase verwenden, um die Cluster-Peer-Beziehung zu authentifizieren. Allerdings müssen die Passphrases beider Cluster übereinstimmen.
+
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Erweitertes Cluster-Setup*.
+. Geben Sie im Feld *Target Cluster Intercluster LIF IP Addresses* die IP-Adressen der Intercluster LIFs des Remote-Clusters ein.
+. *Optional:* Wenn Sie eine Peer-Beziehung zwischen einem Cluster mit ONTAP 9.5 und einem Cluster mit ONTAP 9.6 erstellen, aktivieren Sie das Kontrollkästchen.
++
+Die Peer-Beziehung wird nicht verschlüsselt. Wenn Sie das Kontrollkästchen nicht aktivieren, wird die Peer-Beziehung nicht hergestellt.
+
+. Geben Sie im Feld *Passphrase* eine Passphrase für die Cluster-Peer-Beziehung an.
++
+Wenn Sie eine benutzerdefinierte Passphrase erstellen, wird die Passphrase anhand der Passphrase des Peered-Clusters validiert, um eine authentifizierte Cluster-Peer-Beziehung sicherzustellen.
+
++
+Wenn die Namen des lokalen Clusters und des Remote-Clusters identisch sind und Sie eine benutzerdefinierte Passphrase verwenden, wird für das Remote-Cluster ein Alias erstellt.
+
+. *Optional:* um eine Passphrase aus dem Remote-Cluster zu generieren, geben Sie die Management-IP-Adresse des Remote-Clusters ein.
+. Initiieren des Cluster-Peering.
++
+|===
+| Ihr Ziel ist | Tun Sie das... 
+
+
+ a| 
+Initiieren des Cluster-Peering vom Initiator-Cluster
+ a| 
+Klicken Sie Auf *Cluster Peering Initiieren*.
+
+
+
+ a| 
+Cluster-Peering von dem Remote-Cluster initiieren (gilt, wenn Sie eine benutzerdefinierte Passphrase erstellt haben)
+ a| 
+.. Geben Sie die Management-IP-Adresse des Remote-Clusters ein.
+.. Klicken Sie auf den Link *Management URL*, um auf das Remote-Cluster zuzugreifen.
+.. Klicken Sie Auf *Cluster Peering Erstellen*.
+.. Geben Sie die LIF-Intercluster-IP-Adressen und die Passphrase des Initiator-Clusters an.
+.. Klicken Sie Auf *Peering Initiieren*.
+.. Greifen Sie auf das Initiator-Cluster zu und klicken Sie dann auf *Peering validieren*.
+
+
+|===
+
+
+
+
+=== Nächste Schritte
+
+Sie sollten die SVM-Details im SVM-Peering-Fenster angeben, um den Peering-Prozess fortzusetzen.
+
+
+
+== Erstellen Sie SVM-Peers
+
+Das SVM-Peering ermöglicht Ihnen die Einrichtung einer Peer-Beziehung zwischen zwei Storage Virtual Machines (SVMs) zur Datensicherung.
+
+.Bevor Sie beginnen
+Sie müssen eine Peer-Beziehung zwischen den Clustern erstellt haben, in denen die SVMs, die Sie Peer-to-Peer-residieren möchten.
+
+.Über diese Aufgabe
+* Die Cluster, die Sie als Zielcluster auswählen können, werden angezeigt, wenn Sie SVM-Peers mit dem Fenster *Configuration* > *SVM Peers* erstellen.
+* Wenn die Ziel-SVM auf einem Cluster in einem System mit ONTAP 9.2 oder früher liegt, kann SVM-Peering nicht mithilfe von System Manager akzeptiert werden.
++
+[NOTE]
+====
+In diesem Szenario können Sie SVM-Peering über die Befehlszeilenschnittstelle (CLI) akzeptieren.
+
+====
+
+
+.Schritte
+. Wählen Sie die Initiator-SVM aus.
+. Wählen Sie die Ziel-SVM aus der Liste zulässiger SVMs aus.
+. Geben Sie den Namen der Ziel-SVM im Feld *Enter an SVM* an.
++
+[NOTE]
+====
+Wenn Sie im Fenster *Configuration* > *SVM Peers* navigiert haben, sollten Sie die Ziel-SVM aus der Liste der Peered-Cluster auswählen.
+
+====
+. Initiieren von SVM-Peering.
++
+|===
+| Ihr Ziel ist | Tun Sie das... 
+
+
+ a| 
+Initiieren des SVM-Peering vom Initiator-Cluster
+ a| 
+Klicken Sie auf SVM-Peering initiieren.
+
+
+
+ a| 
+SVM-Peering vom Remote-Cluster akzeptieren
+ a| 
+[NOTE]
+====
+Gilt für nicht zulässige SVMs
+
+====
+.. Geben Sie die Managementadresse des Remote-Clusters an.
+.. Klicken Sie auf den Link *Management URL*, um das SVM Peer-Fenster des Remote-Clusters aufzurufen.
+.. Akzeptieren Sie auf dem Remote-Cluster die Anforderung *ausstehender SVM Peer*.
+.. Greifen Sie auf das Initiator-Cluster zu und klicken Sie dann auf *Peering validieren*.
+
+
+|===
+. Klicken Sie Auf *Weiter*.
+
+
+
+
+=== Nächste Schritte
+
+Im Fenster „Zusammenfassung“ können die Clusterschnittstellen, die Cluster-Peer-Beziehung und die SVM-Peer-Beziehung angezeigt werden.
+
+Wenn Sie System Manager zum Erstellen der Peer-Beziehung verwenden, lautet der Verschlüsselungsstatus standardmäßig „`Enabled`“.
+
+
+
+== Was Passphrases sind
+
+Sie können eine Passphrase verwenden, um Peering-Anforderungen zu autorisieren. Sie können eine benutzerdefinierte Passphrase oder eine vom System generierte Passphrase für Cluster-Peering verwenden.
+
+* Sie können eine Passphrase im Remote-Cluster generieren.
+* Die erforderliche Mindestlänge für eine Passphrase beträgt acht Zeichen.
+* Die Passphrase wird basierend auf dem IPspace generiert.
+* Wenn Sie eine vom System generierte Passphrase für Cluster-Peering verwenden, wird nach der Eingabe der Passphrase im Initiator-Cluster das Peering automatisch autorisiert.
+* Wenn Sie eine benutzerdefinierte Passphrase für Cluster-Peering verwenden, müssen Sie zum Remote-Cluster navigieren, um den Peering-Prozess abzuschließen.
+

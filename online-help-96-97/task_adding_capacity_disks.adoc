@@ -1,0 +1,90 @@
+---
+permalink: online-help-96-97/task_adding_capacity_disks.html 
+sidebar: sidebar 
+keywords: add, capacity, disk, online, help, aggregate 
+summary: Sie können die Größe eines vorhandenen nicht-Root-Aggregats oder eines Root-Aggregats mit Festplatten erhöhen, indem Sie Kapazitätsfestplatten hinzufügen. Mit System Manager können Sie dem ausgewählten ONTAP-Festplattentyp HDDs oder SSDs hinzufügen und die Optionen der RAID-Gruppen ändern. 
+---
+= Fügen Sie Kapazitätsfestplatten mit System Manager - ONTAP 9.7 und früher hinzu
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Größe eines vorhandenen nicht-Root-Aggregats oder eines Root-Aggregats mit Festplatten erhöhen, indem Sie Kapazitätsfestplatten hinzufügen. Mit System Manager Classic (verfügbar ab ONTAP 9.7) können Sie dem ausgewählten ONTAP-Festplattentyp HDDs oder SSDs hinzufügen und die Optionen der RAID-Gruppen ändern.
+
+.Bevor Sie beginnen
+* Das Aggregat muss online sein.
+* Es müssen genügend kompatible Ersatzfestplatten vorhanden sein.
+
+
+.Über diese Aufgabe
+* Als Best Practice empfiehlt es sich, Festplatten hinzuzufügen, die dieselbe Größe haben wie die anderen Festplatten im Aggregat.
++
+Wenn Sie Festplatten hinzufügen, die kleiner sind als die anderen Festplatten im Aggregat, wird das Aggregat in der Konfiguration suboptimal, was wiederum zu Performance-Problemen führen kann.
+
++
+Wenn Sie Festplatten hinzufügen, die größer sind als die Festplatten, die in einer bereits vorhandenen RAID-Gruppe innerhalb des Aggregats verfügbar sind, so werden die Festplatten verkleinert und ihr Speicherplatz wird auf die der anderen Festplatten in dieser RAID-Gruppe reduziert. Wenn im Aggregat eine neue RAID-Gruppe erstellt wird und Festplatten ähnlicher Größe in der neuen RAID-Gruppe verbleiben, sind die Festplatten nicht herunterdimensioniert.
+
++
+Wenn Sie Festplatten hinzufügen, die nicht von der gleichen Größe wie die anderen Festplatten im Aggregat sind, werden die ausgewählten Festplatten möglicherweise nicht hinzugefügt. Stattdessen werden andere Festplatten mit einer nutzbaren Größe zwischen 90 und 105 Prozent der angegebenen Größe automatisch hinzugefügt. Bei einer 744-GB-Festplatte können beispielsweise alle Festplatten im Bereich von 669 GB bis 781 GB ausgewählt werden. Für alle Ersatzfestplatten in diesem Bereich wählt ONTAP zunächst nur partitionierte Festplatten aus, wählt dann nur nicht partitionierte Festplatten aus und wählt schließlich sowohl partitionierte als auch nicht partitionierte Festplatten aus.
+
+* Mit System Manager können Sie den folgenden Konfigurationen keine HDDs hinzufügen:
++
+** Aggregate, die nur SSDs enthalten
+** Root-Aggregate mit partitionierten Festplatten
+Sie müssen diese Konfigurationen über die Befehlszeilenschnittstelle hinzufügen.
+
+
+* Gemeinsam genutzte Festplatten unterstützen zwei RAID-Typen: RAID DP und RAID-TEC.
+* Sie können SSDs nicht mit Storage-Pool verwenden.
+* Wenn die RAID-Gruppe Typ ist RAID DP, und wenn Sie FSAS oder MSATA-Typ von Festplatten, die gleich oder größer als 10 TB sind hinzufügen, können Sie sie nur zu hinzufügen `Specific RAID group`, Und nicht zu `New RAID group` Oder `All RAID groups`.
++
+Die Festplatten werden hinzugefügt, nachdem die Festplattengröße auf die Größe der Festplatten in der vorhandenen RAID-Gruppe des vorhandenen Aggregats heruntervergrößert wurde.
+
+* Wenn die RAID-Gruppe Typ ist RAID-TEC, und wenn Sie FSAS oder MSATA-Typ von Festplatten, die gleich oder größer als 10 TB sind hinzufügen, können Sie sie hinzufügen `All RAID groups`, `New RAID group`, und `Specific RAID group`.
++
+Die Festplatten werden hinzugefügt, nachdem die Festplattengröße auf die Größe der Festplatten in der vorhandenen RAID-Gruppe des vorhandenen Aggregats heruntervergrößert wurde.
+
+
+
+.Schritte
+. Wählen Sie eine der folgenden Methoden:
++
+** Klicken Sie Auf *Anwendungen & Tiers* > *Storage Tiers*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate*.
+
+
+. Wählen Sie im Fenster *Storage Tiers* das Aggregat aus, zu dem Sie Kapazitätsfestplatten hinzufügen möchten, und klicken Sie dann auf Menü:Mehr Aktionen[Kapazität hinzufügen].
+. Geben Sie im Dialogfeld *Kapazität hinzufügen* folgende Informationen an:
++
+.. Geben Sie den Festplattentyp für die Kapazitätsfestplatten an, indem Sie die Option *Disk Type To Add* verwenden.
+.. Geben Sie die Anzahl der Kapazitätsfestplatten mit der Option *Anzahl der Festplatten oder Partitionen* an.
+
+
+. Geben Sie die RAID-Gruppe an, der die Kapazitätsfestplatten hinzugefügt werden sollen, indem Sie die Option *Festplatten zu* hinzufügen verwenden.
++
+Standardmäßig fügt System Manager die Kapazitätsfestplatten hinzu `All RAID groups`.
+
++
+.. Klicken Sie Auf *Ändern*.
+.. Geben Sie im Dialogfeld * RAID-Gruppenauswahl* die RAID-Gruppe als an `New RAID group` Oder `Specific RAID group` Mit der Option *Datenträger zu* hinzufügen.
++
+Freigegebene Festplatten können nur dem hinzugefügt werden `New RAID group` Option.
+
+
+
+. Klicken Sie Auf *Hinzufügen*.
++
+Für gespiegelte Aggregate wird ein Dialogfeld *Add Capacity* mit den Informationen angezeigt, dass die doppelte Anzahl ausgewählter Festplatten hinzugefügt wird.
+
+. Klicken Sie im Dialogfeld *Kapazität hinzufügen* auf *Ja*, um die Kapazitätsfestplatten hinzuzufügen.
+
+
+.Ergebnisse
+Die Kapazitätsfestplatten werden dem ausgewählten Aggregat hinzugefügt und die Aggregatgröße wird erhöht.
+
+*Verwandte Informationen*
+
+xref:concept_what_compatible_spare_disks_are.adoc[Welche kompatiblen Ersatzfestplatten sind]

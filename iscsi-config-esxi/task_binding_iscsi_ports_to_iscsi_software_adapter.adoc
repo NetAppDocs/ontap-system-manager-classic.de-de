@@ -1,0 +1,31 @@
+---
+permalink: iscsi-config-esxi/task_binding_iscsi_ports_to_iscsi_software_adapter.html 
+sidebar: sidebar 
+keywords: port, create, iscsi, associate, software, adapter, support, multipath, bind, bind iscsi ports to the iscsi software adapter 
+summary: Die für iSCSI erstellten Ports müssen dem iSCSI-Software-Adapter zur Unterstützung von Multipathing zugeordnet werden. 
+---
+= Binden Sie iSCSI-Ports an den iSCSI-Software-Adapter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die für iSCSI erstellten Ports müssen dem iSCSI-Software-Adapter zur Unterstützung von Multipathing zugeordnet werden.
+
+.Bevor Sie beginnen
+* Die iSCSI VMkernel-Ports müssen erstellt werden.
+* Der iSCSI-Software-Adapter muss auf dem ESXi-Host aktiviert sein.
+
+
+.Über diese Aufgabe
+Sie können die iSCSI-Ports mit dem vSphere-Client binden.
+
+Detaillierte Anweisungen finden Sie unter _VMware vSphere Storage_ für Ihre Version von ESXi 5 von VMware.
+
+http://www.vmware.com["VMware"]
+
+.Schritte
+. Binden Sie den ersten iSCSI-Port an den iSCSI-Software-Adapter, indem Sie im vSphere Client die Registerkarte *Network Port Binding* des iSCSI-Software-Adapters *Adapterdetails* verwenden.
+. Binden Sie den zweiten iSCSI-Port an den iSCSI-Software-Adapter.
+

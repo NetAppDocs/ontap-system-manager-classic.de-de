@@ -1,0 +1,27 @@
+---
+permalink: iscsi-config-rhel/task_recording_iscsi_node_name.html 
+sidebar: sidebar 
+keywords: record, iscsi, initiator, node, linux, host, configure, storage, system, record the iscsi node name 
+summary: Sie müssen den iSCSI-Initiator-Node-Namen auf dem Linux-Host aufzeichnen, damit er beim Konfigurieren des Speichersystems vorhanden ist. 
+---
+= Notieren Sie den iSCSI-Knotennamen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen den iSCSI-Initiator-Node-Namen auf dem Linux-Host aufzeichnen, damit er beim Konfigurieren des Speichersystems vorhanden ist.
+
+.Schritte
+. Verwenden Sie einen Texteditor, um das zu öffnen `/etc/iscsi/initiatorname.iscsi` Datei mit den Node-Namen.
+. Notieren Sie sich den Knotennamen, oder kopieren Sie ihn in eine Textdatei.
++
+Der iSCSI-Initiator-Node-Name sieht folgendermaßen aus:
+
++
+[listing]
+----
+iqn.1994-05.com.redhat:127
+----
+

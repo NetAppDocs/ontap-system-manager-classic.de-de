@@ -1,0 +1,97 @@
+---
+permalink: online-help-96-97/concept_kerberos_interface_services.html 
+sidebar: sidebar 
+keywords: kerberos, interface, service, system, manager, manage, online, help, edit, configuration, buttons, command, window 
+summary: Mit System Manager können Sie Kerberos-Schnittstellendienste verwalten. 
+---
+= Verwalten Sie Kerberos-Schnittstellenservices mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Kerberos-Schnittstellendienste zu verwalten.
+
+
+
+== Kerberos-Konfiguration bearbeiten
+
+Sie können mit System Manager Kerberos aktivieren und eine Kerberos-Konfiguration bearbeiten, die einer Storage Virtual Machine (SVM) zugeordnet ist. Dadurch kann die SVM Kerberos-Sicherheitsdienste für NFS verwenden.
+
+.Bevor Sie beginnen
+* Sie müssen mindestens einen Kerberos-Bereich auf der SVM-Ebene konfiguriert haben.
+* Sie müssen mindestens zwei Daten-LIFs auf der SVM haben.
++
+Ein Daten-LIF wird vom Service Principal Name (SPN) für den UNIX- und CIFS-bezogenen Kerberos-Datenverkehr verwendet. Die andere Daten-LIF wird für den Zugriff auf nicht-Kerberos-Datenverkehr verwendet.
+
++
+[NOTE]
+====
+Ein CIFS-Server ist für den grundlegenden NFS-Kerberos-Zugriff nicht erforderlich. Für den Multiprotokollzugriff ist ein CIFS-Server erforderlich, oder wenn Active Directory als LDAP-Server zum Zweck der Namenszuweisung verwendet wird.
+
+====
+
+
+.Über diese Aufgabe
+Wenn Sie Microsoft Active Directory Kerberos verwenden, müssen die ersten 15 Zeichen aller SPNs, die in der Domäne verwendet werden, eindeutig sein. Microsoft Active Directory hat eine Begrenzung für SPNs mit maximal 15 Zeichen und erlaubt keine doppelten SPNs.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Services* auf *Kerberos-Schnittstelle*.
+. Wählen Sie im Fenster *Kerberos-Schnittstelle* die Schnittstelle aus und klicken Sie dann auf *Bearbeiten*.
+. Führen Sie im Dialogfeld *Kerberos-Konfiguration* bearbeiten die erforderlichen Änderungen durch und klicken Sie dann auf *OK*.
+
+
+
+
+== Kerberos-Schnittstellenfenster
+
+Sie können das Kerberos-Fenster verwenden, um Kerberos zu aktivieren und die Kerberos-Konfiguration für Storage Virtual Machines (SVMs) zu bearbeiten.
+
+
+
+=== Befehlsschaltflächen
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld „Kerberos-Konfiguration bearbeiten“, in dem Sie Kerberos aktivieren und die der SVM zugeordnete Kerberos-Konfiguration bearbeiten können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Kerberos-Schnittstellenliste
+
+Bietet Details zur Kerberos-Konfiguration.
+
+* *Schnittstellenname*
++
+Gibt die logischen Schnittstellen an, die mit der Kerberos-Konfiguration für SVMs verbunden sind.
+
+* *Service Principal Name*
++
+Gibt den Dienst Principal Name (SPN) an, der der Kerberos-Konfiguration entspricht.
+
+* *Realm*
++
+Gibt den Namen des Kerberos-Bereichs an, der mit der Kerberos-Konfiguration verknüpft ist.
+
+* *Kerberos-Status*
++
+Gibt an, ob Kerberos aktiviert ist.
+
+
+
+*Verwandte Informationen*
+
+link:https://www.netapp.com/pdf.html?item=/media/10720-tr-4067.pdf["Technischer Bericht 4067: NFS in NetApp ONTAP"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19384-tr-4616.pdf["Technischer Bericht von NetApp 4616: NFS Kerberos im ONTAP mit Microsoft Active Directory"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19423-tr-4835.pdf["Technischer Bericht von NetApp 4835: Konfigurieren von LDAP in ONTAP"^]

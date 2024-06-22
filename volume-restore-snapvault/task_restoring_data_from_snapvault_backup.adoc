@@ -1,0 +1,73 @@
+---
+permalink: volume-restore-snapvault/task_restoring_data_from_snapvault_backup.html 
+sidebar: sidebar 
+keywords: snapvault, backup, destination, volume, perform, restore, operation, backed-up, data, corrupt, lost, restore data from a snapvault backup 
+summary: Nach Auswahl des SnapVault Backup-Ziel-Volume müssen Sie die Wiederherstellung entweder auf einem neuen Volume durchführen, um die gesicherten Daten zu testen, oder auf einem vorhandenen Volume, um die verlorenen oder beschädigten Daten wiederherzustellen. 
+---
+= Wiederherstellung von Daten aus einem SnapVault-Backup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach Auswahl des SnapVault Backup-Ziel-Volume müssen Sie die Wiederherstellung entweder auf einem neuen Volume durchführen, um die gesicherten Daten zu testen, oder auf einem vorhandenen Volume, um die verlorenen oder beschädigten Daten wiederherzustellen.
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *Ziel* ausführen.
+
+.Schritte
+. Führen Sie je nach der verwendeten System Manager-Version einen der folgenden Schritte aus:
++
+** ONTAP 9.4 oder früher: Klicken Sie *Schutz* > *Beziehungen*.
+** Ab ONTAP 9.5: Klicken Sie *Schutz* > *Volume Relationships*.
+
+
+. Wählen Sie die SVM aus, die das Ziel-Volume für SnapVault-Backups enthält, und klicken Sie dann auf *Operationen* > *Wiederherstellen*.
+. Stellen Sie im Dialogfeld *Restore* die Daten auf dem ursprünglichen Quell-Volume oder einem neuen Volume wieder her:
++
+|===
+| Möchten Sie wiederherstellen auf... | Dann... 
+
+
+ a| 
+Das ursprüngliche Quell-Volume
+ a| 
+Wählen Sie *Quellvolumen*.
+
+
+
+ a| 
+Ein neues Volume
+ a| 
+.. Wählen Sie *anderes Volumen*.
+.. Wählen Sie das Peering Cluster und die Peering SVM für das Volume aus.
+.. Wählen Sie aus der Liste eine Peering SVM aus.
+.. Wenn keine Peering-Punkte der SVM sind, erstellen Sie die SVM-Peer-Beziehung:
++
+... Wählen Sie die SVM aus.
+... Klicken Sie Auf *Authentifizieren*.
+... Geben Sie die Anmeldedaten des Clusteradministrators für den Peering Cluster ein, und klicken Sie dann auf *Create*.
+
+
+.. Wählen Sie *Neues Volume*.
+.. Wenn Sie den Standardnamen ändern möchten, wird im Format angezeigt `destination_SVM_name_destination_volume_name_restore`, Geben Sie einen neuen Namen an und wählen Sie das zugehörige Aggregat für das Volume aus.
+.. Aktivieren Sie das Kontrollkästchen *Deduplizierung aktivieren*.
+
+
+|===
++
+image:../media/restore_to.gif["Auswählen des wiederherzustellenden Volumes"]
+
+. Wählen Sie entweder die neueste Snapshot Kopie oder wählen Sie eine bestimmte Snapshot Kopie aus, die Sie wiederherstellen möchten.
+. Aktivieren Sie das Kontrollkästchen *OK, um das Volume aus der Snapshot-Kopie wiederherzustellen*.
+. Aktivieren Sie das Kontrollkästchen *Netzwerkkomprimierung aktivieren*, um die Daten zu komprimieren, die während des Wiederherstellungsvorgangs übertragen werden.
+. Klicken Sie Auf *Wiederherstellen*.
++
+Während der Wiederherstellung wird das wiederherzustellende Volume in schreibgeschützt geändert. Nachdem der Wiederherstellungsvorgang abgeschlossen ist, wird die temporäre Beziehung entfernt und das wiederhergestellte Volume wird in Lesen/Schreiben geändert.
+
++
+image::../media/restore_configuration.gif[Ergebnis der Wiederherstellung eines Volumes]
+
+. Klicken Sie im Nachrichtenfeld auf *OK*.
+

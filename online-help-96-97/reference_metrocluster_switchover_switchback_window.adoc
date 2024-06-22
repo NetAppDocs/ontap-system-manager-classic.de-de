@@ -1,0 +1,68 @@
+---
+permalink: online-help-96-97/reference_metrocluster_switchover_switchback_window.html 
+sidebar: sidebar 
+keywords: metrocluster, switchover, switchback, operations, window, command, button, other, action, online, help, status 
+summary: 'Ab System Manager 9.6 können Sie mithilfe des MetroCluster Switchover- und Switch-Operations-Fensters eine ausgehandelte (geplante) Umschaltung oder eine ungeplante Umschaltung von einem Standort oder Cluster (Standort B) zu einem anderen Standort oder Cluster (Standort A) initiieren. Nachdem Sie an Standort B Wartungsarbeiten oder Reparaturen durchgeführt haben, können Sie einen Wechsel von Standort A zu Standort B initiieren und den Status des Vorgangs in diesem Fenster anzeigen.' 
+---
+= Fenster „MetroCluster Switchover“ und „Switchback Operations“
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab System Manager 9.6 können Sie mithilfe des MetroCluster Switchover- und Switch-Operations-Fensters eine ausgehandelte (geplante) Umschaltung oder eine ungeplante Umschaltung von einem Standort oder Cluster (Standort B) zu einem anderen Standort oder Cluster (Standort A) initiieren. Nachdem Sie an Standort B Wartungsarbeiten oder Reparaturen durchgeführt haben, können Sie einen Wechsel von Standort A zu Standort B initiieren und den Status des Vorgangs in diesem Fenster anzeigen.
+
+
+
+== Befehlsschaltflächen
+
+* *Umschalten von Standort B zu Standort A*
++
+Initiiert den Prozess, der Standort B zu Standort A umschaltet
+
+* *Switch-Back-Standort A an Standort B*
++
+Initiiert den Prozess, der Standort A zurück zu Standort B schaltet
+
+
+
+
+
+== Andere Aktionen
+
+* * Navigieren Sie zum Cluster Standort B*
++
+Geben Sie die Cluster-Management-IP-Adresse von Standort B ein
+
+* *Checkbox für ungeplante Umschaltung*
++
+Wenn Sie eine ungeplante Umschaltung initiieren möchten, aktivieren Sie das Kontrollkästchen *mit nicht geplanter Umschaltung fortfahren*.
+
+
+
+
+
+== Statusbereiche
+
+Während das System sich über- oder zurückschaltet, wird der Status von System Manager mit den folgenden Methoden angezeigt:
+
+* *Grafik der Fortschrittslinie*
++
+Zeigt Phasen der Vorgänge an und gibt die Phasen an, die abgeschlossen wurden. Die Phasen lauten Switchover, Standort B Operations und Switchback.
+
+* ***Details Anzeigen***
++
+Zeigt eine Liste der zeitgestempelten Systemereignisse als Fortschritt des MetroCluster-Betriebs an.
+
+* *Lokal: Website A*
++
+Zeigt eine Grafik der Konfiguration des Clusters an Standort A an, einschließlich des Status dieser Site, während sie die Phasen des Vorgangs durchlaufen.
+
+* *Fernbedienung: Standort B*
++
+Zeigt eine Grafik der Konfiguration des Clusters an Standort B an, einschließlich des Status dieser Site, während sie die Phasen des Vorgangs durchlaufen.
+
+
+
+Wenn Sie sich bei Standort B anmelden und das Fenster MetroCluster-Umschaltung und Switchback-Vorgänge anzeigen, wird der Status von Standort A als „`INAKTIV`“ angezeigt und der Status von Standort B wird als „`SWITCHOVER-MODUS`“ angezeigt.

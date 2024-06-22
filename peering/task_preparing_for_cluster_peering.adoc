@@ -1,0 +1,94 @@
+---
+permalink: peering/task_preparing_for_cluster_peering.html 
+sidebar: sidebar 
+keywords: create, creating, cluster, peer, relationship, verify, time, synchronized, external, network, procotol, ntp, server, subnet, port, passphrase, prepare, prepare for cluster peering 
+summary: 'Bevor Sie eine Cluster-Peering-Beziehung mithilfe der „klassischen“ Schnittstelle des ONTAP System Manager mit ONTAP 9.7 oder einer älteren Version erstellen, müssen Sie überprüfen, ob die Zeit auf jedem Cluster mit einem externen NTP-Server (Network Time Protocol) synchronisiert wird, und bestimmen Sie die Subnetze, Ports und Passphrases, die Sie verwenden möchten.' 
+---
+= Cluster-Peering vorbereiten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie eine Cluster-Peering-Beziehung mithilfe der ONTAP System Manager _classic_ -Schnittstelle mit ONTAP 9.7 oder einer älteren Version erstellen, müssen Sie überprüfen, ob die Zeit auf jedem Cluster mit einem externen NTP-Server (Network Time Protocol) synchronisiert wird, und ermitteln Sie die Subnetze, Ports und Passphrases, die Sie verwenden möchten.
+
+.Schritte
+. Wenn Sie ONTAP 9.2 oder eine frühere Version verwenden, bestimmen Sie die Passphrase, die Sie für jede Cluster-Peer-Beziehung verwenden möchten.
++
+Die Passphrase muss mindestens acht Zeichen enthalten.
+
++
+|===
+
+
+| Für die Beziehung zwischen... | Die Passphrase lautet... 
+
+
+ a| 
+Cluster A und Cluster B
+ a| 
+
+|===
++
+Ab ONTAP 9.3 können Sie die Passphrase aus dem Remote-Cluster generieren und gleichzeitig die Cluster-Peer-Beziehung erstellen.
+
++
+link:task_creating_cluster_peer_relationship_starting_with_ontap_9_3.html["Erstellen einer Cluster-Peer-Beziehung (Beginn: ONTAP 9.3)"]
+
+. Identifizieren Sie die Subnetze, IP-Adressen und Ports, die Sie für Intercluster-LIFs verwenden.
++
+Standardmäßig wird die IP-Adresse automatisch aus dem Subnetz ausgewählt. Wenn Sie die IP-Adresse manuell angeben möchten, müssen Sie sicherstellen, dass die IP-Adresse entweder bereits im Subnetz verfügbar ist oder später dem Subnetz hinzugefügt werden kann. Informationen zu Subnetzen finden Sie auf der Registerkarte Netzwerk.
+
++
+Erstellen Sie eine Tabelle ähnlich der folgenden Tabelle, um Informationen zu den Clustern zu erfassen.  In der folgenden Tabelle wird davon ausgegangen, dass jedes Cluster vier Nodes hat. Wenn ein Cluster mehr als vier Nodes hat, fügen Sie für die zusätzlichen Informationen Zeilen hinzu.
+
++
+|===
+
+
+|  | Cluster A | Cluster B 
+
+
+ a| 
+Subnetz (ONTAP 9.2 oder früher)
+ a| 
+ a| 
+
+
+
+ a| 
+IP-Adresse (ab ONTAP 9.3, optional für ONTAP 9.2 oder älter)
+ a| 
+ a| 
+
+
+
+ a| 
+Node 1-Port
+ a| 
+ a| 
+
+
+
+ a| 
+Node 2-Port
+ a| 
+ a| 
+
+
+
+ a| 
+Node 3-Port
+ a| 
+ a| 
+
+
+
+ a| 
+Node 4-Port
+ a| 
+ a| 
+
+|===
+

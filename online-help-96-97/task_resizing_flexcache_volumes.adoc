@@ -1,0 +1,40 @@
+---
+permalink: online-help-96-97/task_resizing_flexcache_volumes.html 
+sidebar: sidebar 
+keywords: system, manager, flexcache, resize, volume, online, help 
+summary: Ab System Manager 9.6 können Sie die Größe eines FlexCache Volumes ändern, indem Sie die Größe vorhandener Ressourcen anpassen oder neue Ressourcen hinzufügen. 
+---
+= Ändern der Größe von FlexCache Volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab System Manager 9.6 können Sie die Größe eines FlexCache Volumes ändern, indem Sie die Größe vorhandener Ressourcen anpassen oder neue Ressourcen hinzufügen.
+
+.Bevor Sie beginnen
+* Um die Größe eines FlexCache Volume zu ändern, muss auf den vorhandenen Aggregaten ausreichend freier Speicherplatz verfügbar sein.
+* Um ein FlexCache Volume zu erweitern, muss auf dem Aggregat ausreichend freier Speicherplatz vorhanden sein, den Sie zur Erweiterung verwenden.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das FlexCache-Volumen aus, das Sie ändern möchten, und klicken Sie dann auf *Mehr Aktionen* > *Größe*.
+. Geben Sie im Fenster *FlexCache-Volume-Größe ändern* die Größe an, auf die Sie die Größe des FlexCache-Volumens ändern möchten.
++
+Standardmäßig werden vorhandene Aggregate verwendet, um die Größe des FlexCache Volume zu ändern. Ab System Manager 9.6 wird neben dem Feld „Größe“ die maximal zulässige Größe für das Volume angezeigt.
+
++
+[NOTE]
+====
+Wenn Sie das FlexCache Volume durch Hinzufügen neuer Ressourcen erweitern möchten, klicken Sie auf image:../media/advanced_options.gif[""] (Erweiterte Optionen). Siehe link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Festlegen erweiterter Optionen für FlexCache Volumes"].
+
+====
+. Klicken Sie auf *Speichern*, um die Größe des FlexCache-Volumens zu ändern.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

@@ -1,0 +1,43 @@
+---
+permalink: fc-config-esxi/task_provisioning_datastore_creating_its_containing_lun_volume.html 
+sidebar: sidebar 
+keywords: datastore, contain, virtual, machine, vmdk, esxi, host, provision, lun, cluster, provision a datastore and create its containing lun and volume 
+summary: Ein Datastore enthält Virtual Machines und deren VMDKs auf dem ESXi Host. Der Datastore auf dem ESXi-Host wird auf einer LUN auf dem Storage-Cluster bereitgestellt. 
+---
+= Stellen Sie einen Datenspeicher bereit und erstellen Sie dessen zugehörige LUN und Volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Datastore enthält Virtual Machines und deren VMDKs auf dem ESXi Host. Der Datastore auf dem ESXi-Host wird auf einer LUN auf dem Storage-Cluster bereitgestellt.
+
+.Bevor Sie beginnen
+Virtual Storage Console for VMware vSphere (VSC) muss installiert und beim vCenter Server registriert werden, der den ESXi Host verwaltet.
+
+VSC muss über ausreichende Anmeldedaten für Cluster oder Storage Virtual Machine (SVM) verfügen, um die LUN und das Volume zu erstellen.
+
+.Über diese Aufgabe
+VSC automatisiert die Datastore-Bereitstellung, einschließlich der Erstellung von LUNs und Volumes auf der angegebenen SVM.
+
+.Schritte
+. Klicken Sie auf der Seite vSphere Web Client *Home* auf *Hosts und Cluster*.
+. Erweitern Sie im Navigationsbereich das Datacenter, an dem Sie den Datenspeicher bereitstellen möchten.
+. Klicken Sie mit der rechten Maustaste auf den ESXi-Host und wählen Sie dann *NetApp VSC* > *Provision Datastore* aus.
++
+Alternativ können Sie bei der Bereitstellung auch mit der rechten Maustaste auf das Cluster klicken, um den Datenspeicher allen Hosts im Cluster zur Verfügung zu stellen.
+
+. Geben Sie die erforderlichen Informationen im Assistenten ein:
++
+image::../media/datastore_provisioning_wizard_vsc5.gif[Das Bild zeigt die erste Seite des VSC Assistenten für die Datastore-Bereitstellung.]
+
++
+** Wählen Sie als Datenspeichertyp *VMFS* aus.
+** Wählen Sie als VMFS-Protokoll * FC/FCoE* aus.
+** Wählen Sie als Storage Capability Profile * Keine* aus.
+** Wählen Sie das Feld für *Thin Provisioning* aus.
+** Aktivieren Sie das Kontrollkästchen * Neues Volume erstellen*.
+
+
+

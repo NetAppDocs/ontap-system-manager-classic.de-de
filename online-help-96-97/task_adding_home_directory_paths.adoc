@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_adding_home_directory_paths.html 
+sidebar: sidebar 
+keywords: cifs, system, manager, online, help, storage, add , delete, home, directory 
+summary: Mit System Manager können Sie einen oder mehrere Pfade angeben, die vom Storage-System zum Auflösen des Standorts der CIFS-Home-Verzeichnisse der Benutzer verwendet werden können. 
+---
+= Home Directory-Pfade managen - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um einen oder mehrere Pfade festzulegen, die vom Storage-System zur Behebung des Speicherorts der CIFS-Home-Verzeichnisse von Benutzern verwendet werden können.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Bereich *Home Directories* der Registerkarte *Konfiguration* auf *Verwalten*.
+. Geben Sie im Dialogfeld *Home Directories verwalten* die Pfade an, die vom Speichersystem zur Suche nach den CIFS-Home-Verzeichnissen von Benutzern verwendet werden sollen.
+. Klicken Sie auf *Hinzufügen* und dann auf *Speichern und Schließen*.
+
+
+
+
+== Home Directory-Pfade löschen
+
+Sie können mit System Manager einen Home-Verzeichnis-Pfad löschen, wenn das Speichersystem den Pfad zur AufBehebung des Speicherorts der CIFS-Home-Verzeichnisse von Benutzern nicht verwenden soll.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Bereich *Home Directories* der Registerkarte *Konfiguration* auf *Verwalten*.
+. Wählen Sie im Dialogfeld *Home Directories verwalten* den Pfad für das Home-Verzeichnis aus, den Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Klicken Sie auf *Speichern und Schließen*.
+
+
+*Verwandte Informationen*

@@ -1,0 +1,28 @@
+---
+permalink: volume-disaster-recovery/concept_volume_disaster_recovery_workflow.html 
+sidebar: sidebar 
+keywords: volume, disaster recovery, workflow, activating, activate, destination, configuring, configure, access, reactivate, reactivating, original, source, volume disaster recovery workflow 
+summary: Im Workflow für die Disaster Recovery von Volume müssen das Ziel-Volume aktiviert, das Ziel-Volume für den Datenzugriff konfiguriert und das ursprüngliche Quell-Volume neu aktiviert werden. 
+---
+= Volume Disaster Recovery Workflow
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Im Workflow für die Disaster Recovery von Volume müssen das Ziel-Volume aktiviert, das Ziel-Volume für den Datenzugriff konfiguriert und das ursprüngliche Quell-Volume neu aktiviert werden.
+
+image::../media/snapmirror_failover_resync_workflow_eg.gif[Diese Abbildung zeigt einen Flussdiagramm des Workflows SnapMirror Intercluster Failover und Resync. Die Schritte im Workflow stimmen mit den Themen überein.]
+
+Darüber hinaus stehen Ihnen weitere Informationen zur Verfügung, mit denen Sie Disaster Recovery-Beziehungen auf Volume-Ebene managen können, und zudem weitere Disaster Recovery-Methoden zur Verfügung, um die Verfügbarkeit Ihrer Datenressourcen zu schützen.
+
+* xref:../volume-backup-snapvault/index.html[Volume Backup mit SnapVault]
++
+Beschreibt die schnelle Konfiguration von Backup-Vault-Beziehungen zwischen Volumes, die sich in verschiedenen ONTAP-Clustern befinden.
+
+* xref:../volume-restore-snapvault/index.html[Management von Volume-Wiederherstellungen mit SnapVault]
++
+Hier wird die schnelle Wiederherstellung eines Volumes aus einem Backup Vault in ONTAP beschrieben.
+
+

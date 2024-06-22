@@ -1,0 +1,47 @@
+---
+permalink: iscsi-config-rhel/task_discovering_new_scsi_devices_dm_multipath_devices.html 
+sidebar: sidebar 
+keywords: 'lun, storage, cluster, linux, scsi, device, i/o, path, dm-multipath, multipath, manual, discover new scsi devices (luns) and multipath devices' 
+summary: 'LUNs auf dem Storage-Cluster werden dem Linux-Host als SCSI-Geräte angezeigt. Bei diesen handelt es sich um I/O-Pfade, die DM-Multipath-Aggregate zu einem neuen Gerät, dem sogenannten Multipath-Gerät, darstellen. Der Host erkennt nicht automatisch neue SCSI-Geräte (LUNs), die Sie Ihrem System hinzufügen. Sie müssen sie manuell erneut scannen, um sie zu entdecken.' 
+---
+= Erkennen neuer SCSI-Geräte (LUNs) und Multipath-Geräte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+LUNs auf dem Storage-Cluster werden dem Linux-Host als SCSI-Geräte angezeigt. Bei diesen handelt es sich um I/O-Pfade, die DM-Multipath-Aggregate zu einem neuen Gerät, dem sogenannten Multipath-Gerät, darstellen. Der Host erkennt nicht automatisch neue SCSI-Geräte (LUNs), die Sie Ihrem System hinzufügen. Sie müssen sie manuell erneut scannen, um sie zu entdecken.
+
+.Bevor Sie beginnen
+Sie müssen eine Kopie des besitzen `rescan` Skript, das im ist `sg3_utils` Paket, das Teil Ihrer Linux-Betriebssystemverteilung ist.
+
+.Schritte
+. Erkennen neuer SCSI-Geräte (LUNs) und Erstellen der entsprechenden Multipath-Geräte für die LUNs:
++
+`/usr/bin/rescan-scsi-bus.sh`
+
+. Überprüfen der DM-Multipath-Konfiguration:
++
+`multipath -ll`
+
++
+Hier wird der folgende Ausgabetyp angezeigt, der die empfohlenen Einstellungen für jede NetApp LUN enthält:
+
++
+[listing]
+----
+3600a0980324666546e2b443251655177 dm-2 NETAPP,LUN C-Mode
+size=10G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='round-robin 0' prio=50 status=active
+| |- 0:0:1:0 sdb 8:16  active ready  running
+| |- 0:0:0:0 sda 8:0   active ready  running
+| |- 1:0:0:0 sde 8:64  active ready  running
+| `- 1:0:1:0 sdf 8:80  active ready  running
+`-+- policy='round-robin 0' prio=10 status=enabled
+  |- 0:0:3:0 sdd 8:48  active ready  running
+  |- 1:0:3:0 sdh 8:112 active ready  running
+  |- 0:0:2:0 sdc 8:32  active ready  running
+  `- 1:0:2:0 sdg 8:96  active ready  running
+----
+

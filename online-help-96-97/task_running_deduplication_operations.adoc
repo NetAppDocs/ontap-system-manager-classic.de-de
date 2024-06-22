@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_running_deduplication_operations.html 
+sidebar: sidebar 
+keywords: run, deduplication, operation, system, manager, online, help, flexvol, volume 
+summary: Die Deduplizierung kann sofort nach der Erstellung eines FlexVol Volume oder nach einer festgelegten Zeit durchgeführt werden. 
+---
+= Führen Sie Deduplizierungsvorgänge mit System Manager - ONTAP 9.7 und einer früheren Version durch
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) kann die Deduplizierung unmittelbar nach der Erstellung eines FlexVol Volumes oder nach einer festgelegten Zeit durchgeführt werden.
+
+.Bevor Sie beginnen
+* Die Deduplizierung muss auf dem Volume aktiviert sein.
+* Das Volume muss online sein und angehängt sein.
+
+
+.Über diese Aufgabe
+Die Deduplizierung ist ein Hintergrundprozess, der während des Betriebs Systemressourcen verbraucht. Somit können auch andere laufende Vorgänge beeinträchtigt werden. Sie müssen die Deduplizierung abbrechen, bevor Sie einen anderen Vorgang durchführen können.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das Volume aus, für das die Deduplizierung ausgeführt werden soll.
+. Klicken Sie Auf *Mehr Aktionen* > *Storage-Effizienz*.
+. Wenn Sie die Deduplizierung auf dem Volume zum ersten Mal ausführen, führen Sie die Deduplizierung für die gesamten Volume-Daten durch, indem Sie im Dialogfeld *Storage-Effizienz* *gesamtes Volume scannen* auswählen.
+. Klicken Sie Auf *Start*.
+. Sehen Sie sich die Details zum Deduplizierungsvorgang im Fenster *Volumes* auf der Registerkarte *Storage Efficiency* an.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

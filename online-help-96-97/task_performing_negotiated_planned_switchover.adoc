@@ -1,0 +1,54 @@
+---
+permalink: online-help-96-97/task_performing_negotiated_planned_switchover.html 
+sidebar: sidebar 
+keywords: online, help, perform, negotiated, switchover, system, help 
+summary: 'Ab System Manager 9.6 kann eine ausgehandelte (geplante) Umschaltung auf einen MetroCluster Standort initiiert werden. Dieser Vorgang ist nützlich, wenn Sie Disaster-Recovery-Tests oder geplante Wartungsarbeiten am Standort durchführen möchten.' 
+---
+= Durchführen einer ausgehandelten Umschaltung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab System Manager 9.6 kann eine ausgehandelte (geplante) Umschaltung auf einen MetroCluster Standort initiiert werden. Dieser Vorgang ist nützlich, wenn Sie Disaster-Recovery-Tests oder geplante Wartungsarbeiten am Standort durchführen möchten.
+
+.Schritte
+. [[step1]]Verwenden Sie in System Manager die Anmeldeinformationen des Clusteradministrators, um sich an der lokalen MetroCluster-Site (Standort A) anzumelden.
+. Klicken Sie auf *Konfiguration* > *MetroCluster*
++
+Das Fenster „MetroCluster Switchover/Switchback Operations“ wird angezeigt.
+
+. Klicken Sie Auf *Weiter*.
++
+Im Fenster MetroCluster Switchover und Switch Back Operations werden der Status der Vorgänge angezeigt und System Manager überprüft, ob eine Umschaltung möglich ist.
+
+. Führen Sie einen der folgenden Teilschritte durch, wenn der Validierungsprozess abgeschlossen ist:
++
+** Wenn die Validierung erfolgreich ist, fahren Sie mit Schritt fort link:#step5["5"].
+** Wenn die Validierung fehlschlägt, aber Standort B aktiv ist, ist ein Fehler aufgetreten, z. B. ein Problem mit einem Subsystem oder die NVRAM-Spiegelung ist nicht synchronisiert. Sie können einen der folgenden Prozesse ausführen:
++
+*** Beheben Sie das Problem, das den Fehler verursacht, klicken Sie auf *Schließen* und starten Sie dann erneut bei Schritt link:#step1["1"].
+*** Stoppen Sie die Knoten Standort B, klicken Sie auf *Schließen* und führen Sie die Schritte unter aus xref:task_performing_unplanned_switchover.adoc[Durchführung einer ungeplanten Umschaltung].
+
+
+** Wenn die Validierung fehlschlägt und Standort B nicht verfügbar ist, liegt wahrscheinlich ein Verbindungsproblem vor. Überprüfen Sie, ob Standort B wirklich ausgefallen ist, und führen Sie die Schritte unter aus xref:task_performing_unplanned_switchover.adoc[Durchführung einer ungeplanten Umschaltung].
+
+
+. [[schritt5]]Klicken Sie auf *Umschaltung von Standort B zu Standort A*, um den Umstellungsprozess zu starten.
++
+Es wird eine Warnmeldung angezeigt, die Sie darauf hinweist, dass durch den Switchover alle Data SVMs an Standort B angehalten und an Standort A neu gestartet wird
+
+. Wenn Sie fortfahren möchten, klicken Sie auf *Ja*.
++
+Der Switchover-Prozess beginnt. Die Zustände von Standort A und Standort B werden über den grafischen Darstellungen ihrer Konfigurationen angezeigt. Wenn der Umschaltvorgang fehlschlägt, wird eine Fehlermeldung angezeigt. Klicken Sie Auf *Schließen*. Beheben Sie alle Fehler, und starten Sie erneut bei Schritt link:#step1["1"]
+
+. Warten Sie, bis System Manager zeigt, dass die Reparatur abgeschlossen ist.
++
+Nach Abschluss der Heilung ist Standort B betriebsbereit und die Systeme bereiten den Switchback-Prozess vor.
+
++
+Wenn die Vorbereitungen für den Switchback-Prozess abgeschlossen sind, ist die Schaltfläche *Switch Back von Standort A nach Standort B* unten im Fenster aktiv.
+
+. Führen Sie die Schritte in aus, um mit dem Wechsel zurück fortzufahren xref:task_performing_switchback.adoc[Zurückwechseln].
+

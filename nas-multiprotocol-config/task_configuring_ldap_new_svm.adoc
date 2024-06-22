@@ -1,0 +1,85 @@
+---
+permalink: nas-multiprotocol-config/task_configuring_ldap_new_svm.html 
+sidebar: sidebar 
+keywords: 'storage, virtual, machine, svm, information, active, directory-based, lightweight, directory, access, protocol, ldap, client, sourve, configure, configure ldap (create a new nfs-enabled svm)' 
+summary: 'Wenn die Storage Virtual Machine (SVM) Benutzerdaten aus dem Active Directory-basierten Lightweight Directory Access Protocol (LDAP) abrufen soll, müssen Sie einen LDAP-Client erstellen, diesen für die SVM aktivieren und anderen Quellen von Benutzerdaten LDAP-Priorität zuweisen.' 
+---
+= LDAP konfigurieren (Erstellung einer neuen SVM mit NFS-Aktivierung)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn die Storage Virtual Machine (SVM) Benutzerdaten aus dem Active Directory-basierten Lightweight Directory Access Protocol (LDAP) abrufen soll, müssen Sie einen LDAP-Client erstellen, diesen für die SVM aktivieren und anderen Quellen von Benutzerdaten LDAP-Priorität zuweisen.
+
+.Bevor Sie beginnen
+* Die LDAP-Konfiguration muss Active Directory (AD) verwenden.
++
+Wenn Sie einen anderen LDAP-Typ verwenden, müssen Sie LDAP über die Befehlszeilenschnittstelle (CLI) und andere Dokumentation konfigurieren.
+
++
+https://www.netapp.com/pdf.html?item=/media/10720-tr-4067.pdf["Technischer Bericht 4067: NFS in NetApp ONTAP"^]
+
++
+https://www.netapp.com/pdf.html?item=/media/19384-tr-4616.pdf["Technischer Bericht von NetApp 4616: NFS Kerberos im ONTAP mit Microsoft Active Directory"^]
+
++
+https://www.netapp.com/pdf.html?item=/media/19423-tr-4835.pdf["Technischer Bericht von NetApp 4835: Konfigurieren von LDAP in ONTAP"^]
+
+* Sie müssen die AD-Domäne und die Server sowie die folgenden Bindungsinformationen kennen: Die Authentifizierungsebene, den Bind-Benutzer und das Passwort, den Basis-DN und den LDAP-Port.
+
+
+.Schritte
+. Navigieren Sie zum Fenster *SVMs*.
+. Wählen Sie die erforderliche SVM aus
+. Klicken Sie auf die Registerkarte *SVM Settings*.
+. Richten Sie einen LDAP-Client ein, den die SVM verwendet:
++
+.. Klicken Sie im Fenster *Services* auf *LDAP Client*.
+.. Klicken Sie im Fenster *LDAP-Client-Konfiguration* auf *Hinzufügen*.
+.. Geben Sie auf der Registerkarte *Allgemein* des Fensters *LDAP-Client erstellen* den Namen der LDAP-Client-Konfiguration ein, z. B. `vs0client1`.
+.. Fügen Sie die AD-Domäne oder die AD-Server hinzu.
++
+image::../media/ldap_client_creation_general_tab_nas_mp.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
+.. Klicken Sie auf *Bindung*, und geben Sie die Authentifizierungsstufe, den Bind-Benutzer und das Passwort, den Basis-DN und den Port an.
++
+image::../media/ldap_client_creation_binding_tab_nas_mp.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
+.. Klicken Sie auf *Speichern und Schließen*.
+
+
++
+Ein neuer Client wird erstellt und steht der SVM zur Verfügung.
+
+. Aktivieren des neuen LDAP-Clients für die SVM:
++
+.. Klicken Sie im Navigationsbereich auf *LDAP-Konfiguration*.
+.. Klicken Sie Auf *Bearbeiten*.
+.. Stellen Sie sicher, dass der soeben erstellte Client in *LDAP-Clientname* ausgewählt ist.
+.. Wählen Sie *LDAP-Client aktivieren* und klicken Sie auf *OK*.
++
+image::../media/ldap_svm_configuration_active_ldap_client_nas_mp.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
+
+
++
+Die SVM verwendet den neuen LDAP-Client.
+
+. Geben Sie LDAP-Prioritäten gegenüber anderen Quellen von Benutzerinformationen, z. B. Network Information Service (NIS) sowie lokalen Benutzern und Gruppen, an:
++
+.. Navigieren Sie zum Fenster *SVMs*.
+.. Wählen Sie die SVM aus und klicken Sie auf *Bearbeiten*.
+.. Klicken Sie auf die Registerkarte *Services*.
+.. Geben Sie unter *Name Service Switch* *LDAP* als bevorzugte Name Service Switch Quelle für die Datenbanktypen an.
+.. Klicken Sie auf *Speichern und Schließen*.
++
+image::../media/name_services_ldap_priority_nas_mp.gif[Diese Grafik wird durch den umgebenden Text beschrieben.]
+
++
+LDAP ist die primäre Quelle von Benutzerinformationen für Name Services und Namenszuweisung auf dieser SVM.
+
+
+
+

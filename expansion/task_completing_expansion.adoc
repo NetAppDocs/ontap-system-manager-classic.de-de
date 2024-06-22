@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_completing_expansion.html 
+sidebar: sidebar 
+keywords: node, cluster, configuring, configure, autosupport, network, expansion, lun, path, complete, complete the expansion 
+summary: Nachdem beide Nodes dem Cluster hinzugefügt wurden, müssen Sie die Konfiguration der neu hinzugefügten Nodes beenden, indem Sie AutoSupport konfigurieren und das SP-Netzwerk abschließen. 
+---
+= Die Erweiterung abschließen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nachdem beide Nodes dem Cluster hinzugefügt wurden, müssen Sie die Konfiguration der neu hinzugefügten Nodes beenden, indem Sie AutoSupport konfigurieren und das SP-Netzwerk abschließen. Anschließend validieren Sie das erweiterte Cluster und generieren eine AutoSupport-Meldung, um die Erweiterung abzuschließen. Wenn das Cluster SAN verwendet, sollten Sie die LUN-Pfade aktualisieren.

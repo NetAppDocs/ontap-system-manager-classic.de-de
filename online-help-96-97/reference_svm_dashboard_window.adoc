@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/reference_svm_dashboard_window.html 
+sidebar: sidebar 
+keywords: svm, dashboard, detail, online, help 
+summary: 'Das Dashboard bietet Ihnen auf einen Blick alle gesammelten Informationen zur Storage Virtual Machine (SVM) und zur Performance. Mit dem Dashboard-Fenster können Sie wichtige Informationen zu Ihrer SVM anzeigen, z. B. zu konfigurierten Protokollen, zu Volumes, die sich der Kapazität nähern, und zur Performance.' 
+---
+= SVM Dashboard-Fenster in System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Dashboard-Fenster in ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und älter) bietet einen Überblick über die Storage Virtual Machine (SVM) und deren Performance. Mit dem Dashboard-Fenster können Sie wichtige Informationen zu Ihrer SVM anzeigen, z. B. zu konfigurierten Protokollen, zu Volumes, die sich der Kapazität nähern, und zur Performance.
+
+
+
+== SVM-Details
+
+In diesem Fenster werden Details zur SVM über verschiedene Bereiche angezeigt, z. B. im Bereich „Protokollstatus“, im Bereich „Volumes ennahezu Kapazität“, im Bereich „Applikationen“ und im Bereich „Performance“.
+
+* *Protokollstatus*
++
+Überblick über die für die SVM konfigurierten Protokolle Sie können auf den Protokollnamen klicken, um die Konfiguration anzuzeigen.
+
++
+Wenn kein Protokoll konfiguriert ist oder keine Protokolllizenz für die SVM verfügbar ist, können Sie auf den Protokollnamen klicken, um das Protokoll zu konfigurieren oder die Protokolllizenz hinzuzufügen.
+
+* *Volumen Nahe Der Kapazität*
++
+Zeigt Informationen zu Volumes an, die sich der Kapazitätsauslastung von 80 Prozent oder mehr nähern und sofortige Maßnahmen oder Korrekturmaßnahmen erfordern.
+
+* * Anwendungen*
++
+Zeigt Informationen zu den fünf wichtigsten Applikationen der SVM an. Es werden die fünf wichtigsten Applikationen entweder auf Basis der IOPS (von niedrig bis hoch oder von hoch zu niedrig) oder der Kapazität (von niedrig bis hoch oder von hoch bis niedrig) angezeigt. Sie müssen auf das entsprechende Balkendiagramm klicken, um weitere Informationen zur Anwendung anzuzeigen. Für die Kapazität werden der gesamte Speicherplatz, der genutzte Speicherplatz und der verfügbare Speicherplatz angezeigt. Für IOPS werden die IOPS-Details angezeigt. Für L2/L3-Anwendungen werden auch Latenzkennzahlen angezeigt.
+
++
+[NOTE]
+====
+Die im Fenster Anwendungen angezeigte verwendete Größe entspricht nicht der in der CLI verwendeten Größe.
+
+====
++
+Sie können auf *Details anzeigen* klicken, um das Anwendungsfenster der jeweiligen Anwendung zu öffnen. Sie können auf *Alle Anwendungen anzeigen* klicken, um alle Anwendungen für die SVM anzuzeigen.
+
++
+Das Aktualisierungsintervall für den Bereich Anwendungen beträgt eine Minute.
+
+* *SVM-Performance*
++
+Zeigt die Performance-Metriken der Protokolle in der SVM, einschließlich Latenz und IOPS an.
+
++
+Wenn die Informationen zur SVM-Performance nicht von ONTAP abgerufen werden können, können Sie das entsprechende Diagramm nicht anzeigen. In diesen Fällen zeigt der System Manager die spezifische Fehlermeldung an.
+
++
+Das Aktualisierungsintervall für das Bedienfeld „SVM-Performance“ beträgt 15 Sekunden.
+
+

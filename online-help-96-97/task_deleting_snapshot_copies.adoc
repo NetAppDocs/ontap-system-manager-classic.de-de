@@ -1,0 +1,50 @@
+---
+permalink: online-help-96-97/task_deleting_snapshot_copies.html 
+sidebar: sidebar 
+keywords: delete, snapshot, copy, online, help, system, manager 
+summary: Sie können eine Snapshot-Kopie löschen, um Festplattenspeicher zu sparen oder mit System Manager freien Speicherplatz zu belegen. Sie können außerdem eine Snapshot Kopie löschen, wenn die Snapshot Kopie nicht mehr erforderlich ist. 
+---
+= Löschen Sie Snapshot Kopien mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können eine Snapshot-Kopie löschen, um Festplattenspeicher zu sparen oder freien Speicherplatz freizugeben, indem Sie ONTAP System Manager classic verwenden (verfügbar in ONTAP 9.7 und früher). Sie können außerdem eine Snapshot Kopie löschen, wenn die Snapshot Kopie nicht mehr erforderlich ist.
+
+.Bevor Sie beginnen
+Wenn Sie eine Snapshot Kopie löschen möchten, die besetzt oder gesperrt ist, müssen Sie die Snapshot Kopie aus der Applikation, die die Snapshot Kopie verwendet hat, freigegeben haben.
+
+.Über diese Aufgabe
+* Die Basis-Snapshot Kopie in einem übergeordneten Volume kann nicht gelöscht werden, wenn ein FlexClone Volume diese Snapshot Kopie nutzt.
++
+Die Basis-Snapshot Kopie ist die Snapshot Kopie, die zur Erstellung eines FlexClone Volume verwendet wird. Die Basis-Snapshot Kopie zeigt immer den Status an `busy` Und Anwendungsabhängigkeit als `busy,vclone` Im übergeordneten Volume.
+
+* Sie können keine gesperrte Snapshot Kopie löschen, die in einer SnapMirror Beziehung verwendet wird.
++
+Die Snapshot Kopie ist gesperrt und für das nächste Update erforderlich.
+
+* Sie können eine Snapshot Kopie nicht vor dem Ablauf der Snapshot Kopie aus einem SnapLock-DP-Volume löschen, der in einer SnapVault-Beziehung verwendet wird.
+* Sie können die nicht abgelaufenen Snapshot-Kopien (die im WORM-Status festgelegt sind) von einem SnapLock-DP-Volume, das sich in einer SnapVault-Beziehung befindet, nicht löschen.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Erweitern Sie das erforderliche Volumen.
+. Klicken Sie auf den Link *Mehr Details anzeigen*, um weitere Informationen zum Volume anzuzeigen.
+. Klicken Sie auf die Registerkarte *Snapshot Kopien*.
++
+Die Liste der verfügbaren Snapshot Kopien für das ausgewählte Volume wird angezeigt.
+
+. Wählen Sie die Snapshot Kopie aus, die Sie löschen möchten.
+. Klicken Sie Auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]
+
+https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 Dokumentationszentrum"]

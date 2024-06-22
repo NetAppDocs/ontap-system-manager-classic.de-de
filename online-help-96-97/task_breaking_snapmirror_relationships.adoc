@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_breaking_snapmirror_relationships.html 
+sidebar: sidebar 
+keywords: snapmirror, break, relationship, dp, rw, online, help 
+summary: Sie müssen eine SnapMirror Beziehung unterbrechen, wenn eine SnapMirror Quelle nicht mehr verfügbar ist und Sie möchten, dass Client-Applikationen auf die Daten vom Spiegelziel zugreifen können. 
+---
+= SnapMirror Beziehungen zu System Manager - ONTAP 9.7 und früher aufheben
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um eine SnapMirror Beziehung zu brechen. Sie müssen eine SnapMirror Beziehung unterbrechen, wenn eine SnapMirror Quelle nicht mehr verfügbar ist und Sie möchten, dass Client-Applikationen auf die Daten vom Spiegelziel zugreifen können. Nach erfolgter SnapMirror Beziehung ändert sich der Ziel-Volume-Typ von „Datensicherung“ (DP) in „Lesen/Schreiben“ (RW).
+
+.Bevor Sie beginnen
+* Das SnapMirror Ziel muss sich im Ruhezustand oder im Ruhezustand befinden.
+* Das Ziel-Volume muss auf dem Namespace des Ziel-Storage Virtual Machine (SVM) gemountet werden.
+
+
+.Über diese Aufgabe
+* Sie können das Ziel-Volume verwenden, um Daten bereitzustellen, während Sie die Quelle reparieren oder ersetzen, die Quelle aktualisieren und die ursprüngliche Konfiguration der Systeme wiederherstellen.
+* Sie können SnapMirror Beziehungen zwischen ONTAP Systemen und SolidFire Storage-Systemen aufheben.
+* Wenn Sie eine FlexGroup-Volume-Beziehung unterbrechen, müssen Sie die Seite aktualisieren, um den aktualisierten Status der Beziehung anzuzeigen.
+
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Mirror-Beziehung aus, die Sie brechen möchten.
+. Klicken Sie Auf *Operationen* > *Pause*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *break*.
+
+
+.Ergebnisse
+Die SnapMirror Beziehung zur Datensicherung ist beschädigt. Der Ziel-Volume-Typ ändert sich von Datensicherung (DP), schreibgeschützt in Lesen/Schreiben (RW). Das System speichert die Snapshot-Basiskopie für die Datensicherungsspiegelbeziehung zu einem späteren Zeitpunkt.
+
+*Verwandte Informationen*
+
+xref:reference_protection_window.adoc[Sicherungsfenster]

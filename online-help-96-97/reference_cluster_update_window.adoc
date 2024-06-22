@@ -1,0 +1,117 @@
+---
+permalink: online-help-96-97/reference_cluster_update_window.html 
+sidebar: sidebar 
+keywords: online, help, cluster, update, window, tab, update, command, button, history, tab 
+summary: Mithilfe des Cluster-Update-Fensters können Sie automatisierte Cluster-Updates unterbrechungsfrei durchführen oder einzelne Node-Cluster unterbrechungsfrei aktualisieren. 
+---
+= Cluster-Update-Fenster mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mithilfe des Cluster-Update-Fensters können Sie ein automatisiertes Cluster-Update unterbrechungsfrei durchführen oder Single-Node-Cluster mit ONTAP System Manager classic (erhältlich in ONTAP 9.7 und früher) unterbrechungsfrei aktualisieren.
+
+
+
+== Registerkarten
+
+* *Cluster-Update*
++
+Automatisierte Cluster-Updates lassen sich unterbrechungsfrei durchführen oder Cluster mit einem einzelnen Node unterbrechungsfrei aktualisieren.
+
+* *Verlauf Aktualisieren*
++
+Zeigt die Details früherer Cluster-Updates an.
+
+
+
+
+
+== Registerkarte Cluster Update
+
+Auf der Registerkarte Cluster-Update können Sie automatisierte Cluster-Updates unterbrechungsfrei durchführen oder einzelne Node-Cluster unterbrechungsfrei aktualisieren.
+
+
+
+== Befehlsschaltflächen
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+* *Wählen Sie*
++
+Sie können die Version des Software-Images für das Update auswählen.
+
++
+** Cluster-Versionsdetails: Zeigt die aktuelle verwendete Cluster-Version und die Versionsdetails der Nodes oder HA-Paare an.
+** Verfügbare Software-Images: Ermöglicht Ihnen die Auswahl eines vorhandenen Softwareabbilds für die Aktualisierung.
++
+Alternativ können Sie ein Software-Image von der NetApp Support Site herunterladen und das Image für das Update hinzufügen.
+
+
+
+* *Validieren*
++
+Sie können das Cluster anhand der Software-Image-Version für das Update anzeigen und validieren. Eine Validierung vor dem Update überprüft, ob sich das Cluster in einem Zustand befindet, der für ein Update bereit ist. Wenn die Validierung mit Fehlern abgeschlossen ist, zeigt eine Tabelle den Status der verschiedenen Komponenten und die erforderliche Korrekturmaßnahme für die Fehler an.
+
++
+Sie können die Aktualisierung nur durchführen, wenn die Validierung erfolgreich abgeschlossen wurde.
+
+* *Aktualisierung*
++
+Sie können alle Nodes im Cluster oder ein HA-Paar im Cluster auf die ausgewählte Version des Software-Images aktualisieren. Während die Aktualisierung läuft, können Sie wählen, ob Sie die Aktualisierung unterbrechen möchten, und Sie können die Aktualisierung entweder abbrechen oder fortsetzen.
+
++
+Wenn ein Fehler auftritt, wird die Aktualisierung angehalten und eine Fehlermeldung mit den Abhilfemaßnahmen angezeigt. Sie können wählen, ob Sie das Update nach Durchführung der Fehlerbehebungsschritte fortsetzen oder das Update abbrechen möchten. Nach erfolgreichem Abschluss des Updates können Sie die Tabelle mit dem Node-Namen, der Uptime, dem Status und der ONTAP-Version anzeigen.
+
+
+
+
+
+== Registerkarte Verlauf aktualisieren
+
+Zeigt Details zum Verlauf des Cluster-Updates an.
+
+
+
+== Liste des Aktualisierungsverlaufs
+
+* *Bildversion*
++
+Gibt die Version des ONTAP Images an, auf das der Node aktualisiert werden soll.
+
+* *Software-Updates auf* installiert
++
+Gibt den Festplattentyp an, auf dem die Updates installiert sind.
+
+* *Status*
++
+Gibt den Status der Aktualisierung des Software-Images an (ob das Update erfolgreich oder abgebrochen wurde).
+
+* *Startzeit*
++
+Gibt den Zeitpunkt an, zu dem die Aktualisierung gestartet wurde.
+
+* *Abschlusszeit*
++
+Gibt den Zeitpunkt an, zu dem die Aktualisierung abgeschlossen wurde.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+* *Benötigte Zeit für das Update*
++
+Gibt die Zeit an, die für den Abschluss der Aktualisierung benötigt wurde.
+
+* *Vorherige Version*
++
+Gibt die ONTAP-Version des Node vor dem Update an.
+
+* *Aktualisierte Version*
++
+Gibt die ONTAP-Version des Node nach dem Update an.
+
+

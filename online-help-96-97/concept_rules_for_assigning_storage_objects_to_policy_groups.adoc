@@ -1,0 +1,65 @@
+---
+permalink: online-help-96-97/concept_rules_for_assigning_storage_objects_to_policy_groups.html 
+sidebar: sidebar 
+keywords: rulw, assign, storage, object, policy, group, svm, nested, online, help 
+summary: Beachten Sie Regeln, die vorschreiben, wie Storage-Objekte Storage-QoS-Richtliniengruppen zugewiesen werden können. 
+---
+= Regeln für die Zuordnung von Storage-Objekten zu Richtliniengruppen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Beachten Sie Regeln, die vorschreiben, wie Storage-Objekte Storage-QoS-Richtliniengruppen zugewiesen werden können.
+
+
+
+== Storage-Objekte und Richtliniengruppen müssen derselben SVM angehören
+
+Ein Storage-Objekt muss von der SVM enthalten sein, der die Richtliniengruppe angehört. Sie geben beim Erstellen der Richtliniengruppe die SVM an, zu der die Richtliniengruppe gehört. Mehrere Richtliniengruppen können derselben SVM angehören.
+
+In der folgenden Abbildung gehört die Richtliniengruppe pg1 zu SVM vs1. Sie können Volumes vol2 oder vol3 nicht der Richtliniengruppe pg1 zuweisen, da diese Volumes von einer anderen SVM enthalten sind.
+
+image::../media/qos_rule_same_vserver.gif[Diese Grafik wird durch den umgebenden Text beschrieben.]
+
+
+
+== Verschachtelte Speicherobjekte können nicht zu Richtliniengruppen gehören
+
+Sie können einer Richtliniengruppe kein Speicherobjekt zuweisen, wenn das zugehörige Objekt oder seine untergeordneten Objekte einer Richtliniengruppe angehören. In der folgenden Tabelle sind die Einschränkungen aufgeführt.
+
+|===
+| Wenn Sie die folgende Zuordnung zuweisen: | Dann kann nicht zugewiesen werden... 
+
+
+ a| 
+SVM zu einer Richtliniengruppe
+ a| 
+Alle Storage-Objekte, die der SVM in einer Richtliniengruppe enthalten sind
+
+
+
+ a| 
+Volume zu einer Richtliniengruppe
+ a| 
+Das Volume enthält SVM oder untergeordnete LUNs einer Richtliniengruppe
+
+
+
+ a| 
+LUN einer Richtliniengruppe
+ a| 
+Die LUN enthält Volume oder SVM zu einer Richtliniengruppe
+
+
+
+ a| 
+Datei zu einer Richtliniengruppe
+ a| 
+Die Datei mit Volume oder SVM in einer Richtliniengruppe
+
+|===
+In der folgenden Abbildung ist die SVM vs3 der Richtliniengruppe pg2 zugeordnet. Sie können einer Richtliniengruppe keine Volumes vol4 oder vol5 zuweisen, da ein Objekt in der Storage-Hierarchie (SVM vs3) einer Richtliniengruppe zugewiesen ist.
+
+image::../media/qos_rule_one_object.gif[Diese Grafik wird durch den umgebenden Text beschrieben.]

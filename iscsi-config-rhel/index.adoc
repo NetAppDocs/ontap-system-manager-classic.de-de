@@ -1,0 +1,48 @@
+---
+permalink: iscsi-config-rhel/index.html 
+sidebar: sidebar 
+keywords: iscsi, service, storage, virtual, machine, svm, lun, initiator, red, hat, enterprise, linux, server, configuration, san, provision, provisioning 
+summary: In diesen Verfahren wird beschrieben, wie Sie den iSCSI-Service auf einer Storage Virtual Machine einrichten, eine LUN bereitstellen und die LUN über einen iSCSI-Initiator auf einem Red hat Enterprise Linux-Server verfügbar machen. 
+---
+= ISCSI-Konfiguration für Red hat Enterprise Linux – Übersicht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Über die klassische ONTAP System Manager Schnittstelle (ONTAP 9.7 und früher) können Sie den iSCSI-Service schnell auf einer Storage Virtual Machine (SVM) einrichten, eine LUN bereitstellen und die LUN auf einem Red hat Enterprise Linux Server zur Verfügung stellen.
+
+Diese Verfahren basieren auf folgenden Annahmen:
+
+* Sie verwenden den iSCSI-Software-Initiator auf einem Red hat Enterprise Linux-Host, auf dem eine unterstützte Version der RHEL-Serie 6.4 oder höher ausgeführt wird.
+* In Ihrem Netzwerk werden IPv4-Adressen verwendet.
+* Sie möchten logische Schnittstellen mit einer der folgenden Methoden Adressen zuweisen:
++
+** Automatisch aus einem von Ihnen definierten Subnetz
+** Manuell unter Verwendung einer aus einem vorhandenen Subnetz ausgewählten Adresse
+** Manuell unter Verwendung einer Adresse, die einem vorhandenen Subnetz hinzugefügt wird
+
+
+* ISCSI-SAN-Start wird nicht konfiguriert.
+
+
+Weitere Informationen zum Konfigurieren Ihres spezifischen Hosts mit ONTAP finden Sie unter https://docs.netapp.com/us-en/ontap-sanhost/index.html["ONTAP SAN-Host-Konfiguration"].
+
+Weitere Informationen zur SAN-Administration finden Sie im https://docs.netapp.com/us-en/ontap/san-admin/index.html["ONTAP 9 – Übersicht über die SAN-Administration"]
+
+
+
+== Weitere Möglichkeiten dies in ONTAP zu tun
+
+|===
+
+
+| Zum Abschließen dieser Aufgabe verwenden Sie... | Siehe... 
+
+
+| Der neu gestaltete System Manager (verfügbar ab 9.7) | https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["Provisionierung von SAN-Storage"^] 
+
+
+| Die ONTAP Befehlszeilenschnittstelle (CLI) | https://docs.netapp.com/us-en/ontap/san-admin/lun-setup-workflow-concept.html["LUN-Setup-Workflow mit der CLI"^] 
+|===

@@ -1,0 +1,146 @@
+---
+permalink: online-help-96-97/reference_cifs_window.html 
+sidebar: sidebar 
+keywords: cifs, window, configuration, tab, domain, symlink, branchcache, online, help 
+summary: Mit dem CIFS-Fenster können Sie den CIFS-Server konfigurieren, Domänen-Controller verwalten, symbolische UNIX-Zuordnungen managen und BranchCache konfigurieren. 
+---
+= CIFS Fenster in System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit dem CIFS-Fenster in ONTAP System Manager (verfügbar unter ONTAP 9.7 und früher) können Sie den CIFS-Server konfigurieren, Domänen-Controller verwalten, symbolische UNIX-Zuordnungen verwalten und BranchCache konfigurieren.
+
+
+
+== Registerkarte Konfiguration
+
+Auf der Registerkarte Konfiguration können Sie den CIFS-Server erstellen und verwalten.
+
+* *Server*
++
+Gibt den Status des CIFS-Servers, den Namen des Servers, den Authentifizierungsmodus, den Namen der Active Directory-Domäne und den Status von SMB Multichannel an.
+
+* *Home-Verzeichnisse*
++
+Gibt Home-Verzeichnis-Pfade und den Stil für die Bestimmung, wie PC-Benutzernamen zu Home-Verzeichnis-Einträgen zugeordnet werden.
+
+* *Befehlsschaltflächen*
++
+** Einrichtung
++
+Öffnet den CIFS Setup-Assistenten, mit dem Sie CIFS auf Ihrer Storage Virtual Machine (SVM) einrichten können.
+
+** Optionen
++
+Zeigt das Dialogfeld CIFS-Optionen an, in dem Sie SMB 3.0-Signing aktivieren oder deaktivieren, SMB 3.0-Verschlüsselung aktivieren oder deaktivieren sowie Windows Internet Name Service (WINS)-Server hinzufügen können.
+
++
+Durch das SMB-Signing wird verhindert, dass der Netzwerk-Traffic zwischen dem CIFS-Server und dem Client beeinträchtigt wird.
+
+** Löschen
++
+Ermöglicht das Löschen des CIFS-Servers.
+
+** Aktualisierung
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+
+
+== Registerkarte „Domäne“
+
+Auf der Registerkarte Domäne können Sie Ihre CIFS-Domänencontroller anzeigen und zurücksetzen sowie bevorzugte Domänencontroller hinzufügen oder löschen. Sie können diese Registerkarte auch verwenden, um die Konfiguration von CIFS-Gruppenrichtlinien zu verwalten.
+
+* *Server*
++
+Zeigt Informationen über ermittelte Authentifizierungsserver und Ihre bevorzugten Domänen-Controller auf der CIFS-fähigen SVM an.
+
++
+Sie können auch die Informationen über die erkannten Server zurücksetzen, einen bevorzugten Domänencontroller hinzufügen, einen Domänencontroller löschen oder die Liste der Domänencontroller aktualisieren.
+
+* *Gruppenrichtlinien*
++
+Ermöglicht das Anzeigen, Aktivieren und Deaktivieren von Gruppenrichtlinienkonfigurationen auf dem CIFS-Server. Sie können auch eine Gruppenrichtlinie neu laden, wenn der Status der Richtlinie geändert wird.
+
+
+
+
+
+== Registerkarte „Symlinks“
+
+Auf der Registerkarte Symlinks können Sie die Zuordnungen von UNIX symbolischen Links für CIFS-Benutzer verwalten.
+
+* *Pfadzuordnungen*
++
+Zeigt die Liste der symbolischen Link-Zuordnungen für CIFS an.
+
+* *Befehlsschaltflächen*
++
+** Erstellen
++
+Öffnet das Dialogfeld „Create New Symlink Path Mappings“, in dem Sie eine symbolische UNIX-Link-Zuordnung erstellen können.
+
+** Bearbeiten
++
+Öffnet das Dialogfeld „Edit symlink Path Mappings“, in dem Sie die CIFS-Freigabe und den Pfad ändern können.
+
+** Löschen
++
+Ermöglicht Ihnen das Löschen der symbolischen Link-Zuordnung.
+
+** Aktualisierung
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+
+
+== Registerkarte BranchCache
+
+Auf der Registerkarte BranchCache können Sie BranchCache Einstellungen auf CIFS-fähigen SVMs einrichten und verwalten.
+
+Sie können den Status des BranchCache-Dienstes, den Pfad zum Hash-Speicher, die Größe des Hash-Speichers und den Betriebsmodus, den Serverschlüssel und die Version des BranchCache anzeigen.
+
+* *Befehlsschaltflächen*
++
+** Einrichtung
++
+Öffnet das Dialogfeld „BranchCache-Einrichtung“, in dem Sie BranchCache für den CIFS-Server konfigurieren können.
+
+** Bearbeiten
++
+Öffnet das Dialogfeld „BranchCache-Einstellungen ändern“, in dem Sie die Eigenschaften der BranchCache-Konfiguration ändern können.
+
+** Löschen
++
+Ermöglicht das Löschen der BranchCache-Konfiguration.
+
+** Aktualisierung
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+*Verwandte Informationen*
+
+xref:task_setting_up_cifs.adoc[Einrichten von CIFS]
+
+xref:task_editing_cifs_general_properties.adoc[Bearbeiten der allgemeinen Eigenschaften für CIFS]
+
+xref:task_adding_home_directory_paths.adoc[Hinzufügen von Home-Directory-Pfaden]
+
+xref:task_deleting_home_directory_paths.adoc[Home-Verzeichnis-Pfade werden gelöscht]
+
+xref:task_resetting_cifs_domain_controllers.adoc[Zurücksetzen von CIFS Domain Controllern]

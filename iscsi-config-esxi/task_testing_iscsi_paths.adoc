@@ -1,0 +1,40 @@
+---
+permalink: iscsi-config-esxi/task_testing_iscsi_paths.html 
+sidebar: sidebar 
+keywords: storage, failover, data, mobility, path, host, node, cluster, advertise, iscsi, ping, host, test, test iscsi paths from the host to the storage cluster 
+summary: Für ein erfolgreiches Storage-Failover und Datenmobilität müssen Sie sicherstellen, dass zwei Pfade vom Host zu jedem Node im Storage-Cluster vorhanden sind. Da die Anzahl der vom iSCSI-Ziel angekündigten Pfade begrenzt ist, müssen Sie die Speicher-Cluster-Ports vom Host pingen. 
+---
+= Testen Sie die iSCSI-Pfade vom Host zum Storage-Cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Für ein erfolgreiches Storage-Failover und Datenmobilität müssen Sie sicherstellen, dass zwei Pfade vom Host zu jedem Node im Storage-Cluster vorhanden sind. Da die Anzahl der vom iSCSI-Ziel angekündigten Pfade begrenzt ist, müssen Sie die Speicher-Cluster-Ports vom Host pingen.
+
+.Bevor Sie beginnen
+Sie müssen die IP-Adresse oder den Host-Namen aller logischen Schnittstellen (LIFs) kennen, die für iSCSI-Pfade verwendet werden sollen.
+
+.Über diese Aufgabe
+LUNs sind einem Teil der Initiatoren in der Initiatorgruppe zugeordnet, um die Anzahl der Pfade vom Host auf die LUN zu begrenzen.
+
+* Standardmäßig sind für den Host nur Pfade vom Host zum Node sichtbar, der die Storage Virtual Machine (SVM) enthält, auf der die LUN erstellt wurde, und Pfade zum HA-Partner des entsprechenden Node.
+* Sie müssen weiterhin Pfade vom Host zu jedem Node im Cluster erstellen und testen. Der Host kann aber nur auf die Pfade auf dem Eigentümer-Node und dessen HA-Partner zugreifen.
+* Sie sollten das Standardverhalten der LUN-Zuordnung verwenden.
++
+Fügen Sie in anderen HA-Paaren nur Nodes zur LUN-Zuordnung hinzu, um die LUN zu einem anderen Node zu verschieben.
+
+
+
+.Schritte
+. Verwenden Sie vom ESXi-Host das `ping` Befehl zum Überprüfen des Pfads zur ersten logischen Schnittstelle.
++
+Der `ping` Der Befehl ist über die ESXi Service-Konsole verfügbar.
+
+. Wiederholen Sie den `ping` Befehl zum Überprüfen der Verbindung zu jeder iSCSI-LIF auf jedem Node im Cluster.
+
+
+*Verwandte Informationen*
+
+http://kb.vmware.com/kb/1003486["VMware KB Artikel 1003486: Testen der Netzwerkverbindung mit dem Ping-Befehl"]

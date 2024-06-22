@@ -1,0 +1,28 @@
+---
+permalink: online-help-96-97/task_changing_status_flexgroup_volume.html 
+sidebar: sidebar 
+keywords: flexgroup, volume, status, change, online, help 
+summary: Mit System Manager lässt sich der Status eines FlexGroup Volume ändern, wenn ein FlexGroup Volume offline geschaltet, ein FlexGroup Volume wieder online geschaltet oder der Zugriff auf ein FlexGroup Volume eingeschränkt werden soll. 
+---
+= Ändern Sie den Status eines FlexGroup Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um den Status eines FlexGroup Volume zu ändern, wenn Sie ein FlexGroup Volume offline schalten möchten, ein FlexGroup Volume wieder online schalten oder den Zugriff auf ein FlexGroup Volume einschränken möchten.
+
+.Über diese Aufgabe
+System Manager unterstützt das Management von FlexGroup Volumes nicht auf Komponentenebene.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das FlexGroup-Volume aus, für das Sie den Status ändern möchten.
+. Klicken Sie auf *Weitere Aktionen* > *Status ändern in* und aktualisieren Sie dann den FlexGroup-Volume-Status, indem Sie den gewünschten Status auswählen.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

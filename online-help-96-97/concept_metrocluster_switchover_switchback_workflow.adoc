@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/concept_metrocluster_switchover_switchback_workflow.html 
+sidebar: sidebar 
+keywords: metrocluster, switchover, switchback, workflow, online, help, offline, maintenance 
+summary: 'Ab System Manager 9.6 können Sie MetroCluster Switchover und Switchback-Vorgänge nach einem Ausfall nutzen, wodurch alle Nodes im Quellcluster nicht mehr erreichbar und ausgeschaltet werden. Zudem kann der Switchover-Workflow für eine ausgehandelte (geplante) Umschaltung verwendet werden, beispielsweise für Disaster-Recovery-Tests oder einen Standort, der zu Wartungszwecken offline geschaltet wird.' 
+---
+= Über MetroCluster Switchover und Switchback
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Seit ONTAP System Manager 9.6 können Sie MetroCluster Switchover und Switchback-Vorgänge nach einem Ausfall nutzen, wodurch alle Nodes im Quellcluster nicht mehr erreichbar und ausgeschaltet werden. Zudem kann der Switchover-Workflow für eine ausgehandelte (geplante) Umschaltung verwendet werden, beispielsweise für Disaster-Recovery-Tests oder einen Standort, der zu Wartungszwecken offline geschaltet wird.
+
+
+
+== Über MetroCluster Switchover und Switchback
+
+Ab System Manager 9.6 können Sie MetroCluster Switchover- und Switchback-Vorgänge verwenden, so dass ein Cluster-Standort die Aufgaben eines anderen Cluster-Standorts übernehmen kann. Diese Funktion erleichtert Ihnen die Wartung oder das Recovery im Falle von Ausfällen.
+
+Durch einen Switchover-Vorgang kann ein Cluster (Standort A) die Aufgaben übernehmen, die ein anderes Cluster (Standort B) normalerweise durchführt. Nach der Umschaltung kann das Cluster, das übernommen wurde (Standort B), zur Wartung oder Reparatur heruntergefahren werden. Nach Abschluss der Wartung kann Standort B gestartet werden und die Heilungsaufgaben abgeschlossen werden. Sie können einen Switchback-Vorgang initiieren, über den das reparierte Cluster (Standort B) die üblicherweise durchgeführten Aufgaben wieder aufnehmen kann.
+
+System Manager unterstützt zwei Arten von Umschalttasoperationen, basierend auf dem Status des Remote-Cluster-Standorts:
+
+* Eine ausgehandelte (geplante) Umschaltung: Sie initiieren diesen Vorgang, wenn geplante Wartungsarbeiten an einem Cluster durchgeführt oder Disaster-Recovery-Verfahren getestet werden müssen.
+* Ein ungeplantes Switchover: Sie initiieren diesen Vorgang, wenn auf einem Cluster ein Ausfall aufgetreten ist (Standort B), und Sie möchten, dass ein anderer Standort oder Cluster (Standort A) die Aufgaben des Clusters, der von der Katastrophe betroffen ist (Standort B), während Sie Reparaturen und Wartungsarbeiten durchführen.
+
+
+In System Manager werden beide Switchover-Vorgänge über die gleichen Schritte durchgeführt. Wenn ein Switchover initiiert wird, bestimmt System Manager, ob der Vorgang möglich ist und richtet den Workload entsprechend aus.
+
+
+
+== Workflow für MetroCluster-Umschaltung und zurückwechseln
+
+Der Gesamtprozess für den Switchover- und Switch-Workflow umfasst die folgenden drei Phasen:
+
+. *Switchover*: Mit dem Switchover-Prozess können Sie die Steuerung des Storage und des Client-Zugriffs von einem Quell-Cluster-Standort (Standort B) auf einen anderen Cluster-Standort (Standort A) übertragen. Dank dieses Vorgangs lassen sich unterbrechungsfreie Betriebsabläufe für Tests und Wartung gewährleisten. Dieser Prozess ermöglicht darüber hinaus ein Recovery nach einem Standortausfall. Bei Disaster-Recovery-Tests oder geplanten Standortwartungsarbeiten kann ein MetroCluster-Switchover durchgeführt werden, um die Kontrolle an einen Disaster-Recovery-Standort (DR) zu übertragen (Standort A). Bevor der Prozess gestartet wird, müssen mindestens ein der verbleibenden Standort-Nodes vor dem Switchover betriebsbereit sein. Wenn ein Switchover-Vorgang zuvor auf bestimmten Nodes am DR-Standort fehlgeschlagen ist, kann der Betrieb auf allen diesen Nodes erneut getestet werden.
+. *Standort B Betrieb*: Nach Abschluss der Umschaltung schließt der System Manager den Heilungsprozess für die MetroCluster IP-Konfiguration ab. Die Heilung ist ein geplantes Ereignis, das volle Kontrolle über jeden Schritt gibt, um Ausfallzeiten zu minimieren. Die Reparatur ist ein zweiphasiger Prozess, der für die Storage- und Controller-Komponenten durchgeführt wird, um die Nodes am reparierten Standort für den Switchback-Prozess vorzubereiten. In der ersten Phase werden die Aggregate mithilfe der gespiegelten Plexe neu synchronisiert und anschließend werden die Root-Aggregate erhielt, indem sie zurück zum Disaster-Standort verschoben werden.
++
+In der zweiten Phase wird der Standort für den Switchback-Prozess vorbereitet.
+
+. *Switchback*: Nach der Wartung und Reparatur an Standort B initiieren Sie den Switchback-Betrieb, um die Kontrolle über den Speicher und den Client-Zugriff von Standort A nach Standort B zurückzugeben Für einen erfolgreichen Umschalter müssen die folgenden Bedingungen vorliegen:
++
+** Die Home-Nodes und Speicher-Shelfs müssen eingeschaltet sein und über Knoten in Standort A erreichbar sein
+** System Manager muss die Healing-Phase erfolgreich abgeschlossen haben, bevor Sie den Switchback-Betrieb starten können.
+** Alle Aggregate in Standort A sollten den Status „gespiegelt“ aufweisen und können nicht im Status „beeinträchtigt“ oder „neu synchronisiert“ sein.
+** Alle früheren Konfigurationsänderungen müssen abgeschlossen sein, bevor Sie einen Switchback-Vorgang durchführen. Dadurch wird verhindert, dass diese Änderungen mit dem ausgehandelten Switchover- oder Switchback-Betrieb konkurrieren.
+
+
+
+
+
+
+== Flussdiagramm zum Umschalten zwischen MetroCluster und Umschalten des Workflows
+
+Im folgenden Flussdiagramm werden die Phasen und Prozesse dargestellt, die beim Starten des Umschalttaops und des Umschalttaops auftreten.
+
+image::../media/switchover_switchback_workflow.jpg[Wechseln zum Workflow zurück]

@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/task_updating_single_node_clusters.html 
+sidebar: sidebar 
+keywords: update, singe, node, cluster, system, manager, online, help 
+summary: Mit System Manager können Sie Single Node Cluster aktualisieren. 
+---
+= Aktualisieren von Single-Node-Clustern mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Verwenden Sie ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher), um Single-Node-Cluster zu aktualisieren.
+
+.Bevor Sie beginnen
+* Auf den Clustern muss ONTAP 9.4 oder höher ausgeführt werden.
+* Sie müssen das Software-Image von der NetApp Support Site auf einen HTTP-Server im Netzwerk, auf einen FTP-Server im Netzwerk oder auf Ihr lokales System kopiert haben, damit die Nodes auf das Image zugreifen können.
++
+link:task_obtaining_ontap_software_images.html["ONTAP Software-Images werden eingeholt"]
+
+
+
+.Über diese Aufgabe
+* Ab System Manager 9.5 können Sie Single Node Cluster in MetroCluster Konfigurationen mit zwei Packs aktualisieren.
++
+Sie müssen diesen Vorgang an beiden Standorten ausführen.
+
+* Die Aktualisierung von Single-Node-Clustern in MetroCluster Konfigurationen ist nicht mit Unterbrechungen verbunden.
++
+Während das Cluster neu gebootet wird, ist die Benutzeroberfläche von System Manager nicht verfügbar.
+
+* In System Manager 9.4 und höher können Sie Single-Node-Cluster in Konfigurationen außerhalb von MetroCluster aktualisieren.
++
+Die Aktualisierung von Single-Node-Clustern in Non-MetroCluster Konfigurationen ist mit Unterbrechungen verbunden. Die Clientdaten sind nicht verfügbar, während die Aktualisierung ausgeführt wird.
+
+* Wenn Sie versuchen, andere Aufgaben während der Aktualisierung des Node, der die Cluster-Management-LIF hostet, auszuführen, wird möglicherweise eine Fehlermeldung angezeigt.
++
+Sie müssen warten, bis das Update abgeschlossen ist, bevor Sie Vorgänge ausführen.
+
+* Wenn das NVMe-Protokoll in System Manager 9.4 konfiguriert ist und Sie ein Update von System Manager 9.4 auf System Manager 9.5 durchführen, ist das NVMe-Protokoll für eine Gnadenfrist von 90 Tagen ohne Lizenz verfügbar.
++
+Diese Funktion ist in MetroCluster-Konfigurationen nicht verfügbar.
+
+* Wenn das NVMe-Protokoll in System Manager 9.5 nicht konfiguriert ist und Sie ein Update von System Manager 9.5 auf System Manager 9.6 durchführen, wird der Gnadenzeitraum nicht angegeben. Zur Verwendung des NVMe-Protokolls müssen Sie die NVMe-Lizenz installieren.
++
+Diese Funktion ist in MetroCluster-Konfigurationen nicht verfügbar.
+
+
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Update*.
+. Fügen Sie auf der Registerkarte *Cluster Update* ein neues Software-Image hinzu oder wählen Sie ein verfügbares Software-Image aus.
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+Fügen Sie ein neues Software-Image vom lokalen Client hinzu
+ a| 
+.. Klicken Sie auf *vom lokalen Client hinzufügen*.
+.. Suchen Sie nach dem Software-Bild, und klicken Sie dann auf *Öffnen*.
+
+
+
+
+ a| 
+Fügen Sie ein neues Software-Image von der NetApp Support Site hinzu
+ a| 
+.. Klicken Sie auf *vom Server hinzufügen*.
+.. Geben Sie im Dialogfeld Add a New Software Image (Neues Software-Image hinzufügen) die URL des HTTP-Servers oder FTP-Servers ein, auf dem Sie das Image, das von der NetApp Support-Website heruntergeladen wurde, gespeichert haben.
++
+Für anonymes FTP müssen Sie die URL im angeben `+ftp://anonymous@ftpserver+` Formatieren.
+
+.. Klicken Sie Auf *Hinzufügen*.
+
+
+
+
+ a| 
+Wählen Sie ein verfügbares Bild aus
+ a| 
+Wählen Sie eines der aufgeführten Bilder aus.
+
+|===
+. Klicken Sie auf *Validieren*, um die Validierungsprüfungen vor dem Update auszuführen, um zu überprüfen, ob das Cluster bereit für ein Update ist.
++
+Der Validierungsvorgang überprüft die Clusterkomponenten, um zu überprüfen, ob das Update abgeschlossen werden kann, und zeigt dann Fehler oder Warnungen an. Der Validierungsvorgang zeigt außerdem alle erforderlichen Korrekturmaßnahmen an, die Sie vor der Aktualisierung der Software durchführen müssen.
+
++
+[NOTE]
+====
+Sie müssen alle erforderlichen Abhilfemaßnahmen für die Fehler durchführen, bevor Sie mit dem Update fortfahren. Obwohl Sie die Abhilfemaßnahmen für die Warnungen ignorieren können, sollten Sie alle Abhilfemaßnahmen durchführen, bevor Sie mit dem Update fortfahren.
+
+====
+. Klicken Sie Auf *Weiter*.
+. Klicken Sie Auf *Aktualisieren*.
++
+Die Validierung wird erneut durchgeführt.
+
++
+** Wenn die Validierung abgeschlossen ist, zeigt eine Tabelle alle Fehler und Warnungen sowie alle erforderlichen Abhilfemaßnahmen an, bevor Sie fortfahren.
+** Wenn die Validierung mit Warnungen abgeschlossen ist, können Sie das Kontrollkästchen *Aktualisierung mit Warnungen fortsetzen* aktivieren und dann auf *Weiter* klicken.
+Wenn die Validierung abgeschlossen ist und die Aktualisierung gerade läuft, kann die Aktualisierung aufgrund von Fehlern angehalten werden. Sie können auf die Fehlermeldung klicken, um die Details anzuzeigen und anschließend die Abhilfemaßnahmen durchzuführen, bevor Sie das Update fortsetzen.
+
+
++
+Nachdem das Update erfolgreich abgeschlossen wurde, wird der Node neu gebootet, und Sie werden zur Anmeldeseite von System Manager umgeleitet. Wenn das Neubooten des Node lange dauert, müssen Sie den Browser aktualisieren.
+
+. Melden Sie sich bei System Manager an, und überprüfen Sie, ob der Cluster erfolgreich auf die ausgewählte Version aktualisiert wurde. Klicken Sie dazu auf *Konfiguration* > *Cluster* > *Update* > *Aktualisierungsverlauf*, und zeigen Sie die Details an.
+

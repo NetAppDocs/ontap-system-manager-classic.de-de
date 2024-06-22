@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/reference_protection_window.html 
+sidebar: sidebar 
+keywords: command, buttons, protection, window, relationship, vault, mirror, online, help, ls 
+summary: 'Verwenden Sie das Sicherungsfenster, um Spiegelbeziehungen, Vault-Beziehungen, Mirror- und Vault-Beziehungen zu erstellen und zu managen und Details zu diesen Beziehungen anzuzeigen. Im Fenster Schutz werden keine LS-Beziehungen (Load-Sharing) und TDP-Beziehungen (Transition Data Protection) angezeigt.' 
+---
+= Sicherungsfenster mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können das Sicherungsfenster mit ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Spiegelbeziehungen, Vault-Beziehungen, Spiegel- und Vault-Beziehungen zu erstellen und zu managen und Details zu diesen Beziehungen anzuzeigen. Im Fenster Schutz werden keine LS-Beziehungen (Load-Sharing) und TDP-Beziehungen (Transition Data Protection) angezeigt.
+
+
+
+== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld „Protection Relationship erstellen“, das Sie zum Erstellen einer Spiegelbeziehung, Vault-Beziehung oder Mirror und Vault-Beziehung aus einem Ziel-Volume verwenden können.
+
++
+System Manager zeigt im Dialogfeld „Create Protection Relationship“ keine Storage Virtual Machine (SVM) an, die für die Disaster Recovery (DR) konfiguriert ist.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Schutzbeziehung bearbeiten, in dem Sie den Zeitplan und die Richtlinie einer Beziehung bearbeiten können.
+
++
+Für eine Vault-Beziehung, eine Mirror- und Vault-Beziehung oder eine versionsflexible Mirror-Beziehung können Sie den Beziehungstyp ändern, indem Sie den Richtlinientyp ändern.
+
+* *Löschen*
++
+Öffnet das Dialogfeld Schutzbeziehung löschen, das Sie zum Löschen einer Beziehung verwenden können.
+
+* *Betrieb*
++
+Zeigt die Vorgänge an, die für eine Schutzbeziehung durchgeführt werden können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+== Liste der Sicherungsbeziehungen
+
+* * Source Storage Virtual Machine*
++
+Zeigt die SVM an, die das Volume enthält, von dem Daten gespiegelt oder in einer Beziehung archiviert werden.
+
+* *Quellvolumen*
++
+Zeigt das Volume an, von dem Daten gespiegelt oder in einer Beziehung archiviert werden.
+
+* *Zielvolumen*
++
+Zeigt das Volume an, zu dem Daten in einer Beziehung gespiegelt oder archiviert werden.
+
+* *Ist Gesund*
++
+Zeigt an, ob die Beziehung gesund ist oder nicht.
+
+* *Objekttyp*
++
+Zeigt den Objekttyp der Beziehung an, z. B. Volume, FlexGroup oder SVM.
+
+* * Beziehungsstatus*
++
+Zeigt den Status der Beziehung an, z. B. Snapmirrored, Uninitialized oder Broken Off.
+
+* *Transferstatus*
++
+Zeigt den Status der Beziehung an.
+
+* *Beziehungstyp*
++
+Zeigt die Art der Beziehung an, z. B. Mirror, Vault oder Mirror und Vault.
+
+* *Lange Zeit*
++
+Die lag-Zeit ist der Unterschied zwischen der aktuellen Zeit und dem Zeitstempel der letzten Snapshot Kopie, die erfolgreich an das Zielsystem übertragen wurde. Die Verzögerungszeit ist immer mindestens genauso lange wie die Dauer des letzten erfolgreichen Transfers, es sei denn, die Uhren auf den Quell- und Zielsystemen sind nicht synchronisiert. Die Zeitzonendifferenz wird automatisch in die Verzögerungszeit berechnet.
+
+* *Policy Name*
++
+Zeigt den Namen der Richtlinie an, die der Beziehung zugewiesen ist.
+
+* *Richtlinientyp*
++
+Zeigt den Richtlinientyp an, der der Beziehung zugewiesen ist. Der Richtlinientyp kann StrictSync, Sync, Asynchronous Mirror, Asynchronous Vault oder Asynchronous Mirror Vault lauten.
+
+
+
+
+
+== Detailbereich
+
+* *Registerkarte Details*
++
+Zeigt allgemeine Informationen zur ausgewählten Beziehung an, z. B. Quell-Cluster und Ziel-Cluster, Datentransferrate, Status der Beziehung, Details zum Netzwerkkomprimierungsverhältnis, Datentransferstatus, Typ der aktuellen Datenübertragung, Typ der letzten Datenübertragung, neueste Snapshot Kopie Und dem Zeitstempel der neuesten Snapshot Kopie.
+
+* *Registerkarte Policy Details*
++
+Zeigt Details zur Richtlinie an, die der ausgewählten Schutzbeziehung zugeordnet ist. Auf dieser Registerkarte werden außerdem das SnapMirror Label und die Zeitpläne für Snapshot Kopien im Quell-Volume angezeigt, die mit dem angegebenen Label übereinstimmen.
+
+* *Registerkarte Snapshot Kopien*
++
+Zeigt die Anzahl der Snapshot Kopien mit dem Attribut SnapMirror Label für die ausgewählte Sicherungsbeziehung und den Zeitstempel der neuesten Snapshot Kopie an.
+
+

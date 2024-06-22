@@ -1,0 +1,46 @@
+---
+permalink: volume-disaster-recovery/task_breaking_snapmirror_relationship.html 
+sidebar: sidebar 
+keywords: quiesce, break, snapmirror, relationship, activate, destination, volume, snapmirror, quiescing, transfer, disable, break the snapmirror relationship 
+summary: Sie müssen die SnapMirror Beziehung stilllegen und unterbrechen, um das Ziel-Volume zu aktivieren. Nach der Stilllegung werden zukünftige SnapMirror Datentransfers deaktiviert. 
+---
+= SnapMirror Beziehung unterbrechen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen die SnapMirror Beziehung stilllegen und unterbrechen, um das Ziel-Volume zu aktivieren. Nach der Stilllegung werden zukünftige SnapMirror Datentransfers deaktiviert.
+
+.Bevor Sie beginnen
+Das Ziel-Volume muss auf dem Ziel-SVM-Namespace gemountet werden.
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *Ziel* ausführen.
+
+.Schritte
+. Führen Sie je nach der verwendeten System Manager-Version einen der folgenden Schritte aus:
++
+** ONTAP 9.4 oder früher: Klicken Sie *Schutz* > *Beziehungen*.
+** Ab ONTAP 9.5: Klicken Sie *Schutz* > *Volume Relationships*.
+
+
+. Wählen Sie die SnapMirror Beziehung zwischen dem Quell- und den Ziel-Volumes aus.
+. Klicken Sie auf *Operationen* > *Quiesce*, um zukünftige Datenübertragungen zu deaktivieren.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Quiesce*.
++
+Der Vorgang zum quiesce könnte einige Zeit in Anspruch nehmen. Sie dürfen keine andere Operation an der SnapMirror-Beziehung durchführen, bis der Transferstatus als angezeigt wird `Quiesced`.
+
+. Klicken Sie Auf *Operationen* > *Pause*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *break*.
++
+image::../media/break.gif[SnapMirror Bildschirm Pause]
+
++
+Die SnapMirror Beziehung ist in `Broken Off` Bundesland.
+
++
+image::../media/break_verify.gif[SnapMirror Beziehung im abgegebrochenen Zustand]
+
+

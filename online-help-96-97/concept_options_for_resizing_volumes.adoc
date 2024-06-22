@@ -1,0 +1,44 @@
+---
+permalink: online-help-96-97/concept_options_for_resizing_volumes.html 
+sidebar: sidebar 
+keywords: option, resize, volume, wizard, snapshot, reserve, snapshot, copy, results, view, online, help 
+summary: Mit dem Assistenten für die Volume-Größe können Sie Ihre Volume-Größe ändern, die Snapshot-Reserve anpassen, Snapshot-Kopien löschen und die Ergebnisse Ihrer Änderungen dynamisch anzeigen. 
+---
+= Optionen zum Ändern der Größe von Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Assistenten zur Volume-Größe in ONTAP System Manager classic (verfügbar unter ONTAP 9.7 und früher) verwenden, um Ihre Volume-Größe zu ändern, die Snapshot Reserve anzupassen, Snapshot Kopien zu löschen und die Ergebnisse Ihrer Änderungen dynamisch anzuzeigen.
+
+Der Assistent zum Ändern der Lautstärke zeigt ein Balkendiagramm an, in dem die aktuellen Speicherplatzzuweisungen innerhalb des Volumens angezeigt werden, einschließlich der Anzahl des verwendeten und freien Speicherplatzes. Wenn Sie Änderungen an der Größe oder der Snapshot-Reserve des Volume vornehmen, wird dieses Diagramm dynamisch aktualisiert, um die Änderungen widerzuspiegeln.
+
+Sie können auch die Schaltfläche *Raum berechnen* verwenden, um die Menge an Speicherplatz zu bestimmen, die durch Löschen ausgewählter Snapshot-Kopien freigegeben wird.
+
+Mit dem Assistenten zum Ändern der Volume-Größe können Sie die folgenden Änderungen an Ihrem Volume vornehmen:
+
+* *Ändern Sie die Lautstärke*
++
+Sie können die Volume-Größe insgesamt ändern, um den Speicherplatz zu vergrößern oder zu verkleinern.
+
+* *Snapshot Reserve anpassen*
++
+Sie können die Menge an Speicherplatz, der für Snapshot Kopien reserviert ist, anpassen, um den Speicherplatz zu vergrößern oder zu verringern.
+
+* *Snapshot Kopien löschen*
++
+Sie können Snapshot Kopien löschen, um Speicherplatz auf dem Volume freizugeben.
+
++
+[NOTE]
+====
+Snapshot Kopien, die verwendet werden, können nicht gelöscht werden.
+
+====
+* *Autogrow*
++
+Sie können bei Bedarf festlegen, an welchem Limit das Volume automatisch erweitert werden kann.
+
+

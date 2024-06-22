@@ -1,0 +1,72 @@
+---
+permalink: iscsi-config-rhel/task_verifying_that_host_can_write_to_read_fom_lun.html 
+sidebar: sidebar 
+keywords: multipath, device, verify, host, data, verify that the host can write to and read from a multipath device 
+summary: Bevor Sie ein Multipath-Gerät verwenden, sollten Sie überprüfen, ob der Host Daten auf das Multipath-Gerät schreiben und es zurücklesen kann. 
+---
+= Vergewissern Sie sich, dass der Host auf ein Multipath-Gerät schreiben und von diesem lesen kann
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie ein Multipath-Gerät verwenden, sollten Sie überprüfen, ob der Host Daten auf das Multipath-Gerät schreiben und es zurücklesen kann.
+
+.Bevor Sie beginnen
+DM-Multipath muss auf dem Linux-Host für die Storage-Cluster-Knoten konfiguriert sein, auf die Sie zugreifen.
+
+.Über diese Aufgabe
+Wenn ein Failover des Storage-Cluster-Node, dem das Multipath-Gerät entspricht, auf seinen Partner-Node möglich ist, sollten Sie überprüfen, ob die Daten beim Failover des Node gelesen werden. Diese Überprüfung ist möglicherweise nicht möglich, wenn das Storage Cluster in Produktion verwendet wird.
+
+.Schritte
+. Führen Sie einige I/O-Vorgänge auf dem angegebenen Multipath-Gerät aus:
++
+`dd if=/dev/zero of=<multipath_device_name\>`
+
+. Überprüfen Sie, ob I/O auf dem Multipath-Gerät ausgeführt wird und geben Sie die Anzahl der Sekunden zum Aktualisieren der Statistiken an (z. B. alle zwei Sekunden, wie dargestellt):
++
+`iostat 2`
+
++
+Wenn I/O auf dem Multipath-Gerät ausgeführt wird, können Sie die verschiedenen I/O-Zählerausgangsänderungen dynamisch erkennen und darauf hinweisen, dass die I/O-Vorgänge auf dem Multipath-Gerät erfolgreich ausgeführt werden.
+
++
+[listing]
+----
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+            0.00    0.00    0.01    0.00    0.00   99.98
+
+Device:            tps   Blk_read/s   Blk_wrtn/s   Blk_read   Blk_wrtn
+sda               0.18         1.34         2.29     832606    1428026
+dm-0              0.37         1.29         2.29     801530    1427984
+dm-1              0.00         0.00         0.00       2576          0
+dm-2              0.00         0.00         0.00       1770         24
+sdd               0.17         1.18        17.87     734688   11128584
+sde               0.17         1.18        18.01     734560   11219016
+sdf               0.00         0.00         0.00       1344          0
+sdg               0.00         0.00         0.00       1344          0
+dm-3              0.68         4.71        71.96    2932496   44816008
+sdh               0.17         1.18        18.22     734360   11343920
+sdi               0.17         1.18        17.86     734272   11124488
+sdj               0.00         0.00         0.00       1344          0
+sdk               0.00         0.00         0.00       1344          0
+.............
+----
+. Wenn möglich, führen Sie den aus `takeover` Befehl auf dem Storage-Cluster-Node:
++
+`storage failover takeover -ofnode <node_name\>`
+
+. Überprüfen Sie, ob die I/O-Vorgänge noch auf dem Multipath-Gerät ausgeführt werden, indem Sie den erneut ausführen `iostat` Befehl.
+. Führen Sie die aus `giveback` Befehl auf dem Storage-Cluster-Node:
++
+`storage failover giveback -ofnode <node_name\>`
+
+. Prüfen `iostat` Ausgabe zur Überprüfung, ob E/A noch ausgeführt wird.
+
+
+
+
+== Nächste Schritte
+
+Wenn einer der Tests fehlschlägt, überprüfen Sie, ob der iSCSI-Dienst ausgeführt wird, und überprüfen Sie die DM-Multipath-Konfiguration und die iSCSI-Pfade zum Multipath-Gerät erneut.

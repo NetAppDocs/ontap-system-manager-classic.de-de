@@ -1,0 +1,42 @@
+---
+permalink: expansion/task_upgrading_or_downgrading_nodes.html 
+sidebar: sidebar 
+keywords: join, install, node, cluster, run, ontap, upgrade, downgrade 
+summary: Bevor Sie die neu installierten Nodes dem Cluster hinzufügen, müssen Sie sicherstellen, dass die Nodes dieselbe Version von ONTAP ausführen, auf der das Cluster ausgeführt wird. Wenn auf den Nodes eine andere Version ausgeführt wird, müssen Sie die Nodes entsprechend dem Cluster aktualisieren oder herunterstufen. 
+---
+= Aktualisieren oder Downgrade der Nodes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie die neu installierten Nodes dem Cluster hinzufügen, müssen Sie sicherstellen, dass die Nodes dieselbe Version von ONTAP ausführen, auf der das Cluster ausgeführt wird. Wenn auf den Nodes eine andere Version ausgeführt wird, müssen Sie die Nodes entsprechend dem Cluster aktualisieren oder herunterstufen.
+
+.Schritte
+. Bestimmen Sie die auf dem Cluster installierte ONTAP Version: `cluster image show`
+. Aktuelle Version von ONTAP auf den Nodes anzeigen:
++
+.. Zeigen Sie auf dem ersten Knoten die Softwareversion an: `system node image show`
++
+[listing]
+----
+::*> system node image show
+                 Is      Is                                Install
+Node     Image   Default Current Version                   Date
+-------- ------- ------- ------- ------------------------- -------------------
+localhost
+         image1  false   false   9.3                    MM/DD/YYYY TIMESTAMP
+         image1  true    true    9.3                    MM/DD/YYYY TIMESTAMP
+2 entries were displayed.
+----
+.. Wiederholen Sie den vorherigen Schritt für den zweiten Node.
+
+
+. Vergleichen Sie die Versionen von ONTAP auf dem Cluster und den Nodes und führen Sie eine der folgenden Aktionen durch:
++
+** Wenn die Versionen der ONTAP auf dem Cluster und die Nodes identisch sind, ist kein Upgrade oder Downgrade erforderlich.
+** Wenn sich die Versionen von ONTAP auf dem Cluster und die Nodes unterscheiden, können Sie dies tun link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Upgrade von ONTAP"] Auf Knoten mit früheren Versionen oder möglich link:https://docs.netapp.com/us-en/ontap/revert/index.html["ONTAP zurücksetzen"] Für Knoten mit höheren Versionen.
+
+
+

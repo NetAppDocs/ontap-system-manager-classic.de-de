@@ -1,0 +1,49 @@
+---
+permalink: fc-config-windows/task_creating_lun_its_containing_volume.html 
+sidebar: sidebar 
+keywords: create, lun, wizard, igroup, map, enable, host, access, create a lun 
+summary: Sie verwenden den Assistenten „LUN erstellen“, um eine LUN zu erstellen. Der Assistent erstellt auch die Initiatorgruppe und ordnet die LUN der Initiatorgruppe zu, sodass der angegebene Host auf die LUN zugreifen kann. 
+---
+= Erstellen einer LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie verwenden den Assistenten „LUN erstellen“, um eine LUN zu erstellen. Der Assistent erstellt auch die Initiatorgruppe und ordnet die LUN der Initiatorgruppe zu, sodass der angegebene Host auf die LUN zugreifen kann.
+
+.Bevor Sie beginnen
+* Es muss ein Aggregat mit genügend freiem Speicherplatz vorhanden sein, um die LUN zu enthalten.
+* Es muss eine Storage Virtual Machine (SVM) vorhanden sein, bei der das FC-Protokoll aktiviert ist und die entsprechenden logischen Schnittstellen (LIFs) erstellt wurden.
+* Sie müssen die weltweiten Port-Namen (WWPNs) der Host-FC-Ports notiert haben.
+
+
+.Über diese Aufgabe
+Wenn Ihre Organisation eine Namenskonvention hat, sollten Sie Namen für die LUN, das Volume usw. verwenden, die zu Ihrem Übereinkommen passen. Andernfalls sollten Sie die Standardnamen akzeptieren.
+
+.Schritte
+. Navigieren Sie zum Fenster *LUNs*.
+. Klicken Sie Auf *Erstellen.*
+. Wählen Sie eine SVM aus, in der Sie die LUNs erstellen möchten.
++
+Der Assistent LUN erstellen wird angezeigt.
+
+. Wählen Sie auf der Seite *Allgemeine Eigenschaften* den LUN-Typ *Windows 2008 oder höher* für LUNs, die direkt vom Windows-Host verwendet werden, oder wählen Sie *Hyper-V* für LUNs mit virtuellen Festplatten (VHDs) für virtuelle Hyper-V-Maschinen.
++
+Lassen Sie das Kontrollkästchen *Thin Provisioning* nicht ausgewählt.
+
++
+image::../media/lun_creation_thin_provisioned_windows_fc_windows.gif[Abbildung zeigt das Dialogfeld mit dem Kontrollkästchen Thin Provisioning nicht ausgewählt.]
+
+. Wählen Sie auf der Seite *LUN Container* ein vorhandenes FlexVol-Volume aus.
++
+Sie müssen sicherstellen, dass genügend Speicherplatz im Volume vorhanden ist. Falls in den vorhandenen Volumes nicht genügend Speicherplatz verfügbar ist, können Sie ein neues Volume erstellen.
+
+. Klicken Sie auf der Seite *Initiatoren Mapping* auf *Initiatorgruppe hinzufügen*, geben Sie die erforderlichen Informationen auf der Registerkarte *Allgemein* ein, und geben Sie dann auf der Registerkarte *Initiatoren* alle WWPNs der Host-FC-Ports ein, die Sie aufgezeichnet haben.
+. Bestätigen Sie die Details und klicken Sie dann auf *Fertig stellen*, um den Assistenten abzuschließen.
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Systemadministration"]

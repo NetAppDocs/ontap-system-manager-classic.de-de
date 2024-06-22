@@ -1,0 +1,115 @@
+---
+permalink: online-help-96-97/task_configuring_cifs_nfs_protocols_on_svms.html 
+sidebar: sidebar 
+keywords: system, manager, configuring, cifs, nfs, protocols, svm, online, help 
+summary: 'Mit System Manager können CIFS- und NFS-Protokolle auf einer Storage Virtual Machine (SVM) konfiguriert werden, um NAS-Clients Datenzugriff auf Dateiebene zu bieten. Um das CIFS-Protokoll zu aktivieren, müssen Sie Daten-LIFs und den CIFS-Server erstellen. Um das NFS-Protokoll zu aktivieren, können Sie die NIS-Details und die Daten-LIFs angeben.' 
+---
+= Konfigurieren Sie CIFS- und NFS-Protokolle auf SVMs mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) können Sie CIFS- und NFS-Protokolle auf einer Storage Virtual Machine (SVM) konfigurieren, um NAS-Clients Datenzugriff auf Dateiebene zu bieten. Um das CIFS-Protokoll zu aktivieren, müssen Sie Daten-LIFs und den CIFS-Server erstellen. Um das NFS-Protokoll zu aktivieren, können Sie die NIS-Details und die Daten-LIFs angeben.
+
+.Bevor Sie beginnen
+* Die Protokolle, die Sie für die SVM konfigurieren oder aktivieren möchten, müssen lizenziert sein.
++
+Wenn das zu konfigurierende Protokoll auf der SVM nicht aktiviert ist, können Sie das Protokoll für die SVM über das Fenster „Edit Storage Virtual Machine“ aktivieren.
+
+* Zur Konfiguration des CIFS-Protokolls müssen die Anmeldeinformationen für Active Directory, Organisationseinheit und Administratorkonto vorhanden sein.
+
+
+.Über diese Aufgabe
+SnapLock Aggregate werden nicht für die automatische Erstellung von Volumes in Betracht gezogen.
+
+.Schritte
+. Wenn Sie die Protokolle beim Erstellen der SVM nicht konfiguriert haben, klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fensterbereich *Protokolle* auf das Protokoll, das Sie konfigurieren möchten.
+. Wenn Sie im Abschnitt *Data LIF Configuration* die gleiche Daten-LIF-Konfiguration für CIFS und NFS beibehalten möchten, aktivieren Sie das Kontrollkästchen *Beibehaltung der CIFS-Daten-LIF-Konfiguration für den NFS-Client*.
++
+Wenn Sie nicht dieselbe Daten-LIF-Konfiguration sowohl für CIFS als auch NFS beibehalten, müssen Sie die IP-Adresse und die Ports separat für CIFS und NFS angeben.
+
+. Geben Sie die IP-Adresse an, indem Sie eine der folgenden Optionen auswählen:
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+Geben Sie die IP-Adresse mithilfe eines Subnetzes an
+ a| 
+.. Wählen Sie *mit einem Subnetz* aus.
+.. Wählen Sie im Dialogfeld Details hinzufügen das Subnetz aus, dem die IP-Adresse zugewiesen werden muss.
++
+Für Intercluster-LIFs werden nur die Subnetze angezeigt, die dem ausgewählten IPspace zugeordnet sind.
+
+.. Wenn Sie der Schnittstelle eine bestimmte IP-Adresse zuweisen möchten, wählen Sie *eine bestimmte IP-Adresse verwenden* aus, und geben Sie dann die IP-Adresse ein.
++
+Die angegebene IP-Adresse wird dem Subnetz hinzugefügt, wenn die IP-Adresse nicht bereits im Subnetz-Bereich vorhanden ist.
+
+.. Klicken Sie auf *OK*.
+
+
+
+
+ a| 
+Geben Sie die IP-Adresse manuell an, ohne ein Subnetz zu verwenden
+ a| 
+.. Wählen Sie *ohne Subnetz*.
+.. Führen Sie im Dialogfeld Details hinzufügen die folgenden Schritte aus:
++
+... Geben Sie die IP-Adresse und die Netzwerkmaske oder das Präfix an.
+... Optional: Geben Sie das Gateway an.
+... Wenn Sie den Standardwert für das Feld Ziel nicht verwenden möchten, geben Sie einen neuen Zielwert an.
++
+Wenn Sie keinen Zielwert angeben, wird das Feld Ziel basierend auf der Familie der IP-Adresse mit dem Standardwert gefüllt.
+
+
+
++
+Wenn keine Route vorhanden ist, wird automatisch eine neue Route basierend auf dem Gateway und dem Ziel erstellt.
+
+.. Klicken Sie auf *OK*.
+
+
+|===
+. Geben Sie einen Port an, um eine Daten-LIF zu erstellen:
++
+.. Klicken Sie Auf *Durchsuchen*.
+.. Wählen Sie im Dialogfeld * Netzwerkanschluss oder Adapter* einen Port aus.
+.. Klicken Sie auf *OK*.
+
+
+. Konfigurieren Sie den CIFS-Server, indem Sie die folgenden Schritte durchführen:
++
+.. Geben Sie die folgenden Informationen an, um einen CIFS-Server zu erstellen:
++
+*** CIFS-Servername
+*** Active Directory, das mit dem CIFS-Server verknüpft werden soll
+*** Organisationseinheit (OU) innerhalb der Active Directory-Domäne, die mit dem CIFS-Server verknüpft werden soll
++
+Standardmäßig ist dieser Parameter auf CN=Computer eingestellt.
+
+*** Anmeldeinformationen eines Administratorkontos mit ausreichenden Berechtigungen zum Hinzufügen des CIFS-Servers zur Organisationseinheit
+
+
+.. *Optional:* Wählen Sie *Verschlüsselung von Daten, während Sie auf alle Freigaben dieser SVM zugreifen*, um die SMB 3.0-Verschlüsselung für alle Freigaben der SVM zu aktivieren.
+.. Stellen Sie bei der Konfiguration des Protokolls ein Volume für CIFS-Speicher bereit, indem Sie den Freigabennamen, die Größe der Freigabe und die Zugriffsberechtigungen angeben.
+.. Wählen Sie * Daten verschlüsseln, während Sie auf diese Freigabe zugreifen*, um die SMB 3.0-Verschlüsselung für eine bestimmte Freigabe zu aktivieren.
+
+
+. *Optional:* NIS-Dienste konfigurieren:
++
+.. Geben Sie die IP-Adressen der NIS-Server und NIS-Domain-Namen an, um NIS-Dienste auf der SVM zu konfigurieren.
+.. Wählen Sie den entsprechenden Datenbanktyp aus, für den Sie die Servicequelle „`nis`“ hinzufügen möchten.
+.. Stellen Sie ein Volume für NFS-Storage bereit, indem Sie Namen, Größe und Erlaubnis des Exports angeben.
+
+
+. Klicken Sie Auf *Absenden & Fortfahren*.
+
+
+.Ergebnisse
+Der CIFS-Server und die NIS-Domäne werden mit der angegebenen Konfiguration konfiguriert und die Daten-LIFs werden erstellt. Standardmäßig haben Daten-LIFs Managementzugriff. Sie können die Konfigurationsdetails auf der Zusammenfassungsseite anzeigen.

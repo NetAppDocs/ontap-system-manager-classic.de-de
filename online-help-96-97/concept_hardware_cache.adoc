@@ -1,0 +1,90 @@
+---
+permalink: online-help-96-97/concept_hardware_cache.html 
+sidebar: sidebar 
+keywords: hardware, cache, system, manager, manage, online, help, flash, 
+summary: Sie können Hardware Cache-Module mit System Manager verwalten. 
+---
+= Managen Sie Hardware-Cache mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) zum Verwalten von Hardware Cache-Modulen verwenden.
+
+[NOTE]
+====
+Flash Cache wird in System Manager als Hardware Cache bezeichnet.
+
+====
+
+
+== Aktivieren oder Deaktivieren von Flash Cache Modulen
+
+Sie können die externe Cache-Funktion für ein Speichersystem aktivieren oder deaktivieren, auf dem ein Flash Cache-Modul installiert ist, indem Sie System Manager verwenden. Sie können Flash Cache Module aktivieren, die den Workload-Anforderungen Ihres Storage-Systems entsprechen.
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Hardware-Cache*
+. Wenn Sie ein Modul oder ein Modul ändern möchten, bewegen Sie die Schieberegler-Taste, um jedes Modul nach Bedarf zu aktivieren oder zu deaktivieren.
+
+
+
+
+== Funktionsweise von Flash Cache Modulen
+
+Die Verwendung von Flash Cache Modulen verbessert die Performance eines Storage-Systems. Die Auswirkungen der Verwendung von Flash Cache-Modulen werden im Fenster Hardware-Cache angezeigt.
+
+Sie können Flash Cache Module und Festplatten basierend auf den Workload-Anforderungen eines Storage-Systems konfigurieren. Anhand der Bestimmung des von Flash Cache Modulen und Festplatten servierten Lese-Workloads (Anzahl der Lesevorgänge) können Sie die Performance des Storage-Systems analysieren.
+
+Flash Cache Module enthalten keine Daten während des Starts des Storage-Systems oder wenn nach einem Takeover die Kontrolle an das Storage-System zurückgegeben wird. Daher verarbeiten Festplatten alle Datenleseanfragen des Storage-Systems.
+
+Das Flash Cache Modul wird langsam mit Daten gefüllt, wenn Datenleseanfragen zur Verfügung gestellt werden. Da die von Flash Cache Modulen bedienten Leseanforderungen schneller sind als die von den Festplatten, verbessert sich die Performance des Storage-Systems.
+
+Datenleseanfragen, die vom Flash Cache Modul bereitgestellt werden, ersetzen die von den Festplatten servierten Datenleseanfragen. Somit hängt die Performance-Steigerung im Storage-System direkt von den ersetzten Festplattenlesezugriffen ab. Um die Auswirkungen von Flash Cache Modulen auf die Performance des Storage-Systems zu verstehen, müssen Sie das Workload-Diagramm zum Lesen im Fenster Hardware Cache anzeigen, wenn das Flash Cache Modul Daten enthält.
+
+
+
+== Hardware Cache Fenster
+
+Sie können das Fenster Hardware Cache verwenden, um Flash Cache Module für ein Speichersystem zu aktivieren oder zu deaktivieren, auf dem ein Flash Cache-Modul installiert ist. Sie können auch die Statistiken zu Lese-Workloads anzeigen.
+
+
+
+=== Modulinformationen
+
+* *Speichersystemname*
++
+Der Name des Storage-Systems, auf dem ein Flash Cache-Modul installiert ist, wird unter der Grafik angezeigt.
+
+* *Ein-/aus-Schalter*
++
+Bewegen Sie die Umschalttaste, um das Modul zu aktivieren oder zu deaktivieren.
+
+* *Größe*
++
+Die Größe des Moduls in Gigabyte. Bei mehreren Flash Cache-Modulkarten wird die gesamte Cache-Größe aller Karten angezeigt.
+
++
+[NOTE]
+====
+Die angezeigte Größe des Flash Cache Moduls unterscheidet sich aus den folgenden Gründen von der tatsächlichen Größe:
+    - System Manager meldet nur die nutzbare Kapazität, die von ONTAP bereitgestellt wird.
+    - Ein Teil der Gesamtkapazität ist für die Speicherung von Metadaten reserviert.
+
+====
+* *Modellnamen*
++
+Die Modellnamen der Module.
+
+* *Systemleselatenz*
++
+Zeigt die durchschnittliche Leselatenz in Millisekunden an.
+
+
+
+
+
+=== Cache-Workload Für Lesevorgänge
+
+Zeigt die Performance des Storage-Systems an, indem ein Diagramm mit der Geschwindigkeit des Lese-Workloads angezeigt wird, der von den Festplatten und dem Flash Cache Modul bereitgestellt wird.

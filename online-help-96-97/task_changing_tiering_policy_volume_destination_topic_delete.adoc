@@ -1,0 +1,21 @@
+---
+permalink: online-help-96-97/task_changing_tiering_policy_volume_destination_topic_delete.html 
+sidebar: sidebar 
+keywords: change, tiering, policy, system, manager, volume, online, help 
+summary: Mit System Manager können Sie die Standard-Tiering-Richtlinie eines Volumes ändern und festlegen, ob die Daten des Volume zu Cloud-Tier verschoben werden, wenn die Daten inaktiv sind. 
+---
+= Ändern Sie die Tiering-Richtlinie eines Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) können Sie die Standard-Tiering-Richtlinie eines Volumes ändern, um zu steuern, ob die Daten des Volumes in den Cloud-Tier verschoben werden, wenn die Daten inaktiv sind.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das Volume aus, für das Sie die Tiering Policy ändern möchten, und klicken Sie dann auf *Mehr Aktionen* > *Tiering Policy ändern*.
+. Wählen Sie die gewünschte Tiering Policy aus der Liste *Tiering Policy* aus und klicken Sie dann auf *Speichern*.
+

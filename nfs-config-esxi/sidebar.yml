@@ -1,0 +1,44 @@
+---
+section: nfs-config-esxi
+title: NFS-Konfiguration für ESXi mithilfe von VSC
+entries:
+- title: Überblick
+  url: "/nfs-config-esxi/index.html"
+- title: NFS-Client-Konfiguration für ESXi-Workflow
+  url: "/nfs-config-esxi/task_nfs_client_configuration_for_esxi_workflow.html"
+  entries:
+  - title: Vergewissern Sie sich, dass die Konfiguration unterstützt wird
+    url: "/nfs-config-esxi/task_verifying_configuration_is_supported.html"
+  - title: Füllen Sie das Arbeitsblatt für die NFS-Client-Konfiguration aus
+    url: "/nfs-config-esxi/reference_completing_nfs_configuration_worksheet.html"
+  - title: Installieren
+    url: "/nfs-config-esxi/task_installing_virtual_storage_console_for_vmware_vsphere.html"
+  - title: Fügen Sie den Storage-Cluster zur VSC hinzu
+    url: "/nfs-config-esxi/task_adding_storage_cluster_to_virtual_storage_cluster.html"
+  - title: Konfigurieren Sie Ihr Netzwerk für optimale Leistung
+    url: "/nfs-config-esxi/task_configuring_your_network_for_best_performance.html"
+  - title: Konfigurieren Sie den ESXi-Host
+    url: "/nfs-config-esxi/task_configuring_esxi_host.html"
+    entries:
+    - title: Konfiguration der Host Ports und vSwitches
+      url: "/nfs-config-esxi/task_configuring_host_iscsi_ports_vswitches.html"
+    - title: Konfigurieren Sie die Best Practice-Einstellungen für den ESXi Host
+      url: "/nfs-config-esxi/task_configuring_esxi_host_best_practice_settings.html"
+  - title: Erstellen Sie ein Aggregat
+    url: "/nfs-config-esxi/task_creating_aggregate.html"
+  - title: Legen Sie fest, wo das neue Volume bereitgestellt werden soll
+    url: "/nfs-config-esxi/task_deciding_where_to_provision_new_volume.html"
+  - title: Erstellen Sie eine neue NFS-fähige SVM
+    url: "/nfs-config-esxi/task_creating_new_nfs_enabled_svm.html"
+  - title: Fügen Sie einer vorhandenen SVM NFS-Zugriff hinzu
+    url: "/nfs-config-esxi/concept_adding_nfs_access_to_existing_svm.html"
+  - title: Vergewissern Sie sich, dass NFS auf einer vorhandenen SVM aktiviert ist
+    url: "/nfs-config-esxi/task_verifying_that_nfs_is_enabled_on_existing_svm.html"
+  - title: Bereitstellung eines Datenspeichers und Erstellung eines zugehörigen Volume
+    url: "/nfs-config-esxi/task_provisioning_datastore_creating_its_containing_lun_volume.html"
+  - title: Überprüfen Sie den NFS-Zugriff von einem ESXi Host aus
+    url: "/nfs-config-esxi/task_verifying_nfs_access_from_esxi_host.html"
+  - title: Implementieren des NFS-Plug-ins für VMware VAAI
+    url: "/nfs-config-esxi/task_deploying_netapp_nfs_plugin_for_vmware_vaai.html"
+  - title: Mounten Sie Datenspeicher auf Hosts
+    url: "/nfs-config-esxi/task_mounting_datastores_on_hosts.html"

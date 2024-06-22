@@ -1,0 +1,151 @@
+---
+permalink: online-help-96-97/concept_ldap_client_services.html 
+sidebar: sidebar 
+keywords: ldap, client, service, system, manager, add, edit, delete, client, configuration, online, help, cluster, level, storage, virtual, machine, 
+summary: Mit System Manager können Sie LDAP-Client-Konfigurationen hinzufügen, bearbeiten und löschen. 
+---
+= Konfigurieren Sie LDAP-Client-Dienste mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie LDAP-Client-Konfigurationen hinzufügen, bearbeiten und löschen.
+
+
+
+== Fügen Sie eine LDAP-Client-Konfiguration hinzu
+
+Mit System Manager können Sie eine LDAP-Client-Konfiguration auf Cluster-Ebene oder auf SVM-Ebene (Storage Virtual Machine) hinzufügen, wenn Sie LDAP-Services verwenden möchten. Sie müssen zunächst einen LDAP-Client einrichten, um LDAP-Dienste verwenden zu können.
+
+.Über diese Aufgabe
+Auf SVM-Ebene können Sie nur einen LDAP-Client für eine ausgewählte SVM hinzufügen.
+
+.Schritte
+. Fügen Sie eine LDAP-Client-Konfiguration mit einer der folgenden Methoden hinzu:
++
+** Cluster-Ebene: Klicken Sie auf *image:../media/advanced_options.gif[""]* > *LDAP*.
+** SVM-Ebene: Klicken Sie auf *SVM* > *SVM-Einstellungen* > *LDAP-Client*.
+
+
+. Klicken Sie Auf *Hinzufügen*.
+. Geben Sie den Namen des LDAP-Clients ein.
+. Fügen Sie entweder die Active Directory-Domäne oder den LDAP-Server hinzu.
+. Klicken Sie Auf image:../media/advanced_options.gif[""] (Erweiterte Optionen), wählen Sie das *Schema* und klicken Sie auf *Anwenden*.
+. Geben Sie den *Basis-DN* und den *TCP-Port* an.
+. Klicken Sie auf *Bindung* und geben Sie dann die Authentifizierungsdetails an.
+. Klicken Sie auf *Speichern und Schließen*.
+. Vergewissern Sie sich, dass der hinzugefügte LDAP-Client angezeigt wird.
+
+
+
+
+== Löschen Sie eine LDAP-Client-Konfiguration
+
+Mit System Manager können Sie eine LDAP-Client-Konfiguration auf Cluster-Ebene oder auf Storage Virtual Machine (SVM)-Ebene löschen.
+
+.Über diese Aufgabe
+Auf SVM-Ebene können Sie einen LDAP-Client nur für eine ausgewählte SVM löschen.
+
+.Schritte
+. So löschen Sie eine LDAP-Client-Konfiguration:
++
+** Cluster-Ebene: Klicken Sie auf *image:../media/advanced_options.gif[""]* > *LDAP*.
+** SVM-Ebene: Klicken Sie auf *SVM* > *SVM-Einstellungen* > *LDAP-Client*.
+
+
+. Wählen Sie den LDAP-Client aus, den Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+. Vergewissern Sie sich, dass der von Ihnen gelöschte LDAP-Client nicht mehr angezeigt wird.
+
+
+
+
+== Bearbeiten einer LDAP-Client-Konfiguration
+
+Mit System Manager können Sie eine LDAP-Client-Konfiguration auf Cluster-Ebene oder auf Storage Virtual Machine (SVM)-Ebene bearbeiten.
+
+.Über diese Aufgabe
+Auf SVM-Ebene können Sie einen LDAP-Client nur für eine ausgewählte SVM bearbeiten.
+
+.Schritte
+. So bearbeiten Sie eine LDAP-Client-Konfiguration:
++
+** Cluster-Ebene: Klicken Sie auf *image:../media/advanced_options.gif[""]* > *LDAP*.
+** SVM-Ebene: Klicken Sie auf *SVM* > *SVM-Einstellungen* > *LDAP-Client*.
+
+
+. Wählen Sie den LDAP-Client aus, den Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Bearbeiten Sie die LDAP-Client-Konfiguration im Dialogfeld *LDAP-Client bearbeiten* nach Bedarf.
+. Klicken Sie auf *Speichern und Schließen*.
+. Überprüfen Sie, ob die an der LDAP-Client-Konfiguration vorgenommenen Änderungen angezeigt werden.
+
+
+
+
+== LDAP-Client-Fenster
+
+Mit dem LDAP-Client-Fenster können LDAP-Clients auf Ebene der Storage Virtual Machine (SVM) zur Benutzerauthentifizierung, Autorisierung zum Dateizugriff, Benutzersuche und Zuordnung von NFS und CIFS erstellt werden.
+
+
+
+=== Befehlsschaltflächen
+
+* *Hinzufügen*
++
+Öffnet das Dialogfeld LDAP-Client erstellen, in dem Sie LDAP-Clients erstellen und konfigurieren können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld LDAP-Client bearbeiten, in dem Sie LDAP-Client-Konfigurationen bearbeiten können. Sie können auch aktive LDAP-Clients bearbeiten.
+
+* *Löschen*
++
+Öffnet das Dialogfeld LDAP-Client(s) löschen, in dem Sie LDAP-Client-Konfigurationen löschen können. Sie können auch einen aktiven LDAP-Client löschen.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== LDAP-Client-Liste
+
+Zeigt Details zu LDAP-Clients (im Tabellenformat) an.
+
+* *LDAP-Client-Konfiguration*
++
+Zeigt den Namen der von Ihnen angegebenen LDAP-Client-Konfiguration an.
+
+* *Storage Virtual Machine*
++
+Zeigt den Namen der SVM für jede LDAP-Client-Konfiguration an.
+
+* *Schema*
++
+Zeigt das Schema für jeden LDAP-Client an.
+
+* *Mindesteinstufe*
++
+Zeigt die Mindestbindungsebene für jeden LDAP-Client an.
+
+* *Active Directory-Domäne*
++
+Zeigt die Active Directory-Domäne für jede LDAP-Client-Konfiguration an.
+
+* * LDAP-Server*
++
+Zeigt den LDAP-Server für jede LDAP-Client-Konfiguration an.
+
+* *Bevorzugte Active Directory-Server*
++
+Zeigt den bevorzugten Active Directory-Server für jede LDAP-Client-Konfiguration an.
+
+
+
+*Verwandte Informationen*
+
+xref:concept_ldap.adoc[LDAP]

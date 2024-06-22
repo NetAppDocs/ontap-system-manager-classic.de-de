@@ -1,0 +1,40 @@
+---
+permalink: nfs-config/task_opening_export_policy_svm_root_volume_existing_svm.html 
+sidebar: sidebar 
+keywords: add, rule, default, export, policy, client, access, nfsv3, nfs, client, svm, volume, open, open the export policy of the svm root volume, configure nfs access to an existing svm 
+summary: 'Sie müssen der Standard-Exportrichtlinie eine Regel hinzufügen, damit alle Clients über NFSv3 Zugriff haben. Ohne diese Regel wird allen NFS-Clients der Zugriff auf die Storage Virtual Machine (SVM) und ihre Volumes verweigert.' 
+---
+= Exportrichtlinie des SVM-Root-Volumes öffnen (NFS-Zugriff auf eine vorhandene SVM konfigurieren)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen der Standard-Exportrichtlinie eine Regel hinzufügen, damit alle Clients über NFSv3 Zugriff haben. Ohne diese Regel wird allen NFS-Clients der Zugriff auf die Storage Virtual Machine (SVM) und ihre Volumes verweigert.
+
+.Über diese Aufgabe
+Sie sollten alle NFS-Zugriffe als Standard-Exportrichtlinie festlegen und den Zugriff auf einzelne Volumes später einschränken, indem Sie benutzerdefinierte Exportrichtlinien für individuelle Volumes erstellen.
+
+.Schritte
+. Navigieren Sie zum Fenster *SVMs*.
+. Klicken Sie auf die Registerkarte *SVM Settings*.
+. Klicken Sie im Fensterbereich *Richtlinien* auf *Richtlinien exportieren*.
+. Wählen Sie die Exportrichtlinie *default* aus, die auf das SVM-Root-Volume angewendet wird.
+. Klicken Sie im unteren Fensterbereich auf *Hinzufügen*.
+. Erstellen Sie im Dialogfeld *Exportregel erstellen* eine Regel, die den Zugriff auf alle Clients für NFS-Clients öffnet:
++
+.. Geben Sie im Feld *Client Specification* ein `0.0.0.0/0` Damit die Regel für alle Clients gilt.
+.. Behalten Sie den Standardwert für den Regelindex als *1* bei.
+.. Wählen Sie *NFSv3* aus.
+.. Deaktivieren Sie alle Kontrollkästchen außer dem Kontrollkästchen *UNIX* unter *schreibgeschützt*.
+.. Klicken Sie auf *OK*.
+
+
++
+image::../media/export_rule_for_root_volume_nfs.gif[Dieses Bild wird durch den umgebenden Text erläutert.]
+
+
+
+.Ergebnisse
+NFSv3-Clients können jetzt auf alle Volumes zugreifen, die auf der SVM erstellt wurden.

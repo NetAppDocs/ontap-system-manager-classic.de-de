@@ -1,0 +1,155 @@
+---
+permalink: online-help-96-97/concept_snmp.html 
+sidebar: sidebar 
+keywords: system, manager, configure, snmp, svm, cluster, online, help, test, trap, host, configuration, window, command, protocol, 
+summary: Mit System Manager kann SNMP konfiguriert werden, um SVMs in Ihrem Cluster zu überwachen. 
+---
+= Konfigurieren Sie SNMP mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (erhältlich in ONTAP 9.7 und früher) können Sie SNMP zum Überwachen von SVMs in Ihrem Cluster konfigurieren.
+
+
+
+== Aktivieren oder deaktivieren Sie SNMP
+
+Sie können SNMP auf Ihren Clustern mit System Manager aktivieren oder deaktivieren. SNMP ermöglicht das Monitoring der Storage Virtual Machines (SVMs) in einem Cluster zur Vermeidung von Störungen, bevor diese auftreten können und zur Vermeidung von Störfällen führen.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fenster *Setup* auf *SNMP*.
+. Klicken Sie im Fenster *SNMP* entweder auf *enable* oder *Disable*.
+
+
+
+
+== Bearbeiten Sie SNMP-Informationen
+
+Mit dem Dialogfeld SNMP-Einstellungen bearbeiten in System Manager können Sie Informationen über den Speicherort des Storage-Systems und die Kontaktmitarbeiter aktualisieren und die SNMP-Communitys Ihres Systems angeben.
+
+.Über diese Aufgabe
+System Manager verwendet die SNMP-Protokolle SNMPv1 und SNMPv2c sowie eine SNMP-Community, um Storage-Systeme zu erkennen.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fenster *Setup* auf *SNMP*.
+. Klicken Sie Auf *Bearbeiten*.
+. Geben Sie auf der Registerkarte *Allgemein* die Kontaktinformationen des Ansprechpartners und Standortinformationen für das Speichersystem und die SNMP-Communitys an.
++
+Der Community-Name kann aus 32 Zeichen bestehen und darf die folgenden Sonderzeichen nicht enthalten: , / : ".
+
+. Gehen Sie auf der Registerkarte **SNMPv3**wie folgt vor:
++
+.. Klicken Sie auf *Hinzufügen*, um einen SNMPv3-Benutzer hinzuzufügen.
+.. Geben Sie den Benutzernamen an und ändern Sie ggf. die Engine-ID.
+.. Wählen Sie das *Authentifizierungsprotokoll* aus, und geben Sie Ihre Anmeldedaten ein.
+.. Wählen Sie das *Privacy Protocol* aus und geben Sie Ihre Anmeldedaten ein.
+.. Klicken Sie auf *OK*, um die Änderungen zu speichern.
+
+
+. Klicken Sie auf *OK*.
+. Überprüfen Sie die Änderungen, die Sie an den SNMP-Einstellungen vorgenommen haben, im Fenster *SNMP*.
+
+
+
+
+== Aktivieren oder Deaktivieren von SNMP-Traps
+
+SNMP-Traps ermöglichen es Ihnen, den Zustand und den Zustand der verschiedenen Komponenten Ihres Speichersystems zu überwachen. Über das Dialogfeld SNMP-Einstellungen bearbeiten in System Manager können Sie SNMP-Traps auf Ihrem Speichersystem aktivieren oder deaktivieren.
+
+.Über diese Aufgabe
+Obwohl SNMP standardmäßig aktiviert ist, sind SNMP-Traps standardmäßig deaktiviert.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fenster *Setup* auf *SNMP*.
+. Klicken Sie im Fenster *SNMP* auf *Bearbeiten*.
+. Wählen Sie im Dialogfeld *SNMP-Einstellungen bearbeiten* die Registerkarte *Trap Hosts* aus und aktivieren bzw. deaktivieren Sie das Kontrollkästchen *Traps aktivieren*, um SNMP-Traps zu aktivieren bzw. zu deaktivieren.
+. Wenn Sie SNMP-Traps aktivieren, fügen Sie den Hostnamen oder die IP-Adresse der Hosts hinzu, an die die Traps gesendet werden.
+. Klicken Sie auf *OK*.
+
+
+
+
+== Testen Sie die Trap-Host-Konfiguration
+
+Mit System Manager können Sie testen, ob Sie die Trap-Host-Einstellungen richtig konfiguriert haben.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fenster *Setup* auf *SNMP*.
+. Klicken Sie im Fenster *SNMP* auf *Test Trap Host*.
+. Klicken Sie auf *OK*.
+
+
+
+
+== SNMP-Fenster
+
+Im SNMP-Fenster können Sie die aktuellen SNMP-Einstellungen für Ihr System anzeigen. Sie können auch die SNMP-Einstellungen Ihres Systems ändern, SNMP-Protokolle aktivieren und Trap-Hosts hinzufügen.
+
+
+
+=== Befehlsschaltflächen
+
+* *Aktivieren/Deaktivieren*
++
+Aktiviert oder deaktiviert SNMP.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld SNMP-Einstellungen bearbeiten, in dem Sie SNMP-Communitys für Ihr Speichersystem angeben und Traps aktivieren oder deaktivieren können.
+
+* *Trap Host Testen*
++
+Sendet einen Test-Trap an alle konfigurierten Hosts, um zu prüfen, ob der Test-Trap alle Hosts erreicht und ob die Konfigurationen für SNMP richtig eingestellt sind.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Details
+
+Im Detailbereich werden die folgenden Informationen zum SNMP-Server und Host-Traps für Ihr Speichersystem angezeigt:
+
+* *SNMP*
++
+Zeigt an, ob SNMP aktiviert ist oder nicht.
+
+* *Traps*
++
+Zeigt an, ob SNMP-Traps aktiviert sind oder nicht.
+
+* *Lage*
++
+Zeigt die Adresse des SNMP-Servers an.
+
+* *Kontakt*
++
+Zeigt die Kontaktinformationen für den SNMP-Server an.
+
+* *Trap-Host-IP-Adresse*
++
+Zeigt die IP-Adressen des Trap-Hosts an.
+
+* *Community-Namen*
++
+Zeigt den Community-Namen des SNMP-Servers an.
+
+* *Sicherheitsnamen*
++
+Zeigt den Sicherheitsstil für den SNMP-Server an.
+
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/networking/index.html["Netzwerkmanagement"]

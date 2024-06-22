@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/task_editing_nvme_namespace.html 
+sidebar: sidebar 
+keywords: edit, nvme, namespace, online, help, system, manager 
+summary: Sie können mit System Manager den Namespace bearbeiten, indem Sie das Subsystem ändern, dem der Namespace zugeordnet ist. 
+---
+= Bearbeiten Sie einen NVMe Namespace mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um den Namespace zu bearbeiten, indem Sie das Subsystem ändern, dem der Namespace zugeordnet ist.
+
+.Über diese Aufgabe
+Sie können in diesem Fenster nur die NVMe-Subsystem-Einstellungen ändern. Sie können die anderen Namespace-Details nicht bearbeiten.
+
+.Schritte
+. Klicken Sie auf *NVMe* > *NVMe Namespaces*.
+. Wählen Sie im Fenster *NVMe Namespaces* den Namespace aus, den Sie bearbeiten möchten.
+. Wählen Sie eine Subsystemoption aus:
++
+** Keine: Mit dieser Option wird nur die Zuordnung der vorhandenen Subsystemzuordnung für diesen Namespace aufgehoben. Diese Option ist vorausgewählt, wenn für den ausgewählten Namespace keine Subsystemzuordnung vorhanden ist.
+** Verwenden eines vorhandenen Subsystems: Diese Option ist vorausgewählt, wenn die Zuordnung von Subsystem-zu-Namespace vorhanden ist. Wenn Sie ein anderes Subsystem auswählen, wird das neue Subsystem durch Aufheben der Zuordnung des zuvor zugeordneten Subsystems zugeordnet.
+
+
+

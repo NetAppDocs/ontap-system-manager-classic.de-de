@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/task_viewing_disk_information.html 
+sidebar: sidebar 
+keywords: view, disk, information, system, manager, name, online, help 
+summary: Mithilfe des Fensters Festplatten in System Manager können Sie Namen, Größe und Container-Details der Festplatten sowie grafische Informationen zu Kapazitätsfestplatten und Cache-Festplatten anzeigen. 
+---
+= Zeigen Sie Festplatteninformationen mit System Manager - ONTAP 9.7 und früher an
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können das Fenster „Festplatten“ in ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Name, Größe und Container-Details der Festplatten sowie grafische Informationen zu Kapazitätsfestplatten und Cache-Festplatten anzuzeigen.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Disks*.
+. Wählen Sie das Laufwerk aus, zu dem Informationen angezeigt werden sollen, aus der angezeigten Festplattenliste aus.
+. Überprüfen Sie die Festplattendetails.
+
+
+*Verwandte Informationen*
+
+xref:reference_disks_window.adoc[Festplattenfenster]

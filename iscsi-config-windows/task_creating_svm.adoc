@@ -1,0 +1,90 @@
+---
+permalink: iscsi-config-windows/task_creating_svm.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, svm, iscsi, target, lun, create, logical, interface, lif, volume, administration, function, user, cluster, create a new svm 
+summary: 'Die Storage Virtual Machine (SVM) stellt das iSCSI-Ziel bereit, über das ein Host auf LUNs zugreift. Wenn Sie die SVM erstellen, erstellen Sie auch logische Schnittstellen (LIFs) und die LUN und das zugehörige Volume. Sie können eine SVM erstellen, um die Daten- und Administrationsfunktionen eines Benutzers von den anderen Benutzern in einem Cluster zu trennen.' 
+---
+= Erstellen einer neuen SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Storage Virtual Machine (SVM) stellt das iSCSI-Ziel bereit, über das ein Host auf LUNs zugreift. Wenn Sie die SVM erstellen, erstellen Sie auch logische Schnittstellen (LIFs) und die LUN und das zugehörige Volume. Sie können eine SVM erstellen, um die Daten- und Administrationsfunktionen eines Benutzers von den anderen Benutzern in einem Cluster zu trennen.
+
+.Bevor Sie beginnen
+* Sie müssen über genügend Netzwerkadressen verfügen, um für jeden Node zwei LIFs zu erstellen.
+
+
+.Über diese Aufgabe
+LUNs sind einem Teil der Initiatoren in der Initiatorgruppe zugeordnet, um die Anzahl der Pfade vom Host auf die LUN zu begrenzen.
+
+* Standardmäßig verwendet ONTAP die selektive LUN-Zuordnung (Selective LUN Map, SLM), um den Zugriff auf die LUN nur über Pfade auf dem Node zu ermöglichen, der die LUN und deren HA-Partner besitzt.
+* Für LUN-Mobilität müssen Sie weiterhin alle iSCSI LIFs auf jedem Node konfigurieren, falls die LUN auf einen anderen Node im Cluster verschoben wird.
+* Beim Verschieben eines Volumes oder einer LUN müssen Sie die Liste der SLM-Reporting-Nodes vor dem Verschieben ändern.
+
+
+.Schritte
+. Navigieren Sie zum Fenster *SVMs*.
+. Klicken Sie Auf *Erstellen*.
+. Erstellen Sie im Fenster *Storage Virtual Machine (SVM) Setup* die SVM:
++
+image::../media/svm_setup_details_page_ntfs_selected_iscsi_windows.gif[Abbildung zeigt das Erstellen einer SVM mit NTFS-Sicherheitsstil]
+
++
+.. Geben Sie einen eindeutigen Namen für die SVM an.
++
+Der Name muss entweder ein vollständig qualifizierter Domänenname (FQDN) sein oder einer anderen Konvention folgen, die eindeutige Namen in einem Cluster sicherstellt.
+
+.. Wählen Sie den IPspace aus, zu dem die SVM gehört.
++
+Wenn der Cluster nicht mehrere IPspaces verwendet, wird der IPspace „`Default`“ verwendet.
+
+.. Behalten Sie die standardmäßige Auswahl des Volume-Typs bei.
++
+Nur FlexVol Volumes werden mit SAN-Protokollen unterstützt.
+
+.. Wählen Sie alle Protokolle aus, für die Sie Lizenzen haben, und die Sie möglicherweise auf der SVM verwenden können, auch wenn Sie nicht alle Protokolle sofort konfigurieren möchten.
++
+Wenn Sie sowohl NFS als auch CIFS beim Erstellen der SVM auswählen, können die beiden Protokolle dieselben LIFs teilen. Das Hinzufügen dieser Protokolle zu einem späteren Zeitpunkt erlaubt es ihnen nicht, LIFs gemeinsam zu nutzen.
+
++
+Wenn CIFS eines der von Ihnen ausgewählten Protokolle ist, wird der Sicherheitsstil auf NTFS festgelegt. Andernfalls ist der Sicherheitsstil auf UNIX festgelegt.
+
+.. Behalten Sie die Standardeinstellung C.UTF-8 bei.
+.. Wählen Sie das gewünschte Root-Aggregat aus, das das SVM Root-Volume enthalten soll.
++
+Das Aggregat für das Daten-Volume wird später separat ausgewählt.
+
+.. Klicken Sie Auf *Absenden & Fortfahren*.
+
+
++
+Die SVM wird erstellt, die Protokolle sind jedoch noch nicht konfiguriert.
+
+. Wenn die Seite *CIFS/NFS-Protokoll konfigurieren* angezeigt wird, weil Sie CIFS oder NFS aktiviert haben, klicken Sie auf *Skip* und konfigurieren Sie dann CIFS oder NFS später.
+. Konfigurieren Sie den iSCSI-Service und erstellen Sie LIFs, sowie die LUN und ihr enthaltenes Volume von der Seite *iSCSI-Protokoll konfigurieren*:
++
+.. *Optional:* Geben Sie einen Alias-Namen für das Ziel ein.
+.. Weisen Sie den LIFs eine IP-Adresse mit einem Subnetz oder ohne Subnetz zu.
+.. Eingabe `*2*` Im Feld *LIFs pro Node*.
++
+Für jeden Node sind zwei LIFs erforderlich, um Verfügbarkeit und Datenmobilität zu gewährleisten.
+
+.. Geben Sie im Bereich *LUN bereitstellen für iSCSI-Speicher* die gewünschte LUN-Größe, den Host-Typ und den iSCSI-Initiatornamen des Hosts ein.
+.. Klicken Sie Auf *Absenden & Fortfahren*.
+
+
++
+image::../media/svm_wizard_iscsi_details_windows.gif[Abbildung zeigt Schritt 3 des SVM Setup-Assistenten: Ausfüllen der iSCSI-Details.]
+
+. Wenn die Seite *FC/FCoE-Protokoll konfigurieren* angezeigt wird, weil Sie FC aktiviert haben, klicken Sie auf *Überspringen* und konfigurieren Sie später FC.
+. Wenn die Option *SVM Administration* angezeigt wird, konfigurieren oder verschieben Sie die Konfiguration eines separaten Administrators für diese SVM:
++
+** Klicken Sie auf *Überspringen* und konfigurieren Sie einen Administrator später, falls gewünscht.
+** Geben Sie die gewünschten Informationen ein und klicken Sie dann auf *Absenden & Fortfahren*.
+
+
+. Überprüfen Sie die Seite *Zusammenfassung*, notieren Sie die LIF-Informationen und klicken Sie dann auf *OK*.
+

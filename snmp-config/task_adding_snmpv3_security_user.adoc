@@ -1,0 +1,52 @@
+---
+permalink: snmp-config/task_adding_snmpv3_security_user.html 
+sidebar: sidebar 
+keywords: snmpv3, offer, advance, security, passphrase, encryption, system, manager, cluster, level, snmp, utilities, utility, traphost, authentication, privacy, setting, add an snmpv3 security user 
+summary: Sie können die klassische Benutzeroberfläche von ONTAP System Manager mit ONTAP 9.7 oder einer früheren Version verwenden, um einen SNMPv3-Benutzer auf Cluster-Ebene hinzuzufügen. 
+---
+= Fügen Sie einen SNMPv3-Sicherheitsbenutzer hinzu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Schnittstelle ONTAP System Manager _classic_ mit ONTAP 9.7 oder früher verwenden, um einen SNMPv3-Benutzer auf Cluster-Ebene hinzuzufügen.
+
+Der SNMPv3-Benutzer kann SNMP-Dienstprogramme über den traphost (SNMP Manager) mit den von Ihnen angegebenen Authentifizierungs- und Datenschutzeinstellungen ausführen. SNMPv3 bietet erweiterte Sicherheit durch Nutzung von Passphrases und Verschlüsselung.
+
+.Über diese Aufgabe
+Wenn Sie einen SNMPv3-Benutzer auf Cluster-Ebene hinzufügen, kann dieser Benutzer über alle LIFs, auf die die Firewall-Richtlinie „`mgmt`“ angewendet wurde, auf das Cluster zugreifen.
+
+.Schritte
+. Klicken Sie im SNMP-Fenster auf *Bearbeiten*, um das Dialogfeld *SNMP-Einstellungen bearbeiten* zu öffnen.
+. Klicken Sie auf der Registerkarte *SNMPv3* auf *Hinzufügen*, um das Dialogfeld *SNMPv3-Benutzer hinzufügen* zu öffnen.
+. Geben Sie die folgenden Werte ein:
++
+.. Geben Sie einen SNMPv3-Benutzernamen ein.
++
+Ein Security-Benutzername darf nicht mehr als 31 Zeichen enthalten und darf die folgenden Sonderzeichen nicht enthalten:
+
++
+`, / : " ' |`
+
+.. Wählen Sie für die Engine-ID den Standardwert aus `Local Engine ID`.
++
+Die Engine-ID wird verwendet, um Authentifizierungs- und Verschlüsselungsschlüssel für SNMPv3-Nachrichten zu generieren.
+
+.. Wählen Sie ein Authentifizierungsprotokoll aus, und geben Sie ein Authentifizierungskennwort ein.
++
+Ein Passwort muss mindestens acht Zeichen lang sein.
+
+.. Optional: Wählen Sie ein Datenschutzprotokoll aus und geben Sie ein Passwort dafür ein.
+
+
++
+image::../media/snmp_cfg_v3user_step3.gif[Dieses Bild zeigt das Dialogfeld Add SNMP3 User im Dialogfeld Edit SNMP Settings,in which the example user name "snmpv3user" is entered,the Engine ID is "LocalEngineID"]
+
+. Klicken Sie im Dialogfeld *SNMPv3-Benutzer hinzufügen* auf *OK*.
++
+Sie können mehrere Sicherheits-Benutzernamen hinzufügen, indem Sie nach jedem Hinzufügen auf *OK* klicken. Wenn Sie zum Beispiel SNMP verwenden, um verschiedene Anwendungen zu überwachen, die unterschiedliche Berechtigungen erfordern, müssen Sie möglicherweise einen SNMPv3-Benutzer für jede Überwachungs- oder Verwaltungsfunktion hinzufügen.
+
+. Klicken Sie nach dem Hinzufügen von Benutzernamen im Dialogfeld *SNMP-Einstellungen bearbeiten* auf *OK*.
+

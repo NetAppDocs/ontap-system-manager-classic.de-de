@@ -1,0 +1,58 @@
+---
+permalink: volume-disaster-recovery/task_resynchronizing_source_volume.html 
+sidebar: sidebar 
+keywords: source, volume, online, resynchronize, data, destination, replicate, resynchronize the source volume 
+summary: Wenn das Quell-Volume online ist, müssen Sie die Daten zwischen dem Ziel-Volume und dem Quell-Volume neu synchronisieren, um die neuesten Daten vom Ziel-Volume zu replizieren. 
+---
+= Synchronisieren Sie das Quell-Volume neu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn das Quell-Volume online ist, müssen Sie die Daten zwischen dem Ziel-Volume und dem Quell-Volume neu synchronisieren, um die neuesten Daten vom Ziel-Volume zu replizieren.
+
+.Bevor Sie beginnen
+Das Quell-Volume muss online sein.
+
+.Über diese Aufgabe
+Sie müssen die Aufgabe aus dem Cluster *Ziel* ausführen.
+
+Die folgende Abbildung zeigt, dass die Daten vom aktiven Ziel-Volume auf das schreibgeschützte Quell-Volume repliziert werden:
+
+image::../media/reverse_resync_2555.gif[Die folgende Abbildung zeigt, dass die Daten vom aktiven Ziel-Volume auf das schreibgeschützte Quell-Volume repliziert werden]
+
+.Schritte
+. Führen Sie je nach der verwendeten System Manager-Version einen der folgenden Schritte aus:
++
+** ONTAP 9.4 oder früher: Klicken Sie *Schutz* > *Beziehungen*.
+** Ab ONTAP 9.5: Klicken Sie *Schutz* > *Volume Relationships*.
+
+
+. Wählen Sie die SnapMirror Beziehung zwischen den Quell- und Ziel-Volumes aus.
+. Notieren Sie sich den Übertragungszeitplan und die für die SnapMirror Beziehung konfigurierte Richtlinie.
+. Klicken Sie Auf *Operationen* > *Resync Rückwärts*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Resync rückwärts*.
++
+image::../media/reverse_resync_4eea.gif[Resync-Bildschirm rückgängig machen]
+
++
+Ab ONTAP 9.3 ist die SnapMirror Richtlinie der Beziehung auf festgelegt `MirrorAllSnapshots` Der Mirror-Zeitplan wird auf festgelegt `None`.
+
++
+Wenn Sie ONTAP 9.2 oder eine frühere Version verwenden, wird die SnapMirror-Richtlinie für die Beziehung auf festgelegt `DPDefault` Der Mirror-Zeitplan wird auf festgelegt `None`.
+
+. Geben Sie im Quell-Cluster eine SnapMirror-Richtlinie an, die mit der Sicherheitskonfiguration der ursprünglichen SnapMirror Beziehung übereinstimmt.
++
+.. Führen Sie je nach der verwendeten System Manager-Version einen der folgenden Schritte aus:
++
+*** ONTAP 9.4 oder früher: Klicken Sie *Schutz* > *Beziehungen*.
+*** Ab ONTAP 9.5: Klicken Sie *Schutz* > *Volume Relationships*.
+
+
+.. Wählen Sie die SnapMirror Beziehung zwischen dem resynchronisierten Quell-Volume und dem Ziel-Volume aus, und klicken Sie dann auf *Bearbeiten*.
+.. Wählen Sie die SnapMirror-Richtlinie und den Zeitplan aus, und klicken Sie dann auf *OK*.
+
+
+

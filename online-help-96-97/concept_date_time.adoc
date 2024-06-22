@@ -1,0 +1,48 @@
+---
+permalink: online-help-96-97/concept_date_time.html 
+sidebar: sidebar 
+keywords: date, time, settings, cluster, system, manager, online, help 
+summary: Mit System Manager können Sie die Datum- und Zeiteinstellungen eines Clusters verwalten. 
+---
+= Verwalten Sie die Datum- und Zeiteinstellungen eines Clusters mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) können Sie die Datums- und Zeiteinstellungen eines Clusters verwalten.
+
+
+
+== Datum und Uhrzeit
+
+Im Fenster Datum und Uhrzeit können Sie die aktuellen Datums- und Zeiteinstellungen für Ihr Speichersystem anzeigen und die Einstellungen bei Bedarf ändern.
+
+
+
+=== Befehlsschaltflächen
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Datum und Uhrzeit bearbeiten, in dem Sie die Zeitserver bearbeiten können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Detailbereich
+
+Im Detailbereich werden Informationen zu Datum, Uhrzeit, Zeitzone, NTP-Service und Zeitservern für Ihr Speichersystem angezeigt.
+
+*Verwandte Informationen*
+
+xref:task_setting_time_zone_for_cluster.adoc[Einstellen der Zeitzone für ein Cluster]
+
+xref:task_setting_up_network_when_ip_address_range_is_disabled.adoc[Einrichten eines Netzwerks, wenn ein IP-Adressbereich deaktiviert ist]
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Systemadministration"]

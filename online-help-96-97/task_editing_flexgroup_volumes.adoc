@@ -1,0 +1,56 @@
+---
+permalink: online-help-96-97/task_editing_flexgroup_volumes.html 
+sidebar: sidebar 
+keywords: edit, flexgroup, volume, system, volume, online, help 
+summary: Ab System Manager 9.6 können Sie die Eigenschaften eines vorhandenen FlexGroup-Volumes bearbeiten. 
+---
+= FlexGroup Volumes werden bearbeitet
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab System Manager 9.6 können Sie die Eigenschaften eines vorhandenen FlexGroup-Volumes bearbeiten.
+
+.Bevor Sie beginnen
+Das FlexGroup Volume muss online sein.
+
+.Über diese Aufgabe
+FabricPool FlexGroup Volumes können unter folgenden Bedingungen erweitert werden:
+
+* Ein FabricPool FlexGroup Volume kann nur mit FabricPool Aggregaten erweitert werden.
+* Ein FlexGroup-Volume ohne FabricPool kann nur mit Aggregaten erweitert werden.
+* Wenn das FlexGroup Volume eine Kombination aus FabricPool- und nicht-FabricPool-Volumes enthält, kann das FlexGroup Volume mit FabricPool- und anderen Aggregaten erweitert werden.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das FlexGroup-Volume aus, das Sie ändern möchten, und klicken Sie auf *Bearbeiten*.
+. *Optional:* Wenn Sie das FlexGroup-Volume umbenennen möchten, geben Sie den neuen Namen in das Feld *Name* ein.
++
+Ab System Manager 9.6 können Sie auch FlexGroup DP Volumes umbenennen.
+
+. *Optional:* Aktivieren Sie die Option *verschlüsselt*, um die Verschlüsselung für das Volume zu aktivieren.
++
+Diese Option ist nur verfügbar, wenn Sie die Volume Encryption-Lizenz aktiviert haben und wenn die entsprechende Plattform Verschlüsselung unterstützt.
+
+. Geben Sie den Prozentsatz der Snapshot Kopie-Reserve an.
+. *Optional:* Klicken image:../media/advanced_options.gif[""] Zum Ändern der FlexGroup-Volume-Einstellungen. Siehe link:task_specifying_advanced_options_for_flexgroup_volume.html["Festlegen erweiterter Optionen für ein FlexGroup-Volume"].
+. Geben Sie die Größe an, auf die die Größe des FlexGroup Volume geändert werden soll.
++
+Standardmäßig werden vorhandene Aggregate verwendet, um die Größe des FlexGroup Volume zu ändern. Neben den Größenfeldern wird die für das Volume zulässige Mindestgröße angezeigt.
+
++
+[NOTE]
+====
+Wenn Sie das FlexGroup Volume durch Hinzufügen neuer Ressourcen erweitern möchten, klicken Sie auf image:../media/advanced_options.gif[""] (Erweiterte Optionen). Siehe link:task_specifying_advanced_options_for_flexgroup_volume.html["Festlegen erweiterter Optionen für ein FlexGroup-Volume"].
+
+====
+. Klicken Sie auf *Speichern*, um die Änderungen zu speichern.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

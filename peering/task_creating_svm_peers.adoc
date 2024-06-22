@@ -1,0 +1,27 @@
+---
+permalink: peering/task_creating_svm_peers.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, svm, peer, enable, establish, relationship, data, protection, create, create svm peer relationship 
+summary: 'Beginnend bei ONTAP 9.3 bis ONTAP 9.7 können Sie die klassische Benutzeroberfläche des ONTAP System Manager für SVM-Peer-Beziehungen verwenden. Das Storage Virtual Machine (SVM)-Peering ermöglicht Ihnen die Einrichtung einer Peer-Beziehung zwischen zwei SVMs zur Datensicherung.' 
+---
+= Erstellung von SVM-Peer-Beziehungen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Beginnend mit ONTAP 9.3 bis ONTAP 9.7 können Sie die ONTAP System Manager _classic_ Schnittstelle zum Erstellen von SVM-Peer-Beziehungen verwenden. Das Storage Virtual Machine (SVM)-Peering ermöglicht Ihnen die Einrichtung einer Peer-Beziehung zwischen zwei SVMs zur Datensicherung.
+
+.Schritte
+. Wählen Sie die Initiator-SVM aus.
+. Wählen Sie die Ziel-SVM aus der Liste zulässiger SVMs aus.
+. Klicken Sie auf *SVM-Peering initiieren*.
+. Klicken Sie Auf *Weiter*.
+
+
+
+
+== Nächste Schritte
+
+Im Fenster „Zusammenfassung“ können die Clusterschnittstellen, die Cluster-Peer-Beziehung und die SVM-Peer-Beziehung angezeigt werden.

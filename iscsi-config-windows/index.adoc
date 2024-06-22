@@ -1,0 +1,48 @@
+---
+permalink: iscsi-config-windows/index.html 
+sidebar: sidebar 
+keywords: iscsi, service, storage, virtual, machine, svm, provision, lun, isvsi, initiator, windows, host, computer 
+summary: 'Über die klassische Schnittstelle des ONTAP System Manager (ONTAP 9.7 und früher) können Sie den iSCSI-Service rasch auf einer Storage Virtual Machine (SVM) einrichten, eine LUN bereitstellen und die LUN über einen iSCSI-Initiator auf einem Windows Host-Computer zur Verfügung stellen.' 
+---
+= ISCSI-Konfiguration für Windows – Übersicht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Über die klassische Schnittstelle des ONTAP System Manager (ONTAP 9.7 und früher) können Sie den iSCSI-Service rasch auf einer Storage Virtual Machine (SVM) einrichten, eine LUN bereitstellen und die LUN über einen iSCSI-Initiator auf einem Windows Host-Computer zur Verfügung stellen.
+
+Diese Verfahren basieren auf folgenden Annahmen:
+
+* Sie verwenden den Microsoft iSCSI Software Initiator unter Windows Server 2008 oder Windows Server 2012.
+* In Ihrem Netzwerk werden IPv4-Adressen verwendet.
+* Sie möchten logische Schnittstellen mit einer der folgenden Methoden Adressen zuweisen:
++
+** Automatisch aus einem von Ihnen definierten Subnetz
+** Manuell unter Verwendung einer aus einem vorhandenen Subnetz ausgewählten Adresse
+** Manuell unter Verwendung einer Adresse, die einem vorhandenen Subnetz hinzugefügt wird
+
+
+* ISCSI-SAN-Start wird nicht konfiguriert.
+
+
+Weitere Informationen zum Konfigurieren Ihres spezifischen Hosts mit ONTAP finden Sie unter https://docs.netapp.com/us-en/ontap-sanhost/index.html["ONTAP SAN-Host-Konfiguration"].
+
+Weitere Informationen zur SAN-Administration finden Sie im https://docs.netapp.com/us-en/ontap/san-admin/index.html["ONTAP 9 – Übersicht über die SAN-Administration"]
+
+
+
+== Weitere Möglichkeiten dies in ONTAP zu tun
+
+|===
+
+
+| Zum Abschließen dieser Aufgabe verwenden Sie... | Siehe... 
+
+
+| Der neu gestaltete System Manager (verfügbar ab 9.7) | https://docs.netapp.com/us-en/ontap/task_san_provision_windows.html["Bereitstellen von SAN-Storage für Windows Server"] 
+
+
+| Die ONTAP Befehlszeilenschnittstelle (CLI) | https://docs.netapp.com/us-en/ontap/san-admin/lun-setup-workflow-concept.html["LUN-Setup-Workflow mit der CLI"] 
+|===

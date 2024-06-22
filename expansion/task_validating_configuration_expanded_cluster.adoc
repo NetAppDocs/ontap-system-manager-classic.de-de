@@ -1,0 +1,73 @@
+---
+permalink: expansion/task_validating_configuration_expanded_cluster.html 
+sidebar: sidebar 
+keywords: expand, cluster, validate, configuration, config, advisor, command, health, replication, ring, validate the configuration of the expanded cluster 
+summary: Nach dem erweitern des Clusters müssen Sie die Konfiguration validieren, indem Sie Config Advisor ausführen und einige Befehle verwenden, die den Cluster-Zustand und die Cluster-Replizierungsringe überprüfen. 
+---
+= Überprüfen Sie die Konfiguration des erweiterten Clusters
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach dem erweitern des Clusters müssen Sie die Konfiguration validieren, indem Sie Config Advisor ausführen und einige Befehle verwenden, die den Cluster-Zustand und die Cluster-Replizierungsringe überprüfen.
+
+.Schritte
+. Überprüfen Sie den Zustand der Konfiguration, indem Sie Config Advisor ausführen:
++
+.. Starten Sie Config Advisor, und klicken Sie dann auf *Daten sammeln*.
++
+Config Advisor zeigt alle gefundenen Probleme an.
+
+.. Wenn Probleme gefunden werden, beheben Sie sie, und führen Sie das Tool erneut aus.
+
+
+. Stellen Sie sicher, dass sich alle Nodes im Cluster mithilfe von in einem ordnungsgemäßen Zustand befinden `cluster show` Befehl.
++
+[listing]
+----
+cluster-1::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+cluster1-1            true    true
+cluster1-2            true    true
+cluster1-3            true    true
+cluster1-4            true    true
+4 entries were displayed.
+----
+. Stellen Sie sicher, dass die Cluster-Replikationsringe die gleiche Epoche, den gleichen Datenbankzeitraum und die gleichen Datenbanktransaktionsnummern auf allen Knoten im Cluster haben:
++
+Am einfachsten können Sie die Transaktionsnummern vergleichen, wenn Sie sie jeweils für einen Einheitennamen anzeigen.
+
++
+.. Stellen Sie die Berechtigungsebene mithilfe der auf Erweiterungssatz ein `set -privilege advanced` Befehl.
+.. Zeigen Sie Cluster-Ringinformationen über den Namen der ersten Einheit mithilfe von an `cluster ring show` Befehl mit dem `-unitname mgmt` Parameter und stellen Sie sicher, dass alle Knoten die gleiche Nummer in den Spalten Epoch, DB Epoch und DB Trnxs haben.
++
+[listing]
+----
+cluster-1::*> cluster ring show -unitname mgmt
+Node      UnitName Epoch    DB Epoch DB Trnxs Master    Online
+--------- -------- -------- -------- -------- --------- ---------
+cluster1-1
+          mgmt     2        2        959      cluster1-1
+                                                        master
+cluster1-2
+          mgmt     2        2        959      cluster1-2
+                                                        secondary
+cluster1-3
+          mgmt     2        2        959      cluster1-3
+                                                        master
+cluster1-4
+          mgmt     2        2        959      cluster1-3
+                                                        secondary
+4 entries were displayed.
+----
+.. Wiederholen Sie den Befehl mit dem `-unitname vldb` Parameter.
+.. Wiederholen Sie den Befehl mit dem `-unitname vifmgr` Parameter.
+.. Wiederholen Sie den Befehl mit dem `-unitname bcomd` Parameter.
+.. Wiederholen Sie den Befehl mit dem `-unitname crs` Parameter.
+.. Stellen Sie die Berechtigungsebene mit zurück `set -privilege admin` Befehl.
+
+
+

@@ -1,0 +1,49 @@
+---
+permalink: volume-disaster-prep/task_setting_up_destination_svm_for_data_access.html 
+sidebar: sidebar 
+keywords: minimize, data, access, disruption, activating, activate, destination, volume, configuration, cifs, policies, policy, nas, environment, initiator, group, svm, set up the destination svm for data access 
+summary: Sie können die Unterbrechung beim Datenzugriff minimieren, wenn Sie das Ziel-Volume aktivieren, indem Sie erforderliche Konfigurationen wie LIFs, CIFS-Freigaben und Exportrichtlinien für die NAS-Umgebung sowie LIFs und Initiatorgruppen für die SAN-Umgebung auf der SVM mit dem Ziel-Volume einrichten. 
+---
+= Ziel-SVM für Datenzugriff einrichten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Unterbrechung beim Datenzugriff minimieren, wenn Sie das Ziel-Volume aktivieren, indem Sie erforderliche Konfigurationen wie LIFs, CIFS-Freigaben und Exportrichtlinien für die NAS-Umgebung sowie LIFs und Initiatorgruppen für die SAN-Umgebung auf der SVM mit dem Ziel-Volume einrichten.
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe auf dem *Ziel*-Cluster für die SVM mit dem Ziel-Volume ausführen.
+
+
+
+== Verfahren
+
+* NAS-Umgebung:
++
+.. Erstellen von NAS-LIFs
+.. Erstellen Sie CIFS-Freigaben mit denselben Freigabenamen, die auf der Quelle verwendet wurden.
+.. Erstellen Sie die entsprechenden NFS-Exportrichtlinien.
+.. Geeignete Kontingentregeln erstellen.
+
+
+* SAN-Umgebung:
++
+.. Erstellung von SAN-LIFs.
+.. *Optional:* Portsätze konfigurieren.
+.. Konfigurieren von Initiatorgruppen.
+.. Zonen Sie bei FC die FC-Switches, damit die SAN-Clients auf die LIFs zugreifen können.
+
+
+
+
+
+
+== Nächste Schritte
+
+Wurden Änderungen an der SVM vorgenommen, die das Quell-Volume enthält, müssen die Änderungen manuell auf der SVM, die das Ziel-Volume enthält, repliziert werden.
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 Dokumentationszentrum"]

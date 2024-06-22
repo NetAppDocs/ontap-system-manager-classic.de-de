@@ -1,0 +1,69 @@
+---
+permalink: expansion/task_adding_nodes_to_cluster_using_system_manager.html 
+sidebar: sidebar 
+keywords: system, manager, increase, size, capabilities, capability, storage, node, automatic, ontap, add nodes to a cluster using system manager 
+summary: Mit System Manager können Sie die Größe und den Funktionsumfang Ihres Storage-Systems erhöhen, indem Sie einem vorhandenen Cluster Nodes hinzufügen. Diese Funktion wird automatisch in System Manager aktiviert, wenn die effektive Cluster-Version ONTAP 9.2 lautet. 
+---
+= Fügen Sie Nodes zu einem Cluster mit System Manager hinzu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit System Manager können Sie die Größe und den Funktionsumfang Ihres Storage-Systems erhöhen, indem Sie einem vorhandenen Cluster Nodes hinzufügen. Diese Funktion wird automatisch in System Manager aktiviert, wenn die effektive Cluster-Version ONTAP 9.2 lautet.
+
+.Bevor Sie beginnen
+* Neue kompatible Nodes müssen mit dem Cluster verbunden werden.
++
+Im Fenster Netzwerk werden nur die Ports aufgeführt, die sich in der Standard-Broadcast-Domäne befinden.
+
+* Alle Nodes im Cluster müssen betriebsbereit sein.
+* Alle Nodes müssen dieselbe Version aufweisen.
+
+
+.Schritt
+. Fügen Sie die neuen kompatiblen Nodes dem Cluster hinzu:
++
+[cols="1,3"]
+|===
+
+
+| Ihr Unternehmen | Tun Sie das... 
+
+
+ a| 
+Nicht bei System Manager angemeldet
+ a| 
+.. Melden Sie sich bei System Manager an.
++
+[NOTE]
+====
+Die neuen kompatiblen Nodes werden von System Manager bei der Anmeldung automatisch erkannt. Sie werden von System Manager aufgefordert, die neuen kompatiblen Nodes zum Cluster hinzuzufügen.
+
+====
+.. Klicken Sie auf *Knoten zu Cluster hinzufügen*.
+.. Ändern Sie den Namen der Nodes.
+.. Geben Sie die Knotenlizenzen an.
+.. Klicken Sie auf *Absenden und fortfahren*.
+
+
+
+
+ a| 
+Bei System Manager angemeldet
+ a| 
+.. Führen Sie je nach der verwendeten System Manager-Version einen der folgenden Schritte aus:
++
+*** ONTAP 9.4 oder früher: Klicken Sie auf *Konfiguration* > *Clustererweiterung*.
+*** Ab ONTAP 9.5: Klicken Sie auf *Konfiguration* > *Cluster* > *Erweiterung*
+System Manager sucht nach neu hinzugefügten Nodes. Wenn Warnungen angezeigt werden, müssen Sie sie beheben, bevor Sie fortfahren. Wenn neue kompatible Nodes erkannt werden, fahren Sie mit dem nächsten Schritt fort.
+
+
+.. Ändern Sie den Namen der Nodes.
+.. Geben Sie die Knotenlizenzen an.
+.. Klicken Sie auf *Absenden und fortfahren*.
+
+
+|===
+

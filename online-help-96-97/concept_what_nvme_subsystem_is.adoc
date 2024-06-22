@@ -1,0 +1,178 @@
+---
+permalink: online-help-96-97/concept_what_nvme_subsystem_is.html 
+sidebar: sidebar 
+keywords: nvme, subsystem, fc, rdma, transport, port, vserver, online, help, controller, cluster, table, settings, manage 
+summary: 'Ein NVMe-Subsystem umfasst einen oder mehrere Controller, einen oder mehrere Namespaces, einen oder mehrere NVM-Subsystem-Ports (FC-NVMe oder RDMA-Transportports), ein NVM Storage-Medium und eine Schnittstelle zwischen den Controllern und dem NVM Storage-Medium. Für die Controller-Zuordnung und -Verwaltung ist ein NVM-Subsystem einem vServer in ONTAP zugeordnet.' 
+---
+= Managen Sie NVMe-Subsysteme mit System Manager – ONTAP 9.7 und einer früheren Version
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (erhältlich in ONTAP 9.7 und früher) erstellen und verwalten Sie ein NVMe-Subsystem. Sie können das NVMe-Subsystem verschiedenen Hosts und Namespaces innerhalb des vServers zuordnen. Außerdem kann jeder vServer mehr als ein NVMe-Subsystem unterstützen. Sie können jedoch kein NVMe-Subsystem für die Verwendung auf mehreren vservern konfigurieren.
+
+
+
+== NVMe-Subsysteme erstellen
+
+Sie können mit System Manager ein NVMe-Subsystem erstellen.
+
+.Schritte
+. Klicken Sie im Fenster *NVMe Subsystems* auf *Erstellen*.
+. Geben Sie Einträge im Fenster *NVMe Subsysteme: Erstellen* für die folgenden Felder an:
++
+** *SVM*
++
+Wählen Sie im Dropdown-Menü die SVM aus, auf der Sie das Subsystem erstellen möchten.
+
+** *Name*
++
+Geben Sie einen Namen für das Subsystem ein. Der Subsystemname kann nicht bereits in der SVM vorhanden sein. Bei der Groß-/Kleinschreibung muss der Name beachtet werden und darf maximal 96 Zeichen lang sein. Sonderzeichen sind zulässig.
+
+** *Host-Betriebssystem*
++
+Wählen Sie im Dropdown-Menü den Typ des Host-Betriebssystems des Subsystems aus.
+
+** *Host NQN*
++
+Geben Sie den an den Controller angeschlossenen Host-NQN ein. Sie können mehrere NQN-Hosts eingeben, indem Sie sie mit Kommas trennen.
+
+
+
+. Klicken Sie Auf *Speichern*.
++
+Das NVMe-Subsystem wird erstellt, und das Fenster NVMe-Subsysteme wird angezeigt.
+
+
+
+
+
+== Details zu NVMe-Subsystemen bearbeiten
+
+Mit System Manager können Sie die Details zu einem NVMe-Subsystem bearbeiten.
+
+.Schritte
+. Suchen Sie das zu bearbeitende NVMe-Subsystem im Fenster *NVMe Subsystem*.
+. Aktivieren Sie das Kontrollkästchen links neben dem Namen des Subsystems, das Sie bearbeiten möchten.
+. Klicken Sie Auf *Bearbeiten*.
++
+Die aktuellen Details zum NVMe-Subsystem werden im NVMe-Teilbereich „Editfenster“ angezeigt.
+
+. Sie können nur die Informationen im Feld *Host NQN* ändern.
++
+** *Host NQN*
++
+Ändern Sie den an den Controller angeschlossenen Host-NQN. Sie können mehrere NQN-Hosts eingeben, indem Sie sie mit Kommas trennen.
+
+
+
++
+Die Tabelle * Associated NVMe Namesaces* wird unter dem Feld Host NQN angezeigt. In dieser Tabelle werden für jeden Namespace der Namespace-Pfad und die Namespace-ID aufgelistet.
+
+. Klicken Sie Auf *Speichern*.
++
+Die Details zum NVMe-Subsystem werden aktualisiert und das Fenster „NVMe-Subsysteme“ angezeigt.
+
+
+
+
+
+== Löschen eines NVMe-Subsystems
+
+Mit System Manager kann ein NVMe-Subsystem aus einem Cluster gelöscht werden.
+
+.Über diese Aufgabe
+Wenn Sie ein NVMe-Subsystem löschen, treten die folgenden Aktionen auf:
+
+* Wenn Hosts im NVMe-Subsystem konfiguriert sind, werden die zugeordneten Hosts entfernt.
+* Wenn dem NVMe-Subsystem Namespaces zugeordnet sind, wird die Zuordnung aufgehoben.
+
+
+.Schritte
+. Suchen Sie im Fenster *NVMe Subsystem* das zu löschende NVMe-Subsystem.
+. Aktivieren Sie das Kontrollkästchen links neben dem Namen des Subsystems, das Sie löschen möchten.
+. Klicken Sie Auf *Löschen*.
++
+Eine Warnmeldung wird angezeigt.
+
+. Klicken Sie auf das Kontrollkästchen *NVMe-Subsystem löschen*, um den Löschvorgang zu bestätigen, und klicken Sie dann auf *Ja*.
++
+Das NVMe-Subsystem wird aus dem Cluster gelöscht und das NVMe-Subsystem-Fenster wird angezeigt.
+
+
+
+
+
+== NVMe Subsysteme
+
+Im Fenster NVMe-Subsysteme wird standardmäßig eine Bestandsliste der NVMe-Subsysteme in einem Cluster angezeigt. Sie können die Liste filtern, um nur Subsysteme anzuzeigen, die für eine SVM spezifisch sind. Im Fenster können Sie auch NVMe-Subsysteme erstellen, bearbeiten oder löschen. Sie können auf dieses Fenster zugreifen, indem Sie *Storage* > *NVMe* > *Subsysteme* wählen.
+
+* <<NVMe-Subsystems>>
+* <<Symbolleiste>>
+
+
+
+
+=== NVMe-Subsystems
+
+In der Tabelle „NVMe Subsysteme“ wird das Inventar der NVMe-Subsysteme in einem Cluster aufgelistet. Sie können die Liste verfeinern, indem Sie das Dropdown-Menü im Feld *SVM* verwenden, um eine SVM auszuwählen, um nur die NVMe-Subsysteme anzuzeigen, die dieser SVM zugeordnet sind. Mit dem Dropdown-Menü *Suchen* und *Filtern* können Sie die Liste weiter anpassen.
+
+Die Tabelle „NVMe Subsysteme“ enthält die folgenden Spalten:
+
+* *(Kontrollkästchen)*
++
+Hier können Sie festlegen, auf welchen Subsystemen Aktionen ausgeführt werden sollen.
+
++
+Klicken Sie auf das Kontrollkästchen, um das Subsystem auszuwählen, und klicken Sie anschließend auf die Aktion in der Symbolleiste, die Sie ausführen möchten.
+
+* *Name*
++
+Zeigt den Namen des Subsystems an.
+
++
+Sie können nach einem Subsystem suchen, indem Sie seinen Namen in das Feld *Suche* eingeben.
+
+* *Host-Betriebssystem*
++
+Zeigt den Namen des dem Subsystem zugeordneten Host-Betriebssystems an.
+
+* *Host NQN*
++
+Zeigt den mit dem Controller verbundenen NVMe-qualifizierten Namen (NVMe Qualified Name, NQN) an. Wenn mehrere NQNs angezeigt werden, werden sie durch Kommas getrennt.
+
+* *Zugeordnete NVMe-Namespaces*
++
+Zeigt die Anzahl der NVM-Namespaces an, die dem Subsystem zugeordnet sind. Sie können mit dem Mauszeiger auf die Nummer zeigen, um die zugeordneten Namespaces-Pfade anzuzeigen. Klicken Sie auf einen Pfad, um das Fenster Namespace Details anzuzeigen.
+
+
+
+
+
+=== Symbolleiste
+
+Die Symbolleiste befindet sich über der Spaltenüberschrift. Sie können die Felder und Schaltflächen in der Symbolleiste verwenden, um verschiedene Aktionen durchzuführen.
+
+* *Suche*
++
+Ermöglicht die Suche nach Werten, die in der Spalte *Name* gefunden werden können.
+
+* *Filterung*
++
+Ermöglicht die Auswahl aus einem Dropdown-Menü, in dem verschiedene Methoden zum Filtern der Liste aufgeführt sind.
+
+* *Erstellen*
++
+Öffnet das Dialogfeld NVMe-Subsystem erstellen, in dem Sie ein NVMe-Subsystem erstellen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld NVMe-Subsystem bearbeiten, in dem Sie ein vorhandenes NVMe-Subsystem bearbeiten können.
+
+* *Löschen*
++
+Öffnet das Bestätigungsdialogfeld NVMe-Subsystem löschen, in dem Sie ein vorhandenes NVMe-Subsystem löschen können.
+
+

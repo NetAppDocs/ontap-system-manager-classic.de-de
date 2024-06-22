@@ -1,0 +1,405 @@
+---
+permalink: online-help-96-97/reference_application_provisioning_settings.html 
+sidebar: sidebar 
+keywords: application, provisioning, setting, microsoft, sql, database, applications, san, mongodb, oracle, host, access, initiator, sap, hana, smb 
+summary: 'Wenn Sie eine grundlegende oder erweiterte Vorlage für eine Datenbank, einen Server oder einen virtuellen Desktop einrichten, müssen Sie System Manager mit Details versorgen. Nachdem eine Anwendung bereitgestellt wurde, können Sie die Details bearbeiten und eine Größenänderung angeben (nur höhere Größe). In diesem Abschnitt werden die Felder in den einzelnen Vorlagen beschrieben. Es werden nur die Felder angezeigt, die für die Bereitstellung oder Bearbeitung der Einstellungen der spezifischen Anwendung erforderlich sind.' 
+---
+= Einstellungen für die Applikations-Bereitstellung in System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen Einzelheiten zum Einrichten einer einfachen oder erweiterten Vorlage für eine Datenbank, einen Server oder einen virtuellen Desktop in ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) angeben. Nachdem eine Anwendung bereitgestellt wurde, können Sie die Details bearbeiten und eine Größenänderung angeben (nur höhere Größe). In diesem Abschnitt werden die Felder in den einzelnen Vorlagen beschrieben. Es werden nur die Felder angezeigt, die für die Bereitstellung oder Bearbeitung der Einstellungen der spezifischen Anwendung erforderlich sind.
+
+
+
+== Details für Microsoft SQL-Datenbankapplikationen über SAN
+
+Sie geben die folgenden Informationen ein, um Microsoft SQL-Datenbankanwendungen über SAN bereitzustellen, oder bearbeiten Sie die Einstellungen:
+
+* *Datenbankname*
++
+Pflichtfeld: Der Name der Datenbank, die Sie konfigurieren; dieser String wird als Präfix beim Bereitstellen von Speicher für jede Datenbank verwendet.
+
+* *Datenbankgröße*
++
+Obligatorisch: Die Größe der Datenbank, in Einheiten von MB, GB, TB oder PB.
+
+* *ONTAP Service Level für Datenbank*
++
+Obligatorisch: Der Service-Level für die Datenbank.
+
+* *Protokollgröße*
++
+Obligatorisch: Größe des Datenbankprotokolls in Einheiten von MB, GB, TB oder PB.
+
+* *ONTAP Service Level für Log*
++
+Obligatorisch: Service-Level für das Protokoll.
+
+* *Tempdb*
++
+Obligatorisch: Die Größe der tempdb-Datenbank in Einheiten von MB, GB, TB oder PB.
+
+* *Exportprotokoll*
++
+Pflichtfeld: Das Exportprotokoll ist SAN
+
+* *Anzahl der Serverkerne (auf dem SQL Server)*
++
+Gibt die Anzahl der CPU-Kerne auf dem Datenbank-Server in Schritten von 2 an.
+
+* *Spanne HA-Controller-Knoten*
++
+Gibt an, ob Storage-Objekte auf einem hochverfügbaren Node-Paar erstellt werden sollen.
+
+
+
+
+
+== Details zur Bereitstellung einer SAP HANA-Datenbank
+
+* *Active SAP HANA-Knoten*
++
+Die Anzahl der aktiven SAP HANA-Knoten. Die maximale Anzahl der Nodes beträgt 16.
+
+* *Speichergröße pro HANA-Node*
++
+Die Speichergröße eines einzelnen SAP HANA-Node.
+
+* *Datenfestplattengröße pro HANA-Node*
++
+Die Datenfestplattengröße für jeden Node.
+
++
+[NOTE]
+====
+Wenn auf 0 gesetzt, wird das obige Feld Speichergröße verwendet, um die Größe des Datenbereichs zu berechnen.
+
+====
+
+
+
+
+== Details für Microsoft SQL Database Applikationen über SMB
+
+Sie geben die folgenden Informationen ein, um Microsoft SQL Database Applikationen über SMB bereitzustellen, oder bearbeiten Sie die Einstellungen:
+
+* *Datenbankname*
++
+Pflichtfeld: Der Name der Datenbank, die Sie konfigurieren; dieser String wird als Präfix beim Bereitstellen von Speicher für jede Datenbank verwendet.
+
+* *Datenbankgröße*
++
+Obligatorisch: Die Größe der Datenbank, in Einheiten von MB, GB, TB oder PB.
+
+* * Datenbank Service Level*
++
+Obligatorisch: Der Service-Level für die Datenbank.
+
+* *Anzahl der Serverkerne (auf dem SQL Server)*
++
+Gibt die Anzahl der CPU-Kerne auf dem Datenbank-Server in Schritten von 2 an.
+
+* *Protokollgröße*
++
+Obligatorisch: Größe des Datenbankprotokolls in Einheiten von MB, GB, TB oder PB.
+
+* *Service Level* Protokollieren
++
+Obligatorisch: Service-Level für das Protokoll.
+
+* *Bereitstellung für Tempdb*
++
+Obligatorisch: Gibt an, ob tempdb bereitgestellt wird.
+
+* *Exportprotokoll*
++
+Pflicht: Das Exportprotokoll ist SMB oder SAN.
+
++
+SMB kann nur ausgewählt werden, wenn das Cluster für CIFS lizenziert ist, das für die SVM konfiguriert wurde.
+
+* *Zugriff auf Benutzer gewähren*
++
+Obligatorisch: Zugriffsebene für die Anwendung.
+
+* *Berechtigung*
++
+Obligatorisch: Die Berechtigungsstufe für die Anwendung.
+
+
+
+
+
+== Details für ein SQL Server-Konto
+
+Sie geben die folgenden Informationen ein, um vollständigen Zugriff auf die SQL Server-Konten zu erhalten:
+
+[NOTE]
+====
+Das Installationskonto wird erteilt `SeSecurityPrivilege`.
+
+====
+* *SQL Server Service-Konto*
++
+Obligatorisch: Dies ist ein bereits vorhandenes Domain-Konto; bitte angeben als `domain\user`.
+
+* *SQL Server Agent Service-Konto*
++
+Optional: Dies ist dieses Domänenkonto, wenn der SQL Server Agent Service konfiguriert ist, geben Sie im Format Domain\user an.
+
+
+
+
+
+== Details zu Oracle Database Applikationen finden
+
+Sie geben die folgenden Informationen ein, um Oracle-Datenbankapplikationen bereitzustellen, oder bearbeiten Sie die Einstellungen:
+
+* *Datenbankname*
++
+Pflichtfeld: Der Name der Datenbank, die Sie konfigurieren; dieser String wird als Präfix beim Bereitstellen von Speicher für jede Datenbank verwendet.
+
+* *Datendatei-Größe*
++
+Obligatorisch: Die Größe der Datendatei in Einheiten von MB, GB, TB oder PB.
+
+* *ONTAP Service Level für Datendatei*
++
+Obligatorisch: Der Service-Level für die Datendatei.
+
+* *Größe Der Redo Log-Gruppe*
++
+Pflichtfeld: Größe der Redo-Protokollgruppe in Einheiten von MB, GB, TB oder PB.
+
+* *ONTAP Service Level für Redo Log Gruppe*
++
+Obligatorisch: Der Service-Level für die Wiederherstellungsprotokoll-Gruppe.
+
+* *Archiv Protokollgröße*
++
+Obligatorisch: Die Größe des Archivprotokolls, in Einheiten von MB, GB, TB oder PB.
+
+* *ONTAP Service Level für das Archiv Log*
++
+Obligatorisch: Service-Level für die Archivgruppe.
+
+* *Exportprotokoll*
++
+Exportprotokoll: SAN oder NFS
+
+* *Initiatoren*
++
+Eine durch Komma getrennte Liste der Initiatoren (WWPN oder IQN) in der Initiatorgruppe.
+
+* *Zuschuss für den Host*
++
+Der Hostname, dem die Anwendung Zugriff gewährt.
+
+
+
+
+
+== Details für MongoDB Applikationen
+
+Sie geben die folgenden Informationen ein, um MongoDB Applikationen bereitzustellen, oder bearbeiten Sie die Einstellungen:
+
+* *Datenbankname*
++
+Pflichtfeld: Der Name der Datenbank, die Sie konfigurieren; dieser String wird als Präfix beim Bereitstellen von Speicher für jede Datenbank verwendet.
+
+* *Größe Des Datensatzes*
++
+Obligatorisch: Die Größe der Datendatei in Einheiten von MB, GB, TB oder PB.
+
+* *ONTAP Service Level für Datensatz*
++
+Obligatorisch: Der Service-Level für die Datendatei.
+
+* *Replikationsfaktor*
++
+Obligatorisch: Die Anzahl der Replikationen.
+
+* *Zuordnung für primären Host*
++
+Pflichtfeld: Der Name des primären Hosts.
+
+* *Mapping für Replikathost 1*
++
+Obligatorisch: Der Name des ersten Host-Replikats.
+
+* *Mapping für Replica Host 2*
++
+Pflichtfeld: Name des zweiten Host-Replikats.
+
+
+
+
+
+== Details zu Virtual Desktop Applications
+
+Sie geben die folgenden Informationen ein, um Virtual Desktop Infrastructures (VDI) bereitzustellen oder die Einstellungen zu bearbeiten:
+
+* *Durchschnittliche Desktop-Größe (verwendet für den SAN Virtual Desktop)*
++
+Anhand dieser wird die Thin Provisioning-Größe der einzelnen Volumes in MB, GB, TB oder PB ermittelt.
+
+* *Desktop-Größe*
++
+Hiermit wird die Größe der Volumes festgelegt, die in Einheiten von MB, GB, TB oder PB bereitgestellt werden sollen.
+
+* *ONTAP Service Level für Desktops*
++
+Obligatorisch: Der Service-Level für die Datendatei.
+
+* * Anzahl der Desktops*
++
+Diese Zahl wird verwendet, um die Anzahl der erstellten Volumes zu bestimmen.
+
++
+[NOTE]
+====
+Dies wird nicht zur Bereitstellung der Virtual Machines verwendet.
+
+====
+* *Wählen Sie Hypervisor*
++
+Der für diese Volumes verwendete Hypervisor; der Hypervisor bestimmt das korrekte Datastore-Protokoll. Die Optionen sind VMware, Hyper-V oder XenServer/KVM.
+
+* * Desktop Persistenz*
++
+Bestimmen, ob der Desktop persistent oder nicht persistent ist. Durch die Auswahl der Desktop-Persistenz werden die Standardwerte für das Volume festgelegt, beispielsweise Richtlinien für Snapshot Zeitpläne und Deduplizierung in der Nachbearbeitung. Inline-Effizienzfunktionen sind für alle Volumes standardmäßig aktiviert.
+
++
+[NOTE]
+====
+Diese Richtlinien können nach der Bereitstellung manuell geändert werden.
+
+====
+* *Datastore Prefix*
++
+Der eingegebene Wert wird verwendet, um die Namen der Datastores zu generieren und, falls zutreffend, den Namen der Exportrichtlinie oder den Freigabennamen.
+
+* *Exportprotokoll*
++
+Exportprotokoll: SAN oder NFS
+
+* *Initiatoren*
++
+Eine durch Komma getrennte Liste der Initiatoren (WWPN oder IQN) in der Initiatorgruppe.
+
+* *Zuschuss für den Host*
++
+Der Hostname, dem die Anwendung Zugriff gewährt.
+
+
+
+
+
+== Initiatordetails
+
+Sie geben die folgenden Informationen ein, um den Initiator einzurichten:
+
+* *Initiatorgruppe*
++
+Sie können eine vorhandene Gruppe auswählen oder eine neue Gruppe erstellen.
+
+* *Name Der Initiatorgruppe*
++
+Der Name der neuen Initiatorgruppe.
+
+* *Initiatoren*
++
+Eine durch Komma getrennte Liste der Initiatoren (WWPN oder IQN) in der Initiatorgruppe.
+
+
+
+Die folgenden Felder gelten nur für _SAP HANA_ Provisioning:
+
+* *Betriebssystem des Initiators*
++
+Das Betriebssystem der neuen Initiatorgruppe.
+
+* * FCP Portset*
++
+Der FCP-Portsatz, an den die Initiatorgruppe gebunden ist.
+
+
+
+
+
+== Konfiguration Des Host-Zugriffs
+
+Sie geben die folgenden Informationen ein, um den Hostzugriff auf die Volumes zu konfigurieren:
+
+* *Volume Export Konfiguration*
++
+Wählen Sie die Exportrichtlinie aus, die auf die Volumes während der Erstellung angewendet werden soll. Folgende Optionen stehen zur Verfügung:
+
++
+** Alle Zulassen
++
+Diese Option impliziert, dass eine Exportregel erstellt wird, die Lese-Schreib-Zugriff auf alle Clients ermöglicht.
+
+** Erstellen Sie Eine Benutzerdefinierte Richtlinie
++
+Mit dieser Option können Sie eine Liste der Host-IP-Adressen für den Empfang von Lese-Schreib-Zugriff angeben.
+
+
+
++
+[NOTE]
+====
+Die Exportrichtlinie für Volumes kann später mithilfe von System Manager-Workflows geändert werden.
+
+====
+* *Host-IP-Adressen*
++
+Dies ist eine kommagetrennte Liste von IP-Adressen.
+
++
+[NOTE]
+====
+Bei NFS-basierten Systemen wird mithilfe des Datastore-Präfixes eine neue Exportrichtlinie erstellt, und mit welcher Regel auch der Zugriff auf die IP-Liste erfolgt.
+
+====
+
+
+
+
+== Einzelheiten Zur Anwendung
+
+Wenn die Anwendung hinzugefügt wird, können Sie die Konfigurationseinstellungen im Fenster Anwendungsdetails auf der Registerkarte *Übersicht* anzeigen. Weitere Details wie NFS oder CIFS Access und Permissions werden abhängig von dem eineingestellten Applikationstyp angezeigt.
+
+* *Typ*
++
+Dies ist die Art allgemeiner, Datenbank- oder virtueller Infrastruktur, die erstellt wurde.
+
+* *SVM*
++
+Der Name der virtuellen Servermaschine, auf der die Anwendung erstellt wurde.
+
+* *Größe*
++
+Gesamtgröße des Volumes:
+
+* *Verfügbar*
++
+Die Menge an derzeit im Volume verfügbaren Speicherplatz.
+
+* *Schutz*
++
+Der Typ der konfigurierten Datensicherung.
+
+
+
+Sie können die Fensterbereiche *Components* und *Volumes* erweitern, um Performance-Details über den verwendeten Speicherplatz, die IOPS und die Latenz zu erhalten.
+
+[NOTE]
+====
+Die im Teilfenster Komponenten angezeigte verwendete Größe unterscheidet sich von der in der CLI angezeigten verwendeten Größe.
+
+====

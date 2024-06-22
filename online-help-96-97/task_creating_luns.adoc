@@ -1,0 +1,108 @@
+---
+permalink: online-help-96-97/task_creating_luns.html 
+sidebar: sidebar 
+keywords: create, lun, system, manager, qtree, online, help 
+summary: 'Wenn freier Speicherplatz verfügbar ist, können Sie mit System Manager LUNs für ein vorhandenes Aggregat, Volume oder qtree erstellen. Sie können eine LUN in einem vorhandenen Volume erstellen oder ein neues FlexVol Volume für die LUN erstellen. Sie können auch die Storage-Quality of Service (QoS) aktivieren, um die Workload-Performance zu managen.' 
+---
+= Erstellen Sie LUNs mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um LUNs für ein vorhandenes Aggregat, Volume oder qtree zu erstellen, sofern freier Speicherplatz verfügbar ist. Sie können eine LUN in einem vorhandenen Volume erstellen oder ein neues FlexVol Volume für die LUN erstellen. Sie können auch die Storage-Quality of Service (QoS) aktivieren, um die Workload-Performance zu managen.
+
+.Über diese Aufgabe
+Wenn Sie die LUN-ID angeben, überprüft System Manager die Gültigkeit der LUN-ID, bevor Sie sie hinzufügen. Wenn Sie keine LUN-ID angeben, weist ONTAP Software automatisch eine LUN zu.
+
+Bei der Auswahl des Multiprotokoll-Typs LUN sollten Sie die Richtlinien für die Verwendung jedes Typs berücksichtigen. Der Multiprotokoll-Typ LUN oder der Betriebssystemtyp bestimmt das Layout der Daten auf der LUN sowie die Minimum- und Höchstgrößen der LUN. Nachdem die LUN erstellt wurde, können Sie den Typ des LUN-Host-Betriebssystems nicht ändern.
+
+In einer MetroCluster-Konfiguration zeigt System Manager nur die folgenden Aggregate zum Erstellen von FlexVol Volumes für die LUN an:
+
+* Wenn Sie im normalen Modus Volumes auf den synchronen Quell-SVMs oder auf DatenbereitstellungsSVMs im primären Standort erstellen, werden nur die Aggregate angezeigt, die zum Cluster im primären Standort gehören.
+* Wenn Sie im Umschaltmodus Volumes auf SVMs mit synchronen Zielen oder DatenserverSVMs im verbleibenden Standort erstellen, werden nur Over-Aggregate angezeigt.
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Klicken Sie auf der Registerkarte *LUN Management* auf *Erstellen*.
+. Wählen Sie eine SVM aus, in der Sie die LUNs erstellen möchten.
+. Geben Sie im Assistenten * LUN erstellen* den Namen, die Größe, den Typ und die Beschreibung der LUN an, und wählen Sie die Option *Space Reserve* aus, und klicken Sie dann auf *Next*.
+. Erstellen Sie ein neues FlexVol Volume für die LUN, oder wählen Sie ein vorhandenes Volume oder qtree aus, und klicken Sie dann auf *Weiter*.
+. Fügen Sie Initiatorgruppen hinzu, wenn Sie den Hostzugriff auf die LUN steuern möchten, und klicken Sie dann auf *Weiter*.
+. Aktivieren Sie das Kontrollkästchen *Storage Quality of Service* verwalten, wenn Sie die Workload-Performance der LUN verwalten möchten.
+. Neue QoS-Richtliniengruppe für Storage erstellen oder vorhandene Richtliniengruppe auswählen, um die I/O-Performance (Input/Output) der LUN zu steuern:
++
+|===
+| Ihr Ziel ist | Tun Sie das... 
+
+
+ a| 
+Erstellen Sie eine neue Richtliniengruppe
+ a| 
+.. Wählen Sie *Neue Richtliniengruppe*
+.. Geben Sie den Namen der Richtliniengruppe an.
+.. Geben Sie die minimale Durchsatzbegrenzung an.
++
+*** In System Manager 9.5 können Sie die Durchsatzbegrenzung nur auf Performance-basierten All Flash-optimierten Systemen festlegen. In System Manager 9.6 können Sie darüber hinaus das Mindestdurchsatz-Limit für ONTAP Select Premium-Systeme festlegen.
+*** Sie können das Mindestdurchsatz für Volumes nicht auf einem FabricPool-fähigen Aggregat festlegen.
+*** Wenn Sie den Mindestdurchsatzwert nicht angeben oder der Mindestdurchsatzwert auf 0 gesetzt ist, wird „`Keine`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.
+
+
+
+.. Geben Sie das maximale Durchsatzlimit an, um sicherzustellen, dass die Workload der Objekte in der Richtliniengruppe das angegebene Durchsatzlimit nicht überschreitet.
++
+*** Die minimale Durchsatzbegrenzung und die maximale Durchsatzbegrenzung müssen vom selben Einheitstyp sein.
+*** Wenn Sie das minimale Durchsatzlimit nicht angeben, können Sie die maximale Durchsatzbegrenzung in IOPS und B/s, KB/s, MB/s usw. festlegen.
+*** Wenn Sie den maximalen Durchsatzwert nicht angeben, zeigt das System automatisch „`Unlimited`“ als Wert an, und dieser Wert ist zwischen Groß- und Kleinschreibung zu beachten.
++
+Die angegebene Einheit hat keinen Einfluss auf den maximalen Durchsatz.
+
+
+
+
+
+
+
+ a| 
+Wählen Sie eine vorhandene Richtliniengruppe aus
+ a| 
+.. Wählen Sie *vorhandene Richtliniengruppe* aus, und klicken Sie dann auf *Auswählen*, um eine vorhandene Richtliniengruppe im Dialogfeld Richtliniengruppe auswählen auszuwählen.
+.. Geben Sie die minimale Durchsatzbegrenzung an.
++
+*** In System Manager 9.5 können Sie die Durchsatzbegrenzung nur auf Performance-basierten All Flash-optimierten Systemen festlegen. In System Manager 9.6 können Sie darüber hinaus das Mindestdurchsatz-Limit für ONTAP Select Premium-Systeme festlegen.
+*** Sie können das Mindestdurchsatz für Volumes nicht auf einem FabricPool-fähigen Aggregat festlegen.
+*** Wenn Sie den Mindestdurchsatzwert nicht angeben oder der Mindestdurchsatzwert auf 0 gesetzt ist, wird „`Keine`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.
+
+
+
+.. Geben Sie das maximale Durchsatzlimit an, um sicherzustellen, dass die Workload der Objekte in der Richtliniengruppe das angegebene Durchsatzlimit nicht überschreitet.
++
+*** Die minimale Durchsatzbegrenzung und die maximale Durchsatzbegrenzung müssen vom selben Einheitstyp sein.
+*** Wenn Sie das minimale Durchsatzlimit nicht angeben, können Sie die maximale Durchsatzbegrenzung in IOPS und B/s, KB/s, MB/s usw. festlegen.
+*** Wenn Sie den maximalen Durchsatzwert nicht angeben, zeigt das System automatisch „`Unlimited`“ als Wert an, und dieser Wert ist zwischen Groß- und Kleinschreibung zu beachten.
++
+Die angegebene Einheit hat keinen Einfluss auf den maximalen Durchsatz.
+
+
+
++
+Wenn die Richtliniengruppe mehr als einem Objekt zugewiesen ist, wird der maximale Durchsatz, den Sie angeben, von den Objekten gemeinsam genutzt.
+
+
+
+|===
+. Überprüfen Sie die angegebenen Details im Fenster *LUN summary* und klicken Sie dann auf *Next*.
+. Bestätigen Sie die Details und klicken Sie dann auf *Fertig stellen*, um den Assistenten abzuschließen.
+
+
+*Verwandte Informationen*
+
+xref:reference_luns_window.adoc[LUNs-Fenster]
+
+xref:concept_lun_multiprotocol_type_guidelines.adoc[Richtlinien für die Verwendung des Multi-Protokoll-Typs LUN]

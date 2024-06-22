@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_preparing_cluster_for_expansion.html 
+sidebar: sidebar 
+keywords: prepare, cluster, expansion, node-locked, license, verify, system, health, configuration, generate autosupport, message, prepare the cluster for expansion 
+summary: Um einen Cluster für die Erweiterung vorzubereiten, müssen Sie Node-gesperrte Lizenzen hinzufügen, den Systemzustand überprüfen, die Konfiguration des Clusters sichern und eine AutoSupport-Meldung generieren. 
+---
+= Bereiten Sie den Cluster auf die Erweiterung vor
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um ein Cluster für die Erweiterung vorzubereiten, müssen Sie Lizenzen mit Node-Locked hinzufügen, den Systemzustand überprüfen, die Cluster-Konfiguration sichern und eine AutoSupport Meldung generieren.

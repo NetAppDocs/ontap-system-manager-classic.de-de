@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/concept_using_space_reservation_with_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: space, reservation, flexvol, volume, online, help 
+summary: Mit Hilfe der Speicherplatzreservierung können Sie FlexVol-Volumes bereitstellen. Thin Provisioning bietet offenbar mehr Storage, als tatsächlich in einem bestimmten Aggregat verfügbar ist, solange nicht alle Storage-Ressourcen derzeit genutzt werden. 
+---
+= Verwenden Sie Speicherplatzreservierungen mit FlexVol Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Im ONTAP System Manager classic (erhältlich in ONTAP 9.7 und früher) können Sie Platzreservierung für die Bereitstellung von FlexVol Volumes verwenden. Thin Provisioning bietet offenbar mehr Storage, als tatsächlich in einem bestimmten Aggregat verfügbar ist, solange nicht alle Storage-Ressourcen derzeit genutzt werden.
+
+Bei Thick Provisioning ist ausreichend Storage vom Aggregat verfügbar, um sicherzustellen, dass jeder Block im Volume jederzeit auf einen geschrieben werden kann.
+
+Aggregate können Volumes bereitstellen, die von mehr als einer Storage Virtual Machine (SVM) enthalten sind. Wenn Sie Thin Provisioning einsetzen und die strikte Trennung der SVMs beibehalten müssen (wenn Sie beispielsweise Storage in einer mandantenfähigen Umgebung bereitstellen), sollten Sie entweder vollständig zugewiesene Volumes (Thick Provisioning) verwenden oder sicherstellen, dass Ihre Aggregate nicht von den Mandanten gemeinsam genutzt werden.
+
+Wenn die Platzreserve auf „`Default`“ eingestellt ist, gelten die Einstellungen der ONTAP Speicherplatzreservierung für die Volumes.
+
+*Verwandte Informationen*
+
+http://www.netapp.com/us/media/tr-3563.pdf["Technischer Bericht von NetApp 3563: NetApp Thin Provisioning erhöht die Storage-Auslastung mit On-Demand-Zuweisung"^]
+
+http://www.netapp.com/us/media/tr-3483.pdf["Technischer Bericht von NetApp 3483: Thin Provisioning in a NetApp SAN or IP SAN Enterprise Environment"^]

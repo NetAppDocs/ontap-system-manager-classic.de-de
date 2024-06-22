@@ -1,0 +1,27 @@
+---
+permalink: nfs-config-esxi/task_verifying_nfs_access_from_esxi_host.html 
+sidebar: sidebar 
+keywords: provision, datastore, esxi, verify, nfs, access, creating, create, virtual, machine, power, verify nfs access from an esxi host 
+summary: Nachdem Sie einen Datenspeicher bereitgestellt haben, können Sie überprüfen, ob der ESXi Host über NFS-Zugriff verfügt, indem Sie eine Virtual Machine auf dem Datastore erstellen und diesen einschalten. 
+---
+= Überprüfen Sie den NFS-Zugriff von einem ESXi Host aus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nachdem Sie einen Datenspeicher bereitgestellt haben, können Sie überprüfen, ob der ESXi Host über NFS-Zugriff verfügt, indem Sie eine Virtual Machine auf dem Datastore erstellen und diesen einschalten.
+
+.Schritte
+. Klicken Sie auf der Seite vSphere Web Client *Home* auf *Hosts und Cluster*.
+. Erweitern Sie im Navigationsbereich das Rechenzentrum, um den zuvor erstellten Datenspeicher zu finden.
+. Klicken Sie auf *Neue virtuelle Maschine erstellen* und geben Sie die erforderlichen Informationen im Assistenten an.
++
+Um den NFS-Zugriff zu überprüfen, sollten Sie das Rechenzentrum, den ESXi-Host und den Datenspeicher auswählen, das Sie zuvor erstellt haben.
+
++
+Die virtuelle Maschine wird im vSphere Web Client-Bestand angezeigt.
+
+. Schalten Sie die Virtual Machine ein.
+

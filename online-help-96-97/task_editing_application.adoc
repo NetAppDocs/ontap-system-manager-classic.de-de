@@ -1,0 +1,69 @@
+---
+permalink: online-help-96-97/task_editing_application.html 
+sidebar: sidebar 
+keywords: edit, application, online, help, provisioned, snapshot, copy 
+summary: Sie können eine bereitgestellte Applikation bearbeiten, um die Storage-Größe zu erhöhen oder die Snapshot-Kopien der Applikation zu verwalten. 
+---
+= Bearbeiten Sie eine Anwendung mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) können Sie eine bereitgestellte Applikation bearbeiten, um die Storage-Größe zu erhöhen oder die Snapshot-Kopien der Applikation zu verwalten.
+
+.Über diese Aufgabe
+Als Cluster-Administrator können Sie nach dem Bereitstellen einer Applikation die Größe des Storage bearbeiten. Sie können auch Snapshot Kopien der Applikation erstellen, wiederherstellen oder löschen. Im folgenden Beispiel wird beschrieben, wie eine *NAS Container*-Anwendung bearbeitet wird.
+
+.Schritte
+. Klicken Sie Auf *Anwendungen & Tiers* > *Anwendungen*
+. Klicken Sie auf den Namen der NAS-Container-Anwendung.
++
+[NOTE]
+====
+Wenn jemand neue Anwendungen mithilfe der CLI oder DER REST-API hinzufügt, während Sie die Liste der Anwendungen anzeigen, können Sie diese neuen Anwendungen nicht anzeigen, wenn Sie durch die Liste blättern.
+
+====
++
+Auf der Registerkarte *Übersicht* des Fensters Anwendungsdetails: nas werden die Anwendungseinstellungen angezeigt.
+
+. Klicken Sie Auf *Bearbeiten*.
++
+Der Edit NAS Container: nas zeigt die aktuelle Speichergrößeneinstellung und die Adresse *NFS Access - Grant Access to Host* an.
+
+. Ändern Sie den Wert für *Storage Total Size*.
+. Wählen Sie im Feld Größeneinheiten im Dropdown-Menü die Option aus, um die Einheiten der richtigen Größe festzulegen (Byte, MB, GB oder TB).
+. Wählen Sie im Feld *ONTAP Service Level* im Dropdown-Menü den Wert aus.
+. Klicken Sie Auf *Speichern*.
+. Navigieren Sie zurück zum Fenster *Anwendungsdetails: nas*, und wählen Sie die Registerkarte **Snapshot Kopien**aus.
++
+Eine Liste der Snapshot Kopien für diese bereitgestellte Applikation wird angezeigt. Sie können das Feld *Search* verwenden, um nach Snapshot Kopien nach Namen zu suchen.
+
+. Managen Sie die Snapshot Kopien, indem Sie bei Bedarf die folgenden Aufgaben ausführen:
++
+|===
+| Aufgabe | Aktionen 
+
+
+ a| 
+Erstellen
+ a| 
+Klicken Sie auf *Erstellen*, um eine neue Snapshot-Kopie zu erstellen.
+
+
+
+ a| 
+Wiederherstellen
+ a| 
+Aktivieren Sie die Kontrollkästchen neben den Snapshot Kopien, die Sie wiederherstellen möchten, und klicken Sie dann auf *Wiederherstellen*.
+
+
+
+ a| 
+Löschen
+ a| 
+Aktivieren Sie die Kontrollkästchen neben den Snapshot Kopien, die Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+
+|===
+

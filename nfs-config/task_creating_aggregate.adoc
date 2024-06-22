@@ -1,0 +1,30 @@
+---
+permalink: nfs-config/task_creating_aggregate.html 
+sidebar: sidebar 
+keywords: exist, aggregate, physical, storage, volume, provision, create, create an aggregate 
+summary: Wenn Sie kein vorhandenes Aggregat verwenden möchten, können Sie ein neues Aggregat erstellen, um dem Volume, das Sie bereitstellen, physischen Storage zur Verfügung zu stellen. 
+---
+= Erstellen Sie ein Aggregat
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie kein vorhandenes Aggregat verwenden möchten, können Sie ein neues Aggregat erstellen, um dem Volume, das Sie bereitstellen, physischen Storage zur Verfügung zu stellen.
+
+.Über diese Aufgabe
+Wenn Sie ein vorhandenes Aggregat verwenden möchten, können Sie dieses Verfahren überspringen.
+
+.Schritte
+. Geben Sie die URL ein `+https://IP-address-of-cluster-management-LIF+` Melden Sie sich in einem Webbrowser bei System Manager mit den Anmeldedaten für den Cluster-Administrator an.
+. Navigieren Sie zum Fenster *Aggregate*.
+. Klicken Sie Auf *Erstellen.*
+. Befolgen Sie die Anweisungen auf dem Bildschirm, um das Aggregat mithilfe der standardmäßigen RAID-DP-Konfiguration zu erstellen, und klicken Sie dann auf *Erstellen*.
++
+image::../media/aggregate_creation_nfs.gif[Erstellen eines Aggregats-Bildschirms in System Manager]
+
+
+
+.Ergebnisse
+Das Aggregat wird mit der angegebenen Konfiguration erstellt und der Liste der Aggregate im Fenster Aggregate hinzugefügt.

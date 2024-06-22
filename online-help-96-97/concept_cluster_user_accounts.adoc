@@ -1,0 +1,177 @@
+---
+permalink: online-help-96-97/concept_cluster_user_accounts.html 
+sidebar: sidebar 
+keywords: user, system, manager, add, edit, manage, account, login, online, help, cluster, administration, online, help, modify, lock, delete, unlock, create 
+summary: Mit System Manager können Sie ein Cluster-Benutzerkonto hinzufügen, bearbeiten und verwalten sowie eine Anmeldebenutzermethode für den Zugriff auf das Storage-System festlegen. 
+---
+= Verwalten Sie Benutzerkonten mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (verfügbar unter ONTAP 9.7 und älter) können Sie ein Cluster-Benutzerkonto hinzufügen, bearbeiten und verwalten sowie eine Anmeldebenutzermethode für den Zugriff auf das Storage-System festlegen.
+
+
+
+== Fügen Sie ein Cluster-Benutzerkonto hinzu
+
+Sie können mit System Manager ein Cluster-Benutzerkonto hinzufügen und eine Anmeldemethode für den Zugriff auf das Storage-System angeben.
+
+.Über diese Aufgabe
+In Clustern, auf denen die SAML-Authentifizierung aktiviert ist, können Sie für eine bestimmte Anwendung entweder SAML-Authentifizierung oder passwortbasierte Authentifizierung hinzufügen oder beide Authentifizierungstypen hinzufügen.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fensterbereich *Verwaltung* auf *Benutzer*.
+. Klicken Sie Auf *Hinzufügen*.
+. Geben Sie einen Benutzernamen für den neuen Benutzer ein.
+. Geben Sie ein Kennwort ein, mit dem der Benutzer eine Verbindung zum Speichersystem herstellen kann, und bestätigen Sie anschließend das Kennwort.
+. Fügen Sie eine oder mehrere Anmeldemethoden für Benutzer hinzu und klicken Sie dann auf *Hinzufügen*.
+
+
+
+
+== Bearbeiten eines Cluster-Benutzerkontos
+
+Sie können mit System Manager ein Cluster-Benutzerkonto bearbeiten, indem Sie die Anmeldemethoden für den Zugriff auf das Storage-System ändern.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fensterbereich *Verwaltung* auf *Benutzer*.
+. Wählen Sie im Fenster *Benutzer* das Benutzerkonto aus, das Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie im Dialogfeld *Benutzer ändern* die Anmeldemethoden für den Benutzer und klicken Sie dann auf *Ändern*.
+
+
+
+
+== Ändern Sie Passwörter für Cluster-Benutzerkonten
+
+Sie können mit System Manager das Passwort für ein Cluster-Benutzerkonto zurücksetzen.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fensterbereich *Verwaltung* auf *Benutzer*.
+. Wählen Sie das Benutzerkonto aus, für das Sie das Passwort ändern möchten, und klicken Sie dann auf *Passwort ändern*.
+. Geben Sie im Dialogfeld *Passwort ändern* das neue Passwort ein, bestätigen Sie das neue Passwort und klicken Sie dann auf *Ändern*.
+
+
+
+
+== Sperren oder Entsperren von Cluster-Benutzerkonten
+
+Mit System Manager können Sie Cluster-Benutzerkonten sperren oder entsperren.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fensterbereich *Verwaltung* auf *Benutzer*.
+. Wählen Sie das Benutzerkonto aus, für das Sie den Status ändern möchten, und klicken Sie entweder auf *Sperren* oder *Entsperren*.
+
+
+
+
+== Benutzerkonten (nur Cluster-Administratoren)
+
+Sie können ein Cluster-Benutzerkonto erstellen, ändern, sperren, entsperren oder löschen, das Passwort eines Benutzers zurücksetzen oder Informationen zu allen Benutzerkonten anzeigen.
+
+Sie haben folgende Möglichkeiten, Cluster-Benutzerkonten zu verwalten:
+
+* Erstellen einer Anmeldemethode für einen Benutzer, indem der Kontoname des Benutzers, die Zugriffsmethode, die Authentifizierungsmethode und optional Die Zugriffskontrollrolle, der dem Benutzer zugewiesen ist
+* Anzeigen von Anmeldeinformationen des Benutzers, z. B. Kontoname, Zugriffsmethode, Authentifizierungsmethode, Zugriffskontrollrolle und Kontostatus
+* Ändern der Zugriffskontrollrolle, die der Anmeldemethode eines Benutzers zugeordnet ist
++
+[NOTE]
+====
+Es empfiehlt sich, eine einzelne Rolle für alle Zugriffs- und Authentifizierungsmethoden eines Benutzerkontos zu verwenden.
+
+====
+* Löschen der Anmeldemethode eines Benutzers, z. B. der Zugriffsmethode oder der Authentifizierungsmethode
+* Ändern des Kennworts für ein Benutzerkonto
+* Sperren eines Benutzerkontos, um zu verhindern, dass der Benutzer auf das System zugreift
+* Entsperren eines zuvor gesperrten Benutzerkontos, sodass der Benutzer wieder auf das System zugreifen kann
+
+
+
+
+== Fenster „Benutzer“
+
+Sie können das Fenster Benutzer verwenden, um Benutzerkonten zu verwalten, das Kennwort eines Benutzers zurückzusetzen und Informationen über alle Benutzerkonten anzuzeigen.
+
+
+
+=== Befehlsschaltflächen
+
+* *Hinzufügen*
++
+Öffnet das Dialogfeld Benutzer hinzufügen, in dem Sie Benutzerkonten hinzufügen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Benutzer ändern, in dem Sie Benutzeranmeldungsmethoden ändern können.
+
++
+[NOTE]
+====
+Als Best Practice empfiehlt es sich, für alle Zugriffs- und Authentifizierungsmethoden eines Benutzerkontos eine einzelne Rolle zu verwenden.
+
+====
+* *Löschen*
++
+Ermöglicht das Löschen eines ausgewählten Benutzerkontos.
+
+* *Passwort Ändern*
++
+Öffnet das Dialogfeld Kennwort ändern, in dem Sie das Kennwort eines ausgewählten Benutzers zurücksetzen können.
+
+* *Schloss*
++
+Sperrt das Benutzerkonto.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Benutzerliste
+
+Im Bereich unterhalb der Liste Benutzer werden detaillierte Informationen zum ausgewählten Benutzer angezeigt.
+
+* * Benutzer*
++
+Zeigt den Namen des Benutzerkontos an.
+
+* *Konto Gesperrt*
++
+Zeigt an, ob das Benutzerkonto gesperrt ist.
+
+
+
+
+
+=== Bereich Anmeldemethoden für Benutzer
+
+* * Anwendung*
++
+Zeigt die Zugriffsmethode an, mit der ein Benutzer auf das Speichersystem zugreifen kann. Zu den unterstützten Zugriffsmethoden gehören folgende:
+
++
+** Systemkonsole (Konsole)
+** HTTP(S) (http)
+** ONTAP-API (ontapi)
+** Service-Prozessor (Service-Prozessor)
+** SSH (SSH)
+
+
+* *Authentifizierung*
++
+Zeigt die standardmäßig unterstützte Authentifizierungsmethode an, die „`password`“ ist.
+
+* * Rolle*
++
+Zeigt die Rolle eines ausgewählten Benutzers an.
+
+

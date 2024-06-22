@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/task_updating_cluster_nondisruptively.html 
+sidebar: sidebar 
+keywords: nondisruptive, upgrades, NDU, cluster, system, manager, online, help 
+summary: 'Mit System Manager können Sie ein Cluster oder einzelne Nodes in hochverfügbaren \(HA\)-Paaren aktualisieren, die ONTAP 8.3.1 oder höher auf eine bestimmte Version der ONTAP Software ausführen, ohne den Zugriff auf Client-Daten zu unterbrechen.' 
+---
+= Unterbrechungsfreie Aktualisierung eines Clusters mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) kann ein Cluster oder einzelne Nodes in HA-Paaren mit ONTAP 8.3.1 oder höher auf eine bestimmte Version der ONTAP Software aktualisiert werden, ohne den Zugriff auf Client-Daten zu unterbrechen.
+
+.Bevor Sie beginnen
+* Alle Nodes müssen sich in HA-Paaren befinden.
+* Alle Nodes müssen in einem ordnungsgemäßen Zustand sein.
+* Sie müssen das Software-Image von der NetApp Support Site auf einen HTTP-Server oder FTP-Server im Netzwerk kopiert haben, damit die Nodes auf das Image zugreifen können.
++
+link:task_obtaining_ontap_software_images.html["ONTAP Software-Images werden eingeholt"]
+
+
+
+.Über diese Aufgabe
+* Wenn Sie versuchen, andere Aufgaben von System Manager während des Updates des Node, der die Cluster-Management-LIF hostet, auszuführen, wird möglicherweise eine Fehlermeldung angezeigt.
++
+Sie müssen warten, bis das Update abgeschlossen ist, bevor Sie Vorgänge ausführen.
+
+* Bei Clustern mit weniger als acht Nodes wird ein Rolling Update durchgeführt, bei Clustern mit mehr als acht Nodes wird ein Batch-Update durchgeführt.
++
+In einem Rolling Update werden die Nodes im Cluster einzeln aktualisiert. Bei einem Batch-Update werden mehrere Nodes parallel aktualisiert.
+
+* Sie können ONTAP Software unterbrechungsfrei von einer LTS-Version (Long Term Service) bis zur nächsten LTS-Version (LTS+1) aktualisieren.
++
+Sind beispielsweise ONTAP 9.1 und ONTAP 9.3 LTS-Versionen, können Sie Ihr Cluster unterbrechungsfrei von ONTAP 9.1 auf ONTAP 9.3 aktualisieren.
+
+* Ab System Manager 9.6 gilt, dass das NVMe-Protokoll in System Manager 9.5 konfiguriert ist und Sie ein Upgrade von System Manager 9.5 auf System Manager 9.6 durchführen, es nicht mehr als 90 Tage dauert, bis das NVMe-Protokoll ohne Lizenz verfügbar ist. Wenn die Gnadenfrist beim Upgrade von ONTAP 9.5 auf 9.6 wirksam ist, muss die Gnadenfrist durch eine gültige NVMeoF-Lizenz ersetzt werden, damit Sie die NVMe-Funktionen weiterhin nutzen können.
++
+Diese Funktion ist in MetroCluster-Konfigurationen nicht verfügbar.
+
+* Wenn das NVMe-Protokoll in System Manager 9.5 nicht konfiguriert ist und Sie ein Update von System Manager 9.5 auf System Manager 9.6 durchführen, wird der Gnadenzeitraum nicht angegeben. Zur Verwendung des NVMe-Protokolls müssen Sie die NVMe-Lizenz installieren.
++
+Diese Funktion ist in MetroCluster-Konfigurationen nicht verfügbar.
+
+* Ab ONTAP 9.5 muss mindestens eine NVMe-LIF für jeden Node in einem HA-Paar zum Einsatz des NVMe-Protokolls konfiguriert werden. Sie können außerdem maximal zwei NVMe LIFs pro Node erstellen. Wenn Sie ein Upgrade auf ONTAP 9.5 durchführen, müssen Sie sicherstellen, dass mindestens eine NVMe-LIF für jeden Node in einem HA-Paar mithilfe des NVMe-Protokolls definiert ist.
+
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Update*.
+. Fügen Sie auf der Registerkarte *Update* ein neues Bild hinzu oder wählen Sie ein verfügbares Bild aus.
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+Fügen Sie ein neues Software-Image vom lokalen Client hinzu
+ a| 
+.. Klicken Sie auf *vom lokalen Client hinzufügen*.
+.. Suchen Sie nach dem Software-Bild, und klicken Sie dann auf *Öffnen*.
+
+
+
+
+ a| 
+Fügen Sie ein neues Software-Image von der NetApp Support Site hinzu
+ a| 
+.. Klicken Sie auf *vom Server hinzufügen*.
+.. Geben Sie im Dialogfeld Add a New Software Image (Neues Software-Image hinzufügen) die URL des HTTP-Servers oder FTP-Servers ein, auf dem Sie das Image, das von der NetApp Support-Website heruntergeladen wurde, gespeichert haben.
++
+Für anonymes FTP müssen Sie die URL im angeben `+ftp://anonymous@ftpserver+` Formatieren.
+
+.. Klicken Sie Auf *Hinzufügen*.
+
+
+
+
+ a| 
+Wählen Sie ein verfügbares Bild aus
+ a| 
+Wählen Sie eines der aufgeführten Bilder aus.
+
+|===
+. Klicken Sie auf *Validieren*, um die Validierungsprüfungen vor dem Update auszuführen, um zu überprüfen, ob das Cluster bereit für ein Update ist.
++
+Der Validierungsvorgang überprüft die Cluster-Komponenten, um zu überprüfen, ob das Update unterbrechungsfrei durchgeführt werden kann, und zeigt anschließend Fehler oder Warnungen an. Außerdem werden alle erforderlichen Korrekturmaßnahmen angezeigt, die Sie vor dem Aktualisieren der Software durchführen müssen.
+
++
+[NOTE]
+====
+Sie müssen alle erforderlichen Abhilfemaßnahmen für die Fehler durchführen, bevor Sie mit dem Update fortfahren. Obwohl Sie die Abhilfemaßnahmen für die Warnungen ignorieren können, sollten Sie alle Abhilfemaßnahmen durchführen, bevor Sie mit dem Update fortfahren.
+
+====
+. Klicken Sie Auf *Weiter*.
+. Klicken Sie Auf *Aktualisieren*.
++
+Die Validierung wird erneut durchgeführt.
+
++
+** Wenn die Validierung abgeschlossen ist, zeigt eine Tabelle alle Fehler und Warnungen sowie alle erforderlichen Abhilfemaßnahmen an, bevor Sie fortfahren.
+** Wenn die Validierung mit Warnungen abgeschlossen ist, können Sie das Kontrollkästchen *Aktualisierung mit Warnungen fortsetzen* aktivieren und dann auf *Weiter* klicken.
+Wenn die Validierung abgeschlossen ist und die Aktualisierung gerade läuft, kann die Aktualisierung aufgrund von Fehlern angehalten werden. Sie können auf die Fehlermeldung klicken, um die Details anzuzeigen und anschließend die Abhilfemaßnahmen durchzuführen, bevor Sie das Update fortsetzen.
+
+
++
+Nachdem das Update erfolgreich abgeschlossen wurde, wird der Node neu gebootet, und Sie werden zur Anmeldeseite von System Manager umgeleitet. Wenn das Neubooten des Node lange dauert, müssen Sie den Browser aktualisieren.
+
+. Melden Sie sich bei System Manager an und überprüfen Sie, ob der Cluster erfolgreich auf die ausgewählte Version aktualisiert wurde, indem Sie auf *Konfiguration* > *Cluster* > *Update* > *Aktualisierungsverlauf* klicken und die Details anzeigen.
+
+
+*Verwandte Informationen*
+
+xref:concept_how_you_update_cluster_nondisruptively.adoc[So aktualisieren Sie einen Cluster unterbrechungsfrei]

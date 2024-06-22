@@ -1,0 +1,35 @@
+---
+permalink: fc-config-rhel/task_verifying_that_fc_service_is_running_on_existing_svm.html 
+sidebar: sidebar 
+keywords: exist, storage, virtual, machine, svm, verify, fc, service, run, ontap, system, manager, logical, interface, lif, create, verify that the fc service is running on an existing svm 
+summary: 'Wenn Sie eine vorhandene Storage Virtual Machine (SVM) verwenden möchten, müssen Sie überprüfen, ob der FC-Service mithilfe von ONTAP System Manager auf der SVM ausgeführt wird. Sie müssen außerdem überprüfen, ob bereits FC-logische Schnittstellen (LIFs) erstellt wurden.' 
+---
+= Vergewissern Sie sich, dass der FC-Service auf einer vorhandenen SVM ausgeführt wird
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie eine vorhandene Storage Virtual Machine (SVM) verwenden möchten, müssen Sie überprüfen, ob der FC-Service mithilfe von ONTAP System Manager auf der SVM ausgeführt wird. Sie müssen außerdem überprüfen, ob bereits FC-logische Schnittstellen (LIFs) erstellt wurden.
+
+.Bevor Sie beginnen
+Sie müssen eine vorhandene SVM ausgewählt haben, auf der Sie eine neue LUN erstellen möchten.
+
+.Schritte
+. Navigieren Sie zum Fenster *SVMs*.
+. Wählen Sie die erforderliche SVM aus.
+. Wählen Sie die Registerkarte *SVM Settings* aus.
+. Wählen Sie im Fenster *Protokolle* die Option *FC/FCoE* aus.
+. Vergewissern Sie sich, dass der FC-Service ausgeführt wird.
++
+image::../media/vserver_service_fc_fcoe_running_fc_rhel.gif[Das Image zeigt das FC/FCoE-Teilfenster in System Manager bei laufendem FC-Service und vier FC-LIFs an.]
+
++
+Wenn der FC-Service nicht ausgeführt wird, starten Sie den FC-Service oder erstellen Sie eine neue SVM.
+
+. Vergewissern Sie sich, dass mindestens zwei FC-LIFs für jeden Node aufgeführt sind.
++
+Wenn weniger als zwei FC-LIFs pro Node vorhanden sind, aktualisieren Sie die FC-Konfiguration auf der SVM oder erstellen Sie eine neue SVM für FC.
+
+

@@ -1,0 +1,20 @@
+---
+section: volume-move
+title: Management für Volume-Verschiebung
+entries:
+- title: Überblick
+  url: "/volume-move/index.html"
+- title: Workflow zur Volume-Verschiebung
+  url: "/volume-move/concept_volume_move_workflow.html"
+  entries:
+  - title: Planung der Methode und des Zeitpunkts einer Volume-Verschiebung
+    url: "/volume-move/task_planning_method_timing_volume_move.html"
+  - title: Verschieben Sie ein Volume mit System Manager
+    url: "/volume-move/task_moving_volume_using_system_manager.html"
+  - title: Nach dem Verschieben eines Volumes überprüfen Sie die Nodes für LUN-Berichte
+    url: "/volume-move/task_verifying_lun_reporting_nodes_after_moving_volume.html"
+  - title: Aktualisieren Sie die Nodes für LUN-Berichte nach dem Verschieben eines
+      Volumes
+    url: "/volume-move/task_updating_lun_reporting_nodes_after_moving_volume.html"
+  - title: Aktualisieren Sie NDMP Backup nach dem Verschieben eines Volumes
+    url: "/volume-move/task_updating_ndmp_backup_after_moving_volume.html"

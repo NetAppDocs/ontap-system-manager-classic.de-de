@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/task_performing_unplanned_switchover.html 
+sidebar: sidebar 
+keywords: perform, unplanned, switchover, system, manager, metrocluster, site, online, help 
+summary: Ab System Manager 9.6 können Sie eine ungeplante Umschaltung eines MetroCluster Standorts initiieren. Dieser Vorgang ist nach einem Ausfall oder einem Ausfall hilfreich. 
+---
+= Durchführung einer ungeplanten Umschaltung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab System Manager 9.6 können Sie eine ungeplante Umschaltung eines MetroCluster Standorts initiieren. Dieser Vorgang ist nach einem Ausfall oder einem Ausfall hilfreich.
+
+.Bevor Sie beginnen
+Die MetroCluster wird im normalen Betrieb ausgeführt. Die Nodes im lokalen Cluster (Standort A) sind jedoch aktiv, die Nodes im Remote-Cluster (Standort B) sind jedoch nicht verfügbar.
+
+.Schritte
+. [[step1]]Überprüfen Sie, ob Standort B tatsächlich ausgefallen ist.
++
+Ein Verbindungsfehler kann dazu führen, dass Standort B nicht verfügbar ist.
+
++
+[NOTE]
+====
+Der Switchover-Prozess mit Standort B up zu starten kann zu katastrophalen Ergebnissen führen.
+
+====
+. Melden Sie sich bei System Manager mithilfe der Anmeldedaten des Cluster-Administrators bei der lokalen MetroCluster-Site (Site A) an.
+. Klicken Sie auf *Konfiguration* > *MetroCluster*
++
+Das Fenster „MetroCluster Switchover/Switchback Operations“ wird angezeigt.
+
+. Klicken Sie Auf *Weiter*.
++
+Im Fenster MetroCluster Switchover/Switch Back Operations wird der Status der Vorgänge angezeigt und System Manager überprüft, ob eine Umschaltung möglich ist.
+
+. Wenn der Validierungsprozess abgeschlossen ist, klicken Sie auf *Umschaltstelle B zu Standort A*, um den Switchover-Prozess zu initiieren.
++
+Es wird eine Warnmeldung angezeigt, die Sie darauf hinweist, dass der Umschaltvorgang von Standort B zu Standort A steuert Der Status von Standort B sollte „`UNERREICHBAR`“ lauten, und alle Knoten von Standort B werden rot angezeigt.
+
++
+[NOTE]
+====
+Wie in Schritt angegeben link:#step1["1"], Standort B muss eigentlich ausgefallen sein und nicht nur unverbunden. Zudem sollte berücksichtigt werden, dass der Switchover-Vorgang zu Datenverlust führen kann.
+
+====
+. Wenn Sie fortfahren möchten, stellen Sie sicher, dass das Kontrollkästchen aktiviert ist, und klicken Sie dann auf *Ja*.
++
+Der Switchover-Prozess beginnt. Die Zustände von Standort A und Standort B werden über den grafischen Darstellungen ihrer Konfigurationen angezeigt. Wenn der Umschaltvorgang fehlschlägt, wird eine Fehlermeldung angezeigt. Klicken Sie Auf *Schließen*. Beheben Sie alle Fehler, und starten Sie erneut bei Schritt link:task_performing_negotiated_planned_switchover.html#step1["1"]
+
+. Führen Sie alle erforderlichen Wartungsaktivitäten für Standort B. durch
+. Stellen Sie sicher, dass Standort B verfügbar ist.
++
+Der Heilungsprozess beginnt. Wenn der Healing von System Manager angezeigt wird, ist Standort B betriebsbereit und die Systeme bereiten den Switchback-Prozess vor. Die Schaltfläche *Switchback von Standort A nach Standort B* wird unten im Fenster angezeigt.
+
+. Fahren Sie mit fort xref:task_performing_switchback.adoc[Zurückwechseln] So starten Sie den Switchback-Betrieb.
+

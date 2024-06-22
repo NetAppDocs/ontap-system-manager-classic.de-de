@@ -1,0 +1,127 @@
+---
+permalink: online-help-96-97/concept_how_data_ontap_name_service_switch_configuration_works.html 
+sidebar: sidebar 
+keywords: ontap, name, service, switch, configuration, works, unix, system, online, help 
+summary: ONTAP speichert Informationen zur Namensdienstkonfiguration in einer Tabelle, die dem Äquivalent der Datei /etc/nswitch.conf auf UNIX-Systemen entspricht. Sie müssen die Funktion der Tabelle und deren Verwendung durch ONTAP kennen, damit Sie sie für Ihre Umgebung entsprechend konfigurieren können. 
+---
+= Über die Konfiguration des ONTAP-Namens des Service Switch in System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) speichert Informationen zur Name des Service-Konfiguration in einer Tabelle, die äquivalent des ist `/etc/nsswitch.conf` File auf UNIX Systemen. Sie müssen die Funktion der Tabelle und deren Verwendung durch ONTAP kennen, damit Sie sie für Ihre Umgebung entsprechend konfigurieren können.
+
+Die Switch-Tabelle für den ONTAP-Namensdienst legt fest, welche Namensdienstquellen ONTAP konsultiert, um Informationen für bestimmte Arten von Namensdienstinformationen abzurufen. Für jede SVM verwaltet ONTAP eine separate Name-Service-Switch-Tabelle.
+
+
+
+== Datenbanktypen
+
+Die Tabelle enthält eine separate Namensdienstliste für jeden der folgenden Datenbanktypen:
+
+|===
+| Datenbanktyp | Definiert Namensdienstquellen für... | Gültige Quellen sind... 
+
+
+ a| 
+Hosts
+ a| 
+Hostnamen in IP-Adressen werden konvertiert
+ a| 
+Dateien, dns
+
+
+
+ a| 
+Gruppieren
+ a| 
+Benutzergruppeninformationen werden gesucht
+ a| 
+Dateien, nis, ldap
+
+
+
+ a| 
+Passwd
+ a| 
+Benutzerinformationen werden gesucht
+ a| 
+Dateien, nis, ldap
+
+
+
+ a| 
+Netzgruppe
+ a| 
+Netzgruppeninformationen werden gesucht
+ a| 
+Dateien, nis, ldap
+
+
+
+ a| 
+Namemap
+ a| 
+Zuordnen von Benutzernamen
+ a| 
+Dateien, ldap
+
+|===
+
+
+== Quelltypen
+
+Die Quellen geben an, welche Namensdienstquelle zum Abrufen der entsprechenden Informationen verwendet werden soll.
+
+|===
+| Typ der Quelle angeben... | Um Informationen zu suchen in... | Verwaltet durch die Befehlsfamilien... 
+
+
+ a| 
+Dateien
+ a| 
+Lokale Quelldateien
+ a| 
+`vserver services name-service unix-user`
+
+`vserver services name-service unix-group`
+
+`vserver services name-service netgroup`
+
+`vserver services name-service dns hosts`
+
+
+
+ a| 
+nis
+ a| 
+Externe NIS-Server, wie in der NIS-Domain-Konfiguration der SVM angegeben
+ a| 
+`vserver services name-service nis-domain`
+
+
+
+ a| 
+ldap
+ a| 
+Externe LDAP-Server, wie in der LDAP-Client-Konfiguration der SVM angegeben
+ a| 
+`vserver services name-service ldap`
+
+
+
+ a| 
+dns
+ a| 
+Externe DNS-Server, die in der DNS-Konfiguration der SVM angegeben sind
+ a| 
+`vserver services name-service dns`
+
+|===
+Selbst wenn Sie NIS oder LDAP sowohl für den Datenzugriff als auch zur SVM-Administration-Authentifizierung verwenden möchten, sollten Sie weiterhin einschließen `files` Und konfigurieren Sie lokale Benutzer als Fallback, falls die NIS- oder LDAP-Authentifizierung fehlschlägt.
+
+*Verwandte Informationen*
+
+xref:task_editing_svm_settings.adoc[Bearbeiten der SVM-Einstellungen]

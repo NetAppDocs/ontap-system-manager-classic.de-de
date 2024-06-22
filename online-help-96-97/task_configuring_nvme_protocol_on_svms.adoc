@@ -1,0 +1,41 @@
+---
+permalink: online-help-96-97/task_configuring_nvme_protocol_on_svms.html 
+sidebar: sidebar 
+keywords: configure, nvme, protocol, svm, system, manager, namespaces, online, help 
+summary: 'Das NVMe-Protokoll kann auf einer Storage Virtual Machine (SVM) mit System Manager konfiguriert werden. Anschließend können Namespaces erstellt und einem NVMe-Subsystem und einem Host zugewiesen werden.' 
+---
+= Konfiguration des NVMe-Protokolls auf SVMs mit System Manager – ONTAP 9.7 und einer früheren Version
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Verwenden Sie ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher), um das NVMe-Protokoll auf einer Storage Virtual Machine (SVM) zu konfigurieren. Anschließend können Namespaces erstellt und einem NVMe-Subsystem und einem Host zugewiesen werden.
+
+.Über diese Aufgabe
+Für SVM mit NVMe sollten keine anderen Protokolle verwendet werden. Wenn Sie NVMe auswählen, werden die restlichen Protokolle deaktiviert. Sie können NVMe auch bei der Erstellung der SVM konfigurieren.
+
+.Schritte
+. Wenn Sie das NVMe-Protokoll bei der Erstellung der SVM nicht konfiguriert haben, klicken Sie auf *Storage* > *SVMs*
+. Wählen Sie die SVM aus und klicken Sie dann auf *SVM-Einstellungen*.
+. Klicken Sie im Fensterbereich *Protokolle* auf *NVMe*.
+. Klicken Sie auf den Link, um das Protokoll nach Bedarf zu konfigurieren.
++
+[NOTE]
+====
+Wenn andere Protokolle aktiviert sind, müssen Sie diese Auswahl aufheben, damit NVMe zur Auswahl verfügbar ist. NVMe kann nicht mit anderen Protokollen kombiniert werden.
+
+====
+. Klicken Sie im Fensterbereich *Edit Storage Virtual Machine* auf *Resource Allocation*.
+. Auf der Registerkarte *Ressourcenzuordnung* können Sie wählen, dass Sie die Volume-Erstellung nicht delegieren möchten, oder Sie können ein Aggregat auswählen, um die Volumes automatisch bereitzustellen.
+. Klicken Sie auf die Registerkarte *Services*, um die Details des Namensdienstschalters zu konfigurieren.
+. Klicken Sie auf *Speichern und Schließen*
++
+Das NVMe-Protokoll ist auf der SVM konfiguriert. Nach der Konfiguration des Protokolls können Sie den Dienst mit *SVM Settings* starten oder beenden
+
+
+
+*Verwandte Informationen*
+
+xref:concept_setting_up_nvme.adoc[NVMe wird eingerichtet]

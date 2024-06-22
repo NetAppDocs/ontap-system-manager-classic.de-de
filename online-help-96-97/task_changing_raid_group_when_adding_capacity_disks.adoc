@@ -1,0 +1,46 @@
+---
+permalink: online-help-96-97/task_changing_raid_group_when_adding_capacity_disks.html 
+sidebar: sidebar 
+keywords: change, raid, group, add, capacity, disk, online, help, hdd 
+summary: 'Beim Hinzufügen von Kapazitätsfestplatten (HDDs) zu einem Aggregat können Sie die RAID-Gruppe, zu der die Festplatten hinzugefügt werden sollen, mit System Manager ändern.' 
+---
+= Ändern Sie die RAID-Gruppe, wenn Kapazitätsfestplatten mit System Manager - ONTAP 9.7 und früher hinzugefügt werden
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Beim Hinzufügen von Kapazitätsfestplatten (HDDs) zu einem Aggregat können Sie ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um die RAID-Gruppe zu ändern, zu der die Festplatten hinzugefügt werden sollen.
+
+.Über diese Aufgabe
+* Wenn der RAID-Typ RAID-DP ist, und wenn Sie FSAS oder MSATA-Typ von Festplatten hinzufügen, die gleich oder größer als 10 TB sind, können Sie sie nur zu hinzufügen `Specific RAID group`, Und nicht zu `New RAID group` Oder `All RAID groups`.
++
+Die Festplatten werden hinzugefügt, nachdem die Festplattengröße auf die Größe der vorhandenen Aggregate verkleinert wurde.
+
+* Wenn die RAID-Gruppe RAID-TEC ist, und wenn Sie FSAS oder MSATA-Typ von Festplatten hinzufügen, die gleich oder größer als 10 TB sind, können Sie sie hinzufügen `All RAID groups`, `New RAID group`, und `Specific RAID group`.
++
+Die Festplatten werden hinzugefügt, nachdem die Festplattengröße auf die Größe der vorhandenen Aggregate verkleinert wurde.
+
+
+
+.Schritte
+. Wählen Sie eine der folgenden Methoden:
++
+** Klicken Sie Auf *Anwendungen & Tiers* > *Storage Tiers*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate*.
+
+
+. Wählen Sie im Fenster *Storage Tiers* das Aggregat aus, zu dem Sie Kapazitätsfestplatten hinzufügen möchten, und klicken Sie dann auf Menü:Mehr Aktionen[Kapazität hinzufügen].
+. Führen Sie im Dialogfeld *Kapazität hinzufügen* die folgenden Schritte aus:
++
+.. Klicken Sie Auf *Ändern*.
+.. Geben Sie im Dialogfeld *RAID-Konfiguration* ändern die RAID-Gruppe an, der die Kapazitätsfestplatten hinzugefügt werden sollen.
++
+Sie können den Standardwert ändern `All RAID groups` Zu beiden `Specific RAID group` Oder `New RAID group`.
+
+.. Klicken Sie Auf *Speichern*.
+
+
+

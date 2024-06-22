@@ -1,0 +1,73 @@
+---
+permalink: peering/task_creating_intercluster_interfaces_on_all_nodes.html 
+sidebar: sidebar 
+keywords: cluster, communicate, logical, interface, lif, intercluster, create, ipspace, peer, relationship, create intercluster interfaces on all nodes, ontap 9.2 or earlier 
+summary: Über die Schnittstelle „classic“ des ONTAP System Manager mit ONTAP 9.2 oder einer älteren Version von ONTAP 9 können Sie Intercluster LIFs erstellen, die für das Peering verwendet werden. 
+---
+= Erstellen von Intercluster-Schnittstellen auf allen Nodes (ONTAP 9.2 oder früher)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Über die Schnittstelle ONTAP System Manager _classic_ zu ONTAP 9.2 oder einer früheren Version von ONTAP 9 können Sie Intercluster LIFs erstellen, die für das Peering verwendet werden.
+
+Cluster kommunizieren miteinander über logische Schnittstellen (LIFs), die für die Kommunikation zwischen Clustern dediziert sind. Sie müssen innerhalb jedes IPspace, der für Peering verwendet wird, eine Intercluster LIF erstellen.  Die LIFs müssen auf jedem Node in jedem Cluster erstellt werden, für das Sie eine Peer-Beziehung erstellen möchten.
+
+.Bevor Sie beginnen
+Sie müssen das Subnetz und die Ports und optional die IP-Adressen identifiziert haben, die Sie für die Intercluster LIFs verwenden möchten.
+
+.Über diese Aufgabe
+Sie müssen dieses Verfahren auf beiden Clustern durchführen, für die Sie eine Peer-Beziehung erstellen möchten. Wenn Sie beispielsweise ein Cluster mit vier Nodes haben, das Sie mit Cluster X über IPspace A Peer mit Cluster Y über IPspace Y erstellen möchten, benötigen Sie insgesamt acht Intercluster-LIFs. Vier auf IPspace A (einer pro Knoten) und vier auf IPspace Y (einer pro Knoten).
+
+.Schritte
+. [[ste1-intercluster-lif]]Erstellen einer intercluster LIF auf einem Knoten des Quellclusters:
++
+.. Navigieren Sie zum Fenster *Netzwerkschnittstellen*.
+.. Klicken Sie Auf *Erstellen*.
++
+Das Dialogfeld Netzwerkschnittstelle erstellen wird angezeigt.
+
+.. Geben Sie einen Namen für die Intercluster LIF ein.
++
+Sie können „`ic01`“ für die Intercluster-LIF auf dem ersten Knoten und „`ic02`“ für die Intercluster-LIF auf dem zweiten Knoten verwenden.
+
+.. Wählen Sie als Schnittstellenrolle * Intercluster Connectivity* aus.
+.. Wählen Sie das IPspace aus.
+.. Wählen Sie im Dialogfeld *Details hinzufügen* in der Dropdown-Liste *IP-Adresse zuweisen* die Option *über ein Subnetz* aus, und wählen Sie dann das Subnetz aus, das Sie für die Kommunikation zwischen Clustern verwenden möchten.
++
+Standardmäßig wird die IP-Adresse automatisch aus dem Subnetz ausgewählt, nachdem Sie auf *Erstellen* geklickt haben. Wenn Sie die automatisch ausgewählte IP-Adresse nicht verwenden möchten, müssen Sie manuell die IP-Adresse angeben, die der Knoten für die Kommunikation zwischen Clustern verwendet.
+
+.. Wenn Sie die IP-Adresse, die der Knoten für die Intercluster-Kommunikation verwendet, manuell angeben möchten, wählen Sie *Diese IP-Adresse verwenden* aus, und geben Sie die IP-Adresse ein.
++
+Sie müssen sicherstellen, dass die IP-Adresse, die Sie verwenden möchten, bereits im Subnetz verfügbar ist oder später dem Subnetz hinzugefügt werden kann.
+
+.. Klicken Sie im Bereich *Ports* auf den Knoten, den Sie konfigurieren, und wählen Sie den Port aus, den Sie für diesen Knoten verwenden möchten.
+.. Wenn Sie sich entschieden haben, Ports für die Kommunikation zwischen Clustern und Daten nicht gemeinsam zu nutzen, bestätigen Sie, dass der ausgewählte Port in der Spalte *Hosted Interface Count* „`0`“ anzeigt.
++
+image::../media/lif_creation_intercluster.gif[Das Dialogfeld Netzwerk-Inteface erstellen]
+
+.. Klicken Sie Auf *Erstellen*.
+
+
+. Wiederholen <<step1-intercluster-lif,Schritt 1>> Für jeden Node im Cluster.
++
+Jeder Node im Cluster verfügt über eine Intercluster-LIF.
+
+. Notieren Sie sich die IP-Adressen der Intercluster LIFs, sodass Sie sie später verwenden können, wenn Sie Peer-Beziehungen mit anderen Clustern erstellen:
++
+.. Klicken Sie im Fenster *Netzwerkschnittstellen* in der Spalte *Role* auf image:../media/icon_columnfilter_sm_peering.gif["Symbol für Spaltenfilter"]Deaktivieren Sie das Kontrollkästchen * All*, und wählen Sie dann *Intercluster* aus.
++
+Im Fenster Netzwerkschnittstellen werden nur LIFs zwischen Clustern angezeigt.
+
+.. Notieren Sie sich die IP-Adressen, die in der Spalte *IP-Adressen/WWPN* aufgeführt sind, oder lassen Sie das Fenster *Netzwerkschnittstellen* geöffnet, damit Sie die IP-Adressen später abrufen können.
++
+Sie können auf das Spaltenanzeigesymbol klicken (image:../media/icon_columnshowhide_sm_onc_peering.gif["Symbol für Spalte ein- oder ausblenden"]) Um die Spalten auszublenden, die nicht angezeigt werden sollen.
+
+
+
+
+
+.Ergebnisse
+Alle Nodes in jedem Cluster verfügen über Intercluster LIFs, die alle miteinander kommunizieren können.

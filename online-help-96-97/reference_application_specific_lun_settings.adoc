@@ -1,0 +1,715 @@
+---
+permalink: online-help-96-97/reference_application_specific_lun_settings.html 
+sidebar: sidebar 
+keywords: system, manager, oracle, sql, lun, application, specific, online, help 
+summary: System Manager unterstützt Oracle, SQL und andere Applikationstypen, während FC SAN-optimierte LUNs auf einem AFF Cluster erstellt werden. LUN-Einstellungen wie die LUN-Größe werden durch Regeln speziell für den Applikationstyp festgelegt. Für SQL und Oracle werden LUN-Einstellungen automatisch erstellt. 
+---
+= Applikationsspezifische LUN-Einstellungen mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) unterstützt Oracle, SQL und andere Applikationstypen, während FC SAN-optimierte LUNs auf einem AFF Cluster erstellt werden. LUN-Einstellungen wie die LUN-Größe werden durch Regeln speziell für den Applikationstyp festgelegt. Für SQL und Oracle werden LUN-Einstellungen automatisch erstellt.
+
+Wenn Ihr Cluster zwei oder mehr Nodes enthält, verwendet System Manager nur die ersten beiden Nodes, die von der API zum Erstellen von LUNs ausgewählt wurden. Datenaggregate werden bereits auf jedem der beiden Nodes erstellt. Die Größe jedes erstellten Volumes entspricht der verfügbaren Kapazität des Aggregats. Die Volumes sind Thin Provisioning und die Platzreservierung auf den LUNs ist deaktiviert.
+
+Die Storage-Effizienzrichtlinie ist standardmäßig in dem auf „`daily`“ und Quality of Service (QoS) festgelegten Zeitplan aktiviert: „`Best_Effort`“. Standardmäßig ist das Update der Zugriffszeit (atime) auf dem Cluster aktiviert. Updates der Zugriffszeit werden von System Manager bei der Erstellung von Volumes jedoch deaktiviert. Daher wird jedes Mal, wenn eine Datei gelesen oder geschrieben wird, das Feld für die Zugriffszeit im Verzeichnis nicht aktualisiert.
+
+[NOTE]
+====
+Aktivieren des Updates der Zugriffszeit führt zu einer Verschlechterung der Performance der Datenserverfunktion des Clusters.
+
+====
+
+
+== LUN-Einstellungen für SQL
+
+Standardmäßig werden LUNs und Volumes für eine einzelne Instanz des SQL Servers mit 2 Datenbanken mit jeweils 1 TB und 24 physischen Kernen bereitgestellt. Der Speicherplatz wird gemäß spezifischer Regeln für den SQL Server für LUNs und Volumes bereitgestellt. Der Lastausgleich für LUNs über das HA-Paar erfolgt. Sie können die Anzahl der Datenbanken ändern. Für jede Datenbank werden acht Daten-LUNs und eine Protokoll-LUN erstellt. Für jede SQL-Instanz wird eine temporäre LUN erstellt.
+
+In der folgenden Tabelle finden Sie Informationen darüber, wie Speicherplatz für die Standardwerte von SQL bereitgestellt wird:
+
+|===
+| Knoten | Aggregat | Der LUN-Typ | Volume-Name | Der LUN-Name | Formel für die LUN-Größe | LUN-Größe (GB) 
+
+
+ a| 
+Knoten 1
+ a| 
+Node1_aggr1
+ a| 
+Daten
+ a| 
+db01_data01
+ a| 
+db01_data01
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db01_data02
+ a| 
+db01_data02
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db01_data03
+ a| 
+db01_data03
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db01_data04
+ a| 
+db01_data04
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db02_data01
+ a| 
+db02_data01
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db02_data02
+ a| 
+db02_data02
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db02_data03
+ a| 
+db02_data03
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db02_data04
+ a| 
+db02_data04
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Protokoll
+ a| 
+db01_Log
+ a| 
+db01_Log
+ a| 
+Datenbankgröße ÷ 20
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+Temp
+ a| 
+sql_Temp
+ a| 
+sql_Temp
+ a| 
+Datenbankgröße ÷ 3
+ a| 
+330
+
+
+
+ a| 
+Knoten 2
+ a| 
+Node2_aggr1
+ a| 
+Daten
+ a| 
+db01_data05
+ a| 
+db01_data05
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db01_data06
+ a| 
+db01_data06
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db01_data07
+ a| 
+db01_data07
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db01_data08
+ a| 
+db01_data08
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db02_data05
+ a| 
+db02_data05
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db02_data06
+ a| 
+db02_data06
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db02_data07
+ a| 
+db02_data07
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+db02_data08
+ a| 
+db02_data08
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+Protokoll
+ a| 
+db02_Log
+ a| 
+db02_Log
+ a| 
+Datenbankgröße ÷ 20
+ a| 
+50
+
+|===
+
+
+== LUN-Einstellungen für Oracle
+
+Standardmäßig werden LUNs und Volumes für eine Datenbank mit 2 TB bereitgestellt. Der Speicherplatz wird gemäß spezifischer Regeln für Oracle für LUNs und Volumes bereitgestellt. Standardmäßig ist Oracle Real Application Clusters (RAC) nicht ausgewählt.
+
+In der folgenden Tabelle finden Sie Informationen darüber, wie Speicherplatz für die Standardwerte von Oracle bereitgestellt wird:
+
+|===
+| Knoten | Aggregat | Der LUN-Typ | Volume-Name | Der LUN-Name | Formel für die LUN-Größe | LUN-Größe (GB) 
+
+
+ a| 
+Knoten 1
+ a| 
+Node1_aggr1
+ a| 
+Daten
+ a| 
+ora_vol01
+ a| 
+ora_lundata01
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol02
+ a| 
+ora_lundata02
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol03
+ a| 
+ora_lundata03
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol04
+ a| 
+ora_lundata04
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Protokoll
+ a| 
+ora_vol05
+ a| 
+ora_lunlog1
+ a| 
+Datenbankgröße ÷ 40
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+Binärdateien
+ a| 
+ora_vol06
+ a| 
+ora_orabin1
+ a| 
+Datenbankgröße ÷ 40
+ a| 
+50
+
+
+
+ a| 
+Knoten 2
+ a| 
+Node2_aggr1
+ a| 
+Daten
+ a| 
+ora_vol07
+ a| 
+ora_lundata05
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol08
+ a| 
+ora_lundata06
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol09
+ a| 
+ora_lundata07
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol. 10
+ a| 
+ora_lundata08
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Protokoll
+ a| 
+ora_vol11
+ a| 
+ora_lunlog2
+ a| 
+Datenbankgröße ÷ 40
+ a| 
+50
+
+|===
+Für Oracle RAC werden LUNs für Grid-Dateien bereitgestellt. Für Oracle RAC werden nur zwei RAC-Knoten unterstützt.
+
+In der folgenden Tabelle finden Sie Informationen darüber, wie Speicherplatz für die Standardwerte von Oracle RAC bereitgestellt wird:
+
+|===
+| Knoten | Aggregat | Der LUN-Typ | Volume-Name | Der LUN-Name | Formel für die LUN-Größe | LUN-Größe (GB) 
+
+
+ a| 
+Knoten 1
+ a| 
+Node1_aggr1
+ a| 
+Daten
+ a| 
+ora_vol01
+ a| 
+ora_lundata01
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol02
+ a| 
+ora_lundata02
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol03
+ a| 
+ora_lundata03
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol04
+ a| 
+ora_lundata04
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Protokoll
+ a| 
+ora_vol05
+ a| 
+ora_lunlog1
+ a| 
+Datenbankgröße ÷ 40
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+Binärdateien
+ a| 
+ora_vol06
+ a| 
+ora_orabin1
+ a| 
+Datenbankgröße ÷ 40
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+Raster
+ a| 
+ora_vol07
+ a| 
+ora_Lungrid1
+ a| 
+10 GB
+ a| 
+10
+
+
+
+ a| 
+Knoten 2
+ a| 
+Node2_aggr1
+ a| 
+Daten
+ a| 
+ora_vol08
+ a| 
+ora_lundata05
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol09
+ a| 
+ora_lundata06
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol. 10
+ a| 
+ora_lundata07
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Daten
+ a| 
+ora_vol11
+ a| 
+ora_lundata08
+ a| 
+Datenbankgröße ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+Protokoll
+ a| 
+ora_vol12
+ a| 
+ora_lunlog2
+ a| 
+Datenbankgröße ÷ 40
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+Binärdateien
+ a| 
+ora_vol13
+ a| 
+ora_orabin2
+ a| 
+Datenbankgröße ÷ 40
+ a| 
+50
+
+|===
+
+
+== LUN-Einstellungen für anderen Applikationstyp
+
+Jede LUN wird in einem Volume bereitgestellt. Der Speicherplatz wird in den LUNs basierend auf der angegebenen Größe bereitgestellt. Der Lastausgleich erfolgt über die Nodes für alle LUNs.

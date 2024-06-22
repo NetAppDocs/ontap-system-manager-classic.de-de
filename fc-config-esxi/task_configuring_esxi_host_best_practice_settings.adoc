@@ -1,0 +1,23 @@
+---
+permalink: fc-config-esxi/task_configuring_esxi_host_best_practice_settings.html 
+sidebar: sidebar 
+keywords: ensure, host, multipath, practice, setting, correct, esxi, host, manage, fc, path, storage, failover, event, configure, configure the esxi host best practice settings 
+summary: Sie müssen sicherstellen, dass die Einstellungen für Multipathing des Hosts und Best Practices korrekt sind, damit der ESXi Host den Verlust eines FC-Pfads oder eines Storage-Failovers korrekt managen kann. 
+---
+= Konfigurieren Sie die Best Practice-Einstellungen für den ESXi Host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen sicherstellen, dass die Einstellungen für Multipathing des Hosts und Best Practices korrekt sind, damit der ESXi Host den Verlust eines FC-Pfads oder eines Storage-Failovers korrekt managen kann.
+
+.Schritte
+. Klicken Sie auf der VMware vSphere Web Client *Home* Seite auf *vCenter* > *Hosts*.
+. Klicken Sie mit der rechten Maustaste auf den Host und wählen Sie dann *Aktionen* > *NetApp VSC* > *Set Empfohlene Werte* aus.
+. Stellen Sie im Dialogfeld *NetApp Recommended Settings* sicher, dass alle Optionen ausgewählt sind, und klicken Sie dann auf *OK*.
++
+Der vCenter Web Client zeigt den Fortschritt der Aufgabe an.
+
+

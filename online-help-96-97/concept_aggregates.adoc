@@ -1,0 +1,203 @@
+---
+permalink: online-help-96-97/concept_aggregates.html 
+sidebar: sidebar 
+keywords: aggregates, system, manager, security, backup, performance, data, sharing, classic, online, help, window 
+summary: Mit System Manager lassen sich Aggregate erstellen, um die verschiedenen Anforderungen Ihrer Benutzer in Bezug auf Sicherheit, Backup, Performance und gemeinsame Nutzung von Daten zu unterstützen. 
+---
+= Verwalten Sie Aggregate mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+
+
+Mit ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) lassen sich Aggregate erstellen, um die unterschiedlichen Anforderungen Ihrer Benutzer in den Bereichen Sicherheit, Backup, Performance und gemeinsame Nutzung von Daten zu unterstützen.
+
+
+
+== Fenster „Aggregate“
+
+Sie können das Fenster Aggregate verwenden, um Informationen zu Aggregaten zu erstellen, anzuzeigen und zu verwalten.
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Aggregat erstellen, in dem Sie ein Aggregat erstellen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Aggregat bearbeiten, in dem Sie den Namen eines Aggregats oder die RAID-Schutzebene ändern können, die Sie für das Aggregat bereitstellen möchten.
+
+* *Löschen*
++
+Löscht das ausgewählte Aggregat.
+
++
+[NOTE]
+====
+Diese Schaltfläche ist für das Root-Aggregat deaktiviert.
+
+====
+* *Mehr Aktionen*
++
+Bietet die folgenden Optionen:
+
+* *Status ändern in*
++
+Ändert den Status des ausgewählten Aggregats in einen der folgenden Status:
+
++
+** Online
++
+Lese- und Schreibzugriff auf die Volumes in diesem Aggregat sind zulässig.
+
+** Offline
++
+Lese- und Schreibzugriff ist nicht zulässig.
+
+** Beschränken
++
+Einige Vorgänge, wie etwa die Paritätsrekonstruktion, sind zulässig, der Datenzugriff jedoch nicht.
+
+
+
+* *Kapazität Hinzufügen*
++
+Ermöglicht das Hinzufügen von Kapazität (HDDs oder SSDs) zu bestehenden Aggregaten.
+
+* *Cache Hinzufügen*
++
+Ermöglicht das Hinzufügen von Cache-Festplatten (SSDs) zu bestehenden HDD-Aggregaten oder Flash Pool-Aggregaten.
+
++
+Diese Schaltfläche ist nicht für ein Cluster mit Nodes mit All-Flash-optimiertem Charakter verfügbar.
+
+* *Spiegel*
++
+Ermöglicht Ihnen die Spiegelung der Aggregate.
+
+* *Volume Move*
++
+Ermöglicht Ihnen das Verschieben eines FlexVol Volumes.
+
+* *Cloud Tier Anhängen*
++
+Ermöglicht Ihnen, eine Cloud-Tier an das Aggregat anzuschließen.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Aggregatliste
+
+Zeigt den Namen und die Informationen zur Speicherplatznutzung für die einzelnen Aggregate an.
+
+* *Status*
++
+Zeigt den Status des Aggregats an.
+
+* *Name*
++
+Zeigt den Namen des Aggregats an.
+
+* *Knoten*
++
+Zeigt den Namen des Node an, dem die Festplatten des Aggregats zugewiesen sind.
+
++
+Dieses Feld ist nur auf Cluster-Ebene verfügbar.
+
+* *Typ*
++
+Zeigt den Typ des Aggregats an.
+
++
+Dieses Feld wird nicht für ein Cluster angezeigt, das Nodes mit All-Flash-optimiertem Charakter enthält.
+
+* * Wird (%)* Verwendet
++
+Zeigt den Prozentsatz des Speicherplatzes an, der im Aggregat verwendet wird.
+
+* *Verfügbarer Platz*
++
+Zeigt den verfügbaren Speicherplatz im Aggregat an.
+
+* *Verwendeter Platz*
++
+Zeigt die Menge an Speicherplatz an, der für Daten im Aggregat verwendet wird.
+
+* *Gesamtraum*
++
+Zeigt den gesamten Speicherplatz des Aggregats an.
+
+* *FabricPool*
++
+Zeigt an, ob das ausgewählte Aggregat mit einem Cloud-Tier verbunden ist.
+
+* * Cloud Tier*
++
+Wenn das ausgewählte Aggregat an ein Cloud-Tier angeschlossen ist, wird der Name der Cloud-Tier angezeigt.
+
+* *Anzahl Der Volumes*
++
+Zeigt die Anzahl der Volumes an, die mit dem Aggregat verknüpft sind.
+
+* * Datenträgeranzahl*
++
+Zeigt die Anzahl der Festplatten an, die zum Erstellen des Aggregats verwendet werden.
+
+* *Flash Pool*
++
+Zeigt die gesamte Cache-Größe des Flash Pool Aggregats an. Ein Wert von „NA“ bedeutet, dass das Aggregat kein Flash Pool Aggregat ist.
+
++
+Dieses Feld wird nicht für ein Cluster angezeigt, das Nodes mit All-Flash-optimiertem Charakter enthält.
+
+* * Gespiegelt*
++
+Zeigt an, ob das Aggregat gespiegelt wird.
+
+* *SnapLock Typ*
++
+Zeigt den SnapLock-Typ des Aggregats an.
+
+
+
+
+
+=== Detailbereich
+
+Wählen Sie ein Aggregat aus, um Informationen zum ausgewählten Aggregat anzuzeigen. Sie können auf Mehr Details anzeigen klicken, um detaillierte Informationen zum ausgewählten Aggregat anzuzeigen.
+
+* *Registerkarte Übersicht*
++
+Zeigt detaillierte Informationen über das ausgewählte Aggregat an und zeigt eine bildliche Darstellung der Speicherplatzzuweisung des Aggregats, der Platzeinsparungen des Aggregats und der Performance des Aggregats in IOPS und insgesamt Datentransfers an.
+
+* *Registerkarte Datenträgerinformationen*
++
+Zeigt Informationen zum Festplattenlayout an, z. B. den Namen der Festplatte, den Festplattentyp, die physische Größe, die nutzbare Größe, die Festplattenposition, Festplattenstatus, Plex-Name, Plex-Status, RAID-Gruppe, RAID-Typ, Und Storage-Pool (falls vorhanden) für das ausgewählte Aggregat. Es werden auch der Festplatten-Port angezeigt, der dem primären Pfad der Festplatte und dem Festplattennamen mit dem sekundären Pfad für eine Multipath-Konfiguration verknüpft ist.
+
+* *Registerkarte Volumen*
++
+Zeigt Details zur Gesamtzahl der Volumes im Aggregat, den gesamten Aggregatspeicherplatz und den dem Aggregat zubelegten Speicherplatz an.
+
+* *Registerkarte Leistung*
++
+Zeigt Diagramme an, die die Performance-Metriken der Aggregate einschließlich Durchsatz und IOPS zeigen. Die Performance-Metriken für Lese-, Schreib- und Gesamtübertragungen werden für Durchsatz und IOPS angezeigt. Die Daten für SSDs und HDDs werden separat aufgezeichnet.
+
++
+Wenn Sie die Client-Zeitzone oder die Cluster-Zeitzone ändern, werden die Diagramme mit den Performance-Metriken beeinträchtigt. Sie sollten Ihren Browser aktualisieren, um die aktualisierten Diagramme anzuzeigen.
+
+
+
+*Verwandte Informationen*
+
+xref:task_provisioning_storage_through_aggregates.adoc[Provisionierung von Storage über Aggregate]
+
+xref:task_deleting_aggregates.adoc[Löschen von Aggregaten]
+
+xref:task_editing_aggregates.adoc[Bearbeitung von Aggregaten]

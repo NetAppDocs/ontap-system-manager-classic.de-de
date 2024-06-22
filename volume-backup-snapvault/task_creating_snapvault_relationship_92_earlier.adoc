@@ -1,0 +1,88 @@
+---
+permalink: volume-backup-snapvault/task_creating_snapvault_relationship_92_earlier.html 
+sidebar: sidebar 
+keywords: create, snapvault, relationship, source, volume, cluster, destination, peer, backup, create the snapvault relationship, ontap 9.2 or earlier 
+summary: Sie müssen eine SnapVault-Beziehung zwischen dem Quell-Volume auf einem Cluster und dem Ziel-Volume auf dem Peering Cluster erstellen, um ein SnapVault Backup zu erstellen. 
+---
+= SnapVault Beziehung erstellen (ONTAP 9.2 oder älter)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen eine SnapVault-Beziehung zwischen dem Quell-Volume auf einem Cluster und dem Ziel-Volume auf dem Peering Cluster erstellen, um ein SnapVault Backup zu erstellen.
+
+.Bevor Sie beginnen
+* Sie müssen über den Benutzernamen und das Passwort des Cluster-Administrators für das Ziel-Cluster verfügen.
+* Das Zielaggregat muss über verfügbaren Platz verfügen.
+
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *source* ausführen.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie auf die Registerkarte *Volumes*.
+. Wählen Sie das Volumen aus, das Sie sichern möchten, und klicken Sie dann auf *schützen*.
+. Wählen Sie im Dialogfeld *Schutzbeziehung erstellen* aus der Dropdown-Liste *Beziehungstyp* die Option *Vault* aus.
+. Wählen Sie im Abschnitt *Zielvolume* den Peered Cluster aus.
+. Legen Sie die SVM für das Ziel-Volume fest:
++
+|===
+| Lautet die SVM... | Dann... 
+
+
+ a| 
+Peered
+ a| 
+Wählen Sie aus der Liste die Peering SVM aus.
+
+
+
+ a| 
+Keine Peered
+ a| 
+.. Wählen Sie die SVM aus.
+.. Klicken Sie Auf *Authentifizieren*.
+.. Geben Sie die Anmeldedaten des Clusteradministrators für den Peering Cluster ein, und klicken Sie dann auf *Create*.
+
+
+|===
+. Neues Ziel-Volume erstellen:
++
+.. Wählen Sie die Option *New Volume*.
+.. Verwenden Sie den Standardnamen für das Volume, oder geben Sie einen neuen Volume-Namen ein.
+.. Wählen Sie das Zielaggregat aus.
+.. Vergewissern Sie sich, dass das Kontrollkästchen *Enable Dedupe* aktiviert ist.
+
+
++
+image::../media/dest_vol_snapvault.gif[dest vol SnapVault]
+
+. Wählen Sie im Abschnitt *Konfigurationsdetails* die Option `XDPDefault` Als Schutzrichtlinie.
+. Wählen Sie einen Schutzplan aus der Liste der Zeitpläne aus.
+. Stellen Sie sicher, dass das Kontrollkästchen *Beziehung initialisieren* aktiviert ist, um die Basis-Snapshot-Kopie zu übertragen, und klicken Sie dann auf *Erstellen*
++
+image::../media/config_details_snapvault.gif[Konfigurationsdetails SnapVault]
+
++
+Der Assistent erstellt die Beziehung zu der angegebenen Vault-Richtlinie und dem angegebenen Zeitplan. Die Beziehung wird initialisiert durch einen Basistransfer der Daten vom Quell-Volume zum Ziel-Volume.
+
++
+Im Abschnitt Status wird der Status jedes Jobs angezeigt.
+
++
+image::../media/create_snapvault_success.gif[SnapVault-Erfolg]
+
+. Vergewissern Sie sich, dass der Beziehungsstatus der SnapVault-Beziehung im angezeigt wird `Snapmirrored` Bundesland.
++
+.. Wählen Sie das Volume aus der Liste Volumes aus und klicken Sie dann auf *Datenschutz*.
+.. Überprüfen Sie auf der Registerkarte *Data Protection* Bottom, ob die erstellte SnapMirror-Beziehung aufgelistet ist und der Beziehungsstatus lautet `Snapmirrored` Typ lautet `Vault`.
++
+image::../media/data_protection_window_sv.gif[Datensicherungsfenster sv]
+
+
+
+

@@ -1,0 +1,103 @@
+---
+permalink: online-help-96-97/task_assigning_luns_to_storage_qos.html 
+sidebar: sidebar 
+keywords: qos, quality, service, assign, lun, storage, system, manager, lun, online, help, policy, group 
+summary: 'Mit System Manager lässt sich der Durchsatz von LUNs begrenzen, indem Sie diese den Richtliniengruppen Storage Quality of Service (QoS) zuweisen. Sie können Storage-QoS für neue LUNs zuweisen oder Storage-QoS-Details für LUNs ändern, die bereits einer Richtliniengruppe zugewiesen sind.' 
+---
+= Weisen Sie LUNs Storage-QoS mit System Manager - ONTAP 9.7 und früher zu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) verwenden, um den Durchsatz von LUNs zu begrenzen, indem Sie sie Storage Quality of Service (QoS)-Richtliniengruppen zuweisen. Sie können Storage-QoS für neue LUNs zuweisen oder Storage-QoS-Details für LUNs ändern, die bereits einer Richtliniengruppe zugewiesen sind.
+
+.Über diese Aufgabe
+* Sie können einer LUN keine Storage-QoS zuweisen, wenn einer Richtliniengruppe die folgenden Storage-Objekte zugewiesen sind:
++
+** Übergeordnetes Volume der LUN
+** Übergeordnete Storage Virtual Machine (SVM) der LUN
+
+
+* Sie können Storage-QoS zuweisen oder die QoS-Details für maximal 10 LUNs gleichzeitig ändern.
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Wählen Sie auf der Registerkarte *LUN Management* eine oder mehrere LUNs aus, denen Sie Storage QoS zuweisen möchten.
+. Klicken Sie auf *Storage QoS*.
+. Aktivieren Sie im Dialogfeld *Quality of Service Details* das Kontrollkästchen *Storage Quality of Service* verwalten, wenn Sie die Workload-Performance der LUN managen möchten.
++
+Wenn einige der ausgewählten LUNs bereits einer Richtliniengruppe zugewiesen sind, wirken sich die von Ihnen vorgenommenen Änderungen möglicherweise auf die Performance dieser LUNs aus.
+
+. Neue QoS-Richtliniengruppe für Storage erstellen oder vorhandene Richtliniengruppe auswählen, um die I/O-Performance (Input/Output) der LUN zu steuern:
++
+|===
+| Ihr Ziel ist | Tun Sie das... 
+
+
+ a| 
+Erstellen Sie eine neue Richtliniengruppe
+ a| 
+.. Wählen Sie *Neue Richtliniengruppe*.
+.. Geben Sie den Namen der Richtliniengruppe an.
+.. Geben Sie die minimale Durchsatzbegrenzung an.
++
+*** In System Manager 9.5 können Sie die Durchsatzbegrenzung nur auf Performance-basierten All Flash-optimierten Systemen festlegen. In System Manager 9.6 können Sie darüber hinaus das Mindestdurchsatz-Limit für ONTAP Select Premium-Systeme festlegen.
+*** Sie können das Mindestdurchsatz für Volumes nicht auf einem FabricPool-fähigen Aggregat festlegen.
+*** Wenn Sie den Mindestdurchsatzwert nicht angeben oder der Mindestdurchsatzwert auf 0 gesetzt ist, wird „`Keine`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.
+
+
+
+.. Geben Sie das maximale Durchsatzlimit an, um sicherzustellen, dass die Workload der Objekte in der Richtliniengruppe das angegebene Durchsatzlimit nicht überschreitet.
++
+*** Die minimale Durchsatzbegrenzung und die maximale Durchsatzbegrenzung müssen vom selben Einheitstyp sein.
+*** Wenn Sie das minimale Durchsatzlimit nicht angeben, können Sie die maximale Durchsatzbegrenzung in IOPS und B/s, KB/s, MB/s usw. festlegen.
+*** Wenn Sie den maximalen Durchsatzwert nicht angeben, zeigt das System automatisch „`Unlimited`“ als Wert an, und dieser Wert ist zwischen Groß- und Kleinschreibung zu beachten.
++
+Die angegebene Einheit hat keinen Einfluss auf den maximalen Durchsatz.
+
+
+
+
+
+
+
+ a| 
+Wählen Sie eine vorhandene Richtliniengruppe aus
+ a| 
+.. Wählen Sie *vorhandene Richtliniengruppe* aus, und klicken Sie dann auf *Auswählen*, um eine vorhandene Richtliniengruppe im Dialogfeld Richtliniengruppe auswählen auszuwählen.
+.. Geben Sie die minimale Durchsatzbegrenzung an.
++
+*** In System Manager 9.5 können Sie die Durchsatzbegrenzung nur auf Performance-basierten All Flash-optimierten Systemen festlegen. In System Manager 9.6 können Sie darüber hinaus das Mindestdurchsatz-Limit für ONTAP Select Premium-Systeme festlegen.
+*** Sie können das Mindestdurchsatz für Volumes nicht auf einem FabricPool-fähigen Aggregat festlegen.
+*** Wenn Sie den Mindestdurchsatzwert nicht angeben oder der Mindestdurchsatzwert auf 0 gesetzt ist, wird „`Keine`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.
+
+
+
+.. Geben Sie das maximale Durchsatzlimit an, um sicherzustellen, dass die Workload der Objekte in der Richtliniengruppe das angegebene Durchsatzlimit nicht überschreitet.
++
+*** Die minimale Durchsatzbegrenzung und die maximale Durchsatzbegrenzung müssen vom selben Einheitstyp sein.
+*** Wenn Sie das minimale Durchsatzlimit nicht angeben, können Sie die maximale Durchsatzbegrenzung in IOPS und B/s, KB/s, MB/s usw. festlegen.
+*** Wenn Sie den maximalen Durchsatzwert nicht angeben, zeigt das System automatisch „`Unlimited`“ als Wert an, und dieser Wert ist zwischen Groß- und Kleinschreibung zu beachten.
+ +
+Die angegebene Einheit hat keinen Einfluss auf den maximalen Durchsatz.
+
+
++
+Wenn die Richtliniengruppe mehr als einem Objekt zugewiesen ist, wird der maximale Durchsatz, den Sie angeben, von den Objekten gemeinsam genutzt.
+
+
+
+|===
+. *Optional:* Klicken Sie auf den Link, der die Anzahl der LUNs angibt, um die Liste der ausgewählten LUNs zu überprüfen, und klicken Sie auf *Discard*, wenn Sie LUNs aus der Liste entfernen möchten.
++
+Der Link wird nur angezeigt, wenn mehrere LUNs ausgewählt sind.
+
+. Klicken Sie auf *OK*.
+

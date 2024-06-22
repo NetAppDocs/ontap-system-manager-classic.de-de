@@ -1,0 +1,189 @@
+---
+permalink: online-help-96-97/concept_autosupport.html 
+sidebar: sidebar 
+keywords: autosupport, notification, message, monitor, system, health, storage, email, recipient, severity, view, 
+summary: Mit System Manager können Sie AutoSupport Benachrichtigungen konfigurieren, die Sie bei der Überwachung des Zustands Ihres Storage-Systems unterstützen. 
+---
+= Managen Sie AutoSupport Benachrichtigungen mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+
+
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) können Sie AutoSupport Benachrichtigungen konfigurieren, die Ihnen bei der Überwachung des Zustands Ihres Storage-Systems helfen.
+
+
+
+== Einrichten von AutoSupport-Benachrichtigungen
+
+Mit dem Dialogfeld AutoSupport-Einstellungen bearbeiten können Sie in System Manager AutoSupport-Benachrichtigungen einrichten, indem Sie eine E-Mail-Adresse angeben, an die E-Mail-Benachrichtigungen gesendet werden, und mehrere E-Mail-Hostnamen hinzufügen.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* > *AutoSupport*.
+. Wählen Sie den Knoten aus und klicken Sie dann auf *Bearbeiten*.
+. Geben Sie auf der Registerkarte *E-Mail-Empfänger* die E-Mail-Adresse ein, von der E-Mail-Benachrichtigungen gesendet werden, geben Sie die E-Mail-Empfänger und den Nachrichteninhalt für jeden E-Mail-Empfänger an, und fügen Sie die Mail-Hosts hinzu.
++
+Sie können bis zu fünf E-Mail-Adressen der Hostnamen hinzufügen.
+
+. Wählen Sie auf der Registerkarte *andere* ein Transportprotokoll für die E-Mail-Nachrichten aus der Dropdown-Liste aus und geben Sie die HTTP- oder HTTPS-Proxyserver-Details an.
+. Klicken Sie auf *OK*.
+. Überprüfen Sie, ob die Konfiguration, die Sie für die AutoSupport-Benachrichtigung eingerichtet haben, im Fenster *AutoSupport* korrekt eingerichtet ist.
+
+
+
+
+== Aktivieren oder deaktivieren Sie AutoSupport-Einstellungen
+
+Sie können die AutoSupport-Einstellungen in Ihrem Storage-System mit System Manager aktivieren oder deaktivieren. Mithilfe von AutoSupport-Meldungen können Sie den Zustand Ihres Storage-Systems überwachen oder Benachrichtigungen an den technischen Support und die interne Support-Abteilung senden.
+
+.Über diese Aufgabe
+Die Option AutoSupport ist standardmäßig aktiviert.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* > *AutoSupport*.
+. Wählen Sie den Knoten aus und klicken Sie dann auf *Aktivieren* oder *Deaktivieren*.
+. Klicken Sie auf *OK*.
+. Überprüfen Sie, ob im AutoSupport-Status die von Ihnen gemachte Änderung korrekt angezeigt wird.
+
+
+
+
+== AutoSupport-E-Mail-Empfänger hinzufügen
+
+Über die Registerkarte *E-Mail-Empfänger* des Dialogfelds AutoSupport-Einstellungen bearbeiten können Sie im System Manager E-Mail-Adressen der Empfänger von AutoSupport Benachrichtigungen hinzufügen.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* > *AutoSupport*.
+. Wählen Sie den Knoten aus und klicken Sie dann auf *Bearbeiten*.
+. Geben Sie auf der Registerkarte *E-Mail-Empfänger* die Adresse des E-Mail-Empfängers ein, geben Sie an, ob der Empfänger eine volle Nachricht oder eine kurze Nachricht erhält, und klicken Sie dann auf *Hinzufügen*.
+. Klicken Sie auf *OK*.
+. Überprüfen Sie, ob die angegebenen Details im Fenster *AutoSupport* angezeigt werden.
+
+
+
+
+== Testen Sie die AutoSupport-Einstellungen
+
+Sie können im Dialogfeld AutoSupport-Test in System Manager testen, ob Sie die AutoSupport-Einstellungen ordnungsgemäß konfiguriert haben.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* > *AutoSupport*.
+. Wählen Sie den Knoten aus und klicken Sie dann auf *Test*.
+. Geben Sie im Dialogfeld *AutoSupport-Test* den AutoSupport-Betreff „`Test-AutoSupport`“ oder einen Text ein, der die Empfänger darüber informiert, dass Sie die AutoSupport-Einstellungen testen.
+. Klicken Sie Auf *Test*.
++
+Eine E-Mail mit dem Betreff „`Test AutoSupport`“ oder dem Text, den Sie im Feld *AutoSupport Subject* eingegeben haben, wird an die angegebenen Empfänger gesendet.
+
+
+
+
+
+== Generierung von AutoSupport-Daten
+
+Mit System Manager lassen sich AutoSupport-Daten für einen einzelnen oder mehrere Nodes generieren, um deren Zustand zu überwachen und Benachrichtigungen an den technischen Support zu senden.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* > *AutoSupport*.
+. Wählen Sie den Knoten aus und klicken Sie dann auf *AutoSupport-Anfrage* > *AutoSupport generieren*.
++
+Standardmäßig werden die AutoSupport-Daten für alle Nodes generiert.
+
+. Führen Sie im Dialogfeld *AutoSupport generieren* die folgenden Schritte aus:
++
+.. Wenn Sie AutoSupport-Daten für einen bestimmten Knoten generieren möchten, deaktivieren Sie das Kontrollkästchen *AutoSupport-Daten für alle Knoten generieren*, und wählen Sie dann den Knoten aus.
+.. Geben Sie die Case-Nummer ein.
+
+
+. Klicken Sie Auf *Erzeugen*.
+. Klicken Sie im Dialogfeld *Bestätigung* auf *OK*.
+
+
+
+
+== Zeigen Sie die AutoSupport Zusammenfassung an
+
+Mit System Manager können Sie den Status und die Details aller vorherigen AutoSupport Daten anzeigen, um die an den technischen Support gesendeten Daten zu überprüfen. Sie können auch die Informationen anzeigen, um den Zustand und die Performance des Storage-Systems anzuzeigen.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* > *AutoSupport*.
+. Wählen Sie den Knoten aus und klicken Sie dann auf *AutoSupport-Anfrage* > *Vorherige Zusammenfassung anzeigen*.
++
+Die AutoSupport-Daten für alle Nodes werden angezeigt.
+
+. Klicken Sie auf *OK*.
+
+
+
+
+== AutoSupport-Schweregrade
+
+AutoSupport-Meldungen enthalten Typen von Schweregraden, mit denen Sie den Zweck jeder Meldung verstehen – beispielsweise das sofortige Aufzeichnen eines Notfallproblems oder nur das Bereitstellen von Informationen.
+
+Die Nachrichten haben eine der folgenden Schweregrade:
+
+* *Alarm*: Warnhinweise zeigen an, dass ein Ereignis der nächsten höheren Ebene auftreten kann, wenn Sie keine Aktion ergreifen.
++
+Sie müssen innerhalb von 24 Stunden eine Aktion für Warnmeldungen durchführen.
+
+* *Notfall*: Notmeldungen werden angezeigt, wenn eine Störung aufgetreten ist.
++
+Sie müssen sofort Maßnahmen gegen Notmeldungen ergreifen.
+
+* *Fehler*: Fehlerbedingungen geben an, was passieren könnte, wenn Sie ignorieren.
+* *Hinweis*: Normaler, aber bedeutender Zustand.
+* *Info*: Informationsmeldung enthält Details zum Problem, das Sie ignorieren können.
+* *Debug*: Debug-Level-Meldungen enthalten Anweisungen, die Sie durchführen sollten.
+
+
+Wenn Ihre interne Support-Abteilung AutoSupport-Meldungen über E-Mail erhält, wird der Schweregrad in der Betreffzeile der E-Mail-Nachricht angezeigt.
+
+
+
+== AutoSupport-Fenster
+
+Mithilfe des Fensters AutoSupport können Sie die aktuellen AutoSupport-Einstellungen für Ihr System anzeigen. Sie können auch die AutoSupport-Einstellungen Ihres Systems ändern.
+
+
+
+=== Befehlsschaltflächen
+
+* *Aktivieren*
++
+Aktiviert die Benachrichtigung von AutoSupport. *Enable* ist die Standardeinstellung.
+
+* *Deaktivieren*
++
+Deaktiviert die AutoSupport-Benachrichtigung.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld AutoSupport-Einstellungen bearbeiten, in dem Sie eine E-Mail-Adresse angeben können, von der aus E-Mail-Benachrichtigungen gesendet werden, und mehrere E-Mail-Adressen der Hostnamen hinzufügen können.
+
+* *Test*
++
+Öffnet das Dialogfeld AutoSupport-Test, in dem Sie eine AutoSupport-Testmeldung erstellen können.
+
+* *AutoSupport-Anfrage*
++
+Bietet die folgenden AutoSupport-Anfragen:
+
++
+** *AutoSupport generieren*
++
+Generiert AutoSupport-Daten für einen ausgewählten Node oder alle Nodes
+
+** *Vorherige Zusammenfassung Anzeigen*
++
+Zeigt den Status und die Details aller vorherigen AutoSupport-Daten an.
+
+
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Detailbereich
+
+Im Bereich Details werden AutoSupport-Einstellungsinformationen angezeigt, z. B. Node-Name, AutoSupport-Status, verwendetes Transportprotokoll und Name des Proxy-Servers.

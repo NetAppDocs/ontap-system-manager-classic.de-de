@@ -1,0 +1,288 @@
+---
+permalink: online-help-96-97/concept_storage_pools.html 
+sidebar: sidebar 
+keywords: system, manager, storage, pools, ssd, flash, pool, aggregates, online, help, create, 
+summary: Mit System Manager erstellen Sie Storage-Pools, damit SSDs von mehreren Flash Pool Aggregaten gemeinsam genutzt werden können. 
+---
+= Management von Storage Pools mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) erstellen Sie Storage-Pools, damit SSDs von mehreren Flash Pool Aggregaten gemeinsam genutzt werden können.
+
+
+
+== Erstellen Sie einen Speicherpool
+
+Ein Speicherpool ist eine Sammlung von SSDs (Cache-Festplatten). Sie können mit System Manager SSDs kombinieren, um einen Storage-Pool zu erstellen, der es Ihnen ermöglicht, die SSDs und SSD-Spares zwischen einem HA-Paar gemeinsam zu nutzen und so zwei oder mehr Flash Pool Aggregate gleichzeitig zuzuweisen.
+
+.Bevor Sie beginnen
+* Beide Nodes des HA-Paars müssen betriebsbereit sein, damit über einen Storage-Pool SSDs und SSD-Spares zugewiesen werden können.
+* Speicherpools müssen mindestens 3 SSDs enthalten.
+* Alle SSDs in einem Storage-Pool müssen dem gleichen HA-Paar gehören.
+
+
+.Über diese Aufgabe
+System Manager erzwingt die Hot Spare-Regel für SSD RAID-Gruppen, wenn Sie SSDs zum Hinzufügen von Festplatten zu einem Storage-Pool verwenden. Wenn beispielsweise 10 SSDs in der SSD-RAID-Gruppe und die Option vorhanden sind `raid.min_spare_count` Ist auf festgelegt `1` Auf Node-Ebene verlässt System Manager eine SSD als Hot Spare und verwendet die anderen 9 SSDs für SSD-bezogene Vorgänge.
+
+Sie können nicht partitionierte SSDs beim Erstellen eines Storage-Pools mit System Manager verwenden.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Speicherpools*.
+. Klicken Sie im Fenster *Speicherpools* auf *Erstellen*.
+. Geben Sie im Dialogfeld *Create Storage Pool* den Namen für den Speicherpool, die Festplattengröße und die Anzahl der Festplatten an.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Fügen Sie Festplatten zu einem Speicherpool hinzu
+
+Sie können SSDs einem vorhandenen Storage-Pool hinzufügen und dessen Cache-Größe mit System Manager erhöhen.
+
+.Bevor Sie beginnen
+Beide Nodes des HA-Paars müssen betriebsbereit sein, damit über einen Storage-Pool SSDs und SSD-Spares zugewiesen werden können.
+
+.Über diese Aufgabe
+* Die SSDs, die Sie zu einem Storage-Pool hinzufügen, werden proportional unter den Aggregaten zum Storage-Pool-Cache und zum freien Speicherplatz des Storage-Pools verteilt.
+* System Manager erzwingt die Hot Spare-Regel für SSD RAID-Gruppen, wenn Sie SSDs zum Hinzufügen von Festplatten zu einem Storage-Pool verwenden.
++
+Wenn beispielsweise 10 SSDs in der SSD-RAID-Gruppe und die Option vorhanden sind `raid.min_spare_count` Ist auf festgelegt `1` Auf Node-Ebene verlässt System Manager eine SSD als Hot Spare und verwendet die anderen 9 SSDs für SSD-bezogene Vorgänge.
+
+* Partitionierte SSDs können nicht verwendet werden, wenn Sie mit System Manager Festplatten zu einem Speicherpool hinzufügen.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Speicherpools*.
+. Wählen Sie im Fenster *Speicherpools* den Speicherpool aus und klicken Sie dann auf *Datenträger hinzufügen*.
+. Geben Sie im Dialogfeld *Add Disks* die Anzahl der Festplatten an, die Sie hinzufügen möchten.
+. Klicken Sie Auf *Weiter*.
+. Überprüfen Sie im Dialogfeld *Zusammenfassung*, wie der Cache auf verschiedene Aggregate verteilt wird und wie der freie Speicherplatz des Speicherpools zur Verfügung steht.
+. Klicken Sie Auf *Hinzufügen*.
+
+
+
+
+== Löschen von Speicherpools
+
+Es könnte sein, dass Sie einen Speicherpool löschen möchten, wenn der Cache des Speicherpools nicht optimal ist oder nicht mehr von einem Aggregat oder Flash Pool Aggregat verwendet wird. Sie können einen Speicherpool löschen, indem Sie in System Manager das Dialogfeld Speicherpool löschen verwenden.
+
+.Bevor Sie beginnen
+Der Speicherpool darf von keinem Aggregat verwendet werden.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Speicherpools*.
+. Wählen Sie im Fenster *Speicherpools* den Speicherpool aus, den Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Klicken Sie im Dialogfeld *Speicherpool löschen* auf *Löschen*.
+
+
+
+
+== Verwendung von SSD-Storage-Pools
+
+Damit SSDs von mehreren Flash Pool Aggregaten gemeinsam genutzt werden können, können Sie die SSDs zu einem _Storage Pool_ hinzufügen. Nachdem Sie einem Storage-Pool eine SSD hinzugefügt haben, können Sie die SSD nicht mehr als eigenständige Einheit verwalten. Sie müssen den Speicherpool verwenden, um den von der SSD bereitgestellten Storage zuzuweisen oder zuzuweisen.
+
+Sie können Storage-Pools für ein bestimmtes Hochverfügbarkeitspaar (HA-Paar) erstellen. Anschließend können Sie einem oder mehreren Flash Pool Aggregaten, die im Besitz des gleichen HA-Paars sind, Zuweisungseinheiten aus diesem Storage-Pool hinzufügen. Genauso wie Festplatten vom gleichen Node gehören müssen, der ein Aggregat besitzt, bevor die Festplatten zugewiesen werden können, können Storage-Pools nur den Flash Pool-Aggregaten zur Verfügung stellen, die einem der Nodes gehören, der den Speicherpool besitzt.
+
+Wenn Sie die Menge an Flash Pool Cache auf Ihrem System erhöhen müssen, können Sie einem Storage Pool weitere SSDs hinzufügen, bis zur maximalen RAID-Gruppengröße für den RAID-Typ der Flash Pool Caches, die diesen Speicherpool nutzen. Wenn Sie einem vorhandenen Storage-Pool eine SSD hinzufügen, vergrößern Sie die Größe der Zuweisungseinheiten des Storage-Pools einschließlich sämtlicher Zuweisungseinheiten, die bereits einem Flash Pool Aggregat zugewiesen sind.
+
+Sie können nur eine freie SSD für einen Speicherpool verwenden. Wenn also eine SSD in diesem Speicherpool nicht mehr verfügbar ist, kann ONTAP die Spare SSD verwenden, um die Partitionen der defekten SSD zu rekonstruieren. Sie müssen keine Zuweisungseinheiten als freie Kapazität reservieren. ONTAP kann nur eine vollständige, nicht partitionierte SSD als Ersatz für die SSDs in einem Storage-Pool verwenden.
+
+Nachdem Sie einem Speicherpool eine SSD hinzugefügt haben, können Sie die SSD nicht entfernen, so wie Sie Festplatten nicht aus einem Aggregat entfernen können. Wenn Sie die SSDs in einem Speicherpool wieder als separate Laufwerke verwenden möchten, müssen Sie alle Flash Pool-Aggregate zerstören, denen die Zuweisungseinheiten des Speicherpools zugewiesen wurden, und dann den Speicherpool zerstören.
+
+
+
+== Anforderungen und Best Practices für die Verwendung von SSD-Storage-Pools
+
+Einige Technologien können nicht mit Flash Pool-Aggregaten kombiniert werden, die SSD-Storage-Pools verwenden.
+
+Folgende Technologien können nicht mit Flash Pool Aggregaten verwendet werden, die SSD-Storage-Pools für ihren Cache-Storage verwenden:
+
+* MetroCluster
+* SyncMirror Funktionalität
++
+Gespiegelte Aggregate können neben Flash Pool Aggregaten verwendet werden, die Storage Pools nutzen. Flash Pool-Aggregate können jedoch nicht gespiegelt werden.
+
+* Physische SSDs
++
+Flash Pool Aggregate können SSD Storage-Pools oder physische SSDs verwenden, jedoch nicht beides.
+
+
+
+SSD Storage-Pools müssen folgenden Regeln entsprechen:
+
+* SSD-Storage-Pools können nur SSDs enthalten; HDDs können nicht einem SSD-Storage-Pool hinzugefügt werden.
+* Alle SSDs in einem SSD-Storage-Pool müssen im Besitz desselben HA-Paars sein.
+* Sie können keine SSDs verwenden, die für die Root-Daten-Partitionierung in einem Storage-Pool partitioniert wurden.
+
+
+Wenn Sie Speicher aus einem einzelnen Speicherpool in zwei Caches mit verschiedenen RAID-Typen zur Verfügung stellen und Sie die Größe des Speicherpools über die maximale RAID-Gruppengröße für RAID4 hinaus erweitern, werden die zusätzlichen Partitionen in den RAID4-Zuordnungseinheiten nicht mehr verwendet. Daher empfiehlt es sich, Ihre Cache-RAID-Typen für einen Storage Pool homogen zu halten.
+
+Sie können den RAID-Typ von Cache-RAID-Gruppen nicht ändern, die aus einem Speicherpool zugewiesen sind. Sie legen den RAID-Typ für den Cache fest, bevor Sie die ersten Zuordnungseinheiten hinzufügen, und Sie können den RAID-Typ später nicht ändern.
+
+Wenn Sie einen Storage-Pool erstellen oder einem vorhandenen Storage-Pool SSDs hinzufügen, müssen Sie dieselbe SSD-Größe verwenden. Wenn ein Fehler auftritt und keine Spare SSD mit der korrekten Größe vorhanden ist, kann ONTAP die ausgefallene SSD mit einer größeren SSD ersetzen. Die größere SSD ist jedoch an die Größe anderer SSDs im Storage-Pool angepasst, was zu einem Verlust der SSD-Kapazität führt.
+
+Sie können nur eine freie SSD für einen Speicherpool verwenden. Wenn der Storage-Pool den Flash Pool Aggregaten zugewiesen wird, die beiden Nodes im HA-Paar gehören, kann die freie SSD beiden Nodes im Besitz sein. Wenn der Storage Pool jedoch nur den Flash Pool Aggregaten zugewiesen wird, die einem der Nodes im HA-Paar gehören, muss der SSD-Spare-Laufwerk des gleichen Node sein.
+
+
+
+== Überlegungen zur Verwendung von SSD-Storage-Pools
+
+SSD Storage-Pools bieten viele Vorteile, aber sie führen auch einige Einschränkungen mit sich, die Sie bei der Entscheidung, ob Sie SSD Storage-Pools oder dedizierte SSDs verwenden sollten, beachten sollten.
+
+SSD Storage Pools sind nur dann sinnvoll, wenn sie Cache für zwei oder mehr Flash Pool Aggregate bereitstellen. SSD Storage-Pools bieten folgende Vorteile:
+
+* Erhöhte Storage-Auslastung für SSDs, die in Flash Pool-Aggregaten verwendet werden
++
+SSD Storage-Pools reduzieren den Gesamtprozentsatz der SSDs, die für Parität erforderlich sind, indem Sie Paritätslaufwerke zwischen zwei oder mehr Flash Pool-Aggregaten verwenden können.
+
+* Möglichkeit der gemeinsamen Nutzung von Ersatzteilen zwischen HA-Partnern
++
+Da der Storage-Pool im Besitz des HA-Paars ist, kann bei Bedarf ein Ersatzteil, das Eigentum eines HA-Partners ist, als Ersatz für den gesamten SSD Storage-Pool fungieren.
+
+* Bessere Auslastung der SSD-Performance
++
+Die hohe Performance von SSDs kann den Zugriff durch beide Controller in einem HA-Paar unterstützen.
+
+
+
+Diese Vorteile müssen gegenüber den Kosten für die Nutzung von SSD-Storage-Pools abgewogen werden. Dazu gehören folgende Punkte:
+
+* Weniger Fehlereingrenzung
++
+Der Verlust einer einzelnen SSD betrifft alle RAID-Gruppen, die eine ihrer Partitionen enthalten. In dieser Situation ist für jedes Flash Pool Aggregat, das über einen Cache aus dem SSD-Storage-Pool, der die betroffene SSD enthält, eine oder mehrere RAID-Gruppen in Rekonstruktion.
+
+* Reduzierte Performance-Isolierung
++
+Wenn die Größe des Flash Pool Caches nicht richtig groß ist, kann es Konflikte für den Cache zwischen den Flash Pool Aggregaten geben, die ihn teilen. Dieses Risiko kann durch eine angemessene Cache-Größe und QoS-Steuerung vermindert werden.
+
+* Geringere Managementflexibilität
++
+Wenn Sie einem Storage Pool Storage hinzufügen, vergrößern Sie die Größe aller Flash Pool Caches, die eine oder mehrere Zuweisungseinheiten aus diesem Storage Pool enthalten. Sie können nicht feststellen, wie die zusätzliche Kapazität verteilt wird.
+
+
+
+
+
+== Überlegungen, dass SSDs zu einem vorhandenen Storage-Pool hinzugefügt werden müssen und nicht ein neuer Pool erstellt werden kann
+
+Sie können die Größe des SSD-Caches auf zwei Arten erhöhen: Durch Hinzufügen von SSDs zu einem vorhandenen SSD-Storage-Pool oder durch Erstellen eines neuen SSD-Storage-Pools. Die beste Methode für Sie hängt von Ihrer Konfiguration und den Plänen für den Storage ab.
+
+Die Wahl zwischen der Erstellung eines neuen Speicherpools und dem Hinzufügen von Speicherkapazität zu einem vorhandenen System ist vergleichbar mit der Entscheidung, ob eine neue RAID-Gruppe erstellt oder einer vorhandenen Storage hinzugefügt werden soll:
+
+* Wenn Sie eine große Anzahl SSDs hinzufügen, wird ein neuer Storage-Pool flexibler, da Sie den neuen Storage-Pool anders als den vorhandenen zuweisen können.
+* Wenn Sie nur wenige SSDs hinzufügen und die Größe der RAID-Gruppen Ihrer bestehenden Flash Pool Caches erhöhen, stellt kein Problem dar. Wenn Sie dann SSDs zum vorhandenen Speicherpool hinzufügen, bleiben Ihre Spare- und Parity-Kosten niedriger, und der neue Speicher wird automatisch zugewiesen.
+
+
+Wenn Ihr Storage-Pool Flash Pool Aggregaten bereitstellt, deren Caches unterschiedliche RAID-Typen haben, und Sie die Größe des Speicherpools über die maximale RAID4-Gruppengröße hinaus erweitern, werden die neu hinzugefügten Partitionen in den RAID4-Zuweisungseinheiten nicht genutzt.
+
+
+
+== Warum fügen Sie Festplatten zu Speicherpools hinzu
+
+Sie können SSDs zu einem vorhandenen Storage-Pool hinzufügen und dessen Cache-Größe erhöhen. Wenn Sie einem Storage-Pool SSDs hinzufügen, bei denen bereits zugewiesene Zuweisungseinheiten Flash Pool-Aggregate zugeordnet sind, erhöhen Sie die Cache-Größe jedes dieser Aggregate und den gesamten Cache des Storage-Pools.
+
+Wenn die Zuweisungseinheiten des Speicherpools noch nicht zugewiesen sind, hat das Hinzufügen von SSDs zu diesem Speicherpool keine Auswirkung auf die Größe des SSD-Caches.
+
+Wenn Sie einem vorhandenen Storage-Pool SSDs hinzufügen, müssen die SSDs einem Node oder dem anderen des gleichen HA-Paars, das bereits im Besitz der vorhandenen SSDs im Storage-Pool ist, gehören. Sie können SSDs hinzufügen, die zu einem der beiden Nodes des HA-Paars gehören.
+
+
+
+== So funktioniert der Storage-Pool
+
+Ein _Storage-Pool_ ist eine Sammlung von SSDs. Sie können SSDs kombinieren, um einen Storage-Pool zu erstellen, der es Ihnen ermöglicht, SSDs und SSD-Spares über mehrere Flash Pool Aggregate gleichzeitig gemeinsam zu nutzen.
+
+Storage-Pools bestehen aus Zuweisungseinheiten, die Sie verwenden können, um Aggregate SSDs und SSD-Spares zur Verfügung zu stellen oder die bestehende SSD-Größe zu erhöhen.
+
+Nachdem Sie einem Storage-Pool eine SSD hinzugefügt haben, kann die SSD nicht mehr als einzelne Festplatte verwendet werden. Sie müssen den Speicherpool verwenden, um den von der SSD bereitgestellten Speicher zuzuweisen oder zuzuweisen.
+
+
+
+== Storage Pools-Fenster
+
+Sie können mithilfe des Fensters Storage Pools einen dedizierten Cache von SSDs erstellen, anzeigen und verwalten, auch bekannt als _Storage Pools_. Diese Storage-Pools können in Verbindung mit einem nicht-Root-Aggregat eingesetzt werden, um SSD-Cache und ein Flash Pool Aggregat bereitzustellen, um seine Größe zu erhöhen.
+
+Diese Seite ist nicht für ein Cluster verfügbar, das Nodes mit All-Flash-optimiertem Charakter enthält.
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Speicherpool erstellen, in dem Sie einen Speicherpool erstellen können.
+
+* *Datenträger Hinzufügen*
++
+Öffnet das Dialogfeld Festplatten hinzufügen, in dem Sie Cache-Festplatten zu einem Speicherpool hinzufügen können.
+
+* *Löschen*
++
+Löscht den ausgewählten Speicherpool.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der Storage-Pools
+
+* *Name*
++
+Zeigt den Namen des Speicherpools an.
+
+* *Gesamt-Cache*
++
+Zeigt die gesamte Cache-Größe des Speicherpools an.
+
+* *Spare Cache*
++
+Zeigt die verfügbare Größe des freien Cache des Speicherpools an.
+
+* *Verwendeter Cache (%)*
++
+Zeigt den Prozentsatz der verwendeten Cachegröße des Speicherpools an.
+
+* *Zuordnungseinheit*
++
+Zeigt die minimale Zuordnungseinheit der gesamten Cache-Größe an, mit der Sie die Größe Ihres Speicherpools erhöhen können.
+
+* *Eigentümer*
++
+Zeigt den Namen des HA-Paars oder des Node an, mit dem der Storage-Pool verknüpft ist.
+
+* *Bundesland*
++
+Zeigt den Status des Speicherpools an. Dies kann Normal, beeinträchtigt, erstellt, gelöscht, neu zugewiesen werden, Tendenz steigend.
+
+* *Ist Gesund*
++
+Zeigt an, ob der Speicherpool ordnungsgemäß ist oder nicht.
+
+
+
+
+
+=== Registerkarte „Details“
+
+Zeigt detaillierte Informationen zum ausgewählten Speicherpool an, z. B. Name, Zustand, Speichertyp, Festplattenanzahl, gesamter Cache, Freier Cache, verwendete Cache-Größe (in Prozent) und Zuweisungseinheit. Auf der Registerkarte werden auch die Namen der Aggregate angezeigt, die vom Speicherpool bereitgestellt werden.
+
+
+
+=== Registerkarte „Festplatten“
+
+Zeigt detaillierte Informationen zu den Festplatten im ausgewählten Speicherpool an, z. B. Namen, Festplattentypen, nutzbare Größe und Gesamtgröße.
+
+*Verwandte Informationen*
+
+xref:task_provisioning_storage_by_creating_flash_pool_aggregate_manually.adoc[Provisioning von Storage durch manuelles Erstellen eines Flash Pool Aggregats]
+
+xref:task_provisioning_cache_by_adding_disks.adoc[Bereitstellung von Cache durch Hinzufügen von SSDs]
+
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Festplatten- und Aggregatmanagement"]

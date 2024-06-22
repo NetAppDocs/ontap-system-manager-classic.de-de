@@ -1,0 +1,130 @@
+---
+permalink: online-help-96-97/concept_snapshot_policies.html 
+sidebar: sidebar 
+keywords: snapshot, manager, system, create, manage, policy, storage, online, help 
+summary: Mit System Manager können Snapshot-Richtlinien in Ihrem Storage-System erstellt und gemanagt werden. 
+---
+= Managen Sie Snapshot-Richtlinien mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie Snapshot-Richtlinien in Ihrem Storage-System erstellen und managen.
+
+
+
+== Allgemeines zu Snapshot-Richtlinien
+
+Bei der Anwendung auf ein Volume gibt eine Snapshot-Richtlinie einen Zeitplan oder Pläne an, nach dem Snapshot-Kopien erstellt werden, und gibt die maximale Anzahl der Snapshot-Kopien an, die jeder Zeitplan erstellen kann. Eine Snapshot-Richtlinie kann bis zu fünf Zeitpläne enthalten.
+
+Bei Vault-Beziehungen wird das SnapMirror Label-Attribut verwendet, um Snapshot-Kopien auf den Quell-Volumes auszuwählen. Nur Snapshot-Kopien mit den in den Vault-Richtlinienregeln konfigurierten Beschriftungen werden in Backup-Vault-Vorgänge repliziert. Die dem Quell-Volume zugewiesene Snapshot-Richtlinie muss das SnapMirror Label-Attribut enthalten.
+
+
+
+== Snapshot-Richtlinien erstellen
+
+Sie können eine Snapshot-Richtlinie in System Manager erstellen, um die maximale Anzahl der Snapshot Kopien anzugeben, die automatisch erstellt werden können, und wie oft sie erstellt werden.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Snapshot-Richtlinien*.
+. Klicken Sie Auf *Erstellen*.
+. Geben Sie im Dialogfeld *Snapshot-Richtlinie erstellen* den Richtliniennamen an.
+. Klicken Sie auf *Hinzufügen* und geben Sie dann den Namen des Zeitplans, die maximale Anzahl der Snapshot-Kopien, die Sie behalten möchten, und den Namen der SnapMirror-Bezeichnung an.
++
+Die maximale Anzahl von Snapshot Kopien, die von den angegebenen Zeitplänen beibehalten werden können, darf 254 nicht überschreiten.
+
+. Klicken Sie auf *OK* und dann auf *Erstellen*.
+
+
+
+
+== Snapshot-Richtlinien bearbeiten
+
+Sie können die Details einer vorhandenen Snapshot-Richtlinie, z. B. den Planungsnamen, das SnapMirror-Etikett oder die maximale Anzahl von Snapshot-Kopien, die erstellt werden, ändern, indem Sie das Dialogfeld Snapshot-Richtlinie bearbeiten in System Manager verwenden.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Snapshot-Richtlinien*.
+. Wählen Sie im Fenster *Snapshot Policies* die Snapshot Policy aus, die Sie ändern möchten, und klicken Sie auf *Bearbeiten*.
+. Wählen Sie im Dialogfeld *Snapshot-Richtlinie bearbeiten* den Zeitplan aus, den Sie ändern möchten, und klicken Sie auf *Bearbeiten*.
+. Klicken Sie auf *OK*.
+. Überprüfen Sie die Änderungen, die Sie an der ausgewählten Snapshot-Richtlinie vorgenommen haben, im Dialogfeld *Snapshot-Richtlinie bearbeiten* und klicken Sie auf *Speichern*.
+
+
+
+
+== Snapshot-Richtlinien löschen
+
+Mit System Manager können Sie Snapshot-Richtlinien löschen. Wenn Sie eine Snapshot-Richtlinie löschen, die von einem oder mehreren Volumes verwendet wird, werden gemäß der gelöschten Richtlinie keine Snapshot-Kopien des Volume oder der Volumes mehr erstellt.
+
+.Bevor Sie beginnen
+Sie müssen die Snapshot-Richtlinie von jedem Volume, das sie verwendet, distanziert haben.
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Snapshot-Richtlinien*.
+. Wählen Sie die Snapshot-Richtlinie aus und klicken Sie auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+
+
+
+
+== Fenster Snapshot-Richtlinien
+
+Mit dem Fenster Snapshot Policies können Sie Snapshot-Richtlinienaufgaben verwalten, z. B. zum Hinzufügen, Bearbeiten und Löschen von Snapshot-Richtlinien.
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Snapshot Richtlinie erstellen, in dem Sie Backup-Pläne hinzufügen und die maximale Anzahl von Snapshot Kopien angeben können, die in einer Richtlinie beibehalten werden sollen.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Snapshot Richtlinie bearbeiten, in dem Sie die Häufigkeit, mit der Snapshot Kopien erstellt werden sollen, und die maximale Anzahl an Snapshot Kopien, die behalten werden sollen, ändern können.
+
+* *Löschen*
++
+Öffnet das Dialogfeld Löschen, in dem Sie die ausgewählte Snapshot-Richtlinie löschen können.
+
+* *Blick als*
++
+Ermöglicht Ihnen, die Snapshot-Richtlinien entweder als Liste oder als Baum anzuzeigen.
+
+* *Status*
++
+Öffnet das Menü, mit dem Sie die ausgewählte Snapshot-Richtlinie aktivieren oder deaktivieren können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der Snapshot-Richtlinien
+
+* *Richtlinien/Name Des Zeitplans*
++
+Gibt den Namen der Snapshot-Richtlinie und die Zeitpläne in der Richtlinie an.
+
+* *Storage Virtual Machine*
++
+Gibt den Namen der Storage Virtual Machine (SVM) an, zu der die Snapshot Kopien gehören.
+
+* *Status*
++
+Gibt den Status der Snapshot-Richtlinie an, die aktiviert oder deaktiviert werden kann.
+
+* *Maximale Snapshots zu behalten*
++
+Gibt die maximale Anzahl von Snapshot Kopien an, die beibehalten werden sollen.
+
+* *SnapMirror-Etikett*
++
+Gibt den Namen des SnapMirror Label-Attributs der Snapshot-Kopie an, die vom Backup-Zeitplan generiert wird.
+
+

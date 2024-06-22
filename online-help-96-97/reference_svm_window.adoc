@@ -1,0 +1,219 @@
+---
+permalink: online-help-96-97/reference_svm_window.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, window, svm, online, help, command, button, peer 
+summary: 'Sie können das Fenster Storage Virtual Machines verwenden, um Ihre Storage Virtual Machines (SVMs) zu managen und Informationen darüber anzuzeigen.' 
+---
+= Storage Virtual Machines-Fenster in System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Im Fenster Storage Virtual Machines im ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) können Sie Ihre Storage Virtual Machines (SVMs) verwalten und Informationen darüber anzeigen.
+
+Sie können die für die Disaster Recovery (DR) konfigurierte SVM (erstellen, löschen, starten oder stoppen) nicht mit System Manager managen (. Sie können darüber hinaus nicht die Storage-Objekte anzeigen, die der für die Disaster-Recovery-Konfiguration in der Applikationsschnittstelle konfigurierten SVM zugeordnet sind.
+
+
+
+== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet den Storage Virtual Machine (SVM) Setup-Assistenten, mit dem Sie eine neue SVM erstellen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Storage Virtual Machine bearbeiten, in dem Sie die Eigenschaften einer ausgewählten SVM ändern können, z. B. Name Service Switch, Name Mapping Switch und Aggregatliste.
+
+* *Löschen*
++
+Löscht die ausgewählten SVMs.
+
+* *Start*
++
+Startet die ausgewählte SVM.
+
+* *Stopp*
++
+Beendet die ausgewählte SVM.
+
+* *SVM-Einstellungen*
++
+Management des Storage, der Richtlinien und der Konfiguration der ausgewählten SVM
+
+* *Schutzvorgänge*
++
+Bietet die folgenden Optionen:
+
++
+** *Initialisieren*
++
+Hiermit können Sie die SVM-Beziehung initialisieren, um einen Basistransfer von der Quell-SVM zu der Ziel-SVM durchzuführen.
+
+** *Aktualisierung*
++
+Ermöglicht Ihnen das Aktualisieren der Daten von der Quell-SVM auf die Ziel-SVM.
+
+** *Ziel-SVM aktivieren*
++
+Ermöglicht Ihnen die Aktivierung der Ziel-SVM.
+
+** *Resync von Quell-SVM*
++
+Ermöglicht Ihnen die Initiierung einer Neusynchronisierung der unterbrochenen Beziehung.
+
+** *Resync von Ziel-SVM (Reverse Resync)*
++
+Ermöglicht Ihnen die Neusynchronisierung der Beziehung von der Ziel-SVM zur Quell-SVM.
+
+** *Quell-SVM reaktivieren*
++
+Ermöglicht Ihnen das Reaktivieren der Quell-SVM.
+
+
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+* * Dateizugriff Verfolgen*
++
+Ermöglicht Ihnen, den Zugriff auf eine Datei oder die Freigabe auf der ausgewählten SVM für einen bestimmten Benutzernamen zu verfolgen.
+
+
+
+
+
+== SVM-Liste
+
+Die Liste der SVMs enthält den Namen der einzelnen SVMs und die entsprechenden Protokolle.
+
+Mit System Manager können nur Data SVMs angezeigt werden.
+
+* *Name*
++
+Zeigt den Namen der SVM an.
+
+* *Bundesland*
++
+Zeigt den SVM-Status an, z. B. Ausführen, Starten, angehalten oder angehalten.
+
+* *Subtyp*
++
+Zeigt den Untertyp der SVM an. Dieser kann einer der folgenden sein:
+
++
+** Standard
++
+Gibt an, dass die SVM eine Datenservice-SVM ist.
+
+** dp-Destination
++
+Gibt an, dass die SVM für die Disaster Recovery konfiguriert ist.
+
+** Synchrone Quelle
++
+Gibt an, dass sich die SVM am primären Standort einer MetroCluster Konfiguration befindet.
+
+** Synchronisationziel
++
+Gibt an, dass sich die SVM am verbleibenden Standort einer MetroCluster-Konfiguration befindet.
+
+
+
+* *Erlaubte Protokolle*
++
+Zeigt die zulässigen Protokolle wie CIFS und NFS auf jeder SVM an.
+
+* *IPspace*
++
+Zeigt den IPspace der zugehörigen SVM an.
+
+* *Volume-Typ*
++
+Zeigt den zulässigen Volume-Typ (z. B. FlexVol Volume) auf jeder SVM an.
+
+* * Geschützt*
++
+Zeigt an, ob die SVM geschützt ist oder nicht.
+
+* *Konfigurationsstatus*
++
+Zeigt an, ob der Konfigurationsstatus der SVM gesperrt oder entsperrt ist.
+
+
+
+
+
+== Detailbereich
+
+Im Bereich unterhalb der SVM-Liste werden ausführliche Informationen angezeigt, beispielsweise der Typ der zulässigen Volumes, die Sprache und die Snapshot-Richtlinie zur ausgewählten SVM.
+
+Sie können auch die Protokolle konfigurieren, die für diese SVM zulässig sind. Falls die Protokolle beim Erstellen der SVM nicht konfiguriert wurden, können Sie auf den Protokoll-Link klicken, um das Protokoll zu konfigurieren.
+
+Sie können Protokolle für eine SVM, die für die Disaster Recovery mit System Manager konfiguriert wurde, nicht konfigurieren.
+
+[NOTE]
+====
+Wenn der FCP-Service bereits für die SVM gestartet wurde, wird durch Klicken auf den FC/FCoE-Link das Fenster Netzwerkschnittstellen geöffnet.
+
+====
+Die Farbe gibt den Status der Protokollkonfiguration an:
+
+|===
+| Status | Beschreibung 
+
+
+ a| 
+Grün
+ a| 
+LIFs sind vorhanden und das Protokoll ist konfiguriert. Sie können auf den Link klicken, um die Konfigurationsdetails anzuzeigen.
+
+[NOTE]
+====
+Die Konfiguration ist möglicherweise teilweise abgeschlossen. Der Service wird jedoch ausgeführt. Sie können die LIFs erstellen und die Konfiguration über das Fenster Netzwerkschnittstellen abschließen.
+
+====
+
+
+ a| 
+Gelb
+ a| 
+Zeigt eine der folgenden Optionen an:
+
+* LIFs sind vorhanden. Dienst wird erstellt, wird aber nicht ausgeführt.
+* LIFs sind vorhanden. Dienst wurde nicht erstellt.
+* Dienst wird erstellt. LIFs sind nicht vorhanden.
+
+
+
+
+ a| 
+Grau
+ a| 
+Das Protokoll ist nicht konfiguriert. Sie können auf den Protokoll-Link klicken, um das Protokoll zu konfigurieren.
+
+
+
+ a| 
+Grauer Rand
+ a| 
+Die Protokolllizenz ist abgelaufen oder fehlt. Klicken Sie auf den Protokolllink, um die Lizenzen auf der Seite Lizenzen hinzuzufügen.
+
+|===
+Sie können auch die Managementoberfläche hinzufügen und Details anzeigen, beispielsweise in Bezug auf Sicherungsbeziehungen, Sicherungsrichtlinien, NIS-Domäne usw.
+
+Der Bereich *Details* enthält auch einen Link zum Anzeigen des Public SSL-Zertifikats für eine SVM. Wenn Sie auf diesen Link klicken, können Sie die folgenden Aufgaben ausführen:
+
+* Zeigen Sie Zertifikatdetails, die Seriennummer, das Startdatum und das Ablaufdatum an.
+* Kopieren Sie das Zertifikat in die Zwischenablage.
+* Senden Sie eine E-Mail mit den Zertifikatsdetails
+
+
+
+
+== Bereich für Peer Storage Virtual Machines
+
+Zeigt eine Liste der SVMs an, die mit der ausgewählten SVM Peered wurden, sowie Details zu den Applikationen, die die Peer-Beziehung verwenden.

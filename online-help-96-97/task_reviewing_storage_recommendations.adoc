@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_reviewing_storage_recommendations.html 
+sidebar: sidebar 
+keywords: review, storage, recommendation, window, online, help, create, aggregate 
+summary: Mithilfe des Fensters „Speicher“ können Sie die Speicherempfehlungen prüfen, die zum Erstellen von Aggregaten bereitgestellt werden. 
+---
+= Storage-Empfehlungen mit System Manager - ONTAP 9.7 und früher prüfen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Storage-Empfehlungen zum Erstellen von Aggregaten mithilfe des Storage-Fensters in ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) prüfen.
+
+.Bevor Sie beginnen
+Sie müssen das Cluster, das Netzwerk und die Support-Details einrichten.
+
+.Über diese Aufgabe
+Sie können Daten-Aggregate gemäß den Storage-Empfehlungen erstellen oder diesen Schritt überspringen und Daten-Aggregate zu einem späteren Zeitpunkt mit System Manager erstellen.
+
+
+
+== Verfahren
+
+* Um Datenaggregate gemäß den Speicherempfehlungen zu erstellen, klicken Sie *Absenden und Fortfahren*.
+* Um Daten-Aggregate zu einem späteren Zeitpunkt mit System Manager zu erstellen, klicken Sie auf *überspringen Sie diesen Schritt*.
+
+
+
+
+== Nächste Schritte
+
+Wenn Sie die Erstellung von Aggregaten gemäß den Storage-Empfehlungen gewählt haben, müssen Sie eine Storage Virtual Machine (SVM) erstellen, um das Cluster-Setup fortzusetzen.

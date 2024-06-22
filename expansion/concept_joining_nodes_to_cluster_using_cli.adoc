@@ -1,0 +1,125 @@
+---
+permalink: expansion/concept_joining_nodes_to_cluster_using_cli.html 
+sidebar: sidebar 
+keywords: install, controller, module, cluster, setup, command, join nodes to the cluster using the cli 
+summary: Wenn die neu installierten Controller-Module bereit sind, können Sie sie mit dem Cluster-Setup-Befehl dem Cluster hinzufügen. 
+---
+= Verbinden Sie die Nodes mit dem Cluster mithilfe der CLI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn die neu installierten Controller-Module bereit sind, können Sie sie mit dem dem dem dem Cluster hinzufügen `cluster setup` Befehl.
+
+.Über diese Aufgabe
+* Sie müssen diese Prozedur auf beiden Knoten durchführen.
+* Sie müssen jedem Knoten jeweils einzeln beitreten, nicht gleichzeitig.
+
+
+.Schritte
+. [[step1]]Starten Sie den Cluster-Setup-Assistenten mit `cluster setup` Befehl an der CLI-Eingabeaufforderung.
++
+[listing]
+----
+::> cluster setup
+
+Welcome to the cluster setup wizard....
+
+Use your web browser to complete cluster setup by accessing
+https://10.63.11.29
+
+Otherwise, press Enter to complete cluster setup using the
+command line interface:
+----
++
+[NOTE]
+====
+Anweisungen dazu finden Sie unter xref:task_adding_nodes_to_cluster_using_system_manager.html[Hinzufügen von Nodes zum Cluster mit System Manager].
+
+====
+. Drücken Sie die Eingabetaste, um die CLI zum Abschließen dieser Aufgabe zu verwenden. Wenn Sie dazu aufgefordert werden, ein neues Cluster zu erstellen oder einem vorhandenen Cluster beizutreten, geben Sie ein `join`.
++
+[listing]
+----
+Do you want to create a new cluster or join an existing cluster? {create, join}:
+join
+----
+. Wenn Sie zur Konfiguration der vorhandenen Cluster-Schnittstelle aufgefordert werden, drücken Sie `Enter` Akzeptieren.
++
+[listing]
+----
+Existing cluster interface configuration found:
+
+Port    MTU     IP              Netmask
+e1a     9000    169.254.87.75   255.255.0.0
+
+Do you want to use this configuration? {yes, no} [yes]:
+----
+. Befolgen Sie die Aufforderungen, um zum vorhandenen Cluster zu werden.
++
+[listing]
+----
+Step 1 of 3: Join an Existing Cluster
+You can type "back", "exit", or "help" at any question.
+
+Enter the name of the cluster you would like to join [cluster1]: cluster1
+
+Joining cluster cluster1
+
+Starting cluster support services ..
+
+This node has joined the cluster cluster1.
+
+Step 2 of 3: Configure Storage Failover (SFO)
+You can type "back", "exit", or "help" at any question.
+
+SFO will be enabled when the partner joins the cluster.
+
+Step 3 of 3: Set Up the Node
+
+Cluster setup is now complete.
+----
++
+Der Node wird automatisch mit dem Namen des Clusters umbenannt.
+
+. [[step5]] Überprüfen Sie auf dem Cluster, ob der Knoten Teil des Clusters ist, indem Sie den verwenden `cluster show` Befehl.
++
+[listing]
+----
+cluster1::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+cluster1-1            true    true
+cluster1-2            true    true
+cluster1-3            true    true
+3 entries were displayed.
+----
+. Wiederholen link:#step1["Schritt 1"] Bis link:#step5["Schritt 5"] Für das zweite neu installierte Controller-Modul.
++
+Der Cluster Setup-Assistent unterscheidet sich auf dem zweiten Node folgendermaßen:
+
++
+** Er wird standardmäßig mit dem vorhandenen Cluster verbunden, da sein Partner bereits Teil eines Clusters ist.
+** Er ermöglicht bei beiden Nodes automatisch ein Storage Failover.
+
+
+. Überprüfen Sie, ob das Storage-Failover aktiviert und möglich ist, indem Sie das verwenden `storage failover show` Befehl.
++
+Die folgende Ausgabe zeigt, dass ein Storage Failover auf allen Nodes des Clusters, einschließlich der neu hinzugefügten Nodes, aktiviert und möglich ist:
+
++
+[listing]
+----
+cluster1::> storage failover show
+                              Takeover
+Node           Partner        Possible State
+-------------- -------------- -------- -------------------------------------
+cluster1-1     cluster1-2     true     Connected to cluster1-2
+cluster1-2     cluster1-1     true     Connected to cluster1-1
+cluster1-3     cluster1-4     true     Connected to cluster1-3
+cluster1-4     cluster1-3     true     Connected to cluster1-4
+4 entries were displayed.
+----
+

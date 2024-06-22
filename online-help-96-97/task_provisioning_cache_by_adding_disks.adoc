@@ -1,0 +1,138 @@
+---
+permalink: online-help-96-97/task_provisioning_cache_by_adding_disks.html 
+sidebar: sidebar 
+keywords: ssd, system, manager, storage, pool, root, aggregate, provision, cache, online, help, ssd, disks, flash, pool 
+summary: Sie können mit System Manager SSDs entweder als Storage-Pools oder als dedizierte SSDs zum Bereitstellen von Cache hinzufügen. Durch Hinzufügen von SSDs können Sie ein nicht-Root-Aggregat oder ein Root-Aggregat, das keine partitionierten Festplatten enthält, in ein Flash Pool Aggregat konvertieren oder die Cache-Größe eines bestehenden Flash Pool Aggregats erhöhen. 
+---
+= Stellen Sie Cache bereit, indem Sie SSDs mit System Manager – ONTAP 9.7 und früher hinzufügen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um SSDs entweder als Storage-Pools oder dedizierte SSDs zum Bereitstellen von Cache hinzuzufügen. Durch Hinzufügen von SSDs können Sie ein nicht-Root-Aggregat oder ein Root-Aggregat, das keine partitionierten Festplatten enthält, in ein Flash Pool Aggregat konvertieren oder die Cache-Größe eines bestehenden Flash Pool Aggregats erhöhen.
+
+.Über diese Aufgabe
+* Der hinzugefügte SSD-Cache wird nicht zur Größe des Aggregats hinzugefügt, und Sie können eine SSD-RAID-Gruppe zu einem Aggregat hinzufügen, selbst wenn er nur die maximale Größe hat.
+* Sie können keine partitionierten SSDs verwenden, wenn Sie Cache mit System Manager hinzufügen.
+
+
+
+
+== Bereitstellung von Cache zu Aggregaten durch Hinzufügen von SSDs
+
+Sie können System Manager verwenden, um Storage-Pools oder dedizierte SSDs zur Cache-Bereitstellung hinzuzufügen, indem Sie ein vorhandenes HDD-Aggregat aus nicht root oder ein Root-Aggregat, das keine partitionierten Festplatten enthält, in ein Flash Pool Aggregat konvertieren.
+
+.Bevor Sie beginnen
+* Das Aggregat muss online sein.
+* Es müssen genügend freie SSDs oder Zuweisungseinheiten im Speicherpool vorhanden sein, die als Cache-Festplatten zugewiesen werden können.
+* Alle Nodes im Cluster müssen ONTAP 8.3 oder höher ausführen.
++
+Wenn sich der Cluster in einem gemischten Versionszustand befindet, können Sie über die Befehlszeilenschnittstelle ein Flash Pool Aggregat erstellen und dann SSD-Cache bereitstellen.
+
+* Sie müssen ein gültiges 64-Bit-Aggregat ohne Root-Root identifiziert haben, das aus HDDs besteht und in ein Flash Pool Aggregat konvertiert werden kann.
+* Das Aggregat darf keine Array-LUNs enthalten.
+
+
+.Über diese Aufgabe
+Es müssen plattformspezifische und Workload-spezifische Best Practices für die Größe und Konfiguration von Flash Pool für Aggregate der SSD-Klasse bekannt sein.
+
+.Schritte
+. Wählen Sie eine der folgenden Methoden:
++
+** Klicken Sie Auf *Anwendungen & Tiers* > *Storage Tiers*.
+** Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate*.
+
+
+. Wählen Sie im Fenster *Storage Tiers* das Aggregat aus und klicken Sie dann auf *Mehr Aktionen* > *Cache hinzufügen*.
++
+[NOTE]
+====
+Das Hinzufügen von Cache wird auf FabricPool-fähigen Aggregaten nicht unterstützt.
+
+====
+. Führen Sie im Dialogfeld *Cache hinzufügen* die entsprechende Aktion aus:
++
+|===
+| Wenn Sie die Cache-Quelle als... | Tun Sie das... 
+
+
+ a| 
+Storage-Pools
+ a| 
+.. Wählen Sie den Speicherpool aus, aus dem Cache bezogen werden kann.
+.. Geben Sie die Cache-Größe an.
+.. Ändern Sie gegebenenfalls den RAID-Typ.
+
+
+
+
+ a| 
+Dedizierte SSDs
+ a| 
+Wählen Sie die SSD-Größe und die Anzahl der einzuführenden SSDs aus und ändern Sie optional die RAID-Konfiguration:
+
+.. Klicken Sie Auf *Ändern*.
+.. Geben Sie im Dialogfeld RAID-Konfiguration ändern den RAID-Typ und die RAID-Gruppengröße an, und klicken Sie dann auf *Speichern*.
+
+
+|===
+. Klicken Sie Auf *Hinzufügen*.
++
+Für gespiegelte Aggregate wird ein Dialogfeld *Cache hinzufügen* angezeigt, in dem die doppelte Anzahl ausgewählter Laufwerke hinzugefügt wird.
+
+. Klicken Sie im Dialogfeld *Cache hinzufügen* auf *Ja*.
+
+
+.Ergebnisse
+Die Cache-Platten werden dem ausgewählten Aggregat hinzugefügt.
+
+
+
+== Vergrößern des Cache für Flash Pool Aggregate durch Hinzufügen von SSDs
+
+Sie können SSDs entweder als Storage-Pools oder als dedizierte SSDs hinzufügen, um die Größe eines Flash Pool-Aggregats mithilfe von System Manager zu erhöhen.
+
+.Bevor Sie beginnen
+* Das Flash Pool Aggregat muss online sein.
+* Es müssen genügend freie SSDs oder Zuweisungseinheiten im Speicherpool vorhanden sein, die als Cache-Festplatten zugewiesen werden können.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Aggregate*.
+. Wählen Sie im Fenster *Aggregate* das Flash Pool Aggregat aus und klicken Sie dann auf *Add Cache*.
+. Führen Sie im Dialogfeld *Cache hinzufügen* die entsprechende Aktion aus:
++
+|===
+| Wenn Sie die Cache-Quelle als... | Tun Sie das... 
+
+
+ a| 
+Storage-Pools
+ a| 
+Wählen Sie den Speicherpool aus, aus dem der Cache abgerufen werden kann, und geben Sie die Cachegröße an.
+
+
+
+ a| 
+Dedizierte SSDs
+ a| 
+Wählen Sie die SSD-Größe und die Anzahl der zu inclusierenden SSDs aus.
+
+|===
+. Klicken Sie Auf *Hinzufügen*.
++
+Bei gespiegelten Aggregaten wird ein Dialogfeld „Cache hinzufügen“ mit den Informationen angezeigt, dass die doppelte Anzahl der ausgewählten Festplatten hinzugefügt wird.
+
+. Klicken Sie im Dialogfeld *Cache hinzufügen* auf *Ja*.
+
+
+.Ergebnisse
+Die Cache-Festplatten werden dem ausgewählten Flash Pool Aggregat hinzugefügt.
+
+*Verwandte Informationen*
+
+http://www.netapp.com/us/media/tr-4070.pdf["Technischer Bericht 4070 zu NetApp: Flash Pool Design und Implementierung"^]
+
+xref:concept_how_storage_pool_works.adoc[So funktioniert der Storage-Pool]

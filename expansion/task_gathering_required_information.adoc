@@ -1,0 +1,70 @@
+---
+permalink: expansion/task_gathering_required_information.html 
+sidebar: sidebar 
+keywords: expand, cluster, network, information, require, configure, node-management, lif, service, ip, adress, node, gather the required network information 
+summary: Bevor Sie ein Cluster erweitern, müssen Sie erforderliche Netzwerkinformationen erhalten, um später die Node-Management-LIFs und die Service-Prozessor-IP-Adressen für beide Nodes zu konfigurieren. 
+---
+= Sammeln Sie die erforderlichen Netzwerkinformationen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie ein Cluster erweitern, müssen Sie erforderliche Netzwerkinformationen erhalten, um später die Node-Management-LIFs und die Service-Prozessor-IP-Adressen für beide Nodes zu konfigurieren.
+
+.Schritte
+. Erhalten Sie die folgenden Details, um zwei LIFs für das Node-Management zu konfigurieren – eins für jeden der Nodes, die Sie dem Cluster hinzufügen möchten:
++
+** IP-Adresse
+** Netzwerkmaske
+** Gateway
+** Port
+
+
+. Wenn Ihre Site typischerweise DNS-Einträge für LIFs für die Node-Management aufweist, stellen Sie sicher, dass für die neuen Nodes DNS-Einträge erstellt werden.
+. Bestimmen Sie mithilfe von, ob das Cluster eine automatische oder manuelle Netzwerkkonfiguration für den SP verwendet `system service-processor network auto-configuration show` Befehl.
++
+Wenn in beiden im ein Subnetz-Name angezeigt wird `SP IPv4 Subnet Name` Oder `SP IPv6 Subnet Name` Spalte. Das Cluster verwendet automatisches SP-Networking. Wenn beide Spalten leer sind, verwendet das Cluster manuelle SP-Netzwerke.
+
++
+In der folgenden Ausgabe gibt das Sub1-Subnetz an, dass der Cluster1 SP die automatische Netzwerkkonfiguration verwendet:
+
++
+[listing]
+----
+cluster1::> system service-processor network auto-configuration show
+Cluster Name         SP IPv4 Subnet Name          SP IPv6 Subnet Name
+-------------------- ---------------------------- -------------------
+cluster1             sub1                            -
+----
++
+In der folgenden Ausgabe geben die leeren Subnetzfelder an, dass der Cluster1 SP eine manuelle Netzwerkkonfiguration verwendet:
+
++
+[listing]
+----
+cluster1::> system service-processor network auto-configuration show
+Cluster Name         SP IPv4 Subnet Name          SP IPv6 Subnet Name
+-------------------- ---------------------------- -------------------
+cluster1             -                            -
+----
+. Führen Sie je nach SP-Netzwerkkonfiguration eine der folgenden Aktionen durch:
++
+** Wenn der SP eine manuelle Netzwerkkonfiguration verwendet, beziehen Sie zwei IP-Adressen ein, die Sie später beim Konfigurieren des SP auf den neuen Nodes verwenden werden.
+** Wenn der SP eine automatische Netzwerkkonfiguration verwendet, überprüfen Sie, ob im vom SP verwendeten Subnetz über verfügbare IP-Adressen für die beiden neuen Nodes verfügt. Verwenden Sie dazu die `network subnet show` Befehl.
+In der folgenden Ausgabe hat das Sub1-Subnetz 2 Adressen zur Verfügung:
+
+
++
+[listing]
+----
+cluster1::>  network subnet show
+IPspace: Default
+Subnet                     Broadcast                   Avail/
+Name      Subnet           Domain    Gateway           Total   Ranges
+--------- ---------------- --------- --------------- --------- ---------------
+sub1      10.53.33.1/18    Default   10.53.0.1          2/4    10.53.33.3-10.53.33.6
+...
+----
+

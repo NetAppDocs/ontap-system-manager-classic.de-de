@@ -1,0 +1,70 @@
+---
+permalink: expansion/task_updating_lun_paths_for_new_nodes.html 
+sidebar: sidebar 
+keywords: cluster, configure, san, lif, add, update, path, lun, node, update lun paths for the new nodes 
+summary: Wenn Ihr Cluster für SAN konfiguriert ist, müssen Sie SAN-LIFs auf den neu hinzugefügten Nodes erstellen und anschließend Pfade aktualisieren. 
+---
+= Aktualisieren Sie die LUN-Pfade für die neuen Nodes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Ihr Cluster für SAN konfiguriert ist, müssen Sie SAN-LIFs auf den neu hinzugefügten Nodes erstellen und anschließend Pfade aktualisieren.
+
+.Über diese Aufgabe
+Diese Vorgehensweise ist nur erforderlich, wenn das Cluster LUNs enthält. Wenn das Cluster nur Dateien enthält, können Sie diesen Vorgang überspringen.
+
+.Schritte
+. Erstellen Sie für jede Storage Virtual Machine (SVM) im Cluster neue LIFs für die neu hinzugefügten Nodes:
++
+.. Identifizieren Sie die SVMs, die FC- oder iSCSI-Protokolle mithilfe von verwenden `vserver show` Befehl mit dem `-fields allowed-protocols` Parameter und Überprüfung der Ausgabe.
++
+[listing]
+----
+cluster1::> vserver show -fields allowed-protocols
+vserver allowed-protocols
+------- -----------------
+vs1     cifs,ndmp
+vs2     fcp
+vs3     iscsi
+...
+----
+.. Erstellen Sie für jede SVM, die FC oder iSCSI verwendet, mithilfe der mindestens zwei Daten-LIFs auf jedem der neu hinzugefügten Nodes `network interface create` Befehl mit dem `-role data` Parameter.
++
+[listing]
+----
+cluster1::> network interface create -vserver vs1 -lif lif5 -role data
+-data-protocol iscsi -home-node cluster1-3 -home-port e0b
+-address 192.168.2.72 -netmask 255.255.255.0
+----
+.. Vergewissern Sie sich bei jeder SVM, dass mithilfe der LIFs für alle Nodes im Cluster vorhanden sind `network interface show` Befehl mit dem `-vserver` Parameter.
+
+
+. Portsätze aktualisieren:
++
+.. Bestimmen Sie mithilfe des, ob Portsätze vorhanden sind `lun portset show` Befehl.
+.. Wenn Sie die neuen LIFs für vorhandene Hosts sichtbar machen möchten, fügen Sie mithilfe der jede neue LIF zu den Portsätzen hinzu `lun portset add` Einmal-Befehl für jede LIF.
+
+
+. Wenn Sie FC oder FCoE verwenden, aktualisieren Sie Zoning:
++
+.. Überprüfen Sie, ob das Zoning ordnungsgemäß eingerichtet ist, um die vorhandenen Initiator-Ports auf dem Host zu aktivieren, um eine Verbindung zu den neuen Ziel-Ports auf den neuen Nodes herzustellen.
+.. Aktualisieren Sie das Switch-Zoning, um die neuen Nodes mit vorhandenen Initiatoren zu verbinden.
++
+Das Zoning-Setup variiert abhängig von dem Switch, den Sie verwenden.
+
+.. Wenn Sie LUNs zu den neuen Nodes verschieben möchten, zeigen Sie die neuen Pfade zu den Hosts mithilfe von an `lun mapping add-reporting-nodes` Befehl.
+
+
+. Suchen Sie auf allen Host-Betriebssystemen nach, um die neu hinzugefügten Pfade zu ermitteln.
+. Entfernen Sie je nach den Host-Betriebssystemen alle veralteten Pfade.
+. Fügen Sie Pfade zu Ihrer MPIO-Konfiguration hinzu oder entfernen Sie diese.
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/san-config/index.html["San-Konfiguration"^]
+
+https://docs.netapp.com/us-en/ontap/san-admin/index.html["SAN-Administration"^]

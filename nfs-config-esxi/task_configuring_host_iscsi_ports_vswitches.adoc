@@ -1,0 +1,30 @@
+---
+permalink: nfs-config-esxi/task_configuring_host_iscsi_ports_vswitches.html 
+sidebar: sidebar 
+keywords: esxi, host, network, port, nfs, connection, storage, cluster, configure, configure host ports and vswitches 
+summary: Der ESXi Host benötigt Netzwerkports für die NFS-Verbindungen zum Storage-Cluster. 
+---
+= Konfiguration der Host Ports und vSwitches
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der ESXi Host benötigt Netzwerkports für die NFS-Verbindungen zum Storage-Cluster.
+
+.Über diese Aufgabe
+Es wird empfohlen, IP Hash als NIC Teaming Policy zu verwenden, für die ein einziger VMkernel Port auf einem einzelnen vSwitch erforderlich ist.
+
+Die für NFS verwendeten Host-Ports und Storage-Cluster-Ports müssen IP-Adressen im selben Subnetz haben.
+
+In dieser Aufgabe werden die allgemeinen Schritte zur Konfiguration des ESXi-Hosts aufgelistet. Weitere detaillierte Anweisungen finden Sie in der VMware-Publikation _Storage_ für Ihre ESXi-Version.
+
+http://www.vmware.com["VMware"]
+
+.Schritte
+. Melden Sie sich beim vSphere-Client an, und wählen Sie dann den ESXi-Host aus dem Bereich Inventar aus.
+. Klicken Sie auf der Registerkarte *Verwalten* auf *Networking*.
+. Klicken Sie auf *Add Networking* und wählen Sie dann *VMkernel* und *Create a vSphere Standard Switch* aus, um den VMkernel Port und vSwitch zu erstellen.
+. Konfigurieren Sie Jumbo Frames für den vSwitch (MTU-Größe von 9000, falls verwendet).
+

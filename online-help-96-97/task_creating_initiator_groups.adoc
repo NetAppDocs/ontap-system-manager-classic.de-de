@@ -1,0 +1,79 @@
+---
+permalink: online-help-96-97/task_creating_initiator_groups.html 
+sidebar: sidebar 
+keywords: create, initiator, group, system, manager, lun, online, help, manage, delete, edit, add 
+summary: Sie können mit System Manager eine Initiatorgruppe erstellen. Initiatorgruppen ermöglichen Ihnen die Steuerung des Host-Zugriffs auf bestimmte LUNs. Sie können Portsätze verwenden, um die LIFs, auf die ein Initiator zugreifen kann, zu begrenzen. 
+---
+= Verwalten Sie Initiatorgruppen mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) zum Verwalten einer Initiatorgruppe verwenden. Initiatorgruppen ermöglichen Ihnen die Steuerung des Host-Zugriffs auf bestimmte LUNs. Sie können Portsätze verwenden, um die LIFs, auf die ein Initiator zugreifen kann, zu begrenzen.
+
+
+
+== Erstellen von Initiatorgruppen
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Klicken Sie auf der Registerkarte *Initiatorgruppen* auf *Erstellen*.
+. Geben Sie auf der Registerkarte *Allgemein* des Dialogfelds *Initiatorgruppe erstellen* den Namen der Initiatorgruppe, das Betriebssystem, den Alias-Namen des Hosts, den Portsatz und das unterstützte Protokoll für die Gruppe an.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Löschen von Initiatorgruppen
+
+Sie können in System Manager die Registerkarte Initiatorgruppen verwenden, um Initiatorgruppen zu löschen.
+
+.Bevor Sie beginnen
+Die Zuordnung aller LUNs zur Initiatorgruppe muss manuell aufgehoben werden.
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Wählen Sie auf der Registerkarte *Initiatorgruppen* eine oder mehrere Initiatorgruppen aus, die Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Klicken Sie Auf *Löschen*.
+. Überprüfen Sie, ob die gelöschten Initiatorgruppen nicht mehr auf der Registerkarte *Initiatorgruppen* angezeigt werden.
+
+
+
+
+== Fügen Sie Initiatoren hinzu
+
+Mit System Manager können Sie Initiatoren zu einer Initiatorgruppe hinzufügen. Ein Initiator bietet Zugriff auf eine LUN, wenn die Initiatorgruppe, der sie angehört, dieser LUN zugeordnet ist.
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Wählen Sie auf der Registerkarte *LUN Management* die Initiatorgruppe aus, der Sie Initiatoren hinzufügen möchten, und klicken Sie auf *Bearbeiten*.
+. Klicken Sie im Dialogfeld *Initiatorgruppe bearbeiten* auf *Initiatoren*.
+. Klicken Sie Auf *Hinzufügen*.
+. Geben Sie den Namen des Initiators an und klicken Sie auf *OK*.
+. Klicken Sie auf *Speichern und Schließen*.
+
+
+
+
+== Löschen von Initiatoren aus einer Initiatorgruppe
+
+Sie können einen Initiator mit der Registerkarte Initiatorgruppen in System Manager löschen. Zum Löschen eines Initiators aus einer Initiatorgruppe müssen Sie den Initiator der Initiatorgruppe zuordnen.
+
+.Bevor Sie beginnen
+Die Zuordnung aller LUNs, die der Initiatorgruppe zugeordnet sind und den Initiator enthalten, den Sie löschen möchten, muss manuell aufgehoben werden.
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Wählen Sie auf der Registerkarte *Initiatorgruppen* die Initiatorgruppe aus, aus der Sie den Initiator löschen möchten, und klicken Sie dann auf *Bearbeiten*.
+. Klicken Sie im Dialogfeld *Initiatorgruppe bearbeiten* auf die Registerkarte *Initiatoren*.
+. Wählen und löschen Sie den Initiator aus dem Textfeld und klicken Sie auf *Speichern*.
++
+Der Initiator wird der Initiatorgruppe nicht zugeordnet.
+
+
+
+*Verwandte Informationen*
+
+xref:reference_luns_window.adoc[LUNs-Fenster]

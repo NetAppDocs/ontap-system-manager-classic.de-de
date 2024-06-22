@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_splitting_flexclone_volume_from_its_parent_volume.html 
+sidebar: sidebar 
+keywords: split, flexclone, volume, parent, online, help, disk, space 
+summary: 'Sie können System Manager classic (verfügbar ab ONTAP 9.7) verwenden, um ein FlexClone Volume vom übergeordneten Volume zu trennen. Nach der Teilung wird das FlexClone Volume zu einem normalen FlexVol Volume. Zudem wird der Festplattenspeicher des übergeordneten Volume genutzt, und die Storage-Effizienz bleibt erhalten.' 
+---
+= Teilten Sie ein FlexClone Volume vom übergeordneten Volume mit System Manager - ONTAP 9.7 und früher auf
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können System Manager classic (verfügbar ab ONTAP 9.7) verwenden, um ein FlexClone Volume vom übergeordneten Volume zu trennen. Nach der Teilung wird das FlexClone Volume zu einem normalen FlexVol Volume. Zudem wird der Festplattenspeicher des übergeordneten Volume genutzt, und die Storage-Effizienz bleibt erhalten.
+
+.Bevor Sie beginnen
+Das FlexClone Volume muss online sein.
+
+.Über diese Aufgabe
+Bei Systemen, die _nicht_ AFF Systeme sind, wird durch den Klon-Splitting alle vorhandenen Snapshot Kopien des Klons gelöscht. Die für SnapMirror Updates erforderlichen Snapshot Kopien werden ebenfalls gelöscht. Daher können nachfolgende SnapMirror Updates fehlschlagen.
+
+Sie können den Klon-Splitting-Vorgang unterbrechen, wenn Sie einen anderen Vorgang auf dem Volume ausführen müssen. Sie können den Klon-Splitting-Vorgang fortsetzen, nachdem der andere Vorgang abgeschlossen ist.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das FlexClone Volume aus, das Sie vom übergeordneten Volume trennen möchten.
+. Klicken Sie Auf *Mehr Aktionen* > *Klonen* > *Split*.
+. Bestätigen Sie die FlexClone-Volume-Details für den Clone-Splitting-Vorgang, und klicken Sie dann im Bestätigungsdialogfeld auf *Split starten*.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

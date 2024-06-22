@@ -1,0 +1,51 @@
+---
+permalink: online-help-96-97/task_creating_nvme_namespace.html 
+sidebar: sidebar 
+keywords: system, manager, create, nvme, namespace, svm, logical, blocks, online, help 
+summary: 'Mit System Manager können Sie einen oder mehrere NVMe Namespaces erstellen und jede Verbindung mit einem Host oder einem Satz von Hosts auf einer Storage Virtual Machine (SVM) herstellen. Der NVMe Namespace ist eine Menge an Arbeitsspeicher, die in logische Blöcke formatiert werden kann. Jeder Namespace kann einem NVMe-Subsystem zugeordnet werden.' 
+---
+= Erstellen Sie einen NVMe Namespace mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) kann verwendet werden, um einen oder mehrere NVMe Namespaces zu erstellen und jede Verbindung zu einem Host oder einem Host-Satz von Hosts auf einer Storage Virtual Machine (SVM) herzustellen. Der NVMe Namespace ist eine Menge an Arbeitsspeicher, die in logische Blöcke formatiert werden kann. Jeder Namespace kann einem NVMe-Subsystem zugeordnet werden.
+
+.Bevor Sie beginnen
+Die SVM muss bereits mit dem NVMe-Protokoll konfiguriert sein. Um einen Namespace zuzuordnen, muss mindestens eine logische Schnittstelle mit dem Datenprotokoll NVMe in dem Node vorhanden sein, der den Namespace besitzt.
+
+.Schritte
+. Klicken Sie auf *Storage* > *NVMe* > *NVMe Namespaces*.
+. Wählen Sie die SVM aus, die den Namespace enthalten soll.
+. Vergewissern Sie sich, dass mindestens eine NVMe-LIF für jeden Node des HA-Paars konfiguriert ist. Sie können maximal zwei NVMe LIFs pro Node erstellen.
+. Konfigurieren Sie die Größe des Namespace (zwischen 1 MB und 16 TB).
+. Geben Sie die Blockgröße ein.
++
+Bei System Manager 9.5 ist die Blockgröße standardmäßig 4 KB. Dieses Feld wird nicht angezeigt.
+
++
+Für System Manager 9.6 können Sie eine Blockgröße von 4 KB oder 512 Byte angeben.
+
+. Wählen Sie das vorhandene Volume aus oder erstellen Sie ein neues Volume durch Auswahl des Aggregats.
++
+Klicken Sie auf das +-Symbol, um zusätzliche Namespaces (max. 250) innerhalb der SVM einzurichten.
+
+. Wählen Sie das NVMe-Subsystem aus, das diesem Namespace zugeordnet werden soll.
++
+Sie können aus folgenden Optionen wählen:
+
++
+** Keine: Keine Subsysteme sind zugeordnet.
+** Verwendung eines vorhandenen Subsystems: Die aufgeführten Subsysteme basieren auf der ausgewählten SVM.
+** Erstellen Sie ein neues Subsystem: Sie können ein neues Subsystem erstellen und allen neuen Namespaces zuordnen.
+
+
+. Wählen Sie das Host-Betriebssystem aus.
+. Klicken Sie Auf *Absenden*.
+
+
+*Verwandte Informationen*
+
+xref:reference_nvme_namespaces_window.adoc[NVMe Namespaces-Fenster]

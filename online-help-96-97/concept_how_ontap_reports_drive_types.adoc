@@ -1,0 +1,131 @@
+---
+permalink: online-help-96-97/concept_how_ontap_reports_drive_types.html 
+sidebar: sidebar 
+keywords: ontap, report, disk, type, industry, standards, sas, fc, storage, array, online, help 
+summary: ONTAP ordnet jeder Festplatte einen Typ zu. ONTAP meldet einige Festplattentypen anders als die Industriestandards. Sie sollten verstehen, wie ONTAP Festplattentypen mit Branchenstandards zugeordnet sind, um Verwirrung zu vermeiden. 
+---
+= Wie ONTAP die Festplattentypen in System Manager - ONTAP 9.7 und früher meldet
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP System Manager classic (verfügbar in ONTAP 9.7 und älter) ordnet jeden Festplattentyp zu. ONTAP meldet einige Festplattentypen anders als die Industriestandards. Sie sollten verstehen, wie ONTAP Festplattentypen mit Branchenstandards zugeordnet sind, um Verwirrung zu vermeiden.
+
+Wenn sich in der ONTAP-Dokumentation auf einen Festplattentyp bezieht, handelt es sich um den Typ, der von ONTAP verwendet wird, sofern nicht anders angegeben. _RAID-Festplattentypen_ bezeichnen die Rolle, die eine bestimmte Festplatte für RAID spielt. RAID-Festplattentypen stehen nicht mit ONTAP-Festplattentypen zusammen.
+
+Bei einer spezifischen Konfiguration hängen die unterstützten Festplattentypen vom Storage-Systemmodell, dem Shelf-Typ und den im System installierten I/O-Modulen ab.
+
+In den folgenden Tabellen wird gezeigt, wie ONTAP-Festplattentypen mit branchenüblichen Festplattentypen für SAS- und FC-Storage-Verbindungstypen und Storage Arrays zugeordnet werden.
+
+
+
+== SAS-vernetzter Storage
+
+|===
+| ONTAP-Festplattentyp | Festplattenklasse | Branchenstandard-Festplattentyp | Beschreibung 
+
+
+ a| 
+BSAS
+ a| 
+Kapazität
+ a| 
+SATA
+ a| 
+Überbrückt SAS-SATA-Festplatten mit zusätzlicher Hardware, damit sie in ein SAS-angeschlossenes Storage-Shelf eingesteckt werden können
+
+
+
+ a| 
+FSAS
+ a| 
+Kapazität
+ a| 
+NL-SAS
+ a| 
+Nearline SAS
+
+
+
+ a| 
+MSATA
+ a| 
+Kapazität
+ a| 
+SATA
+ a| 
+SATA-Festplatte in Storage Shelf mit mehreren Festplatten
+
+
+
+ a| 
+SAS
+ a| 
+Leistung
+ a| 
+SAS
+ a| 
+Serial-Attached SCSI
+
+
+
+ a| 
+SSD
+ a| 
+Ultra Performance –
+ a| 
+SSD
+ a| 
+Solid State Drives
+
+|===
+
+
+== FC-connected Storage
+
+|===
+| ONTAP-Festplattentyp | Festplattenklasse | Branchenstandard-Festplattentyp 
+
+
+ a| 
+ATA
+ a| 
+Kapazität
+ a| 
+SATA
+
+
+
+ a| 
+FCAL
+ a| 
+Leistung
+ a| 
+FC
+
+|===
+
+
+== Storage-Arrays durchführt
+
+|===
+| ONTAP-Festplattentyp | Festplattenklasse | Branchenstandard-Festplattentyp | Beschreibung 
+
+
+ a| 
+LUN
+ a| 
+K. A.
+ a| 
+LUN
+ a| 
+Logisches Speichergerät, das durch Storage-Arrays unterstützt wird und von ONTAP als Festplatte genutzt wird. Diese LUNs werden als _Array LUNs_ bezeichnet, um sie von den LUNs zu unterscheiden, die ONTAP den Clients bietet.
+
+|===
+*Verwandte Informationen*
+
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+http://www.netapp.com/us/media/tr-3437.pdf["Technischer Bericht 3437 von NetApp: Ausfallsicherheit von Storage-Subsystemen"^]

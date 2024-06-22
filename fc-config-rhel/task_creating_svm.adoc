@@ -1,0 +1,81 @@
+---
+permalink: fc-config-rhel/task_creating_svm.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, svm, fc, target, host, access, lun, administration, function, user, cluster, create, create a new svm 
+summary: 'Die Storage Virtual Machine (SVM) stellt das FC-Ziel bereit, über das ein Host auf LUNs zugreift. Wenn Sie die SVM erstellen, erstellen Sie auch logische Schnittstellen (LIFs) und die LUN und das zugehörige Volume. Sie können eine SVM erstellen, um die Daten- und Administrationsfunktionen eines Benutzers von den anderen Benutzern in einem Cluster zu trennen.' 
+---
+= Erstellen einer neuen SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Storage Virtual Machine (SVM) stellt das FC-Ziel bereit, über das ein Host auf LUNs zugreift. Wenn Sie die SVM erstellen, erstellen Sie auch logische Schnittstellen (LIFs) und die LUN und das zugehörige Volume. Sie können eine SVM erstellen, um die Daten- und Administrationsfunktionen eines Benutzers von den anderen Benutzern in einem Cluster zu trennen.
+
+.Bevor Sie beginnen
+* Ihre FC-Fabric muss konfiguriert sein und die gewünschten physischen Ports müssen mit der Fabric verbunden werden.
+
+
+.Schritte
+. Navigieren Sie zum Fenster *SVMs*.
+. Wählen Sie *Erstellen*.
+. Erstellen Sie im Fenster *Storage Virtual Machine (SVM) Setup* die SVM:
++
+image::../media/svm_setup_details_page_unix_selected_fc_rhel.gif[Abbildung zeigt das Erstellen einer SVM mit UNIX-Sicherheitsstil]
+
++
+.. Geben Sie einen eindeutigen Namen für die SVM an.
++
+Der Name muss entweder ein vollständig qualifizierter Domänenname (FQDN) sein oder einer anderen Konvention folgen, die eindeutige Namen in einem Cluster sicherstellt.
+
+.. Wählen Sie den IPspace aus, zu dem die SVM gehört.
++
+Wenn der Cluster nicht mehrere IPspaces verwendet, wird der IPspace „`Default`“ verwendet.
+
+.. Behalten Sie die standardmäßige Auswahl des Volume-Typs bei.
++
+Nur FlexVol Volumes werden mit SAN-Protokollen unterstützt.
+
+.. Wählen Sie alle Protokolle aus, für die Sie Lizenzen haben, und die Sie möglicherweise auf der SVM verwenden können, auch wenn Sie nicht alle Protokolle sofort konfigurieren möchten.
++
+Wenn Sie sowohl NFS als auch CIFS beim Erstellen der SVM auswählen, können die beiden Protokolle dieselben LIFs teilen. Das Hinzufügen dieser Protokolle zu einem späteren Zeitpunkt erlaubt es ihnen nicht, LIFs gemeinsam zu nutzen.
+
++
+Wenn CIFS eines der von Ihnen ausgewählten Protokolle ist, wird der Sicherheitsstil auf NTFS festgelegt. Andernfalls ist der Sicherheitsstil auf UNIX festgelegt.
+
+.. Behalten Sie die Standardeinstellung C.UTF-8 bei.
+.. Wählen Sie das gewünschte Root-Aggregat aus, das das SVM Root-Volume enthalten soll.
++
+Das Aggregat für das Daten-Volume wird später separat ausgewählt.
+
+.. Wählen Sie *Absenden & Fortfahren*.
+
+
++
+Die SVM wird erstellt, die Protokolle sind jedoch noch nicht konfiguriert.
+
+. Wenn die Seite *CIFS/NFS-Protokoll konfigurieren* angezeigt wird, weil Sie CIFS oder NFS aktiviert haben, wählen Sie *überspringen* und konfigurieren Sie dann CIFS oder NFS später.
+. Wenn die Seite *iSCSI-Protokoll konfigurieren* angezeigt wird, weil Sie iSCSI aktiviert haben, wählen Sie *Überspringen* und dann iSCSI später konfigurieren.
+. Konfigurieren Sie den FC-Service und erstellen Sie LIFs sowie die LUN und ihr enthaltenes Volume auf der Seite * FC/FCoE-Protokoll konfigurieren*:
++
+.. Aktivieren Sie das Kontrollkästchen *Daten-LIFs für FC* konfigurieren.
+.. Eingabe `*2*` Im Feld *LIFs pro Node*.
++
+Für jeden Node sind zwei LIFs erforderlich, um Verfügbarkeit und Datenmobilität zu gewährleisten.
+
+.. Geben Sie im Bereich *LUN bereitstellen für FCP Speicher* die gewünschte LUN-Größe, den Host-Typ und die WWPNs der Host-Initiatoren ein.
+.. Wählen Sie *Absenden & Fortfahren*.
+
+
++
+image::../media/svm_wizard_fc_details_linux.gif[Abbildung zeigt Schritt 4 des SVM Setup-Assistenten: Ausfüllen der FC-Details]
+
+. Wenn die Option *SVM Administration* angezeigt wird, konfigurieren oder verschieben Sie die Konfiguration eines separaten Administrators für diese SVM:
++
+** Wählen Sie *Überspringen* aus, und konfigurieren Sie einen Administrator später, falls gewünscht.
+** Geben Sie die gewünschten Informationen ein, und wählen Sie dann *Absenden & Fortfahren*.
+
+
+. Überprüfen Sie die Seite *Zusammenfassung*, notieren Sie die LIF-Informationen und wählen Sie dann *OK*.
+

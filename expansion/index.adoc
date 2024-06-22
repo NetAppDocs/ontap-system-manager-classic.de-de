@@ -1,0 +1,48 @@
+---
+permalink: expansion/index.html 
+sidebar: sidebar 
+keywords: nondisruptive, expand, exist, cluster, ha, pair, expansion, overview 
+summary: Sie können ein vorhandenes Cluster schnell und unterbrechungsfrei erweitern, indem Sie ein HA-Paar hinzufügen. Ein größerer Cluster steigert die Leistung und die im Cluster verfügbare Storage-Kapazität. 
+---
+= Cluster-Erweiterung – Übersicht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ein vorhandenes Cluster schnell und unterbrechungsfrei erweitern, indem Sie ein HA-Paar hinzufügen. Ein größerer Cluster steigert die Leistung und die im Cluster verfügbare Storage-Kapazität.
+
+Sie sollten dieses Verfahren nur verwenden, wenn Folgendes zutrifft:
+
+* Der vorhandene Cluster erfüllt folgende Anforderungen:
++
+** ONTAP 9 wird ausgeführt.
+** Er enthält mindestens zwei Nodes.
++
+Obwohl in diesem Verfahren Beispiele ein Cluster mit zwei Nodes verwenden, gilt er auch für Cluster mit mehr als zwei Nodes.
+
++
+Wenn Sie einem Single-Node-Cluster einen Node hinzufügen möchten, müssen Sie anders vorgehen.
+
++
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-controller-add/home.html["Hinzufügen eines zweiten Controllers zur Erstellung eines HA-Paars"]
+
+** IPv6-Adressen oder Speicherverschlüsselung werden nicht verwendet.
+** Es ist keine MetroCluster-Konfiguration.
+
+
+* Die Controller-Module, die Sie hinzufügen möchten, erfüllen folgende Anforderungen:
++
+** Wenn sie nicht neu sind, werden sie bereinigt, sind nicht mehr Teil eines Clusters und können dem neuen Cluster hinzugefügt werden.
+** Sie unterstützen ONTAP 9.
+** Sie führen eine Version der ONTAP 9-Versionsfamilie aus.
+
+
+* Wenn Sie die ONTAP-Konfigurationsaufgaben mit System Manager abschließen, möchten Sie die Benutzeroberfläche _Classic_ System Manager für ONTAP 9.7 und frühere Versionen verwenden und nicht die ONTAP System Manager Benutzeroberfläche für ONTAP 9.7 und höher.
++
+https://docs.netapp.com/us-en/ontap/["Dokumentation von ONTAP System Manager"]
+
+* Sie möchten Best Practices verwenden und nicht alle verfügbaren Optionen erkunden.
+* Sie wollen nicht viel konzeptuellen Hintergrund lesen.
+

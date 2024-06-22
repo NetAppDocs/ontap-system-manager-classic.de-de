@@ -1,0 +1,44 @@
+---
+permalink: nfs-config/index.html 
+sidebar: sidebar 
+keywords: nfs, access, volume, exist, storage, virtual, machine, svm, system manager classic 
+summary: 'Über die klassische Schnittstelle des ONTAP System Managers (ONTAP 9.7 und früher) können Sie den NFS-Zugriff auf ein neues Volume entweder auf einer neuen oder vorhandenen Storage Virtual Machine (SVM) schnell einrichten.' 
+---
+= Überblick über die NFS-Konfiguration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Über die klassische Schnittstelle des ONTAP System Managers (ONTAP 9.7 und früher) können Sie den NFS-Zugriff auf ein neues Volume entweder auf einer neuen oder vorhandenen Storage Virtual Machine (SVM) schnell einrichten.
+
+Gehen Sie folgendermaßen vor, wenn Sie den Zugriff auf ein Volume wie folgt konfigurieren möchten:
+
+* Der NFS-Zugriff erfolgt über NFSv3, nicht NFSv4 oder NFSv4.1.
+* Sie möchten Best Practices verwenden und nicht alle verfügbaren Optionen erkunden.
+* Im Datennetzwerk wird der Standard-IPspace, die Standard-Broadcast-Domäne und die Standard-Failover-Gruppe verwendet.
++
+Wenn Ihr Datennetzwerk fest zugeordnet ist, stellen diese Standardobjekte sicher, dass bei einem Verbindungsausfall LIFs ein ordnungsgemäßer Failover erfolgt. Wenn Sie die Standardobjekte nicht verwenden, sollten Sie auf lesen https://docs.netapp.com/us-en/ontap/networking/index.html["Dokumentation Des Netzwerkmanagements"^] Weitere Informationen zur Konfiguration von LIF-Pfad-Failover.
+
+* Zum Sichern des neuen Volumes werden UNIX-Dateiberechtigungen verwendet.
+* LDAP wird, sofern verwendet, von Active Directory bereitgestellt.
+
+
+Wenn Sie Details zu den ONTAP NFS-Protokollfunktionen benötigen, lesen Sie den link:https://docs.netapp.com/us-en/ontap/nfs-admin/index.html["NFS-Referenzübersicht"^].
+
+
+
+== Weitere Möglichkeiten dies in ONTAP zu tun
+
+|===
+
+
+| So führen Sie diese Aufgaben durch: | Siehe... 
+
+
+| Der neu gestaltete System Manager (verfügbar ab ONTAP 9.7) | link:https://docs.netapp.com/us-en/ontap/task_nas_provision_linux_nfs.html["Stellen Sie mithilfe von NFS NAS-Storage für Linux-Server bereit"^] 
+
+
+| Die ONTAP Befehlszeilenschnittstelle | link:https://docs.netapp.com/us-en/ontap/nfs-config/index.html["Überblick über die NFS-Konfiguration mit der CLI"^] 
+|===

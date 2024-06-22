@@ -1,0 +1,30 @@
+---
+permalink: online-help-96-97/concept_how_system_manager_calculates_hot_spares.html 
+sidebar: sidebar 
+keywords: system, manager, hot, spares, disk, storage, raid, online, help 
+summary: Ein Hot Spare ist ein Laufwerk, das einem Speichersystem zugewiesen ist, aber von keiner RAID-Gruppe verwendet wird. Hot Spares enthalten keine Daten und werden einer RAID-Gruppe zugewiesen, wenn ein Festplattenausfall in der RAID-Gruppe auftritt. System Manager verwendet die größte Festplatte als Hot Spare. 
+---
+= Wie System Manager mit Hot Spares funktioniert - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Hot Spare ist ein Laufwerk, das einem Speichersystem zugewiesen ist, aber von keiner RAID-Gruppe verwendet wird. Hot Spares enthalten keine Daten und werden einer RAID-Gruppe zugewiesen, wenn ein Festplattenausfall in der RAID-Gruppe auftritt. ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwendet die größte Festplatte als Hot Spare.
+
+Bei verschiedenen Festplattentypen in der RAID-Gruppe wird die Festplatte mit der größten Größe jedes Festplattentyps als Hot Spare belassen. Wenn zum Beispiel 10 SATA-Festplatten und 10 SAS-Festplatten in der RAID-Gruppe vorhanden sind, dienen die größten SATA-Festplatten und die größte SAS-Festplatte als Hot Spares.
+
+Wenn die größte Festplatte partitioniert wird, werden die Hot Spares separat für partitionierte und nicht partitionierte RAID-Gruppen bereitgestellt. Wenn die größte Festplatte nicht partitioniert wird, wird eine einzelne Ersatzfestplatte bereitgestellt.
+
+Das größte nicht partitionierte Laufwerk wird als Hot Spare gelassen, wenn sich Root-Partitionen in der Laufwerksgruppe befinden. Wenn ein nicht partitionierter Datenträger der gleichen Größe nicht verfügbar ist, bleiben die freien Root-Partitionen als Hot Spares für die Root-partitionierte Gruppe übrig.
+
+Eine einzelne Ersatzfestplatte kann als Hot Spare für mehrere RAID-Gruppen dienen. System Manager berechnet die Hot Spares auf Basis des in der Option eingestellten Werts `raid.min_spare_count` Auf Node-Ebene. Wenn beispielsweise 10 SSDs in einer SSD-RAID-Gruppe und die Option vorhanden sind `raid.min_spare_count` Ist auf festgelegt `1` Auf Node-Ebene verlässt System Manager eine SSD als Hot Spare und verwendet die anderen 9 SSDs für SSD-bezogene Vorgänge. Gleiches gilt für 10 HDDs in einer HDD RAID-Gruppe und für die entsprechende Option `raid.min_spare_count` Ist auf festgelegt `2` System Manager lässt auf Node-Ebene 2 HDDs als Hot Spares übrig und verwendet die anderen 8 HDDs für HDD-bezogene Vorgänge.
+
+System Manager erzwingt die Hot Spare-Regel für RAID-Gruppen, wenn Sie ein Aggregat erstellen, ein Aggregat bearbeiten und einem Aggregat HDDs oder SSDs hinzufügen. Die Hot-Spare-Regel wird auch verwendet, wenn Sie einen Speicherpool erstellen oder Festplatten zu einem vorhandenen Speicherpool hinzufügen.
+
+Ausnahmen von der Hot Spare-Regel in System Manager:
+
+* Bei MSATA oder Festplatten in einem Speicherträger mit mehreren Festplatten ist die Anzahl der Hot Spares doppelt so hoch wie der auf Knotenebene eingestellte Wert, und die Anzahl darf jederzeit nicht kleiner als 2 sein.
+* Hot Spares werden nicht verwendet, wenn die Festplatten Teil von Array LUNs oder virtuellen Speicher-Appliances sind.
+

@@ -1,0 +1,40 @@
+---
+permalink: volume-move/task_updating_lun_reporting_nodes_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, move, lun, ha, pair, remote, node, lun, map, slm, reporting-node, partner, lun reporting nodes 
+summary: 'Wenn sich das Volume, das Sie enthaltene LUNs verschoben haben und das Volume nun auf einem anderen HA-Paar befindet, sollten Sie alle Remote-Nodes aus der Liste Selective LUN Map (SLM) Reporting-Nodes entfernen. Die LUN-Zuordnung enthält dann nur den Owner-Node und seinen HA-Partner, wodurch sichergestellt wird, dass nur optimierte LUN-Pfade verwendet werden.' 
+---
+= Aktualisieren Sie die Nodes für LUN-Berichte nach dem Verschieben eines Volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn sich das Volume, das Sie enthaltene LUNs verschoben haben und das Volume nun auf einem anderen HA-Paar befindet, sollten Sie alle Remote-Nodes aus der Liste Selective LUN Map (SLM) Reporting-Nodes entfernen. Die LUN-Zuordnung enthält dann nur den Owner-Node und seinen HA-Partner, wodurch sichergestellt wird, dass nur optimierte LUN-Pfade verwendet werden.
+
+.Über diese Aufgabe
+Dieses Verfahren ist nur erforderlich, wenn Sie das Volume von seinem HA-Paar auf ein anderes HA-Paar verschoben haben. Wenn sich das Volume auf einem anderen Node desselben HA-Paars befindet, können Sie diesen Vorgang überspringen.
+
+.Schritte
+. Entfernen Sie alle Remote-Nodes mithilfe der aus der Liste der Reporting-Nodes `lun mapping remove-reporting-nodes` Befehl mit dem `-remote-nodes` Parameter.
++
+[listing]
+----
+cluster1::> lun mapping remove-reporting-nodes -vserver SVM1 -volume vol1 -igroup ig1 -remote-nodes true
+----
+. Vergewissern Sie sich, dass die LUN-Zuordnung nur den Owner-Node und seinen Partner enthält, indem Sie den verwenden `lun mapping show` Befehl mit dem `-fields reporting-nodes` Parameter.
++
+[listing]
+----
+cluster1::> lun mapping show -vserver SVM1 -volume vol1 -fields reporting-nodes
+vserver  path        igroup   reporting-nodes
+-------- ----------- -------- ---------------------------------------------
+SVM1     /vol/vol1   ig1      cluster1-3,cluster1-4
+----
+. Entfernen Sie veraltete Geräteeinträge für das Host-Betriebssystem.
+. Scannen Sie vom Host neu, um die verfügbaren Pfade des Hosts zu aktualisieren.
++
+Spezifische Schritte zum erneuten Scannen Ihrer Hosts finden Sie in Ihrer Host-Dokumentation.
+
+

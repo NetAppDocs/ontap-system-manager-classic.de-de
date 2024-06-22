@@ -1,0 +1,80 @@
+---
+permalink: volume-move/index.html 
+sidebar: sidebar 
+keywords: nondisruptive, data, volume, node, storage, virtual, machine, svm, ontap, cluster, volume move overview, move, overview 
+summary: 'Bei der klassischen Schnittstelle von ONTAP System Manager mit ONTAP 9.7 oder einer älteren Version können Sie ein Daten-Volume unterbrechungsfrei von einem Node auf einen anderen Node innerhalb derselben Storage Virtual Machine (SVM) in einem ONTAP 9 Cluster verschieben.' 
+---
+= Übersicht über die Volume-Verschiebung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei der klassischen Schnittstelle von ONTAP System Manager mit ONTAP 9.7 oder einer älteren Version können Sie ein Daten-Volume unterbrechungsfrei von einem Node auf einen anderen Node innerhalb derselben Storage Virtual Machine (SVM) in einem ONTAP 9 Cluster verschieben.
+
+
+
+== Anforderungen für die Anwendung dieser Verfahren
+
+Bevor Sie diese Verfahren durchführen, stellen Sie sicher, dass die folgenden Bedingungen erfüllt sind:
+
+* Der Cluster läuft mit ONTAP 9.
+* Sie verfügen über Berechtigungen für Cluster-Administratoren.
+* Sie möchten Best Practices verwenden und nicht alle verfügbaren Optionen erkunden.
+* Sie möchten die Benutzeroberfläche des _Classic_ System Managers für ONTAP 9.7 und frühere Versionen verwenden, nicht die Benutzeroberfläche von ONTAP System Manager für ONTAP 9.7 und höher.
++
+Für einige Aufgaben müssen Sie die ONTAP-Befehlszeilenschnittstelle (CLI) verwenden.
+
+* Sie wissen, welches Volumen Sie verschieben möchten.
++
+Die Hilfe bei der Entscheidung, welche Volumes verschoben werden sollen, erhalten Sie unter Active IQ Unified Manager (ehemals OnCommand Unified Manager).
+
+* Das Volume, das verschoben werden wird, ist ein Daten-Volume.
+* Sämtliche neue oder neue Hardware wurde komplett installiert und verfügt bereits über Aggregate.
+* Wenn das Cluster LUNs aufweist, verfügen alle Nodes über zwei Pfade pro LUN.
+* Die Flusssteuerung ist bei Cluster-Netzwerkports nicht aktiviert.
+* Für Volumes mit Namespaces führt das Cluster ONTAP 9.6 oder höher aus.
++
+Die Volume-Verschiebung wird für NVMe Konfigurationen mit ONTAP 9.5 nicht unterstützt.
+
+
+
+
+
+== Weitere Möglichkeiten dies in ONTAP zu tun
+
+|===
+
+
+| Zum Abschließen dieser Aufgabe verwenden Sie... | Siehe... 
+
+
+ a| 
+Der neu gestaltete System Manager (verfügbar ab ONTAP 9.7)
+ a| 
+https://docs.netapp.com/us-en/ontap/volumes/manage-volumes-task.html["Volumes managen"^]
+
+
+
+ a| 
+Die ONTAP Befehlszeilenschnittstelle
+ a| 
+https://docs.netapp.com/us-en/ontap/volumes/index.html["Logisches Storage-Management"^]
+
+|===
+
+
+== Alternativen zur Verschiebung von Volumes
+
+Vor dem Verschieben von Volumes sollten Sie prüfen, ob die folgenden Ansätze für Ihre Situation besser geeignet sind:
+
+* Wenn Sie einen Controller unterbrechungsfrei aktualisieren möchten, können Sie die Aggregatverschiebung (ARL) nutzen, da keine physische Datenverschiebung erforderlich ist.
++
+https://docs.netapp.com/us-en/ontap/high-availability/index.html["Hochverfügbarkeit"^]
+
+* Wenn Sie nur eine LUN ohne das entsprechende Volume verschieben möchten, können Sie den LUN-Vorgang verschieben.
++
+https://docs.netapp.com/us-en/ontap/san-admin/index.html["SAN-Administration"^]
+
+

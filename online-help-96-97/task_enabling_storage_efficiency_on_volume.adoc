@@ -1,0 +1,73 @@
+---
+permalink: online-help-96-97/task_enabling_storage_efficiency_on_volume.html 
+sidebar: sidebar 
+keywords: system, manager, enable, storage, efficiency, volume, deduplication, online, help 
+summary: System Manager bietet Storage-Effizienz und kann sowohl Deduplizierung als auch Datenkomprimierung oder nur Deduplizierung auf einem Volume konfigurieren, um Speicherplatz einzusparen. Wenn Sie die Storage-Effizienz bei der Erstellung des Volumes nicht aktiviert haben, können Sie dies später durch Bearbeiten des Volumes tun. 
+---
+= Aktivieren Sie Storage-Effizienz auf einem Volume mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (erhältlich in ONTAP 9.7 und älteren Versionen) können Sie die Storage-Effizienz aktivieren und sowohl Deduplizierung als auch Datenkomprimierung oder nur Deduplizierung auf einem Volume konfigurieren, um Speicherplatz einzusparen. Wenn Sie die Storage-Effizienz bei der Erstellung des Volumes nicht aktiviert haben, können Sie dies später durch Bearbeiten des Volumes tun.
+
+.Bevor Sie beginnen
+* Das Volume muss sich online sein.
+* Um einen richtlinienbasierten Deduplizierungszeitplan zu verwenden, muss eine Effizienzrichtlinie erstellt werden.
+
+
+.Über diese Aufgabe
+* Sie können die Hintergrund-Komprimierung nur aktivieren, wenn Sie die Hintergrund-Deduplizierung aktiviert haben.
+* Sie können die Inline-Komprimierung und Inline-Deduplizierung mit oder ohne Aktivierung der Hintergrund-Komprimierung bzw. Hintergrund-Deduplizierung aktivieren.
+* Sie können die Inline-Deduplizierung nur auf Volumes aktivieren, die sich in einem Aggregat mit All-Flash-optimierten Persönlichkeiten befinden, und auf Volumes, die sich in einem Flash Pool Aggregat befinden.
+* Ab System Manager 9.6 wird auch Bearbeitung der Storage-Effizienz bei FlexGroup DP Volumes unterstützt.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das Volume aus, für das Sie Storage Efficiency aktivieren möchten, und klicken Sie dann auf *Bearbeiten*.
+. Klicken Sie im Dialogfeld *Volume bearbeiten* auf *Storage Efficiency*.
+. Aktivieren Sie das Kontrollkästchen *Hintergrund Deduplizierung*.
+. Wählen Sie eine der folgenden Methoden zur Deduplizierung:
++
+|===
+| Deduplizierung läuft... | Dann... 
+
+
+ a| 
+Basierend auf einer Storage-Effizienzrichtlinie
+ a| 
+.. Stellen Sie sicher, dass die Option *Policy Based* ausgewählt ist.
+.. Klicken Sie auf *Wählen* und wählen Sie dann eine Storage-Effizienzrichtlinie aus.
+.. Klicken Sie auf *OK*.
+
+
+
+
+ a| 
+Bei Bedarf
+ a| 
+Wählen Sie die Option *On-Demand* aus.
+
+|===
+. Aktivieren Sie das Kontrollkästchen *Hintergrundkomprimierung*, um die Hintergrundkomprimierung zu aktivieren.
++
+Es ist nicht möglich, die Hintergrund-Komprimierung für ein Volume zu aktivieren, das sich in einem Aggregat mit All-Flash-optimierter Persönlichkeit befindet.
+
+. Aktivieren Sie das Kontrollkästchen *Inline Compression*, um Daten zu komprimieren, während sie auf das Volume geschrieben werden.
++
+Die Inline-Komprimierung ist standardmäßig auf Volumes aktiviert, die in einem Aggregat mit All-Flash-optimierter Persönlichkeit enthalten sind.
+
+. Aktivieren Sie das Kontrollkästchen *Inline-Deduplizierung*, um die Deduplizierung auszuführen, bevor Daten auf die Festplatte geschrieben werden.
++
+Die Inline-Deduplizierung ist standardmäßig auf Volumes aktiviert, die in einem Aggregat mit All-Flash-optimierter Persönlichkeit enthalten sind.
+
+. Klicken Sie auf *Speichern und Schließen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_resetting_cifs_domain_controllers.html 
+sidebar: sidebar 
+keywords: reset, cifs, domain, controller, system, manager, online, help 
+summary: Mit System Manager können Sie die CIFS-Verbindung auf Domänencontroller für die angegebene Domäne zurücksetzen. Wenn die Informationen des Domänencontrollers nicht zurückgesetzt werden, kann dies zu einem Verbindungsfehler führen. 
+---
+= Setzen Sie CIFS Domain Controller mit System Manager - ONTAP 9.7 und früher zurück
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um die CIFS-Verbindung auf Domänencontroller für die angegebene Domäne zurückzusetzen. Wenn die Informationen des Domänencontrollers nicht zurückgesetzt werden, kann dies zu einem Verbindungsfehler führen.
+
+.Über diese Aufgabe
+Sie müssen die Ermittlungsdaten des verfügbaren Domänencontrollers des Speichersystems aktualisieren, nachdem Sie eine Domäne aus der Liste der bevorzugten Domänencontroller hinzugefügt oder gelöscht haben. Sie können die verfügbaren Informationen zur Erkennung von Domänen-Controllern in ONTAP über die Befehlszeilenschnittstelle (CLI) des Storage-Systems aktualisieren.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie auf der Registerkarte *Domäne* auf *Zurücksetzen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_cifs_window.adoc[CIFS-Fenster]

@@ -1,0 +1,41 @@
+---
+permalink: online-help-96-97/task_specifying_advanced_options_for_flexgroup_volume.html 
+sidebar: sidebar 
+keywords: flexclone, volume, specify, advanced, create, options, online, help 
+summary: Beim Erstellen eines FlexGroup-Volumes können Sie Optionen festlegen, die mit dem FlexGroup-Volume verknüpft werden sollen. 
+---
+= Geben Sie erweiterte Optionen für ein FlexGroup Volume mit System Manager - ONTAP 9.7 und früher an
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie ein FlexGroup-Volume erstellen, können Sie mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) Optionen festlegen, die mit dem FlexGroup-Volume verknüpft werden sollen.
+
+.Schritte
+. *Optional:* Klicken Sie im Fenster *FlexGroup erstellen* auf image:../media/advanced_options.gif[""] Um die erweiterten Optionen anzugeben.
++
+Das Fenster Erweiterte Optionen wird angezeigt. Er enthält Abschnitte (die Überschriften in der linken Spalte), in denen Sie verschiedene Optionen angeben können.
+
+. Wählen Sie im Abschnitt *Allgemeine Details* die Platzreservierung und den Sicherheitsstil aus und legen Sie dann die UNIX-Berechtigung für das Volume fest.
++
+Sie sollten folgende Einschränkungen beachten:
+
++
+** Die Option Reserve ist für FabricPool Aggregate nicht verfügbar.
+** Bei aktiviertem Thin Provisioning wird dem Volume von dem Aggregat nur dann Speicherplatz zugewiesen, wenn Daten auf das Volume geschrieben werden.
+** Bei All-Flash-optimierten Storage-Systemen ist Thin Provisioning standardmäßig aktiviert, bei anderen Storage-Systemen ist Thick Provisioning standardmäßig aktiviert.
+
+
+. Im Abschnitt *Aggregate* können Sie die Schaltfläche *Select Aggregate* aktivieren, um die Standardeinstellungen der Best Practices außer Kraft zu setzen und Ihre Auswahl aus einer Liste von FabricPool-Aggregaten auszuwählen.
+. Im Abschnitt *optimize Space* können Sie die Deduplizierung auf dem Volume aktivieren.
++
+System Manager verwendet den standardmäßigen Deduplizierungszeitplan. Falls die angegebene Volume-Größe die für eine Deduplizierung erforderliche Obergrenze überschreitet, wird das Volume erstellt und die Deduplizierung nicht aktiviert.
+
++
+Für Systeme mit All-Flash-optimiertem Charakter, Inline-Komprimierung und `auto` Der Deduplizierungszeitplan ist standardmäßig aktiviert.
+
+. Geben Sie im Abschnitt *QoS* (Quality of Service) die Richtliniengruppe an, die die I/O-Performance (Input/Output) des FlexGroup-Volumes steuert.
+. Klicken Sie auf *Anwenden*, um die Änderungen zu aktualisieren.
+

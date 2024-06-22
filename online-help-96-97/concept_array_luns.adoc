@@ -1,0 +1,184 @@
+---
+permalink: online-help-96-97/concept_array_luns.html 
+sidebar: sidebar 
+keywords: system, manager, array, lun, aggregate, assign, online, help, classic 
+summary: Mit System Manager können Sie einem vorhandenen Aggregat Array-LUNs zuweisen und Array-LUNs managen. 
+---
+= Managen Sie Array-LUNs mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (erhältlich in ONTAP 9.7 und früher) können Sie einem vorhandenen Aggregat Array-LUNs zuweisen und Array-LUNs managen.
+
+
+
+== Weisen Sie Array-LUNs zu
+
+Mit System Manager können einem vorhandenen Aggregat nicht zugewiesene Array-LUNs zugewiesen werden, um die Größe des Aggregats zu erhöhen.
+
+.Über diese Aufgabe
+* Sie können Array-LUNs zuweisen, wenn die folgenden Bedingungen erfüllt sind:
++
+** Der Container-Typ der ausgewählten Array-LUNs muss „`unassigned`“ sein.
+** Die Festplatten müssen mit den Nodes in einem HA-Paar verbunden sein.
+** Die Festplatten müssen für den Knoten sichtbar sein.
+
+
+* Bei MetroCluster-Konfigurationen können Sie mit System Manager Array-LUNs nicht als Spares zuweisen.
++
+Stattdessen müssen Sie die Befehlszeilenschnittstelle verwenden.
+
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *Aggregate & Disks* > *Array LUNs*.
+. Wählen Sie die Array-LUNs aus, und klicken Sie dann auf *Zuweisen*.
+. Wählen Sie im Dialogfeld *Array LUNs zuweisen* den Knoten aus, dem Sie die Array-LUNs zuweisen möchten.
+. Klicken Sie Auf *Zuweisen*.
+
+
+
+
+== Weisen Sie den Knoten Ersatzarray-LUNs neu zu
+
+Mit System Manager können Sie die Eigentumsrechte an Ersatz-Array-LUNs von einem Node zu einem anderen zuweisen, um die Kapazität eines Aggregats zu erhöhen.
+
+.Über diese Aufgabe
+* Sie können Array-LUNs neu zuweisen, wenn die folgenden Bedingungen erfüllt sind:
++
+** Der Container-Typ der ausgewählten Array-LUNs muss „`sPare`“ sein.
+** Die Festplatten müssen mit den Nodes in einem HA-Paar verbunden sein.
+** Die Festplatten müssen für den Knoten sichtbar sein.
+
+
+* Bei MetroCluster-Konfigurationen können Array-LUNs nicht mit System Manager als Spares neu zugewiesen werden.
++
+Stattdessen müssen Sie die Befehlszeilenschnittstelle verwenden.
+
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *Aggregate & Disks* > *Array LUNs*.
+. Wählen Sie die Ersatzarray-LUNs aus, die Sie neu zuweisen möchten, und klicken Sie dann auf *Zuweisen*.
+. Klicken Sie im Dialogfeld *Warnung* auf *Weiter*.
+. Wählen Sie im Dialogfeld *Array LUNs zuweisen* den Knoten aus, dem Sie die Ersatzarray-LUNs neu zuweisen möchten.
+. Klicken Sie Auf *Zuweisen*.
+
+
+
+
+== Nullsetzen von Spare Array LUNs
+
+Sie können System Manager verwenden, um alle Daten zu löschen und die Ersatzarray-LUNs zu formatieren, indem Sie Nullen auf die Array-LUNs schreiben. Diese Array-LUNs können dann in neuen Aggregaten verwendet werden.
+
+.Über diese Aufgabe
+Wenn Sie die Spare Array LUNs löschen, werden alle Spares im Cluster, einschließlich Festplatten, gelöscht. Sie können die freien Array-LUNs für einen bestimmten Node oder das gesamte Cluster löschen.
+
+.Schritte
+. Klicken Sie auf *Storage* > *Aggregate & Disks* > *Array LUNs*.
+. Klicken Sie Auf *Zero Spares*.
+. Wählen Sie im Dialogfeld *Zero Spares* einen Knoten oder „`All Nodes`“ aus, aus dem Sie die Array-LUNs löschen möchten.
+. Aktivieren Sie das Kontrollkästchen *Zero all non-noned Spares*, um den Nullsetzen-Vorgang zu bestätigen.
+. Klicken Sie Auf *Zero Spares*.
+
+
+
+
+== Allgemeines zu Festplatten und Array-LUNs
+
+Eine Festplatte ist die grundlegende Storage-Einheit für Storage-Systeme, die mit ONTAP Software auf native Festplatten-Shelfs zugreifen. Ein Array LUN ist die grundlegende Storage-Einheit, die Storage Arrays von Drittanbietern für Storage-Systeme mit ONTAP Software bereitstellen.
+
+Mit ONTAP Software können Sie Ihren Festplatten und Array LUNs Eigentumsrechte zuweisen und sie einem Aggregat hinzufügen. Die ONTAP Software bietet auch verschiedene Möglichkeiten zur Verwaltung von Festplatten, einschließlich Entfernen, Ersetzen und Bereinigungen. Da Array LUNs vom Storage Array eines Drittanbieters bereitgestellt werden, verwenden Sie das Storage Array eines Drittanbieters für alle anderen Managementaufgaben für Array-LUNs.
+
+Sie können ein Aggregat entweder mit Festplatten oder Array LUNs erstellen. Nachdem Sie das Aggregat erstellt haben, managen Sie es mit ONTAP genau auf die gleiche Weise, ob es basierend auf Festplatten oder Array LUNs erstellt wurde.
+
+
+
+== Array-LUNs-Fenster
+
+Im Array LUNs-Fenster können Sie Ihren Array LUNs Eigentumsrechte zuweisen und sie einem Aggregat hinzufügen.
+
+Der Link Array LUNs im linken Navigationsbereich wird nur angezeigt, wenn es irgendwelche Ersatzarray-LUNs gibt, oder wenn die V_StorageAttach-Lizenz installiert ist.
+
+
+
+=== Befehlsschaltflächen
+
+* *Zuweisen*
++
+Ermöglicht Ihnen das Zuweisen oder Neuzuweisen der Eigentumsrechte von Array-LUNs zu einem Node.
+
+* *Zero Spares*
++
+Löscht alle Daten und formatiert die Ersatzarray-LUNs und -Festplatten.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Array-LUN-Liste
+
+Zeigt Informationen, z. B. Name, Status und Anbieter für die einzelnen Array-LUNs an.
+
+* *Name*
++
+Gibt den Namen der Array-LUN an.
+
+* *Bundesland*
++
+Gibt den Status der Array-LUN an.
+
+* * Anbieter*
++
+Gibt den Namen des Anbieters an.
+
+* *Verwendeter Platz*
++
+Gibt den Speicherplatz an, der von der Array-LUN verwendet wird.
+
+* *Gesamtgröße*
++
+Gibt die Größe der Array-LUN an.
+
+* * Container*
++
+Gibt das Aggregat an, zu dem die Array-LUN gehört.
+
+* *Knotenname*
++
+Gibt den Namen des Node an, zu dem die Array-LUN gehört.
+
+* *Hausbesitzer*
++
+Zeigt den Namen des Home-Node an, dem die Array-LUN zugewiesen ist.
+
+* *Aktueller Eigentümer*
++
+Zeigt den Namen des Knotens an, der derzeit die Array-LUN besitzt.
+
+* *Array-Name*
++
+Gibt den Namen des Arrays an.
+
+* *Pool*
++
+Zeigt den Namen des Pools an, dem die ausgewählte Array-LUN zugewiesen ist.
+
+
+
+
+
+=== Detailbereich
+
+Im Bereich unterhalb der Liste Array-LUNs werden detaillierte Informationen über die ausgewählte Array-LUN angezeigt.
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Installationsanforderungen für FlexArray Virtualisierung und Referenz"]

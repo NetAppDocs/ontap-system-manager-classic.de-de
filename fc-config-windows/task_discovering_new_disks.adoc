@@ -1,0 +1,46 @@
+---
+permalink: fc-config-windows/task_discovering_new_disks.html 
+sidebar: sidebar 
+keywords: lun, storage, virtual, machine, svm, appear, disk, windows, host, automatic, discover, manual, rescan, discover new disk 
+summary: 'LUNs auf Ihrer Storage Virtual Machine (SVM) werden dem Windows Host als Festplatten angezeigt. Alle neuen Laufwerke für LUNs, die Sie Ihrem System hinzufügen, werden vom Host nicht automatisch erkannt. Sie müssen Festplatten manuell neu scannen, um sie zu ermitteln.' 
+---
+= Erkennen neuer Festplatten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+LUNs auf Ihrer Storage Virtual Machine (SVM) werden dem Windows Host als Festplatten angezeigt. Alle neuen Laufwerke für LUNs, die Sie Ihrem System hinzufügen, werden vom Host nicht automatisch erkannt. Sie müssen Festplatten manuell neu scannen, um sie zu ermitteln.
+
+.Schritte
+. Öffnen Sie das Windows Computer Management-Dienstprogramm:
++
+|===
+| Sie verwenden... | Navigieren Sie zu... 
+
+
+ a| 
+Windows Server 2012
+ a| 
+*Tools* > *Computerverwaltung*
+
+
+
+ a| 
+Windows Server 2008
+ a| 
+*Start* > *Verwaltung* > *Computerverwaltung*
+
+
+
+ a| 
+Windows Server 2016
+ a| 
+*Start* *> Verwaltungstools* *> Computerverwaltung*
+
+|===
+. Erweitern Sie den Knoten *Storage* im Navigationsbaum.
+. Klicken Sie Auf *Disk Management*.
+. Klicken Sie Auf *Aktion* > *Wiederanlaufplatten*.
+

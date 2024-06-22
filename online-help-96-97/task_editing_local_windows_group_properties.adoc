@@ -1,0 +1,537 @@
+---
+permalink: online-help-96-97/task_editing_local_windows_group_properties.html 
+sidebar: sidebar 
+keywords: online, help, edit, local, windows, group, properties, active, directory 
+summary: Sie können die Mitgliedschaften lokaler Gruppen verwalten, indem Sie einen lokalen Benutzer, einen Active Directory-Benutzer oder eine Active Directory-Gruppe mit System Manager hinzufügen und entfernen. Sie können die Berechtigungen, die einer Gruppe zugewiesen sind, und die Beschreibung einer Gruppe ändern, um die Gruppe leicht zu identifizieren. 
+---
+= Managen Sie lokale Windows Gruppen mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) zum Verwalten lokaler Windows Gruppen verwenden. Sie können Gruppeneigenschaften, Mitgliedschaften, Konten ändern und Gruppen bestimmte Berechtigungen zuweisen.
+
+
+
+== Bearbeiten der Eigenschaften lokaler Windows-Gruppen
+
+Sie können die Mitgliedschaften lokaler Gruppen verwalten, indem Sie einen lokalen Benutzer, einen Active Directory-Benutzer oder eine Active Directory-Gruppe mit System Manager hinzufügen und entfernen. Sie können die Berechtigungen, die einer Gruppe zugewiesen sind, und die Beschreibung einer Gruppe ändern, um die Gruppe leicht zu identifizieren.
+
+.Über diese Aufgabe
+Beim Hinzufügen oder Entfernen von Mitgliedern aus einer lokalen Windows-Gruppe müssen Sie Folgendes beachten:
+
+* Benutzer können nicht zur speziellen Gruppe „_Everyone_“ hinzugefügt oder aus dieser entfernt werden.
+* Eine lokale Windows-Gruppe kann keiner anderen lokalen Windows-Gruppe hinzugefügt werden.
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Klicken Sie auf der Registerkarte *Gruppen* auf *Bearbeiten*.
+. Geben Sie einen Namen für die Gruppe und eine Beschreibung zur Identifizierung der neuen Gruppe an.
+. Weisen Sie der Gruppe einen Satz von Berechtigungen zu.
++
+Sie können die Berechtigungen aus dem vordefinierten Satz unterstützter Berechtigungen auswählen.
+
+. Klicken Sie auf *Hinzufügen*, um der Gruppe Benutzer hinzuzufügen.
+. Führen Sie im Fenster *Mitglieder hinzufügen* eine der folgenden Aktionen durch:
++
+** Geben Sie den Active Directory-Benutzer oder die Active Directory-Gruppe an, die einer bestimmten lokalen Gruppe hinzugefügt werden sollen.
+** Wählen Sie die Benutzer aus der Liste der verfügbaren lokalen Benutzer in der Storage Virtual Machine (SVM) aus.
+
+
+. Klicken Sie Auf *Bearbeiten*.
+
+
+.Ergebnisse
+Die Einstellungen der lokalen Windows-Gruppe werden geändert und die Änderungen werden auf der Registerkarte *Gruppen* angezeigt.
+
+
+
+== Erstellen Sie eine lokale Windows-Gruppe
+
+Mit System Manager lassen sich lokale Windows Gruppen erstellen, die über eine SMB-Verbindung für den Zugriff auf die Daten in der Storage Virtual Machine (SVM) verwendet werden können. Sie können auch die Berechtigungen zuweisen, die die Benutzerrechte oder Fähigkeiten definieren, die ein Mitglied der Gruppe bei der Durchführung von Administratoraktivitäten hat.
+
+.Bevor Sie beginnen
+CIFS-Server muss für die SVM konfiguriert sein.
+
+.Über diese Aufgabe
+* Sie können einen Gruppennamen mit oder ohne den lokalen Domänennamen angeben.
++
+Die lokale Domäne ist der Name des CIFS-Servers für die SVM. Wenn beispielsweise der CIFS-Servername der SVM „`CIFS_SERVER`“ lautet und Sie eine „`Engineering`“-Gruppe erstellen möchten, können Sie entweder „`Engineering`“ oder „`CIFS_SERVER\Engineering`“ als Gruppenname angeben.
+
++
+Folgende Regeln gelten für die Verwendung einer lokalen Domäne als Teil des Gruppennamens:
+
++
+** Sie können nur den lokalen Domänennamen für die SVM angeben, auf die die Gruppe angewendet wird.
++
+Wenn beispielsweise der lokale CIFS-Servername „`CIFS_SERVER`“ lautet, können Sie „`CORP_SERVER\group1`“ nicht als Gruppenname angeben.
+
+** Sie können „`BUILTIN`“ nicht als lokale Domäne im Gruppennamen verwenden.
++
+Sie können beispielsweise keine Gruppe mit dem Namen „`BUILTIN\group1`“ erstellen.
+
+** Sie können eine Active Directory-Domäne nicht als lokale Domäne im Gruppennamen verwenden.
++
+Sie können beispielsweise keine Gruppe mit dem Namen „`AD_DOM\group1`“ erstellen, wobei „`AD_DOM`“ der Name einer Active Directory-Domäne ist.
+
+
+
+* Sie können keinen Gruppennamen verwenden, der bereits vorhanden ist.
+* Der angegebene Gruppenname muss die folgenden Anforderungen erfüllen:
++
+** Darf 256 Zeichen nicht überschreiten
+** Darf nicht in einem Zeitraum enden
+** Kommas dürfen nicht berücksichtigt werden
+** Darf keines der folgenden druckbaren Zeichen enthalten: " / \ [ ] : < > + = ; ? * @
+** Darf keine Zeichen im ASCII-Bereich 1 bis 31 enthalten, die nicht druckbar sind
+
+
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Klicken Sie auf der Registerkarte *Gruppen* auf *Erstellen*.
+. Geben Sie im Dialogfeld *Gruppe erstellen* einen Namen für die Gruppe und eine Beschreibung an, die Ihnen hilft, die neue Gruppe zu identifizieren.
+. Weisen Sie der Gruppe einen Satz von Berechtigungen zu.
++
+Sie können die Berechtigungen aus dem vordefinierten Satz unterstützter Berechtigungen auswählen.
+
+. Klicken Sie auf *Hinzufügen*, um der Gruppe Benutzer hinzuzufügen.
+. Führen Sie im Dialogfeld *Mitglieder zur Gruppe hinzufügen* eine der folgenden Aktionen durch:
++
+** Geben Sie den Active Directory-Benutzer oder die Active Directory-Gruppe an, die einer bestimmten lokalen Gruppe hinzugefügt werden sollen.
+** Wählen Sie die Benutzer aus der Liste der verfügbaren lokalen Benutzer in der SVM aus.
+** Klicken Sie auf *OK*.
+
+
+. Klicken Sie Auf *Erstellen*.
+
+
+.Ergebnisse
+Die lokale Windows-Gruppe wird erstellt und im Fenster Gruppen aufgelistet.
+
+
+
+== Fügen Sie Benutzerkonten zu einer lokalen Windows-Gruppe hinzu
+
+Sie können einen lokalen Benutzer, einen Active Directory-Benutzer oder eine Active Directory-Gruppe (wenn Sie möchten, dass Benutzer über die Berechtigungen verfügen, die dieser Gruppe zugeordnet sind) einer lokalen Windows-Gruppe mithilfe von System Manager hinzufügen.
+
+.Bevor Sie beginnen
+* Die Gruppe muss vorhanden sein, bevor Sie der Gruppe einen Benutzer hinzufügen können.
+* Der Benutzer muss vorhanden sein, bevor Sie den Benutzer einer Gruppe hinzufügen können.
+
+
+.Über diese Aufgabe
+Beim Hinzufügen von Mitgliedern zu einer lokalen Windows-Gruppe müssen Sie Folgendes beachten:
+
+* Sie können keine Benutzer zur speziellen _everyone_-Gruppe hinzufügen.
+* Eine lokale Windows-Gruppe kann keiner anderen lokalen Windows-Gruppe hinzugefügt werden.
+* Sie können kein Benutzerkonto hinzufügen, das im Benutzernamen einen Speicherplatz enthält, über System Manager.
++
+Sie können das Benutzerkonto entweder umbenennen oder das Benutzerkonto über die Befehlszeilenschnittstelle (CLI) hinzufügen.
+
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Wählen Sie auf der Registerkarte *Gruppen* die Gruppe aus, der Sie einen Benutzer hinzufügen möchten, und klicken Sie dann auf *Mitglieder hinzufügen*.
+. Führen Sie im Fenster *Mitglieder hinzufügen* eine der folgenden Aktionen durch:
++
+** Geben Sie den Active Directory-Benutzer oder die Active Directory-Gruppe an, die einer bestimmten lokalen Gruppe hinzugefügt werden sollen.
+** Wählen Sie die Benutzer aus der Liste der verfügbaren lokalen Benutzer in der Storage Virtual Machine (SVM) aus.
+
+
+. Klicken Sie auf *OK*.
+
+
+.Ergebnisse
+Der Benutzer, den Sie hinzugefügt haben, wird im Benutzerstab der Registerkarte *Gruppen* aufgelistet.
+
+
+
+== Benennen Sie eine lokale Windows-Gruppe um
+
+Sie können mit System Manager eine lokale Windows-Gruppe umbenennen, um die Gruppe einfacher zu identifizieren.
+
+.Über diese Aufgabe
+* Der neue Gruppenname muss in derselben Domäne wie der alte Gruppenname erstellt werden.
+* Der Gruppenname muss die folgenden Anforderungen erfüllen:
++
+** Darf 256 Zeichen nicht überschreiten
+** Darf nicht in einem Zeitraum enden
+** Kommas dürfen nicht berücksichtigt werden
+** Darf keines der folgenden druckbaren Zeichen enthalten: " / \ [ ] : < > + = ; ? * @
+** Darf keine Zeichen im ASCII-Bereich 1 bis 31 enthalten, die nicht druckbar sind
+
+
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Wählen Sie auf der Registerkarte *Groups* die Gruppe aus, die Sie umbenennen möchten, und klicken Sie dann auf *Umbenennen*.
+. Geben Sie im Fenster *Gruppe umbenennen* einen neuen Namen für die Gruppe an.
+
+
+.Ergebnisse
+Der Name der lokalen Gruppe wird geändert, und die Gruppe wird mit dem neuen Namen im Fenster Gruppen aufgelistet.
+
+
+
+== Löschen Sie eine lokale Windows-Gruppe
+
+Mit System Manager können Sie eine lokale Windows-Gruppe aus einer Storage Virtual Machine (SVM) löschen, wenn die Gruppe nicht mehr zum Bestimmen von Zugriffsrechten auf die Daten in der SVM oder zum Zuweisen von SVM-Benutzerrechten (Berechtigungen) zu Gruppenmitgliedern benötigt wird.
+
+.Über diese Aufgabe
+* Durch das Entfernen einer lokalen Gruppe werden die Mitgliedschaftsdatensätze der Gruppe entfernt.
+* Das Dateisystem wird nicht verändert.
++
+Windows-Sicherheitsdeskriptoren für Dateien und Verzeichnisse, die sich auf diese Gruppe beziehen, werden nicht angepasst.
+
+* Die spezielle Gruppe „`Everyone`“ kann nicht gelöscht werden.
+* Integrierte Gruppen wie BUILTIN\Administratoren und BUILTIN\Benutzer können nicht gelöscht werden.
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Wählen Sie auf der Registerkarte *Gruppen* die Gruppe aus, die Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Klicken Sie Auf *Löschen*.
+
+
+.Ergebnisse
+Die lokale Gruppe wird zusammen mit ihren Mitgliedschaftsdatensätzen gelöscht.
+
+
+
+== Erstellen Sie ein lokales Windows-Benutzerkonto
+
+Mit System Manager können Sie ein lokales Windows-Benutzerkonto erstellen, das über eine SMB-Verbindung für den Zugriff auf die Daten in der Storage Virtual Machine (SVM) verwendet werden kann. Sie können auch lokale Windows-Benutzerkonten zur Authentifizierung verwenden, wenn Sie eine CIFS-Sitzung erstellen.
+
+.Bevor Sie beginnen
+* Der CIFS-Server muss für die SVM konfiguriert sein.
+
+
+.Über diese Aufgabe
+Ein lokaler Windows-Benutzername muss die folgenden Anforderungen erfüllen:
+
+* Darf 20 Zeichen nicht überschreiten
+* Darf nicht in einem Zeitraum enden
+* Kommas dürfen nicht berücksichtigt werden
+* Darf keines der folgenden druckbaren Zeichen enthalten: " / \ [ ] : < > + = ; ? * @
+* Darf keine Zeichen im ASCII-Bereich 1 bis 31 enthalten, die nicht druckbar sind
+
+
+Das Passwort muss die folgenden Kriterien erfüllen:
+
+* Muss mindestens sechs Zeichen lang sein
+* Darf den Benutzernamen nicht enthalten
+* Muss Zeichen aus mindestens drei der folgenden vier Kategorien enthalten:
++
+** Englische Großbuchstaben (A bis Z)
+** Englische Kleinbuchstaben (A bis z)
+** Basis 10 Ziffern (0 bis 9)
+** Sonderzeichen: ~ ! @ # 0 ^ & * _ - + = ` \ ( ) [ ] : ; „ < > , . ? /
+
+
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Klicken Sie auf der Registerkarte *Users* auf *Create*.
+. Geben Sie einen Namen für den lokalen Benutzer an.
+. Geben Sie den vollständigen Namen des lokalen Benutzers und eine Beschreibung an, die Ihnen hilft, diesen neuen Benutzer zu identifizieren.
+. Geben Sie ein Passwort für den lokalen Benutzer ein und bestätigen Sie das Passwort.
++
+Das Passwort muss die Anforderungen des Passworts erfüllen.
+
+. Klicken Sie auf *Hinzufügen*, um dem Benutzer Gruppenmitgliedschaften zuzuweisen.
+. Wählen Sie im Fenster *Add Groups* die Gruppen aus der Liste der verfügbaren Gruppen in der SVM aus.
+. Wählen Sie *Dieses Konto deaktivieren*, um dieses Konto nach der Erstellung des Benutzers zu deaktivieren.
+. Klicken Sie Auf *Erstellen*.
+
+
+.Ergebnisse
+Das lokale Windows-Benutzerkonto wird erstellt und den ausgewählten Gruppen wird eine Mitgliedschaft zugewiesen. Das Benutzerkonto wird auf der Registerkarte *Benutzer* aufgelistet.
+
+
+
+== Bearbeiten der lokalen Windows-Benutzereigenschaften
+
+Sie können mit System Manager ein lokales Windows-Benutzerkonto ändern, wenn Sie den vollständigen Namen oder die Beschreibung eines vorhandenen Benutzers ändern möchten oder das Benutzerkonto aktivieren oder deaktivieren möchten. Sie können auch die Gruppenmitgliedschaften ändern, die dem Benutzerkonto zugewiesen sind.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Klicken Sie auf der Registerkarte *Benutzer* auf *Bearbeiten*.
+. Nehmen Sie im Fenster *Benutzer ändern* die erforderlichen Änderungen vor.
+. Klicken Sie Auf *Ändern*.
+
+
+.Ergebnisse
+Die Attribute des lokalen Windows-Benutzerkontos werden geändert und werden auf der Registerkarte *Users* angezeigt.
+
+
+
+== Zuweisen von Gruppenmitgliedschaften zu einem Benutzerkonto
+
+Mit System Manager können Sie einem Benutzerkonto Gruppenmitgliedschaften zuweisen, wenn ein Benutzer über die Berechtigungen verfügen soll, die einer bestimmten Gruppe zugeordnet sind.
+
+.Bevor Sie beginnen
+* Die Gruppe muss vorhanden sein, bevor Sie der Gruppe einen Benutzer hinzufügen können.
+* Der Benutzer muss vorhanden sein, bevor Sie den Benutzer einer Gruppe hinzufügen können.
+
+
+.Über diese Aufgabe
+Sie können keine Benutzer zur speziellen _everyone_-Gruppe hinzufügen.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Wählen Sie auf der Registerkarte *Benutzer* das Benutzerkonto aus, dem Sie Gruppenmitgliedschaften zuweisen möchten, und klicken Sie dann auf *zu Gruppe hinzufügen*.
+. Wählen Sie im Fenster *Gruppen hinzufügen* die Gruppen aus, denen Sie das Benutzerkonto hinzufügen möchten.
+. Klicken Sie auf *OK*.
+
+
+.Ergebnisse
+Dem Benutzerkonto wird allen ausgewählten Gruppen eine Mitgliedschaft zugewiesen, und der Benutzer verfügt über die Berechtigungen, die diesen Gruppen zugeordnet sind.
+
+
+
+== Benennen Sie einen lokalen Windows-Benutzer um
+
+Mit System Manager können Sie ein lokales Windows-Benutzerkonto umbenennen, um den lokalen Benutzer leichter zu identifizieren.
+
+.Über diese Aufgabe
+* Der neue Benutzername muss in derselben Domäne wie der vorherige Benutzername erstellt werden.
+* Der angegebene Benutzername muss die folgenden Anforderungen erfüllen:
++
+** Darf 20 Zeichen nicht überschreiten
+** Darf nicht in einem Zeitraum enden
+** Kommas dürfen nicht berücksichtigt werden
+** Darf keines der folgenden druckbaren Zeichen enthalten: " / \ [ ] : < > + = ; ? * @
+** Darf keine Zeichen im ASCII-Bereich 1 bis 31 enthalten, die nicht druckbar sind
+
+
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Wählen Sie auf der Registerkarte *Benutzer* den Benutzer aus, den Sie umbenennen möchten, und klicken Sie dann auf *Umbenennen*.
+. Geben Sie im Fenster *Benutzer umbenennen* einen neuen Namen für den Benutzer an.
+. Bestätigen Sie den neuen Namen und klicken Sie dann auf *Umbenennen*.
+
+
+.Ergebnisse
+Der Benutzername wird geändert und der neue Name wird auf der Registerkarte *Benutzer* angezeigt.
+
+
+
+== Setzen Sie das Kennwort eines lokalen Windows-Benutzers zurück
+
+Mit System Manager können Sie das Passwort eines lokalen Windows-Benutzers zurücksetzen. Möglicherweise möchten Sie das Passwort zurücksetzen, wenn das aktuelle Passwort kompromittiert ist oder der Benutzer das Passwort vergessen hat.
+
+.Über diese Aufgabe
+Das von Ihnen festgelegte Passwort muss die folgenden Kriterien erfüllen:
+
+* Muss mindestens sechs Zeichen lang sein
+* Darf den Benutzernamen nicht enthalten
+* Muss Zeichen aus mindestens drei der folgenden vier Kategorien enthalten:
++
+** Englische Großbuchstaben (A bis Z)
+** Englische Kleinbuchstaben (A bis z)
+** Basis 10 Ziffern (0 bis 9)
+** Sonderzeichen: ~ ! @ # 0 ^ & * _ - + = ` \ ( ) [ ] : ; „ < > , . ? /
+
+
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Wählen Sie auf der Registerkarte *Users* den Benutzer aus, dessen Passwort Sie zurücksetzen möchten, und klicken Sie dann auf *Passwort festlegen*.
+. Legen Sie im Dialogfeld *Passwort zurücksetzen* ein neues Passwort für den Benutzer fest.
+. Bestätigen Sie das neue Passwort und klicken Sie dann auf *Zurücksetzen*.
+
+
+
+
+== Ein lokales Windows-Benutzerkonto löschen
+
+Mit System Manager können Sie ein lokales Windows-Benutzerkonto von einer Storage Virtual Machine (SVM) löschen, wenn das Benutzerkonto nicht mehr für die lokale CIFS-Authentifizierung für den CIFS-Server der SVM oder zur Bestimmung der Zugriffsrechte für die Daten in der SVM benötigt wird.
+
+.Über diese Aufgabe
+* Standardbenutzer wie Administrator können nicht gelöscht werden.
+* ONTAP entfernt Verweise auf den gelöschten lokalen Benutzer aus der lokalen Gruppendatenbank, aus der lokalen Benutzermitgliedschaft und aus der Benutzerrechtedatenbank.
+
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie im Fenster *Host-Benutzer und Gruppen* auf *Windows*.
+. Wählen Sie auf der Registerkarte *Benutzer* das Benutzerkonto aus, das Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Klicken Sie Auf *Löschen*.
+
+
+.Ergebnisse
+Das lokale Benutzerkonto wird zusammen mit den Gruppenmitgliedeinträgen gelöscht.
+
+
+
+== Das Windows-Fenster
+
+Sie können System Manager verwenden, um das Windows-Fenster zu verwenden. Mit dem Windows-Fenster können Sie eine Liste der lokalen Windows-Benutzer und -Gruppen für jede Storage Virtual Machine (SVM) auf dem Cluster beibehalten. Zur Authentifizierung und Namenszuordnungen können lokale Windows-Benutzer und -Gruppen verwendet werden.
+
+
+
+=== Registerkarte Benutzer
+
+Sie können die Registerkarte Benutzer verwenden, um die lokalen Windows-Benutzer einer SVM anzuzeigen.
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Benutzer erstellen, in dem Sie ein lokales Windows-Benutzerkonto erstellen können, das zum Autorisieren des Zugriffs auf Daten in der SVM über eine SMB-Verbindung verwendet werden kann.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Benutzer bearbeiten, in dem Sie lokale Windows-Benutzereigenschaften bearbeiten können, z. B. Gruppenmitgliedschaften und den vollständigen Namen. Sie können außerdem das Benutzerkonto aktivieren oder deaktivieren.
+
+* *Löschen*
++
+Öffnet das Dialogfeld Benutzer löschen, in dem Sie ein lokales Windows-Benutzerkonto aus einer SVM löschen können, wenn es nicht mehr benötigt wird.
+
+* *Zur Gruppe hinzufügen*
++
+Öffnet das Dialogfeld „Gruppen hinzufügen“, in dem Sie einem Benutzerkonto Gruppenmitgliedschaft zuweisen können, wenn der Benutzer über Berechtigungen verfügen soll, die dieser Gruppe zugeordnet sind.
+
+* *Passwort Festlegen*
++
+Öffnet das Dialogfeld Kennwort zurücksetzen, in dem Sie das Kennwort eines lokalen Windows-Benutzers zurücksetzen können. Sie können beispielsweise das Passwort zurücksetzen, wenn das Passwort kompromittiert wird oder wenn der Benutzer das Passwort vergessen hat.
+
+* *Umbenennen*
++
+Öffnet das Dialogfeld Benutzer umbenennen, in dem Sie ein lokales Windows-Benutzerkonto umbenennen können, um es einfacher zu identifizieren.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Benutzerliste
+
+* *Name*
++
+Zeigt den Namen des lokalen Benutzers an.
+
+* * Vollständiger Name*
++
+Zeigt den vollständigen Namen des lokalen Benutzers an.
+
+* *Konto Deaktiviert*
++
+Zeigt an, ob das lokale Benutzerkonto aktiviert oder deaktiviert ist.
+
+* *Beschreibung*
++
+Zeigt die Beschreibung für diesen lokalen Benutzer an.
+
+
+
+
+
+=== Bereich „Benutzerdetails“
+
+* *Gruppe*
++
+Zeigt die Liste der Gruppen an, in denen der Benutzer Mitglied ist.
+
+
+
+
+
+=== Registerkarte „Gruppen“
+
+Über die Registerkarte „Gruppen“ können Sie Windows-Gruppen hinzufügen, bearbeiten oder löschen, die lokal einer SVM sind.
+
+
+
+=== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Gruppe erstellen, in dem Sie lokale Windows-Gruppen erstellen können, die über eine SMB-Verbindung für den Zugriff auf in SVMs enthaltene Daten verwendet werden können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Gruppe bearbeiten, in dem Sie die lokalen Windows-Gruppeneigenschaften bearbeiten können, z. B. die der Gruppe zugewiesenen Berechtigungen und die Beschreibung der Gruppe.
+
+* *Löschen*
++
+Öffnet das Dialogfeld Gruppe löschen, in dem Sie eine lokale Windows-Gruppe aus einer SVM löschen können, wenn diese nicht mehr benötigt wird.
+
+* *Mitglieder Hinzufügen*
++
+Öffnet das Dialogfeld Mitglieder hinzufügen, in dem Sie lokale oder Active Directory-Benutzer oder Active Directory-Gruppen der lokalen Windows-Gruppe hinzufügen können.
+
+* *Umbenennen*
++
+Öffnet das Dialogfeld Gruppe umbenennen, in dem Sie eine lokale Windows-Gruppe umbenennen können, um sie leichter zu identifizieren.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Gruppenliste
+
+* *Name*
++
+Zeigt den Namen der lokalen Gruppe an.
+
+* *Beschreibung*
++
+Zeigt die Beschreibung für diese lokale Gruppe an.
+
+
+
+
+
+=== Bereich Gruppendetails
+
+* *Privilegien*
++
+Zeigt die Liste der Berechtigungen an, die der ausgewählten Gruppe zugeordnet sind.
+
+* *Benutzer*
++
+Zeigt die Liste der lokalen Benutzer an, die der ausgewählten Gruppe zugeordnet sind.
+
+

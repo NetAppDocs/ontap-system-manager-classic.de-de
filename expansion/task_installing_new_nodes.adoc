@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_installing_new_nodes.html 
+sidebar: sidebar 
+keywords: cluster, install, controller, configure, node-management, run, ontap, repurpose, hardware-level, ha, address, maintenance, mode, join, install the new node 
+summary: Nach der Vorbereitung des Clusters müssen Sie die Controller installieren und die Node-Management-LIFs konfigurieren. 
+---
+= Die neuen Nodes installieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach der Vorbereitung des Clusters müssen Sie die Controller installieren und die Node-Management-LIFs konfigurieren. Wenn auf den Controllern nicht dieselbe ONTAP-Version wie das vorhandene Cluster ausgeführt wird oder eine neue Verwendung benötigt wird und keine Hochverfügbarkeit auf Hardwareebene besteht, müssen diese Probleme im Wartungsmodus behoben werden. Und schließlich können Sie den Nodes dem Cluster hinzufügen.

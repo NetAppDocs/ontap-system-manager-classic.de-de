@@ -1,0 +1,22 @@
+---
+permalink: online-help-96-97/concept_using_space_reservation_for_luns.html 
+sidebar: sidebar 
+keywords: understand, space, reservation, lun, volume, guarantee, online, help 
+summary: 'Wenn Sie verstehen, wie die Einstellung für Platzreservierung (in Kombination mit der Volume-Garantie) beeinflusst, wie Speicherplatz für LUNs reserviert wird, hilft Ihnen, die Auswirkungen des Deaktivieren von Platzreservierungen zu verstehen, und warum bestimmte Kombinationen von LUN- und Volume-Einstellungen nicht hilfreich sind.' 
+---
+= Allgemeines zu Speicherplatzreservierungen für LUNs in System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Indem Sie verstehen, wie die Einstellung für Platzreservierungen (in Kombination mit der Volume-Garantie) in ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) sich darauf auswirkt, wie Speicherplatz für LUNs reserviert wird, hilft Ihnen, die Auswirkungen von Speicherplatzreservierungen zu verstehen. Es hilft Ihnen auch zu verstehen, warum bestimmte Kombinationen von LUN- und Volume-Einstellungen nicht nützlich sind.
+
+Wenn eine LUN Platzreservierungen aktiviert ist (eine platzreservierte LUN) und das zugehörige Volume eine Volume-Garantie besitzt, wird freier Speicherplatz vom Volume beim Erstellen zur LUN reserviert. Die Größe dieses reservierten Speicherplatzes wird durch die Größe der LUN bestimmt. Andere Storage-Objekte auf dem Volume (andere LUNs, Dateien, Snapshot Kopien usw.) können nicht diesen Speicherplatz nutzen.
+
+Wenn eine LUN über deaktivierte Speicherplatzreservierungen verfügt (eine nicht-space-reservierte LUN), wird beim Erstellen für diese LUN kein Speicherplatz festgelegt. Der für jeden Schreibvorgang des LUN benötigte Speicher wird nach Bedarf dem Volume zugewiesen, sofern ausreichend freier Speicherplatz verfügbar ist.
+
+Wenn eine platzsparende LUN in einem ohne garantierte Performance Volume erstellt wird, verhält sich die LUN wie eine nicht-speicherreservierte LUN. Das liegt daran, dass ein nicht garantiertes Volume keinen Platz hat, der LUN zuzuweisen. Das Volume selbst kann wegen seiner keinen Garantie nur dann Speicherplatz zuweisen, wenn es geschrieben wird. Daher wird es nicht empfohlen, eine platzreservierte LUN in einem ohne garantierte Volume zu erstellen. Der Einsatz dieser Konfigurationskombination bietet möglicherweise Schreibgarantien, die tatsächlich unmöglich sind.
+
+Wenn die Platzreserve auf „`Default`“ gesetzt ist, gelten die Einstellungen der ONTAP Speicherplatzreservierung für die LUNs. ONTAP Einstellungen für die Speicherplatzreservierung gelten auch für die Container-Volumes, wenn neue Volumes erstellt werden.

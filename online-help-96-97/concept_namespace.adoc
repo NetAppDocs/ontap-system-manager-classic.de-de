@@ -1,0 +1,125 @@
+---
+permalink: online-help-96-97/concept_namespace.html 
+sidebar: sidebar 
+keywords: junction, path, window, system, manager, mount, unmount, flexvol, volume, svm, namespace, online, help, policies, export 
+summary: Mithilfe des Verbindungspfad-Fensters in System Manager können FlexVol Volumes an eine Verbindung im SVM Namespace gemountet oder aufgehoben werden. 
+---
+= Verbindungspfad-Fenster in System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mithilfe des Verbindungspfads-Fensters in ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) können FlexVol-Volumes gemountet oder entfernt werden.
+
+
+
+== Volumes mounten
+
+Mit System Manager können Sie Volumes mit einer Verbindung im Namespace der Storage Virtual Machine (SVM) mounten.
+
+.Über diese Aufgabe
+* Wenn Sie ein Volume an einen Verbindungspfad mit einer anderen Spracheinstellung als das unmittelbare übergeordnete Volume im Pfad mounten, können NFSv3-Clients auf einige Dateien nicht zugreifen, da einige Zeichen möglicherweise nicht richtig decodiert wurden.
++
+Dieses Problem tritt nicht auf, wenn das unmittelbare übergeordnete Verzeichnis das Root-Volume ist.
+
+* Ein SnapLock Volume kann nur unter dem Root-Verzeichnis der SVM gemountet werden.
+* Ein normales Volume kann nicht unter einem SnapLock Volume gemountet werden.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Verbindungspfad*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die SVM aus, auf der ein Volume gemountet werden soll.
+. Klicken Sie auf *Mount* und wählen Sie dann das Volume aus, das bereitgestellt werden soll.
+. *Optional:* Wenn Sie den Standard-Verbindungsnamen ändern möchten, geben Sie einen neuen Namen an.
+. Klicken Sie auf *Durchsuchen* und wählen Sie dann den Verbindungspfad aus, zu dem Sie das Volume mounten möchten.
+. Klicken Sie auf *OK* und dann auf *Mount*.
+. Überprüfen Sie den neuen Verbindungspfad auf der Registerkarte *Details*.
+
+
+
+
+== FlexVol Volumes aufheben
+
+Mithilfe der Option Junction Path (Verbindungspfad) von Storage (Teilfenster „Storage“) in System Manager können Sie FlexVol Volumes von einer Verbindung im Namespace für Storage Virtual Machines (SVMs) aufheben.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Verbindungspfad*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die SVM aus, aus der Sie die Bereitstellung eines Volumes aufheben möchten.
+. Wählen Sie die Volumes aus, die abgehängt werden sollen, und klicken Sie dann auf *Bereitstellung aufheben*.
+. Aktivieren Sie das Bestätigungsfeld und klicken Sie dann auf *Unmount*.
+
+
+
+
+== Exportrichtlinien ändern
+
+Wenn ein Volume erstellt wird, übernimmt das Volume automatisch die standardmäßige Exportrichtlinie für das Root-Volume der Storage Virtual Machine (SVM). Mit System Manager können Sie die dem Volume zugeordnete Standardexportrichtlinie ändern, um den Client-Zugriff auf Daten neu zu definieren.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Verbindungspfad*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die SVM aus, in der sich das Volume befindet, das Sie ändern möchten.
+. Wählen Sie das Volume aus, und klicken Sie dann auf *Exportrichtlinie ändern*.
+. Wählen Sie die Exportrichtlinie aus, und klicken Sie dann auf *Ändern*.
+. Vergewissern Sie sich, dass in der Spalte *Export Policy* im Fenster *Junction Path* die Exportrichtlinie angezeigt wird, die Sie auf das Volume angewendet haben.
+
+
+.Ergebnisse
+Die Standard-Exportrichtlinie wird durch die von Ihnen ausgewählte Exportrichtlinie ersetzt.
+
+
+
+== Fenster Verbindungspfad
+
+Über das Menü Junction Path können Sie den NAS Namespace von Storage Virtual Machines (SVMs) verwalten.
+
+
+
+=== Befehlsschaltflächen
+
+* * Mount*
++
+Öffnet das Dialogfeld Volume mounten und ein Volume an die Verbindung in einem SVM Namespace mounten.
+
+* *Unmount*
++
+Öffnet das Dialogfeld Volume unmounten, in dem Sie die Bereitstellung eines Volumes vom übergeordneten Volume aufheben können.
+
+* *Exportrichtlinie Ändern*
++
+Öffnet das Dialogfeld Exportrichtlinie ändern, in dem Sie die vorhandene Exportrichtlinie, die dem Volume zugeordnet ist, ändern können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Verbindungspfad-Liste
+
+* *Pfad*
++
+Gibt den Verbindungspfad des gemounteten Volumes an. Sie können auf den Verbindungspfad klicken, um die zugehörigen Volumes und qtrees anzuzeigen.
+
+* *Speicherobjekt*
++
+Gibt den Namen des Volumes an, das auf dem Verbindungspfad angehängt ist. Sie können auch die qtrees anzeigen, die in dem Volume enthalten sind.
+
+* *Exportrichtlinie*
++
+Gibt die Exportrichtlinie für das bereitgestellte Volume an.
+
+* *Sicherheitsstil*
++
+Gibt den Sicherheitsstil für das Volume an. Zu den möglichen Werten gehören UNIX (für UNIX Mode Bits), NTFS (für CIFS ACLs) und gemischt (für gemischte NFS- und CIFS-Berechtigungen).
+
+
+
+
+
+=== Registerkarte „Details“
+
+Zeigt allgemeine Informationen zum ausgewählten Volume oder qtree an, z. B. Name, Storage-Typ, Verbindungspfad des gemounteten Objekts und Exportrichtlinie. Wenn es sich bei dem ausgewählten Objekt um einen qtree handelt, werden Details zum hard Limit des Speicherplatzes, zum Soft Limit und zur Speicherplatznutzung angezeigt.

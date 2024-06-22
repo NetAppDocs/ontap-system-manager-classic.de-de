@@ -1,0 +1,22 @@
+---
+permalink: online-help-96-97/concept_disks.html 
+sidebar: sidebar 
+keywords: system, manager, disk, manage, online, help 
+summary: Verwenden Sie System Manager zum Verwalten von Festplatten. 
+---
+= Verwalten Sie Festplatten mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) zum Verwalten von Festplatten verwenden.
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Festplatten- und Aggregatmanagement"^]
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Installationsanforderungen für FlexArray Virtualisierung und Referenz"^]
+
+https://docs.netapp.com/us-en/ontap/concepts/index.html["ONTAP-Konzepte"^]

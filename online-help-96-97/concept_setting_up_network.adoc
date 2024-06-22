@@ -1,0 +1,69 @@
+---
+permalink: online-help-96-97/concept_setting_up_network.html 
+sidebar: sidebar 
+keywords: online, help, set, up, network, ipspace, broadcast, domain, subnet, system, manager, cluster, range 
+summary: Das Einrichten des Netzwerks besteht aus dem Erstellen von IPspaces, einer Broadcast-Domäne und Subnetzen. 
+---
+= Richten Sie das Netzwerk mit System Manager - ONTAP 9.7 und früher ein
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) zum Einrichten des Netzwerks verwenden. Das Einrichten des Netzwerks besteht aus dem Erstellen von IPspaces, einer Broadcast-Domäne und Subnetzen.
+
+
+
+== Erstellen von IPspaces
+
+Ein IPspace erstellen Sie mit System Manager zum Konfigurieren eines einzelnen ONTAP Clusters für den Client-Zugriff von mehr als einer administrativ getrennten Netzwerkdomäne, selbst wenn Clients denselben IP-Adressbereich verwenden. So können Sie den Client-Datenverkehr für Datenschutz und Sicherheit trennen.
+
+.Über diese Aufgabe
+Alle IPspace-Namen müssen innerhalb eines Clusters eindeutig sein und dürfen nicht aus Namen bestehen, die vom System reserviert sind, z. B. „`localhost`“ oder „`localhost.`“
+
+.Schritte
+. Klicken Sie auf die Registerkarte *Netzwerk*.
+. Klicken Sie auf der Registerkarte *IPspaces* auf *Erstellen*.
+. Geben Sie im Dialogfeld *IPspaces erstellen* einen Namen für den IP-Bereich an, den Sie erstellen möchten.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Erstellen von Broadcast-Domänen
+
+Sie können eine Broadcast-Domäne mit System Manager erstellen, um eine logische Abteilung eines Computernetzwerks bereitzustellen. In einer Broadcast-Domäne können alle verknüpften Knoten über Broadcast auf der Datenebene erreicht werden
+
+.Schritte
+. Klicken Sie auf die Registerkarte *Netzwerk*.
+. Klicken Sie auf der Registerkarte *Broadcast Domains* auf *Erstellen*.
+. Geben Sie im Dialogfeld *Broadcast-Domäne erstellen* den Namen, die MTU-Größe, den IPspace und die Ports für die Broadcast-Domäne an, die Sie erstellen möchten.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Subnetze erstellen
+
+Sie können ein Subnetz erstellen, indem Sie System Manager verwenden, um eine logische Unterteilung eines IP-Netzwerks zur Vorzuteilung der IP-Adressen bereitzustellen. Mit einem Subnetz können Sie Schnittstellen einfacher erstellen, indem Sie für jede neue Schnittstelle ein Subnetz anstelle einer IP-Adresse und Netzwerkmaskenwerte angeben.
+
+.Bevor Sie beginnen
+Sie müssen die Broadcast-Domäne erstellt haben, auf der das Subnetz verwendet wird.
+
+.Über diese Aufgabe
+Wenn Sie beim Erstellen eines Subnetzes ein Gateway angeben, wird der SVM automatisch eine Standardroute zum Gateway hinzugefügt, wenn anhand dieses Subnetzes eine LIF erstellt wird.
+
+.Schritte
+. Klicken Sie auf die Registerkarte *Netzwerk*.
+. Klicken Sie auf der Registerkarte *Subnets* auf *Erstellen*.
+. Geben Sie im Dialogfeld *Subnetz erstellen* Subnetzdetails an, wie Name, Subnetz-IP-Adresse oder Subnetzmaske, IP-Adressbereich, Gateway-Adresse und Broadcast-Domäne.
++
+Sie können die IP-Adressen als Bereich, als kommagetrennte mehrere Adressen oder als Mischung aus beiden angeben.
+
+. Klicken Sie Auf *Erstellen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_network_window.adoc[Netzwerkfenster]

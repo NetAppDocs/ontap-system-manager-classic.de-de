@@ -1,0 +1,63 @@
+---
+permalink: online-help-96-97/task_moving_flexvol_volumes_between_aggregates_or_nodes.html 
+sidebar: sidebar 
+keywords: move, flexcol, volume, aggregate, node, online, help, system, manager 
+summary: Ein FlexVol Volume lässt sich zur Kapazitätsauslastung unterbrechungsfrei auf ein anderes Aggregat oder einen anderen Node verschieben und die Performance verbessert sich mit System Manager. 
+---
+= Verschieben Sie FlexVol Volumes zwischen Aggregaten oder Nodes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie ein FlexVol Volume unterbrechungsfrei auf ein anderes Aggregat oder einen anderen Node verschieben, um Ihre Kapazitätsauslastung und Performance zu verbessern.
+
+.Bevor Sie beginnen
+Wenn Sie ein DP-Volume (Data Protection) verschieben, müssen die Beziehungen der Datensicherungsspiegelung initialisiert werden, bevor Sie das Volume verschieben.
+
+.Über diese Aufgabe
+Sie können SnapLock Volumes nicht zwischen Aggregaten und Nodes verschieben.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das Volume aus, das Sie verschieben möchten.
+. Klicken Sie Auf *Mehr Aktionen* > *Verschieben*.
+. Wählen Sie im Dialogfeld *Move Volume* das Zielaggregat oder den Knoten für das Volume aus, und ändern Sie dann die Tiering Policy.
++
+[NOTE]
+====
+** Sie können die Tiering-Richtlinie eines Root-Volumes nicht ändern.
+** Sie können das Root-Medium nicht zu FabricPool verschieben.
+** Für Lese-/Schreib-Volumen, können Sie die Tiering-Politik als „Backup“ während der Volume-Verschiebung einstellen.
++
+Die Tiering-Politik ändert sich auf „nur Snapshot“ nach der Verschiebung.
+
+** Werte für Kapazitäts-Tiers, die in der „Used After Move“ sowohl im Quellaggregat als auch im Zielaggregat angezeigt werden, sind geschätzte Werte.
++
+Um die genauen Werte zu erreichen, müssen Sie zum Aggregat-Fenster navigieren und die Details zu einem bestimmten Aggregat anzeigen.
+
+
+
+====
+. Klicken Sie Auf *Verschieben*.
+
+
+
+
+== Manuelles Auslösen der Umstellung für die Volume-Verschiebung
+
+Bei einer Verschiebung eines Volumes können Sie mit System Manager die Umstellung manuell auslösen, wenn das Volume in die verzögerten Umstellungsphase eintritt. Sie können die Dauer der Umstellung und die vom System zu ergreifende Umstellungsaktion festlegen, wenn der Vorgang innerhalb dieser Dauer ausfällt.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie auf die Registerkarte *Volumes*.
+. Erweitern Sie das Volume, für das die Volume-Verschiebung initiiert wurde.
+. Klicken Sie auf den Link *Mehr Details anzeigen*, um weitere Informationen zum Volume anzuzeigen.
+. Klicken Sie auf der Registerkarte *Übersicht* auf *Umstellung*.
+. Klicken Sie im Dialogfeld *Umstellung* auf *Erweiterte Optionen*.
+. *Optional:* Geben Sie die Umstellungsaktion und den Umstellungszeitraum an.
+. Klicken Sie auf *OK*.
+

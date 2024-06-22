@@ -1,0 +1,103 @@
+---
+permalink: online-help-96-97/concept_nodes.html 
+sidebar: sidebar 
+keywords: node, system, manager, view, detail, cluster, online, help 
+summary: Mit System Manager können Sie die Details der Nodes im Cluster anzeigen. 
+---
+= Managen Sie Nodes mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) können Sie Details zu den Nodes im Cluster anzeigen.
+
+
+
+== Initialisieren Sie die ComplexClock-Zeit
+
+Sie können mit System Manager die ComplexClock-Zeit auf die aktuelle Cluster-Zeit initialisieren. Sie müssen die ComplianceClock-Zeit initialisieren, um SnapLock-Aggregate zu erstellen.
+
+.Bevor Sie beginnen
+Die SnapLock Lizenz muss installiert sein.
+
+.Über diese Aufgabe
+Sie können die Zeit der ComplexClock nach der Initialisierung nicht ändern oder beenden.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Nodes*.
+. Wählen Sie den Knoten aus und klicken Sie dann auf *ComplianceClock initialisieren*.
+. Klicken Sie im Dialogfeld *ComplianceClock* auf *Ja*, um die ComplexClock-Zeit auf die aktuelle Clusterzeit zu initialisieren.
+
+
+
+
+== Knoten-Fenster
+
+Mit dem Fenster Nodes können Sie Details zu den Nodes in einem Cluster anzeigen.
+
+
+
+=== Befehlsschaltflächen
+
+* *Initialisieren Sie die ComplianceClock*
++
+Initialisiert die ComplenianceClock des ausgewählten Knotens auf den aktuellen Wert der Systemuhr.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+=== Liste der Knoten
+
+* *Name*
++
+Zeigt den Namen des Node an.
+
+* *Bundesland*
++
+Zeigt den Status des Node an (ob der Node aktiv oder ausgefallen ist).
+
+* *Auflaufzeit*
++
+Zeigt die Dauer an, für die der Node aktiv ist.
+
+* *ONTAP-Version*
++
+Zeigt die auf dem Node installierte ONTAP-Version an.
+
+* *Modell*
++
+Zeigt die Modellnummer des Plattformmodells des Knotens an.
+
+* *System-ID*
++
+Zeigt die ID des Node an.
+
+* *Seriennr.*
++
+Zeigt die Seriennummer des Node an.
+
+
+
+
+
+=== Detailbereich
+
+Zeigt detaillierte Informationen zum ausgewählten Knoten an.
+
+* *Registerkarte Details*
++
+Zeigt Informationen zum ausgewählten Node an, z. B. den Namen des Nodes, den Status des Nodes und die Dauer, für die der Node aktiv ist.
+
+* *Registerkarte Leistung*
++
+Zeigt den Durchsatz, die IOPS und die Latenz des ausgewählten Nodes an.
+
++
+Wenn Sie die Client-Zeitzone oder die Cluster-Zeitzone ändern, werden die Diagramme mit den Performance-Metriken beeinträchtigt. Sie sollten Ihren Browser aktualisieren, um die aktualisierten Diagramme anzuzeigen.
+
+

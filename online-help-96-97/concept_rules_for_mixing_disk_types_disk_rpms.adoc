@@ -1,0 +1,18 @@
+---
+permalink: online-help-96-97/concept_rules_for_mixing_disk_types_disk_rpms.html 
+sidebar: sidebar 
+keywords: rule, online, help, create, aggregate, add, capacity, disk, rpm 
+summary: Wenn Sie ein Aggregat erstellen und Kapazitätsfestplatten zu einem Aggregat hinzufügen, sollten Sie die Regeln kennen, die gelten, wenn Festplattentypen und Festplatten-RPM angezeigt werden. 
+---
+= Regeln für die Anzeige von Festplattentypen und Disk-U/min in System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie ein Aggregat erstellen und Kapazitätsfestplatten zu einem Aggregat hinzufügen, sollten Sie die Regeln verstehen, die gelten, wenn Festplattentypen und Festplatten-RPM im ONTAP System Manager Classic angezeigt werden (verfügbar in ONTAP 9.7 und früher).
+
+Wenn die Mischoptionen für den Festplattentyp und die gemischten Platten-RPM nicht aktiviert sind, werden der tatsächliche Festplattentyp und die tatsächliche Festplatten-U/min angezeigt.
+
+Wenn diese Mischoptionen aktiviert sind, werden der effektive Festplattentyp und die effektive Festplatten-U/min anstelle des tatsächlichen Festplattentyps und der tatsächlichen Festplatten-U/min angezeigt. Wenn beispielsweise die Option zum Mischen von Festplatten aktiviert ist, zeigt System Manager BSAS-Festplatten als FSAS an. Ebenso zeigt System Manager bei aktivierter Option zum Mischen von Festplatten-U/min die effektive Drehzahl von 10.000 U/min an, wenn die U/min der Festplatten 10.000 und 15.000 beträgt.

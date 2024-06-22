@@ -1,0 +1,30 @@
+---
+permalink: online-help-96-97/task_zeroing_disks.html 
+sidebar: sidebar 
+keywords: zero, spare, disks, system, manager, erase, data, online, help 
+summary: Mit System Manager können Sie alle Daten löschen und die Ersatzfestplatten formatieren, indem Sie auf die Festplatte Nullen schreiben. Diese Festplatten können dann in neuen Aggregaten verwendet werden. 
+---
+= Keine freien Festplatten mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um alle Daten zu löschen und die Ersatzfestplatten zu formatieren, indem Sie Nullen auf die Festplatte schreiben. Diese Festplatten können dann in neuen Aggregaten verwendet werden.
+
+.Über diese Aufgabe
+Wenn Sie die Spare-Festplatten löschen, werden alle Spares im Cluster, einschließlich Array LUNs, gelöscht. Sie können die freien Festplatten für einen bestimmten Node oder das gesamte Cluster löschen.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Disks*.
+. Wählen Sie im Fenster *Disks* die Registerkarte *Inventar* aus.
+. Klicken Sie Auf *Zero Spares*.
+. Wählen Sie im Dialogfeld *Zero Spares* einen Knoten oder „`All Nodes`“ aus, aus dem Sie die Festplatten löschen möchten.
+. Aktivieren Sie das Kontrollkästchen *Zero all non-noned Spares*, um den Nullsetzen-Vorgang zu bestätigen.
+. Klicken Sie Auf *Zero Spares*.
+
+
+*Verwandte Informationen*
+
+xref:concept_storage_recommendations_for_creating_aggregates.adoc[Storage-Empfehlungen für das Erstellen von Aggregaten]

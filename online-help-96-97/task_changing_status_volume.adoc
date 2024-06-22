@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_changing_status_volume.html 
+sidebar: sidebar 
+keywords: flexvol, change, status, volume, online, help, system, manager 
+summary: Mit System Manager lässt sich der Status eines FlexVol Volume ändern, wenn ein Volume offline geschaltet, ein Volume wieder online geschaltet oder der Zugriff auf ein Volume eingeschränkt werden soll. 
+---
+= Ändern Sie den Status eines Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um den Status eines FlexVol Volume zu ändern, wenn Sie ein Volume offline schalten möchten, ein Volume wieder in den Online-Modus versetzen oder den Zugriff auf ein Volume einschränken möchten.
+
+.Bevor Sie beginnen
+* Falls ein Volume Ziel eines Volume-Kopiervorgangs oder eines SnapMirror Replizierungsvorgangs sein soll, muss das Volume sich im eingeschränkten Zustand befinden.
+* Wenn Sie ein NAS-Volume offline schalten möchten, muss das NAS-Volume abgehängt werden.
+
+
+.Über diese Aufgabe
+Sie können ein Volume offline schalten, um Wartungsarbeiten am Volume durchzuführen, das Volume zu verschieben oder das Volume zu zerstören. Wenn ein Volume offline ist, steht das Volume nicht für Lese- oder Schreibzugriff durch Clients zur Verfügung. Sie können ein Root-Volume nicht offline schalten.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das Volume aus, für das Sie den Status ändern möchten.
+. Wählen Sie im Menü * Mehr Aktionen* > *Status ändern in* den gewünschten Lautstärkestatus aus.
+. Klicken Sie im Bestätigungsdialogfeld auf *OK*, um den Volumenstatus zu ändern.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

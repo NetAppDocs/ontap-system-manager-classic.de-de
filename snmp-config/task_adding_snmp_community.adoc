@@ -1,0 +1,32 @@
+---
+permalink: snmp-config/task_adding_snmp_community.html 
+sidebar: sidebar 
+keywords: system, manager, add, community, administrative, storage, virtual, machine, svm, cluster, snmpv1, snmpv2c, protocol, add an anmp community 
+summary: 'Sie können die klassische Schnittstelle des ONTAP System Manager mit ONTAP 9.7 oder einer älteren Version verwenden, um eine Community der administrativen Storage Virtual Machine (SVM) für einen Cluster hinzuzufügen, der SNMPv1 oder SNMPv2c ausführt. System Manager verwendet SNMP-Protokolle SNMPv1 und SNMPv2c sowie eine SNMP-Community, um Storage-Systeme zu erkennen.' 
+---
+= Fügen Sie eine SNMP Community hinzu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die klassische Schnittstelle des ONTAP System Manager _classic_ mit ONTAP 9.7 oder einer älteren Version verwenden, um eine Community der administrativen Storage Virtual Machine (SVM) für einen Cluster hinzuzufügen, auf dem SNMPv1 oder SNMPv2c ausgeführt wird. System Manager verwendet SNMP-Protokolle SNMPv1 und SNMPv2c sowie eine SNMP-Community, um Storage-Systeme zu erkennen.
+
+.Über diese Aufgabe
+Dieses Verfahren dient zum Hinzufügen einer SNMP-Community zu der administrativen SVM für den Cluster. Das Verfahren zum Hinzufügen einer SNMP-Community zu einer Daten-SVM wird in beschrieben https://docs.netapp.com/us-en/ontap/networking/index.html["Netzwerkmanagement"].
+
+Bei Neuinstallationen von ONTAP sind SNMPv1 und SNMPv2c standardmäßig deaktiviert. SNMPv1 und SNMPv2c sind aktiviert, wenn Sie eine SNMP-Community erstellen.
+
+.Schritte
+. Klicken Sie im SNMP-Fenster auf *Bearbeiten*, um das Dialogfeld *SNMP-Einstellungen bearbeiten* zu öffnen.
+. Geben Sie auf der Registerkarte *Allgemein* den Ansprechpartner und den Standort für das ONTAP-System an.
+. Klicken Sie auf *Hinzufügen*, geben Sie einen Community-Namen ein und klicken Sie dann im Fenster *Community-Namen* auf *OK*.
++
+Sie können mehrere Community-Namen hinzufügen. Ein Community-Name darf maximal 32 Zeichen lang sein und darf die folgenden Sonderzeichen nicht enthalten: `, / : " ' |`
+
++
+image::../media/snmp_cfg_comm_step3.gif[Dieses Bild zeigt das Dialogfeld SNMP-Einstellungen bearbeiten,General tab,in which the example community name "comty1" is entered.]
+
+. Wenn Sie das Hinzufügen von Community-Namen beenden, klicken Sie im Dialogfeld *SNMP-Einstellungen bearbeiten* auf *OK*.
+

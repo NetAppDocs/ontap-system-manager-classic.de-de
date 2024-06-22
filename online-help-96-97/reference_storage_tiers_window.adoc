@@ -1,0 +1,121 @@
+---
+permalink: online-help-96-97/reference_storage_tiers_window.html 
+sidebar: sidebar 
+keywords: online, help, storage, tier, window, command, button 
+summary: Mit dem Fenster Storage Tiers können Sie Details zum Cluster-weiten Speicherplatz anzeigen und Aggregatdetails hinzufügen und anzeigen. 
+---
+= Storage Tiers-Fenster in System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit dem Fenster Storage Tiers in ONTAP System Manager classic (erhältlich in ONTAP 9.7 und Erden) können Sie Cluster-weite Speicherplatzdetails anzeigen und Aggregatdetails hinzufügen und anzeigen.
+
+Im Bereich „interne Ebene“ oder im Bereich „Performance Tier“, wenn der Cluster rein Flash-basierte Aggregate (alle SSDs) enthält, werden Cluster-weite Speicher-Details angezeigt, z. B. die Summe der Gesamtgröße aller Aggregate, des Speicherplatzes, der von den Aggregaten im Cluster verwendet wird, Und den verfügbaren Speicherplatz im Cluster.
+
+Im Bereich Cloud Tier werden die insgesamt lizenzierten Cloud-Tiers im Cluster, der lizenzierte Speicherplatz, der im Cluster verwendet wird, und der lizenzierte Speicherplatz, der im Cluster verfügbar ist, angezeigt. Im Bedienfeld „Cloud-Ebene“ wird außerdem die nicht lizenzierte Cloud-Kapazität angezeigt, die verwendet wird.
+
+Aggregate sind nach Typ gruppiert, und im Bereich „Aggregat“ werden Details über den gesamten Aggregatspeicherplatz, den genutzten Speicherplatz und den verfügbaren Speicherplatz angezeigt. Wenn inaktive (kalte) Daten auf einem Solid-State-Laufwerk (SSD) oder All-Flash-FAS-Aggregat verfügbar sind, wird auch der verwendete Speicherplatz angezeigt. Sie können das Aggregat auswählen und eine der Aktionen durchführen, die mit dem Aggregat zusammenhängen.
+
+
+
+== Befehlsschaltflächen
+
+* *Aggregat Hinzufügen*
++
+Ermöglicht Ihnen die Erstellung eines Aggregats.
+
+* *Aktionen*
++
+Bietet die folgenden Optionen:
+
++
+** *Status ändern in*
++
+Ändert den Status des ausgewählten Aggregats in einen der folgenden Status:
+
++
+*** *Online*
++
+Lese- und Schreibzugriff auf die Volumes in diesem Aggregat sind zulässig.
+
+*** *Offline*
++
+Lese- und Schreibzugriff ist nicht zulässig.
+
+*** *Einschränkung*
++
+Einige Vorgänge wie die Paritätsrekonstruktion sind zulässig, der Datenzugriff jedoch nicht zulässig.
+
+
+
+** *Kapazität Hinzufügen*
++
+Ermöglicht das Hinzufügen von Kapazität (HDDs oder SSDs) zu bestehenden Aggregaten.
+
+** *Cache Hinzufügen*
++
+Ermöglicht das Hinzufügen von Cache-Festplatten (SSDs) zu bestehenden HDD-Aggregaten oder Flash Pool-Aggregaten.
+
++
+FabricPool-fähige Aggregate können keine Cache-Festplatten hinzufügen.
+
++
+Diese Option ist nicht für Cluster mit Nodes mit All-Flash-optimiertem Charakter verfügbar.
+
+** *Spiegel*
++
+Ermöglicht Ihnen die Spiegelung der Aggregate.
+
+** *Volume Move*
++
+Ermöglicht Ihnen das Verschieben eines FlexVol Volumes.
+
+
+
+
+
+
+
+== Detailbereich
+
+Sie können auf den Aggregatnamen klicken, um detaillierte Informationen über das Aggregat anzuzeigen.
+
+* *Registerkarte Übersicht*
++
+Zeigt detaillierte Informationen über das ausgewählte Aggregat an und zeigt eine Bilddarstellung der Speicherplatzzuweisung des Aggregats, der Platzeinsparungen des Aggregats und der Performance des Aggregats an.
+
+* *Registerkarte Datenträgerinformationen*
++
+Zeigt die Festplatten-Layout-Informationen für das ausgewählte Aggregat an.
+
+* *Registerkarte Volumen*
++
+Zeigt Details zur Gesamtzahl der Volumes im Aggregat, den Gesamtkapazität des Aggregats und den dem Aggregat zubelegten Speicherplatz an.
+
+* *Registerkarte Leistung*
++
+Zeigt Diagramme an, die die Performance-Metriken der Aggregate einschließlich Durchsatz und IOPS zeigen. Die Performance-Metriken für Lese-, Schreib- und Gesamtübertragungen werden für Durchsatz und IOPS angezeigt. Die Daten für SSDs und HDDs werden separat aufgezeichnet.
+
++
+Wenn Sie die Client-Zeitzone oder die Cluster-Zeitzone ändern, werden die Diagramme mit den Performance-Metriken beeinträchtigt. Wenn Sie die Client-Zeitzone oder die Cluster-Zeitzone ändern, sollten Sie Ihren Browser aktualisieren, um die aktualisierten Diagramme anzuzeigen.
+
+
+
+*Verwandte Informationen*
+
+xref:task_adding_cloud_tier.adoc[Hinzufügen eines Cloud-Tiers]
+
+xref:task_attaching_aggregate_to_cloud_tier.adoc[Verbinden eines Aggregats mit einem Cloud-Tier]
+
+xref:task_deleting_cloud_tier.adoc[Löschen einer Cloud-Tier]
+
+xref:task_editing_cloud_tier.adoc[Bearbeitung eines Cloud-Tiers]
+
+xref:task_provisioning_storage_through_aggregates.adoc[Provisionierung von Storage über Aggregate]
+
+xref:task_deleting_aggregates.adoc[Löschen von Aggregaten]
+
+xref:task_editing_aggregates.adoc[Bearbeitung von Aggregaten]

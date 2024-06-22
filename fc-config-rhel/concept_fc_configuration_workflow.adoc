@@ -1,0 +1,16 @@
+---
+permalink: fc-config-rhel/concept_fc_configuration_workflow.html 
+sidebar: sidebar 
+keywords: storage, available, host, fc, provision, volume, lun, virtual, machine, svm, connect, fc configuration and provisioning workflow 
+summary: 'Wenn Sie Storage für einen Host über FC zur Verfügung stellen, stellen Sie auf der Storage Virtual Machine (SVM) ein Volume und eine LUN bereit. Anschließend wird über den Host eine Verbindung zur LUN hergestellt.' 
+---
+= FC-Konfigurations- und Bereitstellungs-Workflow
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie Storage für einen Host über FC zur Verfügung stellen, stellen Sie auf der Storage Virtual Machine (SVM) ein Volume und eine LUN bereit. Anschließend wird über den Host eine Verbindung zur LUN hergestellt.
+
+image::../media/fc_red_hat_linux_workflow.gif[Dieses Bild wird durch den umgebenden Text erläutert.]

@@ -1,0 +1,29 @@
+---
+permalink: iscsi-config-esxi/task_installing_virtual_storage_console_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords: virtual, storage, console, vmware, vsc, vsphere, automate, configuration, provision, task, netapp, iscsi, esxi, plug-in, vcenter, server, install, install virtual storage console 
+summary: Virtual Storage Console für VMware vSphere automatisiert viele der Konfigurations- und Bereitstellungsaufgaben, die für die Verwendung von NetApp iSCSI Storage mit einem ESXi Host erforderlich sind. Virtual Storage Console ist ein Plug-in für vCenter Server. 
+---
+= Installation Der Virtual Storage Console
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Virtual Storage Console für VMware vSphere automatisiert viele der Konfigurations- und Bereitstellungsaufgaben, die für die Verwendung von NetApp iSCSI Storage mit einem ESXi Host erforderlich sind. Virtual Storage Console ist ein Plug-in für vCenter Server.
+
+.Bevor Sie beginnen
+Sie müssen über Administratoranmeldedaten auf dem vCenter Server verfügen, der zum Verwalten des ESXi-Hosts verwendet wird.
+
+.Über diese Aufgabe
+* Virtual Storage Console wird als virtuelle Appliance mit Funktionen wie Virtual Storage Console, vStorage APIs for Storage Awareness (VASA) Provider und Storage Replication Adapter (SRA) für VMware vSphere installiert.
+
+
+.Schritte
+. Laden Sie die für Ihre Konfiguration unterstützte Version der Virtual Storage Console herunter, wie im Interoperabilitäts-Matrix-Tool dargestellt.
++
+https://mysupport.netapp.com/site/global/dashboard["NetApp Support"]
+
+. Implementieren Sie die virtuelle Appliance und konfigurieren Sie sie gemäß den Schritten im _Deployment and Setup Guide_.
+

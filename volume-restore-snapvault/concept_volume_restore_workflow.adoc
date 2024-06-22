@@ -1,0 +1,28 @@
+---
+permalink: volume-restore-snapvault/concept_volume_restore_workflow.html 
+sidebar: sidebar 
+keywords: source, volume, data, corrupt, restore, snapvault, backup, destination, restoring, exist, operation, volume restore workflow 
+summary: Falls Ihr Quell-Volume nicht verfügbar ist oder Daten beschädigt werden, können Sie die Wiederherstellung aus einem SnapVault Backup durchführen. Zur Wiederherstellung eines Volumes aus einem SnapVault Backup muss das SnapVault Ziel-Volume ausgewählt, entweder auf einem neuen Volume oder auf einem vorhandenen Volume wiederhergestellt und der Restore-Vorgang überprüft werden. 
+---
+= Workflow zur Volume-Wiederherstellung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Falls Ihr Quell-Volume nicht verfügbar ist oder Daten beschädigt werden, können Sie die Wiederherstellung aus einem SnapVault Backup durchführen. Zur Wiederherstellung eines Volumes aus einem SnapVault Backup muss das SnapVault Ziel-Volume ausgewählt, entweder auf einem neuen Volume oder auf einem vorhandenen Volume wiederhergestellt und der Restore-Vorgang überprüft werden.
+
+image::../media/volume_restore_workflow.gif[Diese Abbildung ist ein Flussdiagramm des Workflows zur Wiederherstellung von SnapVault Volumes. Die Schritte im Workflow entsprechen den Themen.“>]
+
+Weitere Informationen stehen Ihnen zum Management der SnapVault Backup-Beziehungen und zur Nutzung anderer Datensicherungsmethoden zur Verfügung, mit denen Sie die Verfügbarkeit Ihrer Datenressourcen sichern können.
+
+* xref:../volume-disaster-prep/index.html[Vorbereitung der Volume Disaster Recovery]
++
+Beschreibt die schnelle Konfiguration eines Ziel-Volumes auf einem anderen ONTAP Cluster zur Vorbereitung der Disaster Recovery.
+
+* xref:../volume-disaster-recovery/index.html[Volume Disaster Recovery]
++
+Beschreibt die schnelle Aktivierung eines Ziel-Volumes aus einem anderen ONTAP Cluster nach einem Ausfall sowie die Wiederherstellung der SnapMirror Beziehung in den ursprünglichen Zustand durch erneute Aktivierung des Quell-Volume nach der Wiederherstellung.
+
+

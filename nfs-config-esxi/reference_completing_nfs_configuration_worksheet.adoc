@@ -1,0 +1,206 @@
+---
+permalink: nfs-config-esxi/reference_completing_nfs_configuration_worksheet.html 
+sidebar: sidebar 
+keywords: network, address, storage, configuration, information, perform, nfs, client, task, complete, complete the nfs client configuration worksheet 
+summary: Sie benötigen Netzwerkadressen und Storage-Konfigurationsinformationen, um NFS Client-Konfigurationsaufgaben auszuführen. 
+---
+= Füllen Sie das Arbeitsblatt für die NFS-Client-Konfiguration aus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie benötigen Netzwerkadressen und Storage-Konfigurationsinformationen, um NFS Client-Konfigurationsaufgaben auszuführen.
+
+
+
+== Zielnetzwerkadressen
+
+Sie benötigen für jeden Node im Cluster ein Subnetz mit zwei IP-Adressen für NFS-Daten-LIFs. Für Hochverfügbarkeit sollte es zwei separate Netzwerke geben. Die spezifischen IP-Adressen werden von ONTAP zugewiesen, wenn Sie die LIFs beim Erstellen der SVM erstellen.
+
+Falls möglich, separater Netzwerk-Traffic in separaten physischen Netzwerken oder in VLANs.
+
+image::../media/network_for_nfs_eg.gif[Netzwerktopologie für die Client-Konfiguration]
+
+Subnetz für LIFs:
+
+|===
+| Node oder LIF mit Port zum Switch | IP-Adresse | Netzwerkmaske | Gateway | VLAN-ID | Home Port 
+
+
+ a| 
+Node 1/LIF für Switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Node 2/LIF zu Switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Node 3/LIF zu Switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Node 4/LIF zu Switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Node 1/LIF für Switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Node 2/LIF zu Switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Node 3/LIF zu Switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Node 4/LIF zu Switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+== Storage-Konfiguration
+
+Wenn das Aggregat und bereits erstellt sind, notieren Sie hier ihre Namen. Ansonsten können Sie sie nach Bedarf erstellen:
+
+|===
+| Knoten zu eigenem NFS-Export 
+
+
+ a| 
+Aggregatname
+
+
+
+ a| 
+Name
+
+|===
+
+
+== NFS-Exportinformationen
+
+|===
+| Exportgröße 
+
+
+ a| 
+Exportname (optional)
+
+
+
+ a| 
+Exportbeschreibung (optional)
+
+|===
+
+
+== SVM-Informationen
+
+Wenn Sie keine vorhandenen verwenden, benötigen Sie die folgenden Informationen, um eine neue zu erstellen:
+
+[cols="1a,1a"]
+|===
+2+| SVM-Name 
+
+
+ a| 
+Aggregat für SVM Root-Volume
+
+
+
+ a| 
+SVM-Benutzername (optional)
+
+
+
+ a| 
+SVM-Passwort (optional)
+
+
+
+ a| 
+SVM-Management-LIF (optional)
+
+
+
+ a| 
+ a| 
+Subnetz:
+
+
+
+ a| 
+ a| 
+IP-Adresse:
+
+
+
+ a| 
+ a| 
+Netzwerkmaske:
+
+
+
+ a| 
+ a| 
+Gateway:
+
+
+
+ a| 
+ a| 
+Home-Node:
+
+|===

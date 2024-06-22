@@ -1,0 +1,42 @@
+---
+permalink: online-help-96-97/task_deleting_application.html 
+sidebar: sidebar 
+keywords: delete, application, provisioned 
+summary: Sie können eine bereitgestellte Applikation löschen, wenn sie nicht mehr benötigt wird. 
+---
+= Löschen Sie eine Anwendung mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) können Sie eine bereitgestellte Anwendung löschen, wenn sie nicht mehr benötigt wird.
+
+.Über diese Aufgabe
+Als Cluster-Administrator können Sie sie löschen, wenn Sie sie nicht mehr benötigen. Das folgende Beispiel beschreibt das Löschen einer *NAS Container* Anwendung.
+
+.Schritte
+. Klicken Sie Auf *Anwendungen & Tiers* > *Anwendungen*
+. Klicken Sie auf den Namen der NAS-Container-Anwendung.
++
+[NOTE]
+====
+Wenn jemand neue Anwendungen mithilfe der CLI oder DER REST-API hinzufügt, während Sie die Liste der Anwendungen anzeigen, können Sie diese neuen Anwendungen nicht anzeigen, wenn Sie durch die Liste blättern.
+
+====
++
+Auf der Registerkarte *Übersicht* des Fensters Anwendungsdetails: nas werden die Anwendungseinstellungen angezeigt.
+
+. Klicken Sie Auf *Löschen*.
++
+In einem Dialogfeld wird eine Warnmeldung angezeigt, in der Sie gefragt werden, ob Sie diese Anwendung wirklich löschen möchten.
+
+. Klicken Sie Auf *Löschen*.
++
+[NOTE]
+====
+Ein Volume, das mit dem Vorgang zum Löschen von Anwendungen gelöscht wurde, wird nicht in die Wiederherstellungswarteschlange gelegt. Das Volume wird sofort gelöscht.
+
+====
+

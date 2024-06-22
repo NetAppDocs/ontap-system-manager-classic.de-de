@@ -1,0 +1,113 @@
+---
+permalink: online-help-96-97/reference_trace_file_access_window.html 
+sidebar: sidebar 
+keywords: system, manager, commnd, button, trace, file, access, window, online, help, cif, entry, list 
+summary: Ab System Manager 9.6 können Sie im Fenster Trace File Access Probleme beim Zugriff auf Dateien und Freigaben auf einer SVM mithilfe des CIFS- oder NFS-Protokolls diagnostizieren. 
+---
+= Trace File Access-Fenster in System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab ONTAP System Manager 9.6 können Sie mithilfe des Fensters Trace File Access Probleme beim Zugriff auf Dateien und Freigaben auf einer SVM über das CIFS- oder NFS-Protokoll diagnostizieren.
+
+
+
+== Befehlsschaltflächen
+
+* *Weiter*
++
+Startet den Prozess der Einrichtung und Initiierung einer Dateizugriffsverfolgung auf der ausgewählten SVM.
+
+* *Protokolle*
++
+Ermöglicht die Auswahl des Protokolls, das für den Zugriff auf Dateien und Freigaben auf der ausgewählten SVM – entweder CIFS oder NFS – verwendet wird.
+
+* *Symbol für erweiterte Optionen*
++
+Hier können Sie weitere Details angeben, um den Umfang der Kurve einzugrenzen.
+
+* *Zeigen Sie in Trace-Ergebnisse*
++
+Ermöglicht Ihnen, im Dialogfeld Erweiterte Optionen anzugeben, ob die Trace-Ergebnisse nur Dateizugriffsanfragen anzeigen sollen, die abgelehnt wurden, oder alle Dateizugriffsanforderungen anzeigen sollen – die erfolgreichen und die abgelehnt wurden.
+
+* *Start Tracing*
++
+Ermöglicht das Starten der Ablaufverfolgung. Die Ergebnisse zeigen Zugriffsprobleme für Dateizugriffsanfragen, die in den nächsten 60 Minuten eingereicht wurden.
+
+* *Stop Tracing*
++
+Ermöglicht das Stoppen der Kurve.
+
+* *Berechtigungen Anzeigen*
++
+Ermöglicht die Anzeige von Berechtigungen. Wenn Sie das CIFS-Protokoll verwenden, können Sie effektive Datei- und Freigabeberechtigungen anzeigen. Mit dem NFS-Protokoll können Sie die effektiven Dateiberechtigungen anzeigen.
+
+* *In Zwischenablage kopieren*
++
+Ermöglicht das Kopieren der Ergebnistabelle in die Zwischenablage.
+
+* *Ergebnisse Der Ctg Exportieren*
++
+Ermöglicht das Exportieren der Trace-Ergebnisse in eine Datei im CSV-Format (kommagetrennte Werte).
+
+
+
+
+
+== Eingabefelder
+
+* *Benutzername*
++
+Sie geben den Namen des Benutzers ein, der Fehler bei der Anfrage zum Dateizugriff erhalten hat, die Sie nachverfolgen möchten.
+
+* *Suche Trace Ergebnisse*
++
+Sie geben spezifische Informationen ein, die Sie in den Suchergebnissen finden möchten, und klicken dann auf *Enter*.
+
+* *Client-IP-Adresse*
++
+Im Dialogfeld „Erweiterte Optionen“ können Sie die IP-Adresse des Clients als zusätzliche Details angeben, um den Umfang des Trace einzugrenzen.
+
+* *Datei*
++
+Im Dialogfeld „Erweiterte Optionen“ können Sie den Datei- oder Dateipfad angeben, auf den Sie als zusätzliche Details zugreifen möchten, um den Umfang des Trace einzugrenzen.
+
+
+
+.Ergebnisliste für CIFS-Protokoll-Tracing
+Wenn Sie das CIFS-Protokoll angeben, werden in der Ergebnisliste basierend auf den von Ihnen angegebenen Parametern die folgenden Daten für Ihren Trace angezeigt. Die Daten werden in umgekehrter chronologischer Reihenfolge angezeigt. Wenn Sie die Verfolgung beenden, bleiben die Ergebnisse in der Liste, bis Sie eine andere Spur starten.
+
+* Share: Der Name der Freigabe, auf die das System zugreifen wollte, ob erfolgreich oder nicht.
+* Pfad: Der Dateipfad der Datei, auf die das System zugreifen wollte, ob erfolgreich oder nicht.
+* Client-IP-Adresse: Die IP-Adresse des Clients, von dem aus Zugriffsanfragen initiiert wurden.
+* Gründe: Die Gründe, warum der Zugriff auf die Datei oder die Freigabe erfolgreich war oder nicht.
++
+[NOTE]
+====
+Wenn das Trace-Ergebnis eine Meldung anzeigt, dass der Zugriff nicht für "Synchronisieren", "Lesekontrolle", "Attribute lesen", "Ausführen", "EA lesen" gewährt wird, „Schreiben“, oder „Lesen“, die Meldung gibt an, dass der gewünschte Zugriff für den aufgelisteten Berechtigungssatz nicht gewährt wurde. Um den aktuellen Berechtigungsstatus anzuzeigen, müssen Sie die Berechtigungen über den bereitgestellten Link anzeigen.
+
+====
+
+
+.Ergebnisliste für NFS-Protokoll-Tracing
+Wenn Sie das NFS-Protokoll angeben, werden in der Ergebnisliste auf der Grundlage der von Ihnen angegebenen Parameter die folgenden Daten für das Trace angezeigt. Die Daten werden in umgekehrter chronologischer Reihenfolge angezeigt. Wenn Sie die Verfolgung beenden, bleiben die Ergebnisse in der Liste, bis Sie eine andere Spur starten.
+
+* Pfad: Der Dateipfad der Datei, auf die das System zugreifen wollte, ob erfolgreich oder nicht.
+* Client-IP-Adresse: Die IP-Adresse des Clients, von dem aus Zugriffsanfragen initiiert wurden.
+* Gründe: Die Gründe, warum der Zugriff auf die Datei oder die Freigabe erfolgreich war oder nicht.
++
+[NOTE]
+====
+Wenn das Trace-Ergebnis eine Meldung anzeigt, dass der Zugriff nicht für "Synchronisieren", "Lesekontrolle", "Attribute lesen", "Ausführen", "EA lesen" gewährt wird, „Schreiben“, oder „Lesen“, die Meldung gibt an, dass der gewünschte Zugriff für den aufgelisteten Berechtigungssatz nicht gewährt wurde. Um den aktuellen Berechtigungsstatus anzuzeigen, müssen Sie die Berechtigungen über den bereitgestellten Link anzeigen.
+
+====
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/smb-admin/index.html["SMB/CIFS-Management"]
+
+xref:../nas-multiprotocol-config/index.html[Multiprotokollkonfiguration von SMB/CIFS und NFS]

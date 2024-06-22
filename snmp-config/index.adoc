@@ -1,0 +1,52 @@
+---
+permalink: snmp-config/index.html 
+sidebar: sidebar 
+keywords: content, configure, snmp, cluster, management, level, add, communities, community, security, user, traphost, communication, snmp configuration overview 
+summary: Mithilfe der klassischen ONTAP System Manager-Schnittstelle mit ONTAP 9.7 oder einer älteren Version können Sie SNMP auf der Cluster-Managementebene konfigurieren, Communitys, Sicherheitsbenutzer und Traphosts hinzufügen und die SNMP-Kommunikation testen. 
+---
+= SNMP-Konfigurationsübersicht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mithilfe der Schnittstelle ONTAP System Manager _classic_ mit ONTAP 9.7 oder einer älteren Version können Sie SNMP auf der Cluster-Verwaltungsebene konfigurieren, Communitys, Sicherheitsbenutzer und Traphosts hinzufügen und die SNMP-Kommunikation testen.
+
+Sie sollten die folgenden Verfahren verwenden, wenn Sie SNMP-Zugriff auf ein Cluster wie folgt konfigurieren möchten:
+
+* Sie arbeiten mit Clustern, auf denen ONTAP 9 ausgeführt wird.
+* Sie möchten Best Practices verwenden und nicht alle verfügbaren Optionen erkunden.
++
+[NOTE]
+====
+In den Verfahren werden einige Schritte ausgeführt, für die Sie die Befehlszeilenschnittstelle verwenden müssen.
+
+====
+
+
+
+
+== Weitere Möglichkeiten dies in ONTAP zu tun
+
+Sie können SNMP-Zugriff auf ein Cluster konfigurieren, indem Sie für alle Versionen von ONTAP 9 verwenden. Sie sollten das entsprechende Verfahren für Ihre ONTAP-Version verwenden.
+
+|===
+
+
+| So führen Sie diese Aufgaben durch: | Siehe... 
+
+
+ a| 
+Der neu gestaltete System Manager (verfügbar ab ONTAP 9.7)
+ a| 
+https://docs.netapp.com/us-en/ontap/networking/manage_snmp_on_the_cluster_@cluster_administrators_only@_overview.html["Managen Sie SNMP auf dem Cluster (nur Cluster-Administratoren) > Übersicht"^]
+
+
+
+ a| 
+Die ONTAP Befehlszeilenschnittstelle (CLI)
+ a| 
+https://docs.netapp.com/us-en/ontap/networking/commands_for_managing_snmp.html["Befehle zum Verwalten von SNMP"^]
+
+|===

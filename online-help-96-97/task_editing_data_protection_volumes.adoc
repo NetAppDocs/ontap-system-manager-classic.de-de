@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_editing_data_protection_volumes.html 
+sidebar: sidebar 
+keywords: edit, data, protection, system, manager, online, help, dp, volume 
+summary: 'Mit System Manager kann der Volume-Name für ein Datensicherungs-Volume (DP) geändert werden. Wenn auf dem Quell-Volume die Storage-Effizienz nicht aktiviert ist, können Sie die Storage-Effizienz nur auf dem Ziel-Volume aktivieren.' 
+---
+= Bearbeiten Sie die Datensicherungs-Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und älter) können Sie den Volume-Namen für ein Datensicherungs-Volume ändern. Wenn auf dem Quell-Volume die Storage-Effizienz nicht aktiviert ist, können Sie die Storage-Effizienz nur auf dem Ziel-Volume aktivieren.
+
+.Über diese Aufgabe
+Die Speichereffizienz auf einem SpiegelDP-Volume kann nicht geändert werden.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Storage Virtual Machine (SVM) aus, in der sich das DP-Volume, das Sie bearbeiten möchten, befindet.
+. Wählen Sie das Volume aus, das Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
+. Ändern Sie im Dialogfeld *Data Protection Volume* den Namen des Datenträgers.
+. Stellen Sie sicher, dass die Option *Storage Efficiency* aktivieren ausgewählt ist.
++
+Wenn für das Volume bereits Storage-Effizienz aktiviert ist, wird standardmäßig das Kontrollkästchen aktiviert.
+
+. *Optional:* Klicken Sie auf die Registerkarte *Erweitert* und führen Sie die folgenden Schritte aus:
++
+.. Wählen Sie die Caching-Richtlinie aus, die Sie dem Volume zuweisen möchten.
+.. Wählen Sie die Aufbewahrungspriorität für die im Cache gespeicherten Daten im Volume aus.
+
+
++
+Diese Optionen sind nur für Datensicherung von FlexVol Volumes in einem Flash Pool Aggregat verfügbar.
+
+. Klicken Sie Auf *Speichern*.
+

@@ -1,0 +1,50 @@
+---
+permalink: expansion/task_ensuring_hardware_level_ha_is_enabled.html 
+sidebar: sidebar 
+keywords: install, controller, module, reuse, maintenance, mode, ha, state, hardware-level, enable, ensure hardware-level ha is enabled 
+summary: Wenn die neu installierten Controller-Module wiederverwendet werden – nicht neu – müssen Sie in den Wartungsmodus wechseln und sicherstellen, dass ihr HA-Status auf HA festgelegt ist. 
+---
+= Stellen Sie sicher, dass die Hochverfügbarkeit auf Hardwareebene aktiviert ist
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn die neu installierten Controller-Module wiederverwendet werden - nicht neu - müssen Sie in den Wartungsmodus wechseln und sicherstellen, dass ihr HA-Status auf HA festgelegt ist.
+
+.Über diese Aufgabe
+Wenn Sie neue Controller-Module verwenden, können Sie diesen Vorgang überspringen, da HA standardmäßig aktiviert ist. Andernfalls müssen Sie dieses Verfahren auf beiden Nodes ausführen.
+
+.Schritte
+. Wechseln Sie am ersten Node in den Wartungsmodus:
++
+.. Verlassen Sie das nodeshell durch Betreten `halt`.
++
+Die LOADER-Eingabeaufforderung wird angezeigt.
+
+.. Wechseln Sie in den Wartungsmodus `boot_ontap maint`.
++
+Nachdem einige Informationen angezeigt werden, wird die Eingabeaufforderung für den Wartungsmodus angezeigt.
+
+
+
+. Stellen Sie im Wartungsmodus sicher, dass sich das Controller-Modul und das Chassis im HA-Status befinden:
++
+.. Zeigen Sie den HA-Status des Controller-Moduls und des Chassis an, indem Sie eingeben `ha-config show`.
+.. Wenn der angezeigte Status des Controllers nicht lautet `HA`, Geben Sie ein `ha-config modify controller ha`.
+.. Wenn der angezeigte Status des Chassis nicht lautet `HA`, Geben Sie ein `ha-config modify chassis ha`.
+.. Vergewissern Sie sich, dass HA sowohl auf dem Controller-Modul als auch im Chassis aktiviert ist, indem Sie eingeben `ha-config show`.
+
+
+. Zurück zu ONTAP:
++
+.. Eingabe `halt` Um den Wartungsmodus zu beenden.
+.. Boot ONTAP durch Eingabe `boot_ontap`
+.. Warten Sie, während der Node gebootet wird, und der Setup-Assistent für den Cluster wird automatisch auf der Konsole gestartet.
+.. Drücken Sie die Eingabetaste viermal, um die vorhandenen Einstellungen für die Node-Management-LIF zu akzeptieren.
+.. Melden Sie sich bei dem Node als an `admin` Benutzer, der kein Passwort erfordert.
+
+
+. Wiederholen Sie diese Prozedur auf dem anderen Node, den Sie dem Cluster hinzufügen.
+

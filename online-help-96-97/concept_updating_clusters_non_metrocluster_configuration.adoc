@@ -1,0 +1,20 @@
+---
+permalink: online-help-96-97/concept_updating_clusters_non_metrocluster_configuration.html 
+sidebar: sidebar 
+keywords: update, cluster, metrocluster, configuration, online, help 
+summary: 'Mit System Manager können Sie ein Cluster oder die einzelnen Nodes in einem HA-Paar (High Availability, Hochverfügbarkeit) aktualisieren. Um ein Update durchzuführen, sollten Sie ein ONTAP Image auswählen, überprüfen, ob das Cluster oder die einzelnen Nodes im HA-Paar für das Update bereit sind, und führen Sie dann das Update aus.' 
+---
+= Aktualisieren Sie Cluster in einer nicht-MetroCluster-Konfiguration mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und älter) können Sie ein Cluster oder die einzelnen Nodes in einem HA-Paar aktualisieren. Um ein Update durchzuführen, sollten Sie ein ONTAP Image auswählen, überprüfen, ob das Cluster oder die einzelnen Nodes im HA-Paar für das Update bereit sind, und führen Sie dann das Update aus.
+
+image::../media/updating_cluster.gif[Cluster wird aktualisiert]
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap/upgrade/task_upgrade_andu_sm.html["Upgrade von ONTAP"]

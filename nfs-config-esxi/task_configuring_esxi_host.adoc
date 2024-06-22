@@ -1,0 +1,14 @@
+---
+permalink: nfs-config-esxi/task_configuring_esxi_host.html 
+sidebar: sidebar 
+keywords: configure, configuring, esxi, host, port, vswitches, practice, setting, correct, aggregate, provision, volume, configure the esxi host 
+summary: Das Konfigurieren des ESXi Hosts umfasst die Konfiguration von Ports und vSwitches sowie die Verwendung von ESXi Host Best Practice-Einstellungen. Nachdem die Richtigkeit dieser Einstellungen überprüft wurde, können Sie dann ein Aggregat erstellen und entscheiden, wo das neue Volume bereitgestellt werden soll. 
+---
+= Konfigurieren Sie den ESXi-Host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Konfigurieren des ESXi Hosts umfasst die Konfiguration von Ports und vSwitches sowie die Verwendung von ESXi Host Best Practice-Einstellungen. Nachdem die Richtigkeit dieser Einstellungen überprüft wurde, können Sie dann ein Aggregat erstellen und entscheiden, wo das neue Volume bereitgestellt werden soll.

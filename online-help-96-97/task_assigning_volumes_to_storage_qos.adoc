@@ -1,0 +1,106 @@
+---
+permalink: online-help-96-97/task_assigning_volumes_to_storage_qos.html 
+sidebar: sidebar 
+keywords: assign, volumes, storage, qos, online, help, flexgroup, online, help, quality, serice 
+summary: 'Sie können den Durchsatz von FlexVol Volumes und FlexGroup Volumes begrenzen, indem Sie sie Storage Quality of Service (QoS)-Richtliniengruppen zuweisen. Sie können Storage-QoS für neue Volumes zuweisen oder die Storage-QoS-Details für die Volumes ändern, die einer Richtliniengruppe bereits über System Manager zugewiesen sind.' 
+---
+= Volumes Storage-QoS mit System Manager - ONTAP 9.7 und früher zuweisen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) wird der Durchsatz von FlexVol Volumes und FlexGroup Volumes begrenzt, indem diese den Richtliniengruppen für Storage Quality of Service (QoS) zugewiesen werden. Sie können Storage-QoS für neue Volumes zuweisen oder die Storage-QoS-Details für die Volumes ändern, die einer Richtliniengruppe bereits über System Manager zugewiesen sind.
+
+.Über diese Aufgabe
+* Storage-QoS kann nur Lese-/Schreib-Volumes (rw) zugewiesen werden, die online sind.
+* Sie können einem Volume keine Storage-QoS zuweisen, wenn einer Richtliniengruppe die folgenden Storage-Objekte zugewiesen sind:
++
+** Übergeordnete Storage Virtual Machine (SVM) des Volume
+** Untergeordnete LUNs des Volume
+** Untergeordnete Dateien des Volume
+
+
+* Sie können Storage-QoS zuweisen oder QoS-Details für maximal 10 Volumes gleichzeitig ändern.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie ein oder mehrere Volumes aus, für die Sie Storage-QoS zuweisen möchten.
+. Klicken Sie auf *Mehr Aktionen* > *Storage QoS*.
+. Aktivieren Sie im Dialogfeld *Quality of Service Details* das Kontrollkästchen *Storage Quality of Service* verwalten, wenn Sie die Workload-Performance des FlexVol-Volumes managen möchten.
++
+Wenn einige der ausgewählten Volumes bereits einer Richtliniengruppe zugewiesen sind, können die vorgenommenen Änderungen sich auf die Performance dieser Volumes auswirken.
+
+. Erstellung einer neuen Storage-QoS-Richtliniengruppe oder Auswahl einer vorhandenen Richtliniengruppe zur Steuerung der I/O-Performance (Input/Output) des FlexVol Volumes:
++
+|===
+| Ihr Ziel ist | Tun Sie das... 
+
+
+ a| 
+Erstellen Sie eine neue Richtliniengruppe
+ a| 
+.. Wählen Sie *Neue Richtliniengruppe*.
+.. Geben Sie den Namen der Richtliniengruppe an.
+.. Geben Sie die minimale Durchsatzbegrenzung an.
++
+*** In System Manager 9.5 können Sie die Durchsatzbegrenzung nur auf Performance-basierten All Flash-optimierten Systemen festlegen. In System Manager 9.6 können Sie darüber hinaus das Mindestdurchsatz-Limit für ONTAP Select Premium-Systeme festlegen.
+*** Sie können das Mindestdurchsatz für Volumes nicht auf einem FabricPool-fähigen Aggregat festlegen.
+*** Wenn Sie den Mindestdurchsatzwert nicht angeben oder der Mindestdurchsatzwert auf 0 gesetzt ist, wird „`Keine`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.
+
+
+
+.. Geben Sie das maximale Durchsatzlimit an, um zu verhindern, dass die Workloads der Objekte in der Richtliniengruppe das angegebene Durchsatzlimit überschreiten.
++
+*** Die minimale Durchsatzbegrenzung und die maximale Durchsatzbegrenzung müssen vom selben Einheitstyp sein.
+*** Wenn Sie das minimale Durchsatzlimit nicht angeben, können Sie die maximale Durchsatzbegrenzung für IOPS, B/s, KB/s, MB/s usw. festlegen.
+*** Wenn Sie den maximalen Durchsatzwert nicht angeben, wird „`Unlimited`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet. Die angegebene Einheit hat keinen Einfluss auf den maximalen Durchsatz.
+
+
+
+
+
+
+
+ a| 
+Wählen Sie eine vorhandene Richtliniengruppe aus
+ a| 
+.. Wählen Sie *vorhandene Richtliniengruppe* aus, und klicken Sie dann auf *Auswählen*, um eine vorhandene Richtliniengruppe im Dialogfeld Richtliniengruppe auswählen auszuwählen.
+.. Geben Sie die minimale Durchsatzbegrenzung an.
++
+*** In System Manager 9.5 können Sie die Durchsatzbegrenzung nur auf Performance-basierten All Flash-optimierten Systemen festlegen. In System Manager 9.6 können Sie darüber hinaus das Mindestdurchsatz-Limit für ONTAP Select Premium-Systeme festlegen.
+*** Sie können das Mindestdurchsatz für Volumes nicht auf einem FabricPool-fähigen Aggregat festlegen.
+*** Wenn Sie den Mindestdurchsatzwert nicht angeben oder der Mindestdurchsatzwert auf 0 gesetzt ist, wird „`Keine`“ automatisch als Wert angezeigt.
++
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.
+
+
+
+.. Geben Sie das maximale Durchsatzlimit an, um zu verhindern, dass die Workloads der Objekte in der Richtliniengruppe das angegebene Durchsatzlimit überschreiten.
++
+*** Die minimale Durchsatzbegrenzung und die maximale Durchsatzbegrenzung müssen vom selben Einheitstyp sein.
+*** Wenn Sie das minimale Durchsatzlimit nicht angeben, können Sie die maximale Durchsatzbegrenzung für IOPS, B/s, KB/s, MB/s usw. festlegen.
+*** Wenn Sie den maximalen Durchsatzwert nicht angeben, wird „`Unlimited`“ automatisch als Wert angezeigt.
+  +
+Bei diesem Wert wird die Groß-/Kleinschreibung beachtet. Die angegebene Einheit hat keinen Einfluss auf den maximalen Durchsatz.
+
+
++
+Wenn die Richtliniengruppe mehr als einem Objekt zugewiesen ist, wird der maximale Durchsatz, den Sie angeben, von den Objekten gemeinsam genutzt.
+
+
+
+|===
+. *Optional:* Klicken Sie auf den Link, der die Anzahl der Volumes angibt, wenn Sie die Liste der ausgewählten Volumes überprüfen möchten, und klicken Sie dann auf *Ausweis*, wenn Sie Volumes aus der Liste entfernen möchten.
++
+Der Link wird nur angezeigt, wenn mehrere Volumes ausgewählt sind.
+
+. Klicken Sie auf *OK*.
+

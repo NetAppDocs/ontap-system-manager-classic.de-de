@@ -1,0 +1,119 @@
+---
+permalink: online-help-96-97/task_editing_volume_properties.html 
+sidebar: sidebar 
+keywords: edit, volume, properties, online, help, deduplication, system, manager 
+summary: 'Sie können Volume-Eigenschaften wie den Volume-Namen, den Sicherheitsstil, die fraktionale Reserve und die Speicherplatzzusagen mit System Manager ändern. Sie können die Einstellungen für die Storage-Effizienz (Deduplizierungszeitplan, Deduplizierungsrichtlinie und Komprimierung) und die Einstellungen zur Speicherplatzrückgewinnung ändern.' 
+---
+= Bearbeiten Sie die Volume-Eigenschaften mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) können Volume-Eigenschaften wie Volume-Name, Sicherheitsstil, fraktionale Reserve und Speicherplatzgarantie geändert werden. Sie können die Einstellungen für die Storage-Effizienz (Deduplizierungszeitplan, Deduplizierungsrichtlinie und Komprimierung) und die Einstellungen zur Speicherplatzrückgewinnung ändern.
+
+.Bevor Sie beginnen
+Zur Aktivierung der Volume-Verschlüsselung müssen Sie die Volume-Verschlüsselungslizenz mit System Manager installiert haben, und Sie müssen „`Key-Manager Setup`“ über die Befehlszeilenschnittstelle (CLI) aktiviert haben. Sie müssen Ihren Webbrowser aktualisieren, nachdem Sie „`key-Manager Setup`“ aktiviert haben.
+
+.Über diese Aufgabe
+* Sie können die fraktionale Reserve entweder auf null Prozent oder auf 100 Prozent einstellen.
+* Die Datenkomprimierung wird auf 32-Bit-Volumes nicht unterstützt.
+* Bei Data ONTAP 8.3.1 Clustern können Sie sowohl Inline-Komprimierung als auch Hintergrund-Komprimierung für Cloud Volumes ONTAP für AWS (AWS) aktivieren.
++
+Die Komprimierung wird für Data ONTAP Edge nicht unterstützt.
+
+* Sie können ein SnapLock-Konformitätsvolume nicht umbenennen.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Storage Virtual Machine (SVM) aus, in der sich das Volume, das Sie bearbeiten möchten, befindet.
+. Wählen Sie das Volume aus, das Sie ändern möchten, und klicken Sie dann auf *Bearbeiten*.
++
+Das Dialogfeld Volume bearbeiten wird angezeigt.
+
+. Ändern Sie auf der Registerkarte *Allgemein* die folgenden Eigenschaften nach Bedarf:
++
+** Ändern Sie den Namen des Datenträgers
+** Volume-Verschlüsselung aktivieren
++
+Diese Option ist nur verfügbar, wenn Sie die Volume Encryption-Lizenz aktiviert haben und wenn die entsprechende Plattform Verschlüsselung unterstützt. Sie können den Schlüsselmanager, der über die CLI eingerichtet wurde, ausführen.
+
+** Ändern Sie den Sicherheitstyp für das Volume
+** Aktivieren oder deaktivieren Sie Thin Provisioning
+
+
+. Klicken Sie auf die Registerkarte *Storage Efficiency* und aktivieren Sie die Storage-Effizienz, indem Sie die folgenden Eigenschaften konfigurieren:
++
+** Deduplizierung
+** Datenkomprimierung
+Es ist nicht möglich, die Hintergrund-Komprimierung für ein Volume zu aktivieren, das sich in einem Aggregat mit All-Flash-optimierter Persönlichkeit befindet. Sie können für diese Volumes nur die Inline-Komprimierung aktivieren.
+
+
++
+Sie können die Inline-Deduplizierung nur auf einem Volume aktivieren, das sich in einem Aggregat mit All-Flash-optimierten Persönlichkeiten oder auf einem Volume in einem Flash Pool Aggregat befindet.
+
+. Klicken Sie bei SnapLock-Volumes auf die Registerkarte *SnapLock* und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den automatischen Verschiebungszeitraum an.
++
+Die automatische Verschiebungszeit bestimmt, wie lange eine Datei im Volume unverändert bleiben muss, bevor die Datei in DEN WORM-Status versetzt wird.
+
+.. Geben Sie den minimalen Aufbewahrungszeitraum und den maximalen Aufbewahrungszeitraum an.
++
+Die Werte müssen im Bereich von 1 Tag bis 70 Jahre liegen oder unbegrenzt sein.
+
+.. Wählen Sie den Standardaufbewahrungszeitraum aus.
++
+Die standardmäßige Aufbewahrungsfrist muss innerhalb des angegebenen Mindestaufbewahrungszeitraums und der maximalen Aufbewahrungsdauer liegen.
+
+
+
+. Klicken Sie auf die Registerkarte *Erweitert* und aktivieren Sie die folgenden Eigenschaften:
++
+** Wenn das Volumen automatisch wächst, wenn der verwendete Speicherplatz im Volumen über dem Wachstumschwellenwert liegt, wählen Sie *wachsen*.
+** Wenn Sie möchten, dass das Volumen als Reaktion auf die Menge des belegten Speicherplatzes vergrößert oder verkleinert wird, wählen Sie *vergrößern oder verkleinern*.
++
+... Geben Sie die maximale Größe an, die das Volume vergrößern kann.
+
+
+** Aktivieren Sie das automatische Löschen älterer Snapshot Kopien, indem Sie eine der folgenden Optionen auswählen:
++
+*** Testen
++
+Löscht die Snapshot Kopien, die nicht durch andere Subsysteme gesperrt sind.
+
+*** Zerstören
++
+Löscht die Snapshot Kopien, die durch die Funktion der Datensicherung gesperrt sind.
+
+*** „Umbruch“
++
+Löscht die Snapshot Kopien, die den Datentransfer unterbrechen können.
+
+
+
+** Wählen Sie die Caching-Richtlinie aus, die Sie dem Volume zuweisen möchten.
++
+Diese Option ist nur für FlexVol Volumes in einem Flash Pool Aggregat verfügbar.
+
+** Wählen Sie die Aufbewahrungspriorität für zwischengespeicherte Daten im Volume aus.
++
+Diese Option ist nur für FlexVol Volumes in einem Flash Pool Aggregat verfügbar.
+
+** Geben Sie die fraktionale Reserve an, die Sie für das Volume festlegen möchten.
+** Aktualisieren Sie die Zugriffszeit zum Lesen der Datei.
++
+Diese Option ist für SnapLock-Volumes deaktiviert.
+
+
+
+. Klicken Sie auf *Speichern und Schließen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]
+
+xref:task_setting_up_cifs.adoc[Einrichten von CIFS]

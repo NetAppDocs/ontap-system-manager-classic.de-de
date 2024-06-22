@@ -1,0 +1,96 @@
+---
+permalink: online-help-96-97/task_adding_licenses.html 
+sidebar: sidebar 
+keywords: system, manager, add, license, storage, software, online, help 
+summary: Wenn Ihre Speichersystemsoftware werkseitig installiert wurde, fügt System Manager die Software automatisch der Liste der Lizenzen hinzu. Wenn die Software nicht werkseitig installiert wurde oder wenn Sie weitere Softwarelizenzen hinzufügen möchten, können Sie die Softwarelizenz mithilfe des System Managers hinzufügen. 
+---
+= Fügen Sie Lizenzen mit System Manager - ONTAP 9.7 und früher hinzu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit dem ONTAP System Manager Classic (erhältlich in ONTAP 9.7 und früher) können Sie die Softwarelizenz hinzufügen, wenn die Software nicht werkseitig installiert wurde oder wenn Sie weitere Softwarelizenzen hinzufügen möchten.
+
+Wenn Ihre Speichersystemsoftware werkseitig installiert wurde, fügt System Manager die Software automatisch der Liste der Lizenzen hinzu.
+
+.Bevor Sie beginnen
+Der Software-Lizenzcode für den jeweiligen ONTAP-Dienst muss verfügbar sein.
+
+.Über diese Aufgabe
+* Ab ONTAP 9.10.1 installieren Sie mit System Manager eine NetApp Lizenzdatei (NetApp License File, NFF), mit der Sie mehrere lizenzierte Funktionen auf einmal aktivieren können. Die Verwendung einer NetApp Lizenzdatei vereinfacht die Lizenzinstallation, da Sie keine separaten Lizenzschlüssel für die Funktion hinzufügen müssen. Sie laden die NetApp Lizenzdatei von der NetApp Support-Website herunter.
++
+Weitere Informationen finden Sie unter link:https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Aktivieren Sie neue Funktionen durch Hinzufügen von Lizenzschlüssel"]
+
++
+Informationen zum Verwalten von Lizenzen finden Sie unter link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Übersicht über die Lizenzverwaltung (nur Cluster-Administratoren)"^]
+
+* Wenn Sie eine neue Lizenz in eine MetroCluster-Konfiguration einfügen, empfiehlt es sich, auch die Lizenz auf dem verbleibenden Site-Cluster hinzuzufügen.
+* Sie können die Cloud Volumes ONTAP-Lizenz nicht mit System Manager hinzufügen.
++
+Die Cloud Volumes ONTAP-Lizenz ist auf der Lizenzseite nicht aufgeführt. System Manager gibt keine Benachrichtigung über den Berechtigungsrisikostatus der Cloud Volumes ONTAP Lizenz an.
+
+* Sie können nur kapazitätsbasierte Lizenzen hochladen.
++
+Die kapazitätsbasierten Lizenzen sind vom Typ „`json`“.
+
+
+
+.Schritte
+. Klicken Sie Auf *Konfiguration* > *Cluster* > *Lizenzen*.
+. Klicken Sie Auf *Hinzufügen*.
+. Führen Sie im Dialogfeld *Lizenz hinzufügen* die entsprechenden Schritte aus:
++
+|===
+| Ihr Ziel ist | Tun Sie das... 
+
+
+ a| 
+Fügen Sie eine Lizenz für einen bestimmten ONTAP-Service hinzu
+ a| 
+.. Geben Sie den Softwarelizenzschlüssel ein.
++
+Sie können mehrere Lizenzen hinzufügen, indem Sie die durch Kommas getrennten Software-Lizenzschlüssel eingeben.
+
+.. Klicken Sie Auf *Hinzufügen*.
+
+
+
+
+ a| 
+Fügen Sie eine kapazitätsbasierte Lizenz hinzu
+ a| 
+.. Klicken Sie auf Durchsuchen, und wählen Sie dann die kapazitätsbasierte Lizenzdatei aus.
+.. Klicken Sie Auf *Hinzufügen*.
+
+
+
+
+ a| 
+Fügen Sie eine Lizenz für einen bestimmten ONTAP Service hinzu und fügen Sie eine kapazitätsbasierte Lizenz hinzu
+ a| 
+.. Geben Sie den Softwarelizenzschlüssel ein.
++
+Sie können mehrere Lizenzen hinzufügen, indem Sie die durch Kommas getrennten Software-Lizenzschlüssel eingeben.
+
+.. Klicken Sie auf Durchsuchen, und wählen Sie dann die kapazitätsbasierte Lizenzdatei aus.
+.. Klicken Sie Auf *Hinzufügen*.
+
+
+|===
++
+Die neue Lizenz wurde hinzugefügt.
+
++
+Im Dialogfeld Lizenzstatus hinzufügen wird die Liste der Lizenzen angezeigt, die erfolgreich hinzugefügt wurden. Im Dialogfeld werden außerdem die Lizenzschlüssel der Lizenzen angezeigt, die nicht hinzugefügt wurden, und der Grund, warum die Lizenzen nicht hinzugefügt wurden.
+
+. Klicken Sie Auf *Schließen*.
+
+
+.Ergebnisse
+Die Softwarelizenz wird Ihrem Speichersystem hinzugefügt und wird in der Liste der Lizenzen im Fenster Lizenzen angezeigt.
+
+*Verwandte Informationen*
+
+xref:reference_licenses_window.adoc[Das Fenster „Lizenzen“]

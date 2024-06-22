@@ -1,0 +1,33 @@
+---
+permalink: smb-config/copy2configuringandverifyingCIFSaccess.html 
+sidebar: sidebar 
+keywords: clients, share, ntfs, file, permission, windows, explorer, modify, acl, system, manager, addect, user, group, access, volume, configure and verify cifs client access 
+summary: Wenn Sie bereit sind, können Sie ausgewählten Clients Zugriff auf die Freigabe gewähren, indem Sie NTFS-Dateiberechtigungen in Windows Explorer festlegen und die Freigabe-ACL in System Manager ändern. Anschließend sollten Sie testen, ob die betroffenen Benutzer oder Gruppen auf das Volume zugreifen können. 
+---
+= Konfigurieren und Überprüfen des CIFS-Client-Zugriffs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie bereit sind, können Sie ausgewählten Clients Zugriff auf die Freigabe gewähren, indem Sie NTFS-Dateiberechtigungen in Windows Explorer festlegen und die Freigabe-ACL in System Manager ändern. Anschließend sollten Sie testen, ob die betroffenen Benutzer oder Gruppen auf das Volume zugreifen können.
+
+.Schritte
+. Legen Sie fest, welche Clients und Benutzer oder Gruppen Zugriff auf die Freigabe erhalten.
+. Verwenden Sie auf einem Windows-Client eine Administratorrolle, um den Benutzern oder Gruppen Berechtigungen für die Dateien und Ordner zu gewähren.
++
+.. Melden Sie sich bei einem Windows-Client als Administrator an, der über ausreichende Administratorrechte verfügt, um NTFS-Berechtigungen zu verwalten.
+.. Klicken Sie im Windows Explorer mit der rechten Maustaste auf das Laufwerk und wählen Sie dann *Eigenschaften* aus.
+.. Wählen Sie die Registerkarte *Sicherheit* aus, und passen Sie die Sicherheitseinstellungen für die Gruppen und Benutzer nach Bedarf an.
+
+
+. Ändern Sie in System Manager die Share-ACL, um Windows-Benutzern oder -Gruppen Zugriff auf die Freigabe zu gewähren.
++
+.. Navigieren Sie zum Fenster *Shares*.
+.. Wählen Sie die Freigabe aus, und klicken Sie auf *Bearbeiten*.
+.. Wählen Sie die Registerkarte *Berechtigungen* aus, und geben Sie den Benutzern oder Gruppen Zugriff auf die Freigabe.
+
+
+. Melden Sie sich auf einem Windows-Client als einer der Benutzer an, der nun Zugriff auf die Freigabe und Dateien hat, und überprüfen Sie, ob Sie auf die Freigabe zugreifen und eine Datei erstellen können.
+

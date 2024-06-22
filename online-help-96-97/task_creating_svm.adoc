@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/task_creating_svm.html 
+sidebar: sidebar 
+keywords: svm, create, storage, virtual, machine, online, help 
+summary: 'Sie können das Fenster Storage Virtual Machine (SVM) verwenden, um vollständig konfigurierte SVMs zu erstellen. Die SVMs stellen Daten bereit, nachdem auf diesen SVMs Storage-Objekte erstellt wurden.' 
+---
+= Erstellen Sie eine SVM mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Im klassischen ONTAP System Manager (verfügbar in ONTAP 9.7 und früher) können Sie das SVM-Fenster (Storage Virtual Machine) verwenden, um vollständig konfigurierte SVMs zu erstellen. Die SVMs stellen Daten bereit, nachdem auf diesen SVMs Storage-Objekte erstellt wurden.
+
+.Bevor Sie beginnen
+* Sie müssen ein Aggregat erstellt haben und das Aggregat muss online sein.
+* Sie müssen sicherstellen, dass das Aggregat über genügend Platz für das SVM Root-Volume verfügt.
+
+
+.Schritte
+. Geben Sie einen Namen für die SVM ein.
+. Wählen Sie Datenprotokolle für die SVM:
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+Aktivieren Sie das CIFS-Protokoll, indem Sie den CIFS-Server mithilfe eines Active Directory konfigurieren
+ a| 
+.. Wählen Sie das Feld *Active Directory* aus.
+.. Geben Sie den Active Directory-Administratornamen ein.
+.. Geben Sie das Active Directory-Administratorkennwort ein.
+.. Geben Sie einen Namen für den CIFS-Server ein.
+.. Geben Sie einen Namen für die Active Directory-Domäne ein.
+.. Wählen Sie je nach Ihren Anforderungen die *eine Daten-LIF auf dieser SVM* oder *eine Daten-LIF pro Node auf dieser SVM*-Box.
+.. Geben Sie Daten-LIF-Details wie IP-Adresse, Netmask, Gateway und Port an.
+.. Geben Sie DNS-Details an.
+
+
+
+
+ a| 
+Aktivieren Sie das CIFS-Protokoll, indem Sie den CIFS-Server mithilfe einer Arbeitsgruppe konfigurieren
+ a| 
+.. Wählen Sie das Feld *Workgroup* aus.
+.. Geben Sie einen Namen für die Arbeitsgruppe ein.
+.. Geben Sie einen Namen für den CIFS-Server ein.
+.. Wählen Sie je nach Ihren Anforderungen das Kontrollkästchen *eine Daten-LIF auf dieser SVM* oder *eine Daten-LIF pro Node auf dieser SVM* aus.
+.. Geben Sie Daten-LIF-Details wie IP-Adresse, Netmask, Gateway und Port an.
+
+
+
+
+ a| 
+NFS-Protokoll aktivieren
+ a| 
+.. Wählen Sie das Feld *NFS* aus.
+.. Wählen Sie je nach Ihren Anforderungen das Kontrollkästchen *eine Daten-LIF auf dieser SVM* oder *eine Daten-LIF pro Node auf dieser SVM* aus.
+.. Geben Sie Daten-LIF-Details wie IP-Adresse, Netmask, Gateway und Port an.
+
+
+
+
+ a| 
+Aktivieren des iSCSI-Protokolls
+ a| 
+.. Wählen Sie das Feld *iSCSI* aus.
+.. Geben Sie Daten-LIF-Details wie IP-Adresse, Netmask, Gateway und Port an.
+
+
+
+
+ a| 
+Aktivierung von FC-/FCoE-Protokollen
+ a| 
+.. Wählen Sie das Feld * FC/FCoE* aus.
+.. Wählen Sie die FC/FCoE-Ports für FC- oder FCoE-Protokolle aus.
++
+[NOTE]
+====
+Jeder Node muss für jedes Protokoll (FC und FCoE) mindestens einen korrekt konfigurierten Port aufweisen.
+
+====
+
+
+
+
+ a| 
+NVMe-Protokoll aktivieren
+ a| 
+.. Wählen Sie das Feld *NVMe* aus.
+.. Wählen Sie die NVMe-Ports für NVMe-Protokolle aus.
++
+[NOTE]
+====
+Mindestens ein NVMe-fähiger Adapter muss in einem der Nodes zur Konfiguration von NVMe verfügbar sein.        Ab ONTAP 9.5 muss außerdem für jeden Node eines der SVM zugeordneten HA-Paars mindestens eine NVMe-LIF konfiguriert werden. Sie können für jeden Node im Paar maximal zwei NVMe LIFs erstellen.
+
+====
+
+
+|===
+. *Optional:* Klicken Sie auf das Symbol *Erweiterte Optionen* und geben Sie Details an, um erweiterte Optionen wie die Standardsprache, den Sicherheitsstil, die CIFS-Serverdetails und NFS-Details zu konfigurieren.
+. Klicken Sie auf *Absenden und Fortfahren*, um die SVM zu erstellen.
+
+
+
+
+== Nächste Schritte
+
+Wenn Sie auf *Absenden und Fortfahren* geklickt haben, müssen Sie die Details überprüfen, die Sie im Fenster Zusammenfassung angegeben haben, und dann auf *Cluster verwalten* klicken, um den System Manager zu starten, oder klicken Sie auf *Anwendung bereitstellen*, um Speicheranwendungen bereitzustellen, oder klicken Sie auf *Konfiguration exportieren*, um die Konfigurationsdatei herunterzuladen.

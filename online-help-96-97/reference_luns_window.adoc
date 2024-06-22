@@ -1,0 +1,270 @@
+---
+permalink: online-help-96-97/reference_luns_window.html 
+sidebar: sidebar 
+keywords: online, help, lun, management, window, command, button, initiator, portset, group, online, help 
+summary: Sie können das LUNs-Fenster zum Erstellen und Verwalten von LUNs und zum Anzeigen von Informationen über LUNs verwenden. Sie können auch Initiatorgruppen und Initiator-IDs hinzufügen, bearbeiten oder löschen. 
+---
+= LUNs-Fenster in System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können das LUNs-Fenster in ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um LUNs zu erstellen und zu verwalten sowie Informationen über LUNs anzuzeigen. Sie können auch Initiatorgruppen und Initiator-IDs hinzufügen, bearbeiten oder löschen.
+
+
+
+== Die Registerkarte LUN-Verwaltung
+
+Auf dieser Registerkarte können Sie die LUN-Einstellungen erstellen, klonen, löschen, verschieben oder bearbeiten. Sie können auch einer Richtliniengruppe „Storage Quality of Service“ (QoS) LUNs zuweisen.
+
+
+
+== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet den Assistenten LUN erstellen, mit dem Sie LUNs erstellen können.
+
++
+In einem Cluster auf einer AFF-Plattform, die keine vorhandenen LUNs enthält, wird das Dialogfeld „FC SAN-optimierte LUNs erstellen“ geöffnet. Damit können Sie eine oder mehrere für FC SAN optimierte LUNs einrichten.
+
+* *Klonen*
++
+Öffnet das Dialogfeld LUN klonen, in dem Sie die ausgewählten LUNs klonen können.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld LUN bearbeiten, in dem Sie die Einstellungen der ausgewählten LUN bearbeiten können.
+
+* *Löschen*
++
+Löscht die ausgewählte LUN.
+
+* *Status*
++
+Ermöglicht Ihnen das Ändern des Status der ausgewählten LUN in Online oder Offline.
+
+* *Bewegen*
++
+Öffnet das Dialogfeld LUN verschieben, in dem Sie die ausgewählte LUN zu einem neuen Volume oder einem vorhandenen Volume oder qtree innerhalb derselben Storage Virtual Machine (SVM) verschieben können.
+
+* * Storage QoS*
++
+Öffnet das Dialogfeld Quality of Service Details, in dem Sie einer neuen oder vorhandenen Richtliniengruppe eine oder mehrere LUNs zuweisen können.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+== Liste der LUNs
+
+* *Name*
++
+Zeigt den Namen der LUN an.
+
+* *SVM*
++
+Zeigt den Namen der Storage Virtual Machine (SVM) an, in der die LUN erstellt wird.
+
+* * Container-Pfad*
++
+Zeigt den Namen des Filesystems (Volume oder qtree) an, das die LUN enthält.
+
+* *Raumreservierung*
++
+Gibt an, ob die Speicherplatzreservierung aktiviert oder deaktiviert ist.
+
+* * Verfügbare Größe*
++
+Zeigt den Speicherplatz an, der in der LUN verfügbar ist.
+
+* *Gesamtgröße*
++
+Zeigt den gesamten Speicherplatz in der LUN an.
+
+* *%Used*
++
+Zeigt den belegten Speicherplatz (in Prozent) an, der verwendet wird.
+
+* *Typ*
++
+Gibt den LUN-Typ an.
+
+* *Status*
++
+Gibt den Status der LUN an.
+
+* *Richtliniengruppe*
++
+Zeigt den Namen der Storage QoS-Richtliniengruppe an, der die LUN zugewiesen ist. Standardmäßig ist diese Spalte ausgeblendet.
+
+* * Anwendung*
++
+Zeigt den Namen der Applikation an, die der LUN zugewiesen ist.
+
+* *Beschreibung*
++
+Zeigt die Beschreibung der LUN an.
+
+
+
+
+
+== Detailbereich
+
+Im Bereich unter der Liste LUNs werden Details zu der ausgewählten LUN angezeigt.
+
+* *Registerkarte Details*
++
+Zeigt Details zur LUN an, z. B. die LUN-Seriennummer, ob die LUN ein Klon ist, eine LUN-Beschreibung, die Richtliniengruppe, der die LUN zugewiesen ist, den minimalen Durchsatz der Richtliniengruppe, den maximalen Durchsatz der Richtliniengruppe, Details zum Vorgang der Verschiebung von LUNs, Und der LUN zugewiesene Applikation. Sie können auch Details zu den Initiatorgruppen und Initiatoren anzeigen, die der ausgewählten LUN zugeordnet sind.
+
+* *Registerkarte Leistung*
++
+Zeigt Performance-Metriken der LUNs an, einschließlich Datenrate, IOPS und Antwortzeiten.
+
++
+Wenn Sie die Client-Zeitzone oder die Cluster-Zeitzone ändern, werden die Diagramme mit den Performance-Metriken beeinträchtigt. Aktualisieren Sie Ihren Browser, um die aktualisierten Diagramme anzuzeigen.
+
+
+
+
+
+== Registerkarte Initiatorgruppen
+
+Auf dieser Registerkarte können Sie die Einstellungen von Initiatorgruppen und Initiator-IDs erstellen, löschen oder bearbeiten.
+
+
+
+== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Initiatorgruppe erstellen, in dem Sie Initiatorgruppen erstellen können, um den Hostzugriff auf bestimmte LUNs zu steuern.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Initiatorgruppe bearbeiten, in dem Sie die Einstellungen der ausgewählten Initiatorgruppe bearbeiten können.
+
+* *Löschen*
++
+Löscht die ausgewählte Initiatorgruppe.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+== Liste der Initiatorgruppen
+
+* *Name*
++
+Zeigt den Namen der Initiatorgruppe an.
+
+* *Typ*
++
+Gibt den Typ des Protokolls an, der von der Initiatorgruppe unterstützt wird. Die unterstützten Protokolle sind iSCSI, FC/FCoE oder Mixed (iSCSI und FC/FCoE).
+
+* *Betriebssystem*
++
+Gibt das Betriebssystem für die Initiatorgruppe an.
+
+* *Portset*
++
+Zeigt den Portsatz an, der der Initiatorgruppe zugeordnet ist.
+
+* *Initiatoranzahl*
++
+Zeigt die Anzahl der Initiatoren an, die der Initiatorgruppe hinzugefügt wurden.
+
+
+
+
+
+== Detailbereich
+
+Im Bereich unter der Liste Initiatorgruppen werden Details zu den Initiatoren angezeigt, die der ausgewählten Initiatorgruppe hinzugefügt werden, und zu den LUNs, die der Initiatorgruppe zugeordnet sind.
+
+
+
+== Registerkarte Portsätze
+
+Auf dieser Registerkarte können Sie Portsätze erstellen, löschen oder bearbeiten.
+
+
+
+== Befehlsschaltflächen
+
+* *Erstellen*
++
+Öffnet das Dialogfeld Portset erstellen, in dem Sie Portsätze erstellen können, um den Zugriff auf Ihre LUNs zu beschränken.
+
+* *Bearbeiten*
++
+Öffnet das Dialogfeld Portset bearbeiten, in dem Sie die Netzwerkschnittstellen auswählen können, die Sie dem Portset zuordnen möchten.
+
+* *Löschen*
++
+Löscht den ausgewählten Portsatz.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+== Portsätze-Liste
+
+* *Portset Name*
++
+Zeigt den Namen des Portsatzes an.
+
+* *Typ*
++
+Gibt den vom Portset unterstützten Protokolltyp an. Die unterstützten Protokolle sind iSCSI, FC/FCoE oder Mixed (iSCSI und FC/FCoE).
+
+* *Anzahl Der Schnittstellen*
++
+Zeigt die Anzahl der Netzwerkschnittstellen an, die dem Portsatz zugeordnet sind.
+
+* *Anzahl Der Initiatorgruppen*
++
+Zeigt die Anzahl der Initiatorgruppen an, die dem Portsatz zugeordnet sind.
+
+
+
+
+
+== Detailbereich
+
+Der Bereich unterhalb der Liste Portsätze zeigt Details zu den Netzwerkschnittstellen und Initiatorgruppen an, die mit dem ausgewählten Portsatz verknüpft sind.
+
+*Verwandte Informationen*
+
+xref:task_creating_luns.adoc[LUNs werden erstellt]
+
+xref:task_deleting_luns.adoc[LUNs werden gelöscht]
+
+xref:task_creating_initiator_groups.adoc[Erstellen von Initiatorgruppen]
+
+xref:task_editing_luns.adoc[LUNs werden bearbeitet]
+
+xref:task_editing_initiator_groups.adoc[Bearbeiten von Initiatorgruppen]
+
+xref:task_editing_initiators.adoc[Initiatoren werden bearbeitet]
+
+xref:task_bringing_luns_online.adoc[LUNs werden in den Online-Modus versetzt]
+
+xref:task_taking_luns_offline.adoc[LUNs werden in den Offline-Modus versetzt]
+
+xref:task_cloning_luns.adoc[Klonen von LUNs]

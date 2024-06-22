@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_changing_deduplication_schedule.html 
+sidebar: sidebar 
+keywords: change, deduplication, schedule, online, help, system, manager 
+summary: Sie können den Deduplizierungszeitplan ändern, indem Sie die Deduplizierung manuell, automatisch oder gemäß dem von Ihnen angegebenen Zeitplan ausführen. 
+---
+= Ändern Sie den Deduplizierungszeitplan mit dem System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (verfügbar in ONTAP 9.7 und älteren Versionen) können Sie den Deduplizierungszeitplan ändern. Sie können die Deduplizierung manuell, automatisch oder gemäß dem von Ihnen angegebenen Zeitplan ausführen.
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie das Lese-/Schreib-Volume aus, für das Sie den Deduplizierungszeitplan ändern möchten.
+. Klicken Sie auf *Bearbeiten* und dann auf die Registerkarte *Storage Efficiency*.
+. Sie können den Deduplizierungszeitplan je nach Bedarf ändern.
+. Klicken Sie auf *Speichern und Schließen*.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

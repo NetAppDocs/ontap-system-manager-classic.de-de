@@ -1,0 +1,52 @@
+---
+permalink: online-help-96-97/task_deleting_svms.html 
+sidebar: sidebar 
+keywords: system, manager, delete, svm, online, help, storage, virtual, machine 
+summary: 'Mit System Manager können Storage Virtual Machines (SVMs) gelöscht werden, die Sie nicht mehr von der Storage-Systemkonfiguration benötigen.' 
+---
+= Löschen Sie SVMs mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) können Sie Storage Virtual Machines (SVMs) löschen, die Sie aus der Storage-Systemkonfiguration nicht mehr benötigen.
+
+.Bevor Sie beginnen
+Sie müssen die folgenden Aufgaben ausgeführt haben:
+
+. Die Snapshot Kopien, die Datensicherung (DP)-Spiegelung und die Load-Sharing-Spiegelung (LS) für alle Volumes wurden deaktiviert
++
+[NOTE]
+====
+Zum Deaktivieren der LS-Spiegelungen müssen Sie die Befehlszeilenschnittstelle (CLI) verwenden.
+
+====
+. Wenn Sie SVMs löschen, wurden alle Initiatorgruppen, die der SVM angehören, manuell gelöscht
+. Alle Portsätze gelöscht
+. Löschte alle Volumes in der SVM, einschließlich des Root-Volumes
+. Die Zuordnung der LUNs wurde aufgehoben, sie wurden in den Offline-Modus versetzt und gelöscht
+. Hat den CIFS-Server gelöscht, wenn Sie SVMs löschen
+. Löschte alle angepassten Benutzerkonten und Rollen, die mit der SVM verknüpft sind
+. Löschte alle mit der SVM verbundenen NVMe-Subsysteme mithilfe der CLI.
+. Stoppen Sie die SVM
+
+
+.Über diese Aufgabe
+Wenn Sie SVMs löschen, werden auch die folgenden mit der SVM verknüpften Objekte gelöscht:
+
+* LIFs, LIF Failover-Gruppen und LIF-Routing-Gruppen
+* Exportrichtlinien
+* Effizienzrichtlinien
+
+
+Wenn Sie SVMs löschen, die für die Verwendung von Kerberos konfiguriert sind, oder SVMs so ändern, dass ein anderer Service Principal Name (SPN) verwendet wird, wird das ursprüngliche Service-Principal der SVM nicht automatisch gelöscht oder deaktiviert. Sie müssen den Principal manuell löschen oder deaktivieren. Sie müssen über den Benutzernamen und das Kennwort des Kerberos-Bereichs-Administrators verfügen, um den Principal zu löschen oder zu deaktivieren.
+
+Wenn Sie Daten vor dem Löschen der ersten SVM von einer SVM zu einer anderen SVM verschieben möchten, können Sie dazu die SnapMirror Technologie verwenden.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, die Sie löschen möchten, und klicken Sie dann auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+

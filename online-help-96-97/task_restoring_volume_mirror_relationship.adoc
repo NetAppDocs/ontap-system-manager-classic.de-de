@@ -1,0 +1,82 @@
+---
+permalink: online-help-96-97/task_restoring_volume_mirror_relationship.html 
+sidebar: sidebar 
+keywords: restore, volume, mirror, relationship, snapmirror, online, help, system, manager 
+summary: Für eine versionsunabhängige Spiegelbeziehung kann System Manager verwendet werden, um Snapshot Kopien auf einem Quell-Volume oder auf anderen Volumes wiederherzustellen, falls die Quelldaten beschädigt sind und nicht mehr verwendbar sind. Sie können die Originaldaten durch die Snapshot Kopien im Ziel-Volume ersetzen. 
+---
+= Stellen Sie ein Volume in einer Spiegelbeziehung mit System Manager - ONTAP 9.7 und früher wieder her
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Für eine versionsunabhängige Spiegelbeziehung können Sie ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Snapshot Kopien auf einem Quell-Volume oder auf anderen Volumes wiederherzustellen, falls die Quelldaten beschädigt sind und nicht mehr verwendbar sind. Sie können die Originaldaten durch die Snapshot Kopien im Ziel-Volume ersetzen.
+
+.Bevor Sie beginnen
+* Die SnapMirror Lizenz muss sowohl auf dem Quell-Cluster als auch auf dem Ziel-Cluster oder auf den Nodes aktiviert werden, die das Quell-Volume und das Ziel-Volume enthalten.
+* Das Quell-Cluster und das Ziel-Cluster müssen sich in einer gesunden Peer-Beziehung befinden.
+* Das Quellaggregat oder ein anderes Aggregat, das Sie für die Wiederherstellung auswählen, muss ein 64-bit-Aggregat sein.
+* Wenn Sie eine Verbindung von einem Cluster herstellen, auf dem ONTAP 9.2 oder früher ausgeführt wird, zu einem Remote-Cluster, auf dem die SAML-Authentifizierung (Security Assertion Markup Language) aktiviert ist, muss die passwortbasierte Authentifizierung auch auf dem Remote-Cluster aktiviert sein.
+
+
+.Über diese Aufgabe
+* Es ist nicht möglich, ein Volume, das sich in einer gespiegelten Beziehung zwischen einer Quell-Storage Virtual Machine (SVM) und einer Ziel-SVM in einer MetroCluster Konfiguration befindet, wiederherzustellen.
+* Sie können keinen Wiederherstellungsvorgang für SnapLock Volumes ausführen.
+* Sie können eine gespiegelte Beziehung zwischen synchronen QuellSVMs in einer MetroCluster Konfiguration wiederherstellen.
+* Sie können eine gespiegelte Beziehung von einem Volume auf einer Quell-SVM zu einer Standard-SVM wiederherstellen.
+* Sie können eine gespiegelte Beziehung von einem Volume auf einer Standard-SVM zu einem DP-Volume auf einer SVM wiederherstellen.
+
+
+.Schritte
+. Klicken Sie Auf *Schutz* > *Volume Relationships*.
+. Wählen Sie die Spiegelbeziehung aus, und klicken Sie dann auf *Operationen* > *Wiederherstellen*.
+. Stellen Sie im Dialogfeld *Restore* die Daten in der Spiegelbeziehung auf dem Quell-Volume wieder her oder wählen Sie ein anderes Volume aus:
++
+|===
+| Daten werden in folgenden Fall wiederhergestellt: | Tun Sie das... 
+
+
+ a| 
+Das Quell-Volume
+ a| 
+.. Wählen Sie *Quellvolumen*.
+.. Fahren Sie mit Schritt 7 fort.
+
+
+
+
+ a| 
+Jedes andere Volume
+ a| 
+Wählen Sie *Other Volume* aus, und wählen Sie dann aus der Liste den Cluster und die SVM aus.
+
+|===
+. Wiederherstellen der Daten auf einem neuen Volume oder einem vorhandenen Volume:
++
+|===
+| Daten werden in folgenden Fall wiederhergestellt: | Tun Sie das... 
+
+
+ a| 
+Ein neues Volume
+ a| 
+Wenn Sie den Standardnamen ändern möchten, wird im Format angezeigt `destination_SVM_name_destination_volume_name_` Stellen Sie wieder her, geben Sie einen neuen Namen an und wählen Sie dann das zugehörige Aggregat für das Volume aus.
+
+
+
+ a| 
+Einem vorhandenen Volume
+ a| 
+Wählen Sie die Option *Lautstärke auswählen*.
+
+Sie müssen ein anderes Volume als das Quell-Volume auswählen, oder ein Lese-/Schreib-Volume mit einigen darin enthalten Daten und einer gemeinsamen Snapshot Kopie.
+
+Es werden nur die Volumes mit dem gleichen Sprachattribut aufgelistet, die das Quellvolume aufweisen.
+
+|===
+. Wählen Sie entweder die neueste Snapshot Kopie oder die spezifische Snapshot Kopie aus, die Sie wiederherstellen möchten.
+. Aktivieren Sie das Kontrollkästchen, um das Volume aus der Snapshot Kopie wiederherzustellen.
+. *Optional:* Aktivieren Sie das Kontrollkästchen *Netzwerkkomprimierung*, um die Daten zu komprimieren, die während des Wiederherstellungsvorgangs übertragen werden.
+. Klicken Sie Auf *Wiederherstellen*.
+

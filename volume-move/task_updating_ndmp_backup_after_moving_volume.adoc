@@ -1,0 +1,30 @@
+---
+permalink: volume-move/task_updating_ndmp_backup_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, move, tape, ndmp, configuration, moving, baseline, migrate, backup, lif, contain, update ndmp backup after moving a volume 
+summary: 'Wenn das verschobene Volume zuvor mit NDMP in einer bestimmten Konfiguration auf Band gesichert wurde, können Sie nach dem Verschieben des Volumes eine der folgenden Aktionen durchführen, um sicherzustellen, dass das Volume weiterhin erfolgreich gesichert wird: Erstellen einer Basis-VM oder Migrieren der Backup-LIF zu dem Node, der das verschobene Volume enthält.' 
+---
+= Aktualisieren Sie NDMP Backup nach dem Verschieben eines Volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn das verschobene Volume zuvor mit NDMP in einer bestimmten Konfiguration auf Band gesichert wurde, können Sie nach dem Verschieben des Volumes eine der folgenden Aktionen durchführen, um sicherzustellen, dass das Volume weiterhin erfolgreich gesichert wird: Erstellen einer Basis-VM oder Migrieren der Backup-LIF zu dem Node, der das verschobene Volume enthält.
+
+.Über diese Aufgabe
+* Dieses Verfahren ist nur erforderlich, wenn die Backup-Anwendung die CAB-Erweiterung (Cluster-Aware Backup) nicht unterstützt und der Backup-Prozess NDMP mit dem Node-Umfang verwendet.
++
+Wenn die Backup-Applikation CAB unterstützt und für die Verwendung des NDMP-Modus mit SVM-Umfang konfiguriert ist, können Sie diese Prozedur überspringen.
+
+* Sie müssen nur eine dieser Aktionen ausführen, nicht beides.
+
+
+
+
+== Verfahren
+
+* Erstellen Sie von der Backup-Applikation eine neue Basis.
+* Identifizieren Sie die für den Backup-Prozess konfigurierte LIF und migrieren Sie dann die LIF auf den Node, in dem sich das Volume jetzt befindet.
+

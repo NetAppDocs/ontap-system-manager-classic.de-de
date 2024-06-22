@@ -1,0 +1,45 @@
+---
+permalink: iscsi-config-esxi/index.html 
+sidebar: sidebar 
+keywords: iscsi, service, storage, virtual, machine, svm, provision, lun, esx, host, computer 
+summary: 'Über die klassische Schnittstelle des ONTAP System Manager (ONTAP 9.7 und früher) können Sie den iSCSI-Service rasch auf einer Storage Virtual Machine (SVM) einrichten, eine LUN bereitstellen und die LUN über einen iSCSI-Initiator auf einem ESXi Hostcomputer bereitstellen.' 
+---
+= ISCSI-Konfiguration für ESXi mithilfe der VSC Übersicht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Über die klassische Schnittstelle des ONTAP System Manager (ONTAP 9.7 und früher) können Sie den iSCSI-Service rasch auf einer Storage Virtual Machine (SVM) einrichten, eine LUN bereitstellen und die LUN über einen iSCSI-Initiator auf einem ESXi Hostcomputer bereitstellen.
+
+Gehen Sie folgendermaßen vor, wenn:
+
+* Sie verwenden den systemeigenen ESXi iSCSI-Software-Initiator unter ESXi 5.x
+* Sie verwenden keine CHAP-Authentifizierung für iSCSI.
+* Sie verwenden eine unterstützte Version von Virtual Storage Console für VMware vSphere (VSC), um Storage-Einstellungen für Ihren ESX Host zu konfigurieren.
++
+** Ab VSC 7.0 gehört die VSC Bestandteil der https://docs.netapp.com/us-en/ontap-tools-vmware-vsphere/index.html["ONTAP Tools für VMware vSphere"^] Virtuelle Appliance mit VSC, vStorage APIs for Storage Awareness (VASA) Provider und Storage Replication Adapter (SRA) für VMware vSphere Funktionen.
+** Prüfen Sie unbedingt die https://imt.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Um die Kompatibilität zwischen Ihren aktuellen ONTAP und VSC Versionen zu überprüfen.
+
+
+* In Ihrem Netzwerk werden IPv4-Adressen verwendet.
+* Sie möchten logische Schnittstellen mit einer der folgenden Methoden Adressen zuweisen:
++
+** Automatisch aus einem von Ihnen definierten Subnetz
+** Manuell unter Verwendung einer aus einem vorhandenen Subnetz ausgewählten Adresse
+** Manuell unter Verwendung einer Adresse, die einem vorhandenen Subnetz hinzugefügt wird
+
+
+* Sie verfügen über mindestens zwei Hochgeschwindigkeits-Ethernet-Ports (1 GbE mindestens, 10 GbE empfohlen), die für jeden Node im Cluster verfügbar sind.
++
+Onboard UTA2 (auch als genannt `CNA`) Die Ports sind konfigurierbar. Sie konfigurieren diese Ports in der ONTAP CLI; dieser Prozess wird in seinem Verfahren nicht behandelt.
+
++
+Siehe link:https://docs.netapp.com/us-en/ontap/networking/index.html["Netzwerkmanagement"^] Zum Konfigurieren der Ethernet-Port-Flusssteuerung über die CLI.
+
+* ISCSI-SAN-Start wird nicht konfiguriert.
+* Sie stellen den VMs Storage über den ESXi-Hypervisor bereit, und kein iSCSI-Initiator innerhalb der VM wird ausgeführt.
+
+
+Weitere Informationen finden Sie unter https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597: VMware vSphere für ONTAP"^] Und der Dokumentation für Ihre VSC Version.

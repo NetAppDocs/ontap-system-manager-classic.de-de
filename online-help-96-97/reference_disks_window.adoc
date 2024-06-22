@@ -1,0 +1,174 @@
+---
+permalink: online-help-96-97/reference_disks_window.html 
+sidebar: sidebar 
+keywords: command, button, disk, window, inventory, detail, online, help 
+summary: Sie können das Fenster Festplatten verwenden, um alle Festplatten in Ihrem Speichersystem anzuzeigen. 
+---
+= Platten-Fenster in System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können das Festplatten-Fenster in ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um alle Festplatten in Ihrem Storage-System anzuzeigen.
+
+
+
+== Befehlsschaltflächen
+
+* *Zuweisen*
++
+Weist den Festplattenbesitzer einem Node zu oder weist diese neu zu.
+
++
+Diese Schaltfläche ist nur aktiviert, wenn der Containertyp der ausgewählten Festplatten nicht zugewiesen, frei oder freigegeben ist.
+
+* *Zero Spares*
++
+Löscht alle Daten und formatiert die Ersatzfestplatten und Array-LUNs.
+
+* *Aktualisieren*
++
+Aktualisiert die Informationen im Fenster.
+
+
+
+
+
+== Registerkarten
+
+
+
+== Zusammenfassung
+
+Zeigt detaillierte Informationen über die Festplatten im Cluster an, einschließlich der Größe der freien Festplatten und zugewiesenen Festplatten. Auf der Registerkarte werden auch grafische Informationen zu freien Festplatten, Aggregaten und Root-Aggregaten für HDDs und Informationen zu freien Festplatten, Festplatten in einem Speicherpool, Aggregaten, Flash Pool-Aggregaten und Root-Aggregaten für Cache-Festplatten (SSDs) angezeigt.
+
+Das HDD-Panel wird nicht für Systeme mit All Flash Optimized Personality angezeigt.
+
+Das Detailfenster enthält weitere Informationen über partitionierte und nicht partitionierte Ersatzfestplatten (Festplattentyp, Node, Festplattengröße, U/min, Prüfsumme, Anzahl der verfügbaren Festplatten und freie Kapazität), im Tabellenformat.
+
+
+
+== Inventar
+
+* *Name*
++
+Zeigt den Namen der Festplatte an.
+
+* *Behältertyp*
++
+Zeigt den Zweck an, für den die Festplatte verwendet wird. Mögliche Werte sind Aggregate, Broken, Foreign, Label Maintenance, Maintenance, Shared, Spare, Nicht Zugewiesen, Volume, Unbekannt, Und wird nicht unterstützt.
+
+* *Partitionstyp*
++
+Zeigt den Partitionstyp des Datenträgers an.
+
+* *Knotenname*
++
+Zeigt den Namen des Node an, der das Aggregat enthält.
+
++
+Dieses Feld ist nur auf Cluster-Ebene verfügbar.
+
+* *Hausbesitzer*
++
+Zeigt den Namen des Home-Node an, dem diese Festplatte zugewiesen ist.
+
+* *Aktueller Eigentümer*
++
+Zeigt den Namen des Node an, der derzeit Eigentümer dieser Festplatte ist.
+
+* *Stammbesitzer*
++
+Zeigt den Namen des Knotens an, der derzeit die Root-Partition dieses Laufwerks besitzt.
+
+* *Datenbesitzer*
++
+Zeigt den Namen des Knotens an, der derzeit die Datenpartition dieses Laufwerks besitzt.
+
+* *Daten1 Eigentümer*
++
+Zeigt den Namen des Knotens an, der derzeit die Daten1-Partition des Laufwerks besitzt.
+
+* *Daten2-Eigentümer*
++
+Zeigt den Namen des Knotens an, der derzeit die Daten2-Partition des Laufwerks besitzt.
+
+* *Speicherpool*
++
+Zeigt den Namen des Speicherpools an, dem das Laufwerk zugeordnet ist.
+
+* *Typ*
++
+Zeigt den Festplattentyp an.
+
+* *Firmware-Version*
++
+Zeigt die Firmware-Version der Festplatte an.
+
+* *Modell*
++
+Zeigt das Modell der Festplatte an.
+
+* *U/MIN*
++
+Zeigt die effektive Geschwindigkeit des Festplattenlaufwerks an, wenn die Option aktiviert ist `raid.mix.hdd.rpm.capacity` Ist aktiviert, und zeigt die tatsächliche Geschwindigkeit des Festplattenlaufwerks an, wenn die Option aktiviert ist `raid.mix.hdd.rpm.capacity` Ist deaktiviert.
+
++
+Dieses Feld gilt nicht für SSDs.
+
+* * Effektive Größe*
++
+Zeigt den verfügbaren Speicherplatz auf der Festplatte an.
+
+* *Physikalischer Raum*
++
+Zeigt den gesamten physischen Speicherplatz des Laufwerks an.
+
+* *Regal*
++
+Zeigt das Shelf an, auf dem sich die physischen Festplatten befinden.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+* *Bucht*
++
+Zeigt den Schacht im Shelf für die physische Festplatte an.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+* *Pool*
++
+Zeigt den Namen des Pools an, dem das ausgewählte Laufwerk zugewiesen ist.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+* *Checksum*
++
+Zeigt den Typ der Prüfsumme an.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+* * Carrier-ID*
++
+Gibt Informationen zu Festplatten an, die sich im angegebenen Speicherträger mit mehreren Festplatten befinden. Die ID ist ein 64-Bit-Wert.
+
++
+Dieses Feld ist standardmäßig ausgeblendet.
+
+
+
+
+
+== Bereich „Bestandsdetails“
+
+Im Bereich unterhalb der Registerkarte Inventar werden ausführliche Informationen über die ausgewählte Festplatte angezeigt, einschließlich Informationen über das Aggregat oder Volume (falls zutreffend), Anbieter-ID, Nullstatus (in Prozent), Seriennummer der Festplatte und Fehlerdetails bei einer defekten Festplatte. Bei gemeinsam genutzten Festplatten werden im Bereich Bestandsdetails die Namen aller Aggregate angezeigt, einschließlich der Root- und nicht-Root-Aggregate.
+
+*Verwandte Informationen*
+
+xref:task_viewing_disk_information.adoc[Anzeigen von Festplatteninformationen]

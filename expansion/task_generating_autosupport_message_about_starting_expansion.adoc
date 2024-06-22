@@ -1,0 +1,33 @@
+---
+permalink: expansion/task_generating_autosupport_message_about_starting_expansion.html 
+sidebar: sidebar 
+keywords: generating, generate, autosupport, message, start, expansion, expand, cluster, troubleshoot, generate an autosupport message about starting expansion 
+summary: Unmittelbar bevor Sie ein Cluster erweitern, sollten Sie eine AutoSupport-Meldung senden, um anzugeben, dass Sie im Begriff sind, den Erweiterungsprozess zu starten. 
+---
+= Generieren Sie eine AutoSupport-Meldung über den Start der Erweiterung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unmittelbar bevor Sie ein Cluster erweitern, sollten Sie eine AutoSupport-Meldung senden, um anzugeben, dass Sie im Begriff sind, den Erweiterungsprozess zu starten. Die Nachricht informiert interne und externe Support-Mitarbeiter über die Erweiterung und dient als Zeitstempel für jegliche spätere Fehlerbehebung.
+
+.Bevor Sie beginnen
+AutoSupport muss eingerichtet sein.
+
+.Schritte
+. Senden Sie für jeden Node im Cluster eine AutoSupport Meldung mithilfe von `system node autosupport invoke` Befehl.
++
+[listing]
+----
+cluster1::> system node autosupport invoke -node * -message "cluster expansion started" -type all
+The AutoSupport was successfully invoked on node "cluster1-1". To view the status
+of the AutoSupport, use the "system node autosupport history show" command.
+Note: It may take several minutes for the AutoSupport to appear in the history list.
+The AutoSupport was successfully invoked on node "cluster1-2". To view the status
+of the AutoSupport, use the "system node autosupport history show" command.
+Note: It may take several minutes for the AutoSupport to appear in the history list.
+2 entries were acted on.
+----
+

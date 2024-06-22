@@ -1,0 +1,46 @@
+---
+permalink: iscsi-config-esxi/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html 
+sidebar: sidebar 
+keywords: configure, iscsi, exist, storage, virtual, machine, svm, protocol, enable, configure iscsi on an existing svm 
+summary: 'ISCSI kann auf einer vorhandenen Storage Virtual Machine (SVM) konfiguriert werden. Das iSCSI-Protokoll muss bereits aktiviert, aber nicht auf der SVM konfiguriert sein. Diese Information richtet sich an SVMs, für die Sie mehrere Protokolle konfigurieren, iSCSI jedoch noch nicht konfiguriert sind.' 
+---
+= Konfigurieren Sie iSCSI auf einer vorhandenen SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ISCSI kann auf einer vorhandenen Storage Virtual Machine (SVM) konfiguriert werden. Das iSCSI-Protokoll muss bereits aktiviert, aber nicht auf der SVM konfiguriert sein. Diese Information richtet sich an SVMs, für die Sie mehrere Protokolle konfigurieren, iSCSI jedoch noch nicht konfiguriert sind.
+
+.Bevor Sie beginnen
+Sie müssen über genügend Netzwerkadressen verfügen, um für jeden Node zwei LIFs zu erstellen.
+
+.Schritte
+. Navigieren Sie zum Fenster *SVMs*.
+. Wählen Sie die SVM aus, die Sie konfigurieren möchten.
+. Überprüfen Sie im Fensterbereich SVM **Details**, ob *iSCSI* mit einem grauen Hintergrund angezeigt wird. Dies bedeutet, dass das Protokoll aktiviert, aber nicht vollständig konfiguriert ist.
++
+Wenn *iSCSI* mit grünem Hintergrund angezeigt wird, ist die SVM bereits konfiguriert.
+
++
+image::../media/existing_svm_protocols_iscsi_esxi.gif[Bild zeigt die Detailseite mit allen vier Protokollen mit grauem Hintergrund.]
+
+. Klicken Sie auf den Protokolllink *iSCSI* mit dem grauen Hintergrund.
++
+Das Fenster iSCSI-Protokoll konfigurieren wird angezeigt.
+
+. Konfigurieren Sie den iSCSI-Service und die LIFs auf der Seite *iSCSI-Protokoll konfigurieren*:
++
+.. Geben Sie einen Alias-Namen für das Ziel ein.
+.. Eingabe `*2*` Im Feld *LIFs pro Node*.
++
+Für jeden Node sind zwei LIFs erforderlich, um Verfügbarkeit und Datenmobilität zu gewährleisten.
+
+.. Weisen Sie den LIFs IP-Adressen entweder mit einem Subnetz oder ohne Subnetz zu.
+.. Ignorieren Sie den optionalen Bereich *Bereitstellen einer LUN für iSCSI-Speicher*, da die LUN in einem späteren Schritt von der virtuellen Speicherkonsole für VMware vSphere bereitgestellt wird.
+.. Klicken Sie Auf *Absenden & Schließen*.
+
+
+. Überprüfen Sie die Seite *Zusammenfassung*, notieren Sie die LIF-Informationen und klicken Sie dann auf *OK*.
+

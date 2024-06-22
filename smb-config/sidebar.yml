@@ -1,0 +1,46 @@
+---
+section: smb-config
+title: SMB/CIFS-Konfiguration
+entries:
+- title: Überblick
+  url: "/smb-config/index.html"
+- title: SMB/CIFS-Konfigurations-Workflow
+  url: "/smb-config/concept_cifs_nfs_configuration_workflow.html"
+  entries:
+  - title: Erstellen Sie ein Aggregat
+    url: "/smb-config/task_creating_aggregate.html"
+  - title: Legen Sie fest, wo das neue Volume bereitgestellt werden soll
+    url: "/smb-config/task_deciding_where_to_provision_new_volume.html"
+- title: Erstellen Sie eine neue CIFS-fähige SVM
+  url: "/smb-config/task_creating_protocol_enabled_svm.html"
+  entries:
+  - title: Erstellung einer neuen SVM mit einem CIFS-Volume und einer Freigabe
+    url: "/smb-config/task_creating_new_svm.html"
+  - title: SMB-Server auf dem DNS-Server zuordnen
+    url: "/smb-config/task_mapping_smb_server_dns_server.html"
+  - title: Prüfen Sie den SMB-Client-Zugriff
+    url: "/smb-config/task_verifying_smb_client_access.html"
+  - title: Konfigurieren und Überprüfen des CIFS-Client-Zugriffs
+    url: "/smb-config/task_configuring_verifying_client_access.html"
+- title: Konfigurieren Sie SMB-/CIFS-Zugriff auf eine vorhandene SVM
+  url: "/smb-config/task_configuring_access_to_existing_svm.html"
+  entries:
+  - title: Fügen Sie eine vorhandene SVM CIFS-Zugriff hinzu
+    url: "/smb-config/concept_adding_nas_access_to_existing_svm.html"
+  - title: SMB-Server auf dem DNS-Server zuordnen
+    url: "/smb-config/task_mapping_smb_server_dns_server.html"
+  - title: Prüfen Sie den SMB-Client-Zugriff
+    url: "/smb-config/task_verifying_smb_client_access.html"
+  - title: Konfigurieren und Überprüfen des CIFS-Client-Zugriffs
+    url: "/smb-config/task_configuring_verifying_client_access.html"
+- title: Fügen Sie ein CIFS Volume zu einer CIFS-fähigen SVM hinzu
+  url: "/smb-config/concept_adding_protocol_volume_to_protocol_enabled_svm.html"
+  entries:
+  - title: Erstellung und Konfiguration eines Volume
+    url: "/smb-config/task_creating_configuring_volume.html"
+  - title: Erstellen Sie eine Freigabe und legen Sie deren Berechtigungen fest
+    url: "/smb-config/task_creating_share_setting_its_permissions.html"
+  - title: Prüfen Sie den SMB-Client-Zugriff
+    url: "/smb-config/task_verifying_smb_client_access.html"
+  - title: Konfigurieren und Überprüfen des CIFS-Client-Zugriffs
+    url: "/smb-config/task_configuring_verifying_client_access.html"

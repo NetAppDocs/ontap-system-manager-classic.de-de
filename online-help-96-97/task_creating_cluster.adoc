@@ -1,0 +1,58 @@
+---
+permalink: online-help-96-97/task_creating_cluster.html 
+sidebar: sidebar 
+keywords: data, center, create, cluster, online, help, system, manager 
+summary: Mit ONTAP System Manager kann ein Cluster in Ihrem Datacenter erstellt und eingerichtet werden. 
+---
+= Erstellen Sie ein Cluster mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und älter) können Sie ein Cluster in Ihrem Datacenter erstellen und einrichten.
+
+.Über diese Aufgabe
+Wenn der Cluster ONTAP 9.1 oder höher unterstützt, können Sie nur die Storage-Systeme mit ONTAP 9.1 oder höher hinzufügen.
+
+.Schritte
+. Öffnen Sie den Webbrowser, und geben Sie anschließend die IP-Adresse für die Knotenverwaltung ein, die Sie konfiguriert haben: `+https://node-management-IP+`
++
+** Wenn Sie die Anmeldedaten für das Cluster eingerichtet haben, wird die Anmeldeseite angezeigt.
++
+Sie müssen die Anmeldeinformationen eingeben, um sich anzumelden.
+
+** Wenn Sie die Anmeldedaten für das Cluster nicht eingerichtet haben, wird das Fenster Guided Setup angezeigt.
++
+Klicken Sie auf das Symbol * Guided Setup*, um einen Cluster einzurichten.
+
+
+
+. Geben Sie auf der Seite *Cluster* einen Namen für den Cluster ein.
++
+[NOTE]
+====
+Wenn nicht alle Knoten erkannt werden, klicken Sie auf *Aktualisieren*.
+
+====
++
+Die Nodes im Cluster-Netzwerk werden im Feld Nodes angezeigt.
+
+. *Optional:* auf Wunsch aktualisieren Sie die Knotennamen im Feld *Nodes*.
+. Geben Sie das Passwort für das Cluster ein.
+. *Optional:* Geben Sie die Lizenzschlüssel für die Funktion ein.
+. Klicken Sie Auf *Absenden*.
+
+
+
+
+== Nächste Schritte
+
+Geben Sie auf der Seite Netzwerk die Netzwerkdetails ein, um mit dem Cluster-Setup fortzufahren.
+
+*Verwandte Informationen*
+
+xref:reference_licenses_window.adoc[Das Fenster „Lizenzen“]
+
+xref:reference_configuration_updates_window.adoc[Fenster „Konfigurationsaktualisierungen“]

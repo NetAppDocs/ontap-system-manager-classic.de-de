@@ -1,0 +1,51 @@
+---
+permalink: volume-disaster-prep/task_monitoring_status_snapmirror_data_transfers.html 
+sidebar: sidebar 
+keywords: periodical, monitor, status, snapmirror, relationship, ensure, data, schedule, monitor the status of snapmirror data transfers 
+summary: Sie sollten den Status der SnapMirror Beziehungen in regelmäßigen Abständen überwachen, um zu gewährleisten, dass die SnapMirror Datentransfers wie im angegebenen Zeitplan stattfinden. 
+---
+= Überwachen Sie den Status von SnapMirror Datentransfers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie sollten den Status der SnapMirror Beziehungen in regelmäßigen Abständen überwachen, um zu gewährleisten, dass die SnapMirror Datentransfers wie im angegebenen Zeitplan stattfinden.
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *Ziel* ausführen.
+
+.Schritte
+. Führen Sie je nach der verwendeten System Manager-Version einen der folgenden Schritte aus:
++
+** ONTAP 9.4 oder früher: Klicken Sie *Schutz* > *Beziehungen*.
+** Ab ONTAP 9.5: Klicken Sie *Schutz* > *Volume Relationships*.
+
+
+. Wählen Sie die SnapMirror Beziehung zwischen dem Quell- und den Ziel-Volumes aus, und überprüfen Sie dann den Status auf der Registerkarte *Details* Bottom.
++
+Die Registerkarte Details zeigt den Integritätsstatus der SnapMirror Beziehung sowie die Übertragungsfehler und die Verzögerungszeit an.
+
++
+** Das Feld ist in Zustand muss angezeigt werden `Yes`.
++
+Für die meisten SnapMirror Datentransferfehler wird das Feld angezeigt `No`. In einigen Fehlerfällen wird das Feld jedoch weiterhin angezeigt `Yes`. Sie müssen die Übertragungsfehler im Abschnitt Details überprüfen, um sicherzustellen, dass keine Datenübertragung fehlgeschlagen ist.
+
+** Das Feld „Beziehungsstatus“ muss angezeigt werden `Snapmirrored`.
+** Die Verzögerung darf nicht länger als das Transferzeitintervall sein.
++
+Wenn der Transfer-Zeitplan beispielsweise stündlich ist, darf die Verzögerungszeit nicht mehr als eine Stunde sein.
+
++
+Sie sollten alle Probleme in den SnapMirror Beziehungen beheben.
+
++
+http://www.netapp.com/us/media/tr-4015.pdf["Technischer Bericht 4015: SnapMirror Configuration and Best Practices for ONTAP 9.1, 9.2"^]
+
++
+image::../media/snapmirror_monitor_3_health_state_lag.gif[snapmirror überwacht 3-Zustandsverzögerungen]
+
+
+
+

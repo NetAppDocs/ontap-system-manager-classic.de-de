@@ -1,0 +1,52 @@
+---
+permalink: volume-disaster-recovery/task_verifying_destination_volume_status.html 
+sidebar: sidebar 
+keywords: break, snapmirror, relationship, verify, destination, volume, access, source, verify the destination volume status 
+summary: Nach dem Brechen der SnapMirror Beziehung müssen Sie sicherstellen, dass das Ziel-Volume über Lese-/Schreibzugriff verfügt und dass die Ziel-Volume-Einstellungen den Einstellungen des Quell-Volume entsprechen. 
+---
+= Überprüfen Sie den Status des Ziel-Volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach dem Brechen der SnapMirror Beziehung müssen Sie sicherstellen, dass das Ziel-Volume über Lese-/Schreibzugriff verfügt und dass die Ziel-Volume-Einstellungen den Einstellungen des Quell-Volume entsprechen.
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *Ziel* ausführen.
+
+.Schritte
+. Navigieren Sie zum Fenster *Volumes*.
+. Wählen Sie das Zielvolume aus der Liste *Volumes* aus, und überprüfen Sie dann, ob der Zielvolumentyp lautet `rw`, Die Lese-/Schreibzugriff anzeigt.
+. Vergewissern Sie sich, dass die Volume-Einstellungen wie Thin Provisioning, Deduplizierung, Komprimierung und Autogrow auf dem Ziel-Volume den Einstellungen des Quell-Volume entsprechen.
++
+Sie können die Informationen zu den Volume-Einstellungen verwenden, die Sie nach dem Erstellen der SnapMirror Beziehung angegeben haben, um die Einstellungen für das Ziel-Volume zu überprüfen.
+
+. Wenn die Volume-Einstellungen nicht übereinstimmen, ändern Sie die Einstellungen auf dem Ziel-Volume nach Bedarf:
++
+.. Klicken Sie Auf *Bearbeiten*.
+.. Sie können die allgemeinen Einstellungen, die Storage-Effizienz-Einstellungen und die erweiterten Einstellungen für Ihre Umgebung nach Bedarf ändern.
+.. Klicken Sie auf *Speichern und Schließen*.
++
+image::../media/volume_edit_dest_vol_unix.gif[Screenshot des Dialogfelds „Volume bearbeiten“.]
+
+.. Stellen Sie sicher, dass die Spalten in der *Volumes*-Liste mit den entsprechenden Werten aktualisiert werden.
+
+
+. Aktivieren Sie die Erstellung von Snapshot Kopien für das Ziel-Volume.
++
+.. Navigieren Sie je nach ONTAP-Version zur Seite *Configure Volume Snapshot Copies* auf eine der folgenden Arten:
++
+Ab ONTAP 9.3: Wählen Sie das Zielvolume aus und klicken Sie dann auf *Aktionen* > *Snapshots verwalten* > *Konfigurieren*.
+
++
+ONTAP 9.2 oder früher: Wählen Sie das Ziel-Volume, und klicken Sie dann *Snapshot Kopien* > *Konfigurieren*.
+
+.. Aktivieren Sie das Kontrollkästchen *geplante Snapshot-Kopien aktivieren* und klicken Sie dann auf *OK*.
+
+
++
+image::../media/configure_snapshot_policy.gif[Konfigurieren von Volume Snapshot Kopien]
+
+

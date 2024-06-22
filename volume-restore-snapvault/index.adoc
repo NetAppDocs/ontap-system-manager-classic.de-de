@@ -1,0 +1,44 @@
+---
+permalink: volume-restore-snapvault/index.html 
+sidebar: sidebar 
+keywords: content, restore, volume, snapvault, vault, backup, ontap, data, loss, volume restore using snapvault overview 
+summary: Sie können bei einem Datenverlust ein Volume aus einem SnapVault Backup in ONTAP schnell wiederherstellen. 
+---
+= Volume-Wiederherstellung mithilfe von SnapVault – Übersicht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können bei einem Datenverlust ein Volume aus einem SnapVault Backup in ONTAP schnell wiederherstellen.
+
+Gehen Sie folgendermaßen vor, wenn Sie die Daten aus der Sicherungskopie wiederherstellen möchten:
+
+* Sie arbeiten mit Clustern, auf denen ONTAP 9 ausgeführt wird.
+* Sie sind ein Cluster-Administrator.
+* Sie haben die Vault-Beziehung gemäß dem in beschriebenen Verfahren konfiguriert xref:../volume-backup-snapvault/index.html[Volume Backup mit SnapVault]
+* Sie möchten keine einzelne Datei oder kein LUN-Restore durchführen.
+* Sie möchten Best Practices verwenden und nicht alle verfügbaren Optionen erkunden.
+* Sie wollen nicht viel konzeptuellen Hintergrund lesen.
+* Sie möchten die klassische Benutzeroberfläche des System Manager für ONTAP 9.7 und ältere Versionen verwenden, nicht die ONTAP System Manager Benutzeroberfläche für ONTAP 9.7 und höher.
+
+
+Wenn diese Annahmen nicht für Ihre Situation geeignet sind oder wenn Sie mehr konzeptionelle Hintergrundinformationen wünschen, sollten Sie die folgende Ressource finden:
+
+link:http://www.netapp.com/us/media/tr-4183.pdf["Technischer Bericht 4183 zu SnapVault Best Practices"^]
+
+
+
+== Weitere Möglichkeiten dies in ONTAP zu tun
+
+[cols="2"]
+|===
+| So führen Sie diese Aufgaben durch: | Inhalt anzeigen... 
+
+
+| Der neu gestaltete System Manager (verfügbar ab ONTAP 9.7) | link:https://docs.netapp.com/us-en/ontap/task_dp_restore_from_vault.html["Wiederherstellung eines Volume aus einer früheren Snapshot Kopie"^] 
+
+
+| Die ONTAP Befehlszeilenschnittstelle | link:https://docs.netapp.com/us-en/ontap/data-protection/restore-volume-snapvault-backup-task.html["Stellen Sie den Inhalt eines Volumes von einem SnapMirror-Ziel wieder her"^] 
+|===

@@ -1,0 +1,58 @@
+---
+permalink: online-help-96-97/task_adding_preferred_domain_controllers.html 
+sidebar: sidebar 
+keywords: system, manager, add, preferred, domain, controller, online, help, dns, edit, modify, delete 
+summary: System Manager erkennt Domänencontroller automatisch über DNS. Optional können Sie einen oder mehrere Domänencontroller zur Liste der bevorzugten Domänencontroller für eine bestimmte Domäne hinzufügen. 
+---
+= Managen Sie bevorzugte Domain Controller mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) zum Verwalten bevorzugter Domain Controller verwenden.
+
+
+
+== Fügen Sie bevorzugte Domain Controller hinzu
+
+System Manager erkennt Domänencontroller automatisch über DNS. Optional können Sie einen oder mehrere Domänencontroller zur Liste der bevorzugten Domänencontroller für eine bestimmte Domäne hinzufügen.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Klicken Sie auf der Registerkarte *Domäne* im Bereich *bevorzugte Domänen-Controller* auf *Hinzufügen*.
+. Geben Sie den vollständig qualifizierten Domänennamen (FQDN) und die IP-Adressen der Domänen-Controller ein, die Sie hinzufügen möchten.
++
+Sie können mehrere Domänencontroller hinzufügen, indem Sie die IP-Adressen der Domänencontroller eingeben, getrennt durch Kommas.
+
+. Klicken Sie Auf *Speichern*.
+. Überprüfen Sie, ob der hinzugefügte Domänencontroller in der Liste der bevorzugten Domänencontroller angezeigt wird.
+
+
+
+
+== Bevorzugte Domänen-Controller bearbeiten
+
+Mit System Manager können Sie die IP-Adresse der bevorzugten Domänen-Controller ändern, die für eine bestimmte Domäne konfiguriert sind.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Doppelklicken Sie im Bereich *bevorzugte Domänen-Controller* auf der Registerkarte *Domäne* auf den Domänencontroller, den Sie bearbeiten möchten.
+. Ändern Sie die IP-Adressen des Domänencontrollers und klicken Sie dann auf *Speichern*.
+
+
+
+
+== Bevorzugte Domänen-Controller löschen
+
+Mit System Manager können Sie einen bevorzugten Domänencontroller löschen, dem das SVM-Computerkonto (Storage Virtual Machine) zugeordnet ist. Sie können dies tun, wenn Sie keinen bestimmten Domänencontroller mehr verwenden möchten.
+
+.Schritte
+. Klicken Sie auf *Storage* > *SVMs*.
+. Wählen Sie die SVM aus, und klicken Sie dann auf *SVM Settings*.
+. Wählen Sie auf der Registerkarte *Domäne* die Domäne aus, die Sie aus dem Bereich *bevorzugte Domänen-Controller* löschen möchten, und klicken Sie dann auf *Löschen*.
+. Aktivieren Sie das Bestätigungsfeld, und klicken Sie dann auf *Löschen*.
+

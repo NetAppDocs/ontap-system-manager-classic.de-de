@@ -1,0 +1,27 @@
+---
+permalink: iscsi-config-esxi/task_adding_storage_cluster_to_virtual_storage_cluster.html 
+sidebar: sidebar 
+keywords: provision, datastore, esxi, host, datacenter, cluster, storage, virtual, machine, svm, console, vmware, vsphere, provision, add, add the storage cluster or svm to vsc for vmware vsphere 
+summary: 'Bevor Sie den ersten Datastore für einen ESXi Host in Ihrem Datacenter bereitstellen können, müssen Sie den Cluster oder eine spezifische Storage Virtual Machine (SVM) zur Virtual Storage Console für VMware vSphere hinzufügen. Durch Hinzufügen des Clusters können Sie Storage auf einer beliebigen SVM im Cluster bereitstellen.' 
+---
+= Fügen Sie das Storage-Cluster oder SVM zu VSC für VMware vSphere hinzu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie den ersten Datastore für einen ESXi Host in Ihrem Datacenter bereitstellen können, müssen Sie den Cluster oder eine spezifische Storage Virtual Machine (SVM) zur Virtual Storage Console für VMware vSphere hinzufügen. Durch Hinzufügen des Clusters können Sie Storage auf einer beliebigen SVM im Cluster bereitstellen.
+
+.Bevor Sie beginnen
+Sie müssen über Administratoranmeldedaten für das Storage-Cluster oder die hinzugefügte SVM verfügen.
+
+.Über diese Aufgabe
+Je nach Konfiguration wurde dieses Cluster möglicherweise automatisch erkannt oder wurde bereits hinzugefügt.
+
+.Schritte
+. Melden Sie sich beim vSphere Web Client an.
+. Wählen Sie *Virtual Storage Console*.
+. Wählen Sie *Speichersysteme* und klicken Sie dann auf das Symbol *Hinzufügen*.
+. Geben Sie im Dialogfeld *Storage-System hinzufügen* den Hostnamen und die Administratoranmeldeinformationen für den Storage-Cluster oder die SVM ein, und klicken Sie dann auf *OK*.
+

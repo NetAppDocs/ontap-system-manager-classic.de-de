@@ -1,0 +1,103 @@
+---
+permalink: nfs-config-esxi/task_creating_new_nfs_enabled_svm.html 
+sidebar: sidebar 
+keywords: set, up, creating, create, enable, enabling, nfs, esxi, create a new nfs-enabled SVM 
+summary: Die Einrichtung einer neuen SVM umfasst die Erstellung der neuen SVM und die Aktivierung von NFS. Sie können dann den NFS-Zugriff auf dem ESXi Host konfigurieren und überprüfen, ob NFS über die Virtual Storage Console für ESXi aktiviert ist. 
+---
+= Erstellen Sie eine neue NFS-fähige SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Einrichtung einer neuen SVM umfasst die Erstellung der neuen SVM und die Aktivierung von NFS. Sie können dann den NFS-Zugriff auf dem ESXi Host konfigurieren und überprüfen, ob NFS über die Virtual Storage Console für ESXi aktiviert ist.
+
+.Bevor Sie beginnen
+* Ihr Netzwerk muss konfiguriert und die entsprechenden physischen Ports mit dem Netzwerk verbunden sein.
+* Sie müssen wissen, welche der folgenden Netzwerkkomponenten von verwendet werden wird:
++
+** Der Node und der spezifische Port auf diesem Node, auf dem die logische Datenschnittstelle (LIF) erstellt wird
+** Das Subnetz, aus dem die IP-Adresse der Daten-LIF bereitgestellt wird, oder optional die spezifische IP-Adresse, die Sie der Daten-LIF zuweisen möchten
+
+
+* Alle externen Firewalls müssen entsprechend konfiguriert sein, um den Zugriff auf Netzwerkdienste zu ermöglichen.
+
+
+.Über diese Aufgabe
+Sie können einen Assistenten verwenden, der Sie durch die Erstellung der SVM, die Konfiguration von DNS, die Erstellung einer Daten-LIF und die Aktivierung von NFS führt.
+
+.Schritte
+. Navigieren Sie zum Fenster *SVMs*.
+. Klicken Sie Auf *Erstellen*.
+. Erstellen Sie im Fenster *Storage Virtual Machine (SVM) Setup* die SVM:
++
+.. Geben Sie einen eindeutigen Namen für die SVM an.
++
+Der Name muss entweder ein vollständig qualifizierter Domänenname (FQDN) sein oder einer anderen Konvention folgen, die eindeutige Namen in einem Cluster sicherstellt.
+
+.. Wählen Sie *NFS* für das Datenprotokoll aus.
++
+Wenn Sie zusätzliche Protokolle für dieselbe SVM verwenden möchten, sollten Sie sie auch dann auswählen, wenn Sie sie nicht sofort konfigurieren möchten.
+
+.. Behalten Sie die Standardeinstellung C.UTF-8 bei.
++
+Diese Sprache wird von dem Volume übernommen, das Sie später erstellen, und die Sprache eines Volumes kann nicht geändert werden.
+
+.. *Optional*: Wenn Sie das CIFS-Protokoll aktiviert haben, ändern Sie den Sicherheitsstil in *UNIX*.
++
+Wenn Sie das CIFS-Protokoll auswählen, wird der Sicherheitsstil standardmäßig auf NTFS festgelegt.
+
+.. *Optional*: Wählen Sie das Root-Aggregat, um das Root-Volumen zu enthalten.
++
+Das Aggregat, das Sie für das Root-Volume auswählen, bestimmt nicht den Speicherort des Daten-Volumes.
+
++
+image::../media/svm_setup_details_unix_selected_nfs_esxi.gif[SVM-Einrichtung]
+
+.. *Optional*: Stellen Sie im Bereich *DNS Configuration* sicher, dass die Standard-DNS-Suchdomäne und Namensserver die sind, die Sie für diese SVM verwenden möchten.
++
+image::../media/svm_setup_details_dns_nfs_esxi.gif[Diese Grafik wird durch den umgebenden Text erläutert.]
+
+.. Klicken Sie Auf *Absenden & Fortfahren*.
+
+
++
+Das wird erstellt, die Protokolle werden jedoch noch nicht konfiguriert.
+
+. Geben Sie im Abschnitt *Data LIF Configuration* der Seite *Configure CIFS/NFS Protocol* die Details der ersten Daten-LIF des ersten Datastore an.
++
+.. Weisen Sie der LIF automatisch aus einem Subnetz zu, das Sie angeben oder manuell eingeben.
+.. Klicken Sie auf *Durchsuchen* und wählen Sie einen Knoten und Port aus, der der logischen Schnittstelle zugeordnet werden soll.
++
+image::../media/svm_setup_cifs_nfs_page_lif_multi_nas_nfs_esxi.gif[Diese Grafik wird durch den umgebenden Text beschrieben.]
+
+
+
++
+Geben Sie zur Bereitstellung eines Volumes keine Informationen ein. Sie können Datastores später mit bereitstellen
+
+. Klicken Sie Auf *Absenden & Fortfahren*.
++
+Folgende Objekte werden erstellt:
+
++
+** Eine Daten-LIF namens nach dem mit dem Suffix „`_nfs_lif1`“
+** Einen NFS-Server
+
+
+. Klicken Sie bei allen anderen angezeigten Protokollkonfigurationsseiten auf *Skip* und konfigurieren Sie das Protokoll später.
+. Wenn die Seite *SVM Administration* angezeigt wird, konfigurieren oder verschieben Sie die Konfiguration eines separaten Administrators für diese SVM:
++
+** Klicken Sie auf *Überspringen*, und konfigurieren Sie einen Administrator später, falls erforderlich.
+** Geben Sie die gewünschten Informationen ein und klicken Sie dann auf *Absenden & Fortfahren*.
+
+
+. Überprüfen Sie die Seite *Zusammenfassung*, notieren Sie alle Informationen, die Sie später benötigen, und klicken Sie dann auf *OK*.
++
+NFS Clients müssen die IP-Adresse der Daten-LIF kennen.
+
+
+
+.Ergebnisse
+Es wird eine neue SVM mit aktiviertem NFS erstellt.

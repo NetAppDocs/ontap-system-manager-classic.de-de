@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_configuring_system_manager_options.html 
+sidebar: sidebar 
+keywords: system, manager, configure, system, manager, option, online, help 
+summary: Sie können die Protokollierung aktivieren und den Wert für das Inaktivität-Timeout für System Manager festlegen. 
+---
+= Konfigurieren Sie System Manager Optionen - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Protokollierung aktivieren und den Wert für das Inaktivitätszeitlimit für ONTAP System Manager Classic (verfügbar in ONTAP 9.7 oder früher) angeben.
+
+.Über diese Aufgabe
+Sie können die Optionen im System Manager-Anmeldefenster konfigurieren. Sie müssen sich jedoch bei der Anwendung anmelden, um den Wert für die Inaktivität anzugeben.
+
+.Schritte
+. Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Klicken Sie im Fensterbereich *Setup* auf *Allgemein*.
+. Geben Sie eine Protokollebene an.
+. Geben Sie den Wert für die Inaktivität in Minuten an.
++
+[NOTE]
+====
+Diese Option ist nicht verfügbar, wenn Sie die SAML-Authentifizierung (Security Assertion Markup Language) aktiviert haben.
+
+====
+. Klicken Sie auf *OK*.
+

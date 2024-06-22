@@ -1,0 +1,57 @@
+---
+permalink: online-help-96-97/task_creating_portsets.html 
+sidebar: sidebar 
+keywords: system, manager, port, set, create, online, help, lun, delete, edit, manage 
+summary: Sie können ONTAP System Manager classic verwenden, um Portsätze zu erstellen, zu löschen und zu bearbeiten. 
+---
+= Managen Sie Portsätze mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager classic (verfügbar in ONTAP 9.7 und früher) verwenden, um Portsätze zu erstellen, zu löschen und zu bearbeiten.
+
+
+
+== Erstellen von Portsätzen
+
+Sie können ONTAP System Manager Classic verwenden, um Portsätze zu erstellen, um den Zugriff auf Ihre LUNs zu beschränken.
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Klicken Sie auf der Registerkarte *Portsets* auf *Erstellen*.
+. Wählen Sie im Dialogfeld *Portset erstellen* den Protokolltyp aus.
+. Wählen Sie die Netzwerkschnittstelle aus, die Sie dem Portset zuordnen möchten.
+. Klicken Sie Auf *Erstellen*.
+
+
+
+
+== Portsätze löschen
+
+Sie können einen Portsatz mit System Manager löschen, wenn dieser nicht mehr benötigt wird.
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Wählen Sie auf der Registerkarte *Portsets* ein oder mehrere Portsätze aus und klicken Sie auf *Löschen*.
+. Bestätigen Sie den Löschvorgang, indem Sie auf *Löschen* klicken.
+
+
+
+
+== Portsätze bearbeiten
+
+Über die Registerkarte Portsätze in System Manager können Sie die Einstellungen für Portsätze bearbeiten.
+
+.Schritte
+. Klicken Sie auf *Storage* > *LUNs*.
+. Wählen Sie auf der Registerkarte *Portsets* den zu bearbeitenden Portsatz aus und klicken Sie auf *Bearbeiten*.
+. Nehmen Sie im Dialogfeld *Portset bearbeiten* die erforderlichen Änderungen vor.
+. Klicken Sie auf *Speichern und Schließen*.
+
+
+*Verwandte Informationen*
+
+xref:task_configuring_iscsi_protocol_on_svms.adoc[Konfigurieren des iSCSI-Protokolls auf SVMs]

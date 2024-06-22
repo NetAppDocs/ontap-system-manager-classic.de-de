@@ -1,0 +1,94 @@
+---
+permalink: online-help-96-97/task_creating_mirror_vault_relationship_from_source_svm.html 
+sidebar: sidebar 
+keywords: create, mirror, vault, relationship, source, svm, online, help, system, manager 
+summary: 'Mit System Manager kann eine Mirror- und Vault-Beziehung von der Quell-Storage Virtual Machine (SVM) erstellt werden. Durch die Erstellung dieser Beziehung schützen Sie Ihre Daten besser, indem Sie in regelmäßigen Abständen Daten vom Quell-Volume auf das Ziel-Volume übertragen. Dieses Verhältnis ermöglicht es Ihnen auch, Daten für lange Zeiträume aufzubewahren, indem Backups des Quell-Volume erstellt werden.' 
+---
+= Erstellen einer Spiegelungs- und Vault-Beziehung von einer Quell-SVM mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) verwenden, um eine Mirror- und Vault-Beziehung zwischen der Storage Virtual Machine (SVM) des Quell-Storage zu erstellen. Durch die Erstellung dieser Beziehung schützen Sie Ihre Daten besser, indem Sie in regelmäßigen Abständen Daten vom Quell-Volume auf das Ziel-Volume übertragen. Dieses Verhältnis ermöglicht es Ihnen auch, Daten für lange Zeiträume aufzubewahren, indem Backups des Quell-Volume erstellt werden.
+
+.Bevor Sie beginnen
+* Auf dem Quellcluster muss ONTAP 8.3.2 oder höher ausgeführt werden.
+* Die SnapMirror Lizenz muss auf dem Quell-Cluster und dem Ziel-Cluster aktiviert sein.
++
+[NOTE]
+====
+** Bei einigen Plattformen ist es nicht erforderlich, dass die SnapMirror Lizenz für das Quell-Cluster aktiviert ist, wenn auf dem Ziel-Cluster die SnapMirror Lizenz und die Data Protection Optimization \(DPO\)-Lizenz aktiviert sind.
+** Nachdem die DPO-Lizenz auf dem Ziel-Cluster aktiviert ist, müssen Sie den Browser des Quell-Clusters aktualisieren, um die zu aktivieren `Protect` Option.
+
+
+====
+* Das Quell-Cluster und das Ziel-Cluster müssen sich in einer gesunden Peer-Beziehung befinden.
+* Die Quell-SVM und die Ziel-SVM müssen sich in einer ordnungsgemäßen Peer-Beziehung befinden. Anderenfalls muss die Ziel-SVM eine Genehmigung für einen Peer besitzen.
+* Das Zielaggregat muss über Platz verfügen.
+* Das Quellaggregat und das Zielaggregat müssen 64-Bit-Aggregate sein.
+* FlexVol Volumes müssen sich online und vom Typ Lese-/Schreibzugriff enthalten.
+* Der SnapLock-Aggregattyp muss identisch sein.
+* In einer Auswahl können maximal 25 Volumes geschützt werden.
+* Wenn Sie eine Verbindung von einem Cluster herstellen, auf dem ONTAP 9.2 oder früher ausgeführt wird, zu einem Remote-Cluster herstellen, auf dem die SAML-Authentifizierung (Security Assertion Markup Language) aktiviert ist, muss die passwortbasierte Authentifizierung auf dem Remote-Cluster aktiviert sein.
+
+
+.Über diese Aufgabe
+* System Manager unterstützt keine Kaskadenbeziehung.
++
+Beispielsweise kann ein Ziel-Volume in einer Beziehung nicht das Quell-Volume in einer anderen Beziehung sein.
+
+* Wenn die Verschlüsselung auf dem Quell-Volume aktiviert ist und auf dem Ziel-Cluster eine ältere Version der ONTAP Software als ONTAP 9.3 ausgeführt wird, wird die Verschlüsselung auf dem Ziel-Volume standardmäßig deaktiviert.
+* SVMs, die nur für FlexCache-Applikationen Peering durchgeführt werden und keine PermissionenfürSnapMirror-Applikationen vorhanden sind, werden in der Liste der SVMs dieser Aufgabe nicht aufgeführt. Sie können den erweiterten Peering-Workflow von ONTAP System Manager 9.6 verwenden, um diese SVMs zu bewilligung oder Peer-to-en zu erhalten. Sie können diese dann in dieser Aufgabe auswählen, um eine Schutzbeziehung zu erstellen.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Wählen Sie im Dropdown-Menü im Feld *SVM* die Option *Alle SVMs* aus.
+. Wählen Sie die Volumes aus, für die Sie Mirror- und Vault-Beziehungen erstellen möchten, und klicken Sie dann auf *More Actions* > *Protect*.
++
+Die Option *protect* ist nur für Lese-/Schreibvolumen verfügbar.
+
+. Wählen Sie den Typ *Replikation* aus:
++
+|===
+| Wenn Sie den Replikationstyp ausgewählt haben als... | Tun Sie das... 
+
+
+ a| 
+Asynchron
+ a| 
+.. *Optional:* Wenn Sie den Replikationstyp und den Beziehungstyp nicht kennen, klicken Sie auf *Hilfe Auswählen*, legen Sie die Werte fest und klicken Sie dann auf *Anwenden*.
+.. Wählen Sie den Beziehungstyp aus.
++
+Der Beziehungstyp kann gespiegelt, Vault, auch gespiegelt und Vault sein.
+
+.. Wählen Sie ein Cluster und eine SVM aus.
++
+Wenn auf dem ausgewählten Cluster eine Version der ONTAP Software vor ONTAP 9.3 ausgeführt wird, werden nur Peering SVMs aufgelistet. Wenn auf dem ausgewählten Cluster ONTAP 9.3 oder höher ausgeführt wird, werden die Peering SVMs und zulässige SVMs aufgelistet.
+
+.. Ändern Sie das Suffix des Volume-Namens, falls erforderlich.
+
+
+
+
+ a| 
+Synchron
+ a| 
+.. *Optional:* Wenn Sie den Replikationstyp und den Beziehungstyp nicht kennen, klicken Sie auf *Hilfe Auswählen*, legen Sie die Werte fest und klicken Sie dann auf *Anwenden*.
+.. Wählen Sie die Synchronisierungsrichtlinie aus.
++
+Die Synchronisierungsrichtlinie kann StrictSync oder Sync lauten.
+
+.. Wählen Sie ein Cluster und eine SVM aus.
++
+Wenn auf dem ausgewählten Cluster eine Version der ONTAP Software vor ONTAP 9.3 ausgeführt wird, werden nur Peering SVMs aufgelistet. Wenn auf dem ausgewählten Cluster ONTAP 9.3 oder höher ausgeführt wird, werden die Peering SVMs und zulässige SVMs aufgelistet.
+
+.. Ändern Sie das Suffix des Volume-Namens, falls erforderlich.
+
+
+|===
+. *Optional:* Klicken Sie Auf *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*, aktualisieren Sie die Schutzpolitik und den Schutzzeitplan, wählen Sie *FabricPool-fähiges Aggregat* aus, und initialisieren Sie dann die Schutzbeziehung.
+. Klicken Sie Auf *Speichern*.
+

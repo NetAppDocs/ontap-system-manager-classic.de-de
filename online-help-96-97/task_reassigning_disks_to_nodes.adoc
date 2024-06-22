@@ -1,0 +1,56 @@
+---
+permalink: online-help-96-97/task_reassigning_disks_to_nodes.html 
+sidebar: sidebar 
+keywords: system, manager, reassign, disks, node, online, help, node, aggregate, storage, pool 
+summary: Mit System Manager können Sie die Eigentumsrechte an freien Festplatten von einem Node an einen anderen Node neu zuweisen, um die Kapazität eines Aggregats oder eines Storage Pools zu erhöhen. 
+---
+= Neuzuweisung von Festplatten an Nodes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit ONTAP System Manager Classic (verfügbar ab ONTAP 9.7) können Sie die Eigentumsrechte an freien Festplatten von einem Node zu einem anderen Node neu zuweisen, um die Kapazität eines Aggregats oder eines Storage-Pools zu erhöhen.
+
+.Über diese Aufgabe
+* Sie können Festplatten neu zuweisen, wenn die folgenden Bedingungen erfüllt sind:
++
+** Der Behältertyp der ausgewählten Festplatten muss „`sPare`“ oder „`shared`“ lauten.
+** Die Festplatten müssen mit den Nodes in einer HA-Konfiguration verbunden sein.
+** Die Festplatten müssen für den Knoten sichtbar sein.
+
+
+* Sie können eine Festplatte nicht neu zuweisen, wenn die folgenden Bedingungen erfüllt sind:
++
+** Der Container-Typ der ausgewählten Festplatte ist "`shared`", und die Datenpartition ist nicht frei.
+** Der Datenträger ist einem Speicherpool zugeordnet.
+
+
+* Sie können die Datenpartition von freigegebenen Festplatten nicht neu zuweisen, wenn das Storage Failover auf den Knoten, die mit den freigegebenen Laufwerken verbunden sind, nicht aktiviert ist.
+* Bei Partitionsfestplatten können Sie nur die Datenpartition der Festplatten neu zuweisen.
+* Bei Konfigurationen mit MetroCluster können Festplatten nicht mit System Manager neu zugewiesen werden.
++
+Sie müssen die Befehlszeilenschnittstelle verwenden, um Festplatten für MetroCluster-Konfigurationen neu zuzuweisen.
+
+
+
+[NOTE]
+====
+In späteren ONTAP Versionen können Sie die ONTAP CLI verwenden, um die Festplatteneigentümer zu entfernen und einen neuen Eigentümer zuzuweisen.
+
+====
+.Schritte
+. Klicken Sie Auf *Storage* > *Aggregate & Disks* > *Disks*.
+. Wählen Sie im Fenster *Disks* die Registerkarte *Inventar* aus.
+. Wählen Sie die Festplatten aus, die Sie neu zuweisen möchten, und klicken Sie dann auf *Zuweisen*.
+. Klicken Sie im Dialogfeld *Warnung* auf *Weiter*.
+. Wählen Sie im Dialogfeld *Festplatten zuweisen* den Knoten aus, dem Sie die Festplatten neu zuweisen möchten.
+. Klicken Sie Auf *Zuweisen*.
+
+
+.Verwandte Informationen
+* link:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["Festplatteneigentümer über die ONTAP CLI entfernen (ONTAP 9.3 und höher)"]
+* link:https://docs.netapp.com/us-en/ontap/disks-aggregates/disk-autoassignment-policy-concept.html["Automatische Zuweisung von Festplatten über die ONTAP CLI (ONTAP 9.3 und höher)"]
+* link:https://docs.netapp.com/us-en/ontap/disks-aggregates/manual-assign-disks-ownership-manage-task.html["Manuelles Zuweisen von Festplatten über die ONTAP CLI (ONTAP 9.3 und höher)"]
+

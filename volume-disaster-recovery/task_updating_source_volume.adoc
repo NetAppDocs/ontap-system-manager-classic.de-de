@@ -1,0 +1,39 @@
+---
+permalink: volume-disaster-recovery/task_updating_source_volume.html 
+sidebar: sidebar 
+keywords: resynchronize, resynchronizing, source, volume, update, activate, update the source volume 
+summary: Nach der erneuten Synchronisierung des Quell-Volumes möchten Sie möglicherweise sicherstellen, dass alle neuesten Änderungen auf dem Quell-Volume aktualisiert werden, bevor Sie das Quell-Volume aktivieren. 
+---
+= Aktualisieren Sie das Quell-Volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach der erneuten Synchronisierung des Quell-Volumes möchten Sie möglicherweise sicherstellen, dass alle neuesten Änderungen auf dem Quell-Volume aktualisiert werden, bevor Sie das Quell-Volume aktivieren.
+
+.Über diese Aufgabe
+Sie müssen diese Aufgabe aus dem Cluster *source* ausführen.
+
+.Schritte
+. Führen Sie je nach der verwendeten System Manager-Version einen der folgenden Schritte aus:
++
+** ONTAP 9.4 oder früher: Klicken Sie *Schutz* > *Beziehungen*.
+** Ab ONTAP 9.5: Klicken Sie *Schutz* > *Volume Relationships*.
+
+
+. Wählen Sie die SnapMirror Beziehung zwischen den Quell- und den Ziel-Volumes aus und klicken Sie dann auf *Operationen* > *Update*.
+. Inkrementellen Transfer von der zuletzt verwendeten Snapshot Kopie zwischen den Quell- und Ziel-Volumes durchführen.
++
+** Ab ONTAP 9.3: Wählen Sie die Option *gemäß Richtlinie* aus.
+** ONTAP 9.2 oder früher: Wählen Sie die Option *On Demand*.
+
+
+. *Optional:* Wählen Sie *Limit Transfer bandwidth to* aus, um die für Transfers verwendete Netzwerkbandbreite zu begrenzen und dann die maximale Übertragungsgeschwindigkeit anzugeben.
+. Klicken Sie Auf *Aktualisieren*.
+. Vergewissern Sie sich, dass der Übertragungsstatus lautet `Idle` Und der letzte Übertragungstyp lautet `Update` Klicken Sie auf der Registerkarte *Details* auf.
++
+image::../media/snapmirror_update_verify.gif[Details zur SnapMirror Beziehung]
+
+

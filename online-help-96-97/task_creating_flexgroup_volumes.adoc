@@ -1,0 +1,111 @@
+---
+permalink: online-help-96-97/task_creating_flexgroup_volumes.html 
+sidebar: sidebar 
+keywords: create, flexgroup, volume, online, help, system, manager 
+summary: Ein FlexGroup Volume kann viele Volumes enthalten, die statt einzeln als Gruppe verwaltet werden können. Mithilfe von System Manager kann ein FlexGroup Volume erstellt werden. Hierzu werden bestimmte Aggregate ausgewählt oder systemempfohlene Aggregate ausgewählt. 
+---
+= Erstellen Sie FlexGroup Volumes mit System Manager - ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) zur Erstellung eines FlexGroup-Volumes können Sie verwenden, indem Sie spezielle Aggregate auswählen oder systemempfohlene Aggregate auswählen. Ein FlexGroup Volume kann viele Volumes enthalten, die statt einzeln als Gruppe verwaltet werden können.
+
+.Über diese Aufgabe
+* Sie können nur Lese-/Schreib-FlexGroup-Volumes erstellen.
+* Ab System Manager 9.6 können Sie FlexGroup Volumes in einer MetroCluster Konfiguration erstellen.
+
+
+.Schritte
+. Klicken Sie Auf *Storage* > *Volumes*.
+. Klicken Sie auf *Erstellen* > *FlexGroup erstellen*.
+. Geben Sie im Fenster *Create FlexGroup* einen Namen für das FlexGroup-Volume an.
++
+Die Aggregate werden standardmäßig nach den Best Practices ausgewählt.
+
+. Klicken Sie auf die Schaltfläche**Volume Encryption**, um die Verschlüsselung für das Volume zu aktivieren.
++
+Diese Option ist nur verfügbar, wenn Sie die Volume Encryption-Lizenz aktiviert haben und wenn die entsprechende Plattform Verschlüsselung unterstützt.
+
++
+Die Aktivierung der Volume-Verschlüsselung kann die Volume-übergreifende Storage-Effizienz beeinträchtigen, wenn die ausgewählten Aggregate verschlüsselt sind.
+
+. Geben Sie eine Größe für das FlexGroup-Volume an.
++
+[NOTE]
+====
+Sie müssen auch die Maßeinheiten angeben.
+
+====
+. Aktivieren Sie die Umschalttaste *FabricPool*, um FabricPool-Aggregate im FlexGroup-Volume zu verwenden.
++
+** Wenn Sie *FabricPool* aktivieren, können Sie die Tiering Policy aus den folgenden Optionen im Dropdown-Menü auswählen:
++
+*** *Nur Snapshot*
++
+Verschiebt die Snapshot-Kopien nur von Volumes, auf die derzeit nicht vom aktiven Dateisystem verwiesen wird. Eine Richtlinie, die nur Snapshots enthält, ist die standardmäßige Tiering-Richtlinie.
+
+*** *Auto*
++
+Verschiebt die inaktiven (kalten) Daten und Snapshot Kopien vom aktiven Filesystem auf die Cloud-Tier.
+
+*** *Backup (für System Manager 9.5)*
++
+Die neu zu übertragenden Daten eines Datensicherungs-Volumes werden in die Cloud-Tier verschoben.
+
+*** *Alle (beginnend mit System Manager 9.6)*
++
+Alle Daten werden auf die Cloud-Tier verschoben.
+
+*** *Keine*
++
+Verhindert, dass Daten auf dem Volume in eine Cloud-Tier verschoben werden
+
+
+
+** Wenn Sie *FabricPool* an der Position „`not enabled`“ belassen, sind nur nicht-FabricPool-Aggregate in das erstellte FlexGroup Volume enthalten und die Tiering-Policy auf „`None`“ gesetzt.
+** Wenn in der SVM keine FabricPool-Aggregate vorhanden sind, wird *FabricPool* in der Position „nicht aktiviert“ angezeigt und kann nicht geändert werden.
+** Wenn in der SVM nur FabricPool-Aggregate vorhanden sind, wird die *FabricPool*-Schaltfläche in der Position „aktiviert“ angezeigt und kann nicht geändert werden.
+
+
+. Wenn Sie bestimmte Aggregate angeben möchten, klicken Sie auf image:../media/advanced_options.gif[""] (Erweiterte Optionen).
++
+Die Aggregate, die mit dem erstellten FlexGroup-Volume verbunden sind, werden standardmäßig gemäß den Best Practices ausgewählt. Sie werden neben dem Label *Aggregates* angezeigt.
+
+. Führen Sie im Abschnitt *Schutz* die folgenden Aktionen durch:
++
+.. Aktivieren Sie die Option *Lautstärkeschutz*.
+.. Wählen Sie den Typ *Replikation* aus.
++
+[NOTE]
+====
+Der Replikationstyp *Synchron* wird für FlexGroup-Volumes nicht unterstützt.
+
+====
+.. Klicken Sie auf *Hilfe Auswählen*, wenn Sie den Replikationstyp und den Beziehungstyp nicht kennen.
++
+*** Geben Sie die Werte an und klicken Sie auf *Anwenden*.
++
+Der Replikationstyp und der Beziehungstyp werden automatisch auf Grundlage der angegebenen Werte ausgewählt.
+
+
+
+.. Wählen Sie den Beziehungstyp aus.
++
+Die Beziehungstypen können gespiegelt, Vault oder auch gespiegelt und Vault sein.
+
+.. Wählen Sie ein Cluster und eine SVM für das Ziel-Volume aus.
++
+Wenn auf dem ausgewählten Cluster eine Version der ONTAP Software vor ONTAP 9.3 ausgeführt wird, werden nur Peering SVMs aufgelistet. Wenn auf dem ausgewählten Cluster ONTAP 9.3 oder höher ausgeführt wird, werden die Peering SVMs und zulässige SVMs aufgelistet.
+
+.. Ändern Sie das Suffix für den Volume-Namen nach Bedarf.
+
+
+. Klicken Sie auf *Erstellen*, um das FlexGroup Volume zu erstellen.
+
+
+*Verwandte Informationen*
+
+xref:reference_volumes_window.adoc[Fenster Volumes]

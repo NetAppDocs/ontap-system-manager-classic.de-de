@@ -1,0 +1,45 @@
+---
+permalink: online-help-96-97/reference_managing_svms.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, svm, administrator, system, manager, online, help 
+summary: 'Ein Storage Virtual Machine (SVM) Administrator kann SVMs und ihre Ressourcen, z. B. Volumes, Protokolle und Services, je nach den vom Cluster-Administrator zugewiesenen Funktionen verwalten. Ein SVM-Administrator kann SVMs nicht erstellen, ändern oder löschen.' 
+---
+= Management von SVMs mit System Manager – ONTAP 9.7 und früher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Im klassischen ONTAP System Manager (erhältlich ab ONTAP 9.7) kann ein SVM-Administrator (Storage Virtual Machine) SVMs und seine Ressourcen, z. B. Volumes, Protokolle und Services, je nach den vom Cluster-Administrator zugewiesenen Funktionen verwalten. Ein SVM-Administrator kann SVMs nicht erstellen, ändern oder löschen.
+
+[NOTE]
+====
+SVM-Administratoren können sich nicht bei System Manager anmelden.
+
+====
+SVM-Administratoren verfügen möglicherweise über alle oder einige der folgenden Administrationsfunktionen:
+
+* Konfiguration des Datenzugriffsprotokolls
++
+SVM-Administratoren können Datenzugriffsprotokolle wie NFS-, CIFS-, iSCSI- und Fibre Channel-Protokoll (FC) konfigurieren (inklusive Fibre Channel over Ethernet oder FCoE).
+
+* Konfiguration der Dienste
++
+SVM-Administratoren können Services wie LDAP, NIS und DNS konfigurieren.
+
+* Storage-Management
++
+SVM-Administratoren können Volumes, Kontingente, qtrees und Dateien managen.
+
+* LUN-Management in einer SAN-Umgebung
+* Management von Snapshot Kopien des Volume
+* Monitoring der SVM
++
+SVM-Administratoren können Jobs, Netzwerkverbindungen, Netzwerkschnittstelle und den SVM-Zustand überwachen.
+
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 Dokumentationszentrum"]
