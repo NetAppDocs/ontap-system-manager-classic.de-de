@@ -32,8 +32,6 @@ Dies sind Geräte, die nicht angezeigt werden, wenn Sie das eingeben `sanlun lun
 
 +
 *** Falls nicht von NetApp ausbestimmte SCSI-Geräte vorhanden sind, geben Sie im Blacklist-Abschnitt des die weltweite Kennung (WWID) für die Geräte ein `multipath.conf` Datei:
-
-
 +
 Um die WWID eines SCSI-Geräts anzuzeigen, geben Sie den folgenden Befehl auf dem Gerät ein, das Sie ausschließen möchten `SCSI_device_name` Ist ein Gerät, das Sie angeben:
 
@@ -62,7 +60,6 @@ blacklist {
             devnode     "^cciss.*"
 }
 ----
-+
 *** Wenn keine Geräte zum Ausschließen vorhanden sind, entfernen Sie die Zeile _wwid_ aus dem `multipath.conf` Datei:
 
 
