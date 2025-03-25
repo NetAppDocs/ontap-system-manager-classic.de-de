@@ -1,0 +1,10 @@
+---
+section: networking-failover
+title: Failover-Workflow für NAS-Pfade (ONTAP 9.7 und früher)
+entries:
+- title: Allgemeines zum NAS-Pfad-Failover (ONTAP 9.7 und früher)
+  url: "/networking-failover/set_up_nas_path_failover_9_to_97_cli.html"
+- title: Failover-Workflow für NAS-Pfade (ONTAP 9.7 und früher)
+  url: "/networking-failover/workflow__nas_path_failover_overview_manual.html"
+- title: Arbeitsblatt für die NAS-Pfad-Failover-Konfiguration (ONTAP 9.7 und früher)
+  url: "/networking-failover/worksheet_for_nas_path_failover_configuration_manual.html"

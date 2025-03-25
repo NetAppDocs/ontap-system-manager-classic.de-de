@@ -1,0 +1,10 @@
+---
+section: networking
+title: Allgemeine Netzwerkthemen (ONTAP 9.7 und früher)
+entries:
+- title: Entfernen einer NIC aus dem Knoten (ONTAP 9.7 oder früher)
+  url: "/networking/remove_a_nic_from_the_node_97.html"
+- title: LIF-Rollen (ONTAP 9.5 und früher)
+  url: "/networking/lif_roles95.html"
+- title: Konfiguration der DNS-Dienste (ONTAP 9.7 und früher)
+  url: "/networking/configure_dns_services_manual.html"

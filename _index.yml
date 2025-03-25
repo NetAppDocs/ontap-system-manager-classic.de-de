@@ -6,10 +6,14 @@ indexpage:
     gängige Storage-Aufgaben wie das Erstellen von Volumes, LUNs, qtrees, Shares und
     Exporten. Dies spart Zeit und verhindert Fehler.
   keywords: ontap, netapp, documentation, system, manager
-  lead: Die Oberfläche von System Manager Classic ist ab ONTAP 9.7 und älteren Versionen
-    von ONTAP 9 verfügbar. Auf dieser Website finden Sie eine Dokumentation für Konfigurations-Workflows
-    mit System Manager Classic sowie die Online-Hilfe von System Manager Classic für
-    ONTAP 9.6 und 9.7.
+  lead: Die in ONTAP 9.7 und älteren Versionen verfügbare Benutzeroberfläche von System
+    Manager wird als „System Manager Classic“ bezeichnet und bietet für ONTAP 9.8
+    und höhere Versionen eine andere Benutzeroberfläche als die von System Manager.
+    Für Benutzer von System Manager in ONTAP 9.7 und älteren Versionen bietet diese
+    Dokument-Website Konfigurations-Workflows mit System Manager Classic sowie die
+    System Manager Classic Online-Hilfe für ONTAP 9.6 und 9.7. Auch die Grundlagen
+    zum ONTAP Netzwerk haben sich seit ONTAP 9.8 stark verändert. Diese Dokumentseite
+    bietet Netzwerkinformationen, die nur für ONTAP 9.7 und frühere Versionen gelten.
   tiles:
   - title: Los geht's
     links:
@@ -32,7 +36,7 @@ indexpage:
       url: "/smb-config/index.html"
   - title: Provisionierung von SAN-Storage
     links:
-    - title: FC Konfiguration für ESXi mithilfe von VSC
+    - title: FC-Konfiguration für ESXi mit VSC
       url: "/fc-config-esxi/index.html"
     - title: FC-Konfiguration für Red hat Enterprise Linux
       url: "/fc-config-rhel/index.html"
@@ -66,6 +70,18 @@ indexpage:
       url: "/snmp-config/index.html"
     - title: Cluster-Management über System Manager 9.6 und 9.7
       url: "/online-help-96-97/index.html"
+  - title: Netzwerkmanagement
+    links:
+    - title: Failover-Workflow für NAS-Pfade (ONTAP 9.7 und früher)
+      url: "/networking-failover/set_up_nas_path_failover_9_to_97_cli.html"
+    - title: Broadcast-Domänenverwaltung (ONTAP 9.7 oder früher)
+      url: "/networking-bd/configure_broadcast_domains_97_overview.html"
+    - title: Entfernen einer NIC aus dem Knoten (ONTAP 9.7 oder früher)
+      url: "/networking/remove_a_nic_from_the_node_97.html"
+    - title: LIF-Rollen (ONTAP 9.5 und früher)
+      url: "/networking/lif_roles95.html"
+    - title: Konfiguration der DNS-Dienste (ONTAP 9.7 und früher)
+      url: "/networking/configure_dns_services_manual.html"
   - title: Mehr Ressourcen
     links:
     - title: ONTAP 9-Dokumentation

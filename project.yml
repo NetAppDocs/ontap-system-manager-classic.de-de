@@ -41,6 +41,11 @@ sidebar:
   - title: Cluster Management über System Manager 9.6 und 9.7
     entries:
     - section: online-help-96-97
+  - title: Netzwerkverwaltung für ONTAP 9.7 und früher
+    entries:
+    - section: networking-failover
+    - section: networking-bd
+    - section: networking
   - title: ONTAP Dokumentation
     url: https://docs.netapp.com/us-en/ontap/
   - title: Rechtliche Hinweise
