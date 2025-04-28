@@ -14,7 +14,7 @@ summary: Beim Erstellen eines FlexGroup-Volumes können Sie Optionen festlegen, 
 Wenn Sie ein FlexGroup-Volume erstellen, können Sie mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) Optionen festlegen, die mit dem FlexGroup-Volume verknüpft werden sollen.
 
 .Schritte
-. *Optional:* Klicken Sie im Fenster *FlexGroup erstellen* auf image:../media/advanced_options.gif[""] Um die erweiterten Optionen anzugeben.
+. *Optional:* Klicken Sie im Fenster *Create FlexGroup* auf die image:../media/advanced_options.gif["Symbol für erweiterte Optionen"]erweiterten Optionen.
 +
 Das Fenster Erweiterte Optionen wird angezeigt. Er enthält Abschnitte (die Überschriften in der linken Spalte), in denen Sie verschiedene Optionen angeben können.
 

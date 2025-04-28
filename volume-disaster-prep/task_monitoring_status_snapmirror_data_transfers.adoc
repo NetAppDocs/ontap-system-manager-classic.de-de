@@ -44,7 +44,7 @@ Sie sollten alle Probleme in den SnapMirror Beziehungen beheben.
 http://www.netapp.com/us/media/tr-4015.pdf["Technischer Bericht 4015: SnapMirror Configuration and Best Practices for ONTAP 9.1, 9.2"^]
 
 +
-image::../media/snapmirror_monitor_3_health_state_lag.gif[snapmirror überwacht 3-Zustandsverzögerungen]
+image::../media/snapmirror_monitor_3_health_state_lag.gif[Status der SnapMirror Datentransfers]
 
 
 

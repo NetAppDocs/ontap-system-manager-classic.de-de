@@ -13,4 +13,4 @@ summary: 'Sie können ein Cluster mit System Manager oder der Befehlszeilenschni
 [role="lead"]
 Sie können ein Cluster mit System Manager oder der Befehlszeilenschnittstelle (CLI) erstellen. Um einen Cluster mit System Manager zu erstellen, müssen Sie die Node-Management-IP-Adresse auf einem beliebigen Node im Cluster-Netzwerk einrichten. Falls Sie ein Cluster mit der CLI erstellt haben, können Sie das Cluster mit System Manager konfigurieren.
 
-image::../media/guided_cluster_setup.gif[Geführte Cluster-Einrichtung]
+image::../media/guided_cluster_setup.gif[Workflow für die Einrichtung der Cluster-Umgebung]

@@ -17,6 +17,4 @@ Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) z
 
 https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Festplatten- und Aggregatmanagement"^]
 
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Installationsanforderungen für FlexArray Virtualisierung und Referenz"^]
-
 https://docs.netapp.com/us-en/ontap/concepts/index.html["ONTAP-Konzepte"^]

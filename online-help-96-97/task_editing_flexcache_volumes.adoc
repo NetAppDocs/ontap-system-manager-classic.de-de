@@ -20,7 +20,7 @@ Ab System Manager 9.6 können Sie die Eigenschaften eines vorhandenen FlexCache-
 . *Optional:* Geben Sie einen neuen Namen für den FlexCache-Datenträger in das Feld *Lautstärke* unter *FlexCache-Lautstärke* ein.
 . *Optional:* Geben Sie im Feld *Größe* unter *FlexCache-Lautstärke* eine neue Größe für das FlexCache-Volumen ein, und wählen Sie im Dropdown-Menü die Maßeinheit aus.
 . *Optional:* Verschlüsselung aktivieren oder deaktivieren.
-. *Optional:* Klicken image:../media/advanced_options.gif[""] Um die erweiterten Einstellungen für das FlexCache Volume zu ändern. Siehe link:task_specifying_advanced_options_for_flexcache_volume.html["Festlegen erweiterter Optionen für ein FlexCache-Volume"].
+. *Optional:* Klicken Sie hierimage:../media/advanced_options.gif["Symbol für erweiterte Optionen"], um die erweiterten Einstellungen für die FlexCache-Lautstärke zu ändern. Siehe link:task_specifying_advanced_options_for_flexcache_volume.html["Festlegen erweiterter Optionen für ein FlexCache-Volume"].
 . Klicken Sie auf *Speichern*, um die Änderungen zu speichern.
 
 

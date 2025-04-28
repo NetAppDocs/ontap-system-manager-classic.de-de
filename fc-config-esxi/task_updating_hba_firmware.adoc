@@ -26,7 +26,3 @@ Die HBA-Anbieter stellen Treiber, Firmware, BIOS und HBA-Utilitys bereit.
 Installationsanweisungen und alle erforderlichen Installationsprogramme stehen Ihnen beim Download zur Verfügung.
 
 
-
-*Verwandte Informationen*
-
-http://kb.vmware.com/kb/1002413["VMware KB-Artikel 1002413: Identifikation der Firmware eines Qlogic- oder Emulex FC-HBA"]

@@ -37,7 +37,7 @@ Ab System Manager 9.6 können Sie auch FlexGroup DP Volumes umbenennen.
 Diese Option ist nur verfügbar, wenn Sie die Volume Encryption-Lizenz aktiviert haben und wenn die entsprechende Plattform Verschlüsselung unterstützt.
 
 . Geben Sie den Prozentsatz der Snapshot Kopie-Reserve an.
-. *Optional:* Klicken image:../media/advanced_options.gif[""] Zum Ändern der FlexGroup-Volume-Einstellungen. Siehe link:task_specifying_advanced_options_for_flexgroup_volume.html["Festlegen erweiterter Optionen für ein FlexGroup-Volume"].
+. *Optional:* Klicken Sie hierimage:../media/advanced_options.gif["Symbol für erweiterte Optionen"], um die FlexGroup-Lautstärkeeinstellungen zu ändern. Siehe link:task_specifying_advanced_options_for_flexgroup_volume.html["Festlegen erweiterter Optionen für ein FlexGroup-Volume"].
 . Geben Sie die Größe an, auf die die Größe des FlexGroup Volume geändert werden soll.
 +
 Standardmäßig werden vorhandene Aggregate verwendet, um die Größe des FlexGroup Volume zu ändern. Neben den Größenfeldern wird die für das Volume zulässige Mindestgröße angezeigt.
@@ -45,7 +45,7 @@ Standardmäßig werden vorhandene Aggregate verwendet, um die Größe des FlexGr
 +
 [NOTE]
 ====
-Wenn Sie das FlexGroup Volume durch Hinzufügen neuer Ressourcen erweitern möchten, klicken Sie auf image:../media/advanced_options.gif[""] (Erweiterte Optionen). Siehe link:task_specifying_advanced_options_for_flexgroup_volume.html["Festlegen erweiterter Optionen für ein FlexGroup-Volume"].
+Wenn Sie das FlexGroup-Volume durch Hinzufügen neuer Ressourcen erweitern möchten, klicken Sie auf image:../media/advanced_options.gif["Symbol für erweiterte Optionen"] (erweiterte Optionen). Siehe link:task_specifying_advanced_options_for_flexgroup_volume.html["Festlegen erweiterter Optionen für ein FlexGroup-Volume"].
 
 ====
 . Klicken Sie auf *Speichern*, um die Änderungen zu speichern.

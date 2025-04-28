@@ -31,4 +31,4 @@ Die Cluster-Einrichtung wird in MetroCluster Konfigurationen für die ONTAP Soft
 
 Sie können das Cluster mithilfe einer Vorlagendatei oder durch manuelle Eingabe der Werte im Cluster-Setup-Assistenten einrichten.
 
-image::../media/cluster_setup_workflow.gif[Workflow für die Einrichtung des Clusters]
+image::../media/cluster_setup_workflow.gif[Workflow für die Einrichtung eines Clusters mit ONTAP System Manager]

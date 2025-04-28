@@ -29,7 +29,7 @@ Standardmäßig werden vorhandene Aggregate verwendet, um die Größe des FlexCa
 +
 [NOTE]
 ====
-Wenn Sie das FlexCache Volume durch Hinzufügen neuer Ressourcen erweitern möchten, klicken Sie auf image:../media/advanced_options.gif[""] (Erweiterte Optionen). Siehe link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Festlegen erweiterter Optionen für FlexCache Volumes"].
+Wenn Sie das FlexCache-Volume durch Hinzufügen neuer Ressourcen erweitern möchten, klicken Sie auf image:../media/advanced_options.gif["Symbol für erweiterte Optionen"] (erweiterte Optionen). Siehe link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Festlegen erweiterter Optionen für FlexCache Volumes"].
 
 ====
 . Klicken Sie auf *Speichern*, um die Größe des FlexCache-Volumens zu ändern.

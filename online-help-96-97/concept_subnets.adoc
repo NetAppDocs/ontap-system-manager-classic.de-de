@@ -17,7 +17,6 @@ Sie können ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und früher) z
 
 == Subnetzeinstellungen bearbeiten
 
-[role="lead"]
 Mit System Manager können Sie die Subnetz-Attribute ändern, z. B. Name, Subnetz-Adresse, Bereich der IP-Adressen und Gateway-Adresse des Subnetzes.
 
 .Über diese Aufgabe

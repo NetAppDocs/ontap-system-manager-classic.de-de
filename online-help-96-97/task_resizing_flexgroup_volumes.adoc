@@ -29,7 +29,7 @@ Standardmäßig werden vorhandene Aggregate verwendet, um die Größe des FlexGr
 +
 [NOTE]
 ====
-Wenn Sie das FlexGroup Volume durch Hinzufügen neuer Ressourcen erweitern möchten, klicken Sie auf image:../media/advanced_options.gif[""] (Erweiterte Optionen).
+Wenn Sie das FlexGroup-Volume durch Hinzufügen neuer Ressourcen erweitern möchten, klicken Sie auf image:../media/advanced_options.gif["Symbol für erweiterte Optionen"] (erweiterte Optionen).
 
 ====
 . Geben Sie den Prozentsatz der Snapshot Kopie-Reserve an.

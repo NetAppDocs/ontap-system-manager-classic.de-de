@@ -59,13 +59,13 @@ Keine Peered
 
 
 +
-image::../media/dest_vol_snapvault.gif[dest vol SnapVault]
+image::../media/dest_vol_snapvault.gif[Registerkarte „Konfigurationsziel-Volume“ mit Kontrollkästchen „Deduplizierung aktivieren“]
 
 . Wählen Sie im Abschnitt *Konfigurationsdetails* die Option `XDPDefault` Als Schutzrichtlinie.
 . Wählen Sie einen Schutzplan aus der Liste der Zeitpläne aus.
 . Stellen Sie sicher, dass das Kontrollkästchen *Beziehung initialisieren* aktiviert ist, um die Basis-Snapshot-Kopie zu übertragen, und klicken Sie dann auf *Erstellen*
 +
-image::../media/config_details_snapvault.gif[Konfigurationsdetails SnapVault]
+image::../media/config_details_snapvault.gif[Registerkarte „Konfigurationsdetails“ mit Kontrollkästchen „Initialisierungsbeziehung“]
 
 +
 Der Assistent erstellt die Beziehung zu der angegebenen Vault-Richtlinie und dem angegebenen Zeitplan. Die Beziehung wird initialisiert durch einen Basistransfer der Daten vom Quell-Volume zum Ziel-Volume.
@@ -74,14 +74,14 @@ Der Assistent erstellt die Beziehung zu der angegebenen Vault-Richtlinie und dem
 Im Abschnitt Status wird der Status jedes Jobs angezeigt.
 
 +
-image::../media/create_snapvault_success.gif[SnapVault-Erfolg]
+image::../media/create_snapvault_success.gif[Erstellen Sie eine Registerkarte „Schutzbeziehung“ mit dem Statusbereich, der den Status jedes Jobs anzeigt]
 
 . Vergewissern Sie sich, dass der Beziehungsstatus der SnapVault-Beziehung im angezeigt wird `Snapmirrored` Bundesland.
 +
 .. Wählen Sie das Volume aus der Liste Volumes aus und klicken Sie dann auf *Datenschutz*.
 .. Überprüfen Sie auf der Registerkarte *Data Protection* Bottom, ob die erstellte SnapMirror-Beziehung aufgelistet ist und der Beziehungsstatus lautet `Snapmirrored` Typ lautet `Vault`.
 +
-image::../media/data_protection_window_sv.gif[Datensicherungsfenster sv]
+image::../media/data_protection_window_sv.gif[Data Protection, untere Lasche]
 
 
 

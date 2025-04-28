@@ -100,7 +100,6 @@ Geben Sie die erweiterten Cron-Optionen in Monaten, Tagen, Wochentagen (falls zu
 
 == Löschen von Zeitplänen
 
-[role="lead"]
 Sie können mit System Manager die Zeitpläne löschen, aus denen bestimmte Storage Management-Aufgaben ausgeführt werden.
 
 .Schritte

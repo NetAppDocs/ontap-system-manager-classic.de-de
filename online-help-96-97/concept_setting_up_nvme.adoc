@@ -17,4 +17,4 @@ Ab ONTAP 9.5 müssen Sie mindestens eine NVMe-LIF pro Node in einem HA-Paar konf
 
 Die folgende Abbildung zeigt den Workflow zur Einrichtung von NVMe:
 
-image::../media/nvme_setup_workflow.gif[nvme-Setup-Workflow]
+image::../media/nvme_setup_workflow.gif[Workflow für die Einrichtung von nvme]

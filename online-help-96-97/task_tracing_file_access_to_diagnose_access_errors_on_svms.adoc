@@ -26,7 +26,7 @@ Im Fenster Trace File Access für die ausgewählte SVM werden die Voraussetzunge
 . Klicken Sie auf *Weiter*, um den Vorgang der Dateiverfolgung zu starten.
 . Wählen Sie das Protokoll aus, das für den Zugriff auf Dateien oder Freigaben auf der ausgewählten SVM verwendet wird.
 . Geben Sie im Feld *Benutzername* den Namen des Benutzers ein, der versucht hat, auf die Datei oder Freigabe zuzugreifen.
-. *Optional:* Klicken image:../media/advanced_options.gif[""] Um weitere Details anzugeben, um den Umfang der Kurve einzugrenzen.
+. *Optional:* Klicken Sie hierimage:../media/advanced_options.gif["Symbol für erweiterte Optionen"], um weitere Details anzugeben, um den Umfang der Spur zu verringern.
 +
 Im Dialogfeld „Erweiterte Optionen“ können Sie die folgenden Details angeben:
 

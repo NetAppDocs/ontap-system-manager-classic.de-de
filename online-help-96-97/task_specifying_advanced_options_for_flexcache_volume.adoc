@@ -14,7 +14,7 @@ summary: Ab System Manager 9.6 können Sie bei der Bearbeitung eines FlexCache-V
 Ab System Manager 9.6 können Sie bei der Bearbeitung eines FlexCache-Volumes die erweiterten Optionen angeben, die Sie mit dem FlexCache-Volume verknüpfen möchten.
 
 .Schritte
-. *Optional:* Klicken Sie im Fenster *FlexCache Volume bearbeiten* auf image:../media/advanced_options.gif[""] Um die erweiterten Optionen anzugeben.
+. *Optional:* Klicken Sie im Fenster *FlexCache Volume bearbeiten* auf, image:../media/advanced_options.gif["Symbol für erweiterte Optionen"]um die erweiterten Optionen anzugeben.
 +
 Das Fenster Erweiterte Optionen wird angezeigt. Er enthält Abschnitte (die Überschriften in der linken Spalte), in denen Sie verschiedene Optionen angeben können.
 

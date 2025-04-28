@@ -49,7 +49,7 @@ Alle Datensicherungsbeziehungen werden standardmäßig initialisiert.
 
 .. Klicken Sie auf *Anwenden*, um die Änderungen zu speichern.
 +
-image::../media/snapvault_advanced_options.gif[Erweiterte Optionen von SnapVault]
+image::../media/snapvault_advanced_options.gif[Registerkarte „SnapVault Advanced Options“]
 
 
 
@@ -62,6 +62,6 @@ image::../media/snapvault_advanced_options.gif[Erweiterte Optionen von SnapVault
 
 
 +
-image::../media/snapvault_9_3.gif[SnapVault 9 3]
+image::../media/snapvault_9_3.gif[Volume-Fenster, das den Datensicherungsstatus des Volume anzeigt]
 
 

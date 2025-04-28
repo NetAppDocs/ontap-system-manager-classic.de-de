@@ -56,4 +56,4 @@ In der zweiten Phase wird der Standort für den Switchback-Prozess vorbereitet.
 
 Im folgenden Flussdiagramm werden die Phasen und Prozesse dargestellt, die beim Starten des Umschalttaops und des Umschalttaops auftreten.
 
-image::../media/switchover_switchback_workflow.jpg[Wechseln zum Workflow zurück]
+image::../media/switchover_switchback_workflow.jpg[MetroCluster-Umschaltung und Workflow-Ablaufdiagramm umschalten]

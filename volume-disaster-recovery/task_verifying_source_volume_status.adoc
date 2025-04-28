@@ -23,7 +23,7 @@ Sie müssen diese Aufgabe aus dem Cluster *source* ausführen.
 +
 ** Ab ONTAP 9.3: Doppelklicken Sie auf das Quell-Volume, um die Details anzuzeigen, und klicken Sie dann auf *PROTECTION*, um das Ziel-Volume in der SnapMirror-Beziehung und den Namen der SVM zu identifizieren, die das Volume enthält.
 +
-image::../media/snapmirror_destination_93.gif[snapmirror Ziel 93]
+image::../media/snapmirror_destination_93.gif[Image der Registerkarte „Schutz“, die das Ziel-Volume in der SnapMirror-Beziehung anzeigt]
 
 ** ONTAP 9.2 oder früher: Klicken Sie auf die Registerkarte *Datensicherung* unten auf der Seite Volumes, um das Ziel-Volume in der SnapMirror-Beziehung und den Namen der SVM, die das Volume enthält, zu identifizieren.
 +

@@ -13,7 +13,7 @@ summary: 'Mit System Manager können Sie ein Cluster oder die einzelnen Nodes in
 [role="lead"]
 Mit ONTAP System Manager Classic (verfügbar in ONTAP 9.7 und älter) können Sie ein Cluster oder die einzelnen Nodes in einem HA-Paar aktualisieren. Um ein Update durchzuführen, sollten Sie ein ONTAP Image auswählen, überprüfen, ob das Cluster oder die einzelnen Nodes im HA-Paar für das Update bereit sind, und führen Sie dann das Update aus.
 
-image::../media/updating_cluster.gif[Cluster wird aktualisiert]
+image::../media/updating_cluster.gif[Aktualisieren Sie Cluster in einer nicht-MetroCluster-Konfiguration mit System Manager]
 
 *Verwandte Informationen*
 

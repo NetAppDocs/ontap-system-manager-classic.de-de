@@ -70,7 +70,7 @@ Verhindert, dass Daten auf dem Volume in eine Cloud-Tier verschoben werden
 ** Wenn in der SVM nur FabricPool-Aggregate vorhanden sind, wird die *FabricPool*-Schaltfläche in der Position „aktiviert“ angezeigt und kann nicht geändert werden.
 
 
-. Wenn Sie bestimmte Aggregate angeben möchten, klicken Sie auf image:../media/advanced_options.gif[""] (Erweiterte Optionen).
+. Wenn Sie bestimmte Aggregate angeben möchten, klicken Sie auf image:../media/advanced_options.gif["Symbol für erweiterte Optionen"] (erweiterte Optionen).
 +
 Die Aggregate, die mit dem erstellten FlexGroup-Volume verbunden sind, werden standardmäßig gemäß den Best Practices ausgewählt. Sie werden neben dem Label *Aggregates* angezeigt.
 
